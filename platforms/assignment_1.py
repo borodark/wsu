@@ -203,39 +203,36 @@ print(cums.shape)
 print(cums.columns)
 print(cums.index)
 
-
+## TODO print bars of sorted!!!
+print("max is : ",cums.max().sort_values())
 # In[29]:
-
-
-
 
 
 # In[30]:
 
 
-mi_cums= cums.loc['MICHIGAN']
+#mi_cums= cums.loc['MICHIGAN']
 
+#print(mi_cums.shape)
+#print(mi_cums.index)
+#print(mi_cums.columns)
 
-print(mi_cums.shape)
-print(mi_cums.index)
-print(mi_cums.columns)
-
-{}
 # In[31]:
 
 
-print(mi_cums.values)
+#print(mi_cums.values)
 
 
 # In[40]:
 
 
 #from matplotlib.pyplot import plot
-import matplotlib.pyplot as plt
-plt.close('all')
-mi_cums.plot()
-plt.legend(loc='best')
+#import matplotlib.pyplot as plt
+#cums.groupby(['mmwr_week']).hist(bins=52)
+#
+#mi_cums.plot()
+#plt.legend(loc='best')
 #plt.legend(bbox_to_anchor=(1.03,1), loc="lower left",
 #                mode="expand", borderaxespad=0)
-plt.show()
+#plt.show()
 #plot('Number of cases', 'Week of the year', data= mi_cums)
