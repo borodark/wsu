@@ -9,3 +9,7 @@ The project is intend to analyze log return of several market instruments. The m
 * Analysis of Financial Time Series Financial Econometrics by RUEY S. TSAY University of Chicago
 * [Time series Forecasting — ARIMA models](https://towardsdatascience.com/time-series-forecasting-arima-models-7f221e9eee06)
 * [Introduction To Time Series Forecasting](https://www.datascience.com/blog/introduction-to-forecasting-with-arima-in-r-learn-data-science-tutorials)
+
+## Students
+* Ali Milhem	
+* Igor Ostaptchenko
