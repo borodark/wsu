@@ -1,6 +1,6 @@
 # Time Series Analysis for Log Returns
 
-The project is intend to analyze log return of several market instruments. The main goal explore several kinds of financial times series by adopting a few techniques such as parameter estimation, spectral analysis. After aquiring datasets and transforming to obtain the log return for daily time series we'll study several market instruments: indexes, currencies. The example of data aquired mostly from https://finance.yahoo.com/: 
+The project is intend to analyze log return of several market instruments. The main goal explore several kinds of financial times series by adopting a few techniques such as parameter estimation, spectral analysis. After aquiring datasets and transforming to obtain the log return for daily time series we study several market instruments: indexes, currencies. The example of data aquired mostly from https://finance.yahoo.com/: 
 
 * FOREX/DX20000$D.CSV      OK
 * FOREX/QE#0000$D.CSV      OK
