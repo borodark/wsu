@@ -103,7 +103,7 @@ summary (lm.fit5)
 summary (lm(medv~log(rm),data=Boston ))
 
 library (car)
-#vif(lm.fit)
+vif(lm.fit)
 #	Qualitative Predictors
 Carseats
 fix(Carseats)
