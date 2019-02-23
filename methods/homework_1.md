@@ -1,45 +1,109 @@
 # Home work 1
 
+## 1. Please use the lm() function to perform a simple linear regression with mpg as the response and horsepower as the predictor
 
-## Relationship 
+```R
+library (ISLR)
+Auto=read.table ("Auto.data", header =T,na.strings ="?")
+attach(Auto)
+names(Auto)
+```
+Output:
+```
+[1] "mpg"          "cylinders"    "displacement"
+[4] "horsepower"   "weight"       "acceleration"
+[7] "year"         "origin"       "name"
+```
+
+### a. Is there a relationship between the predictor and the response?
+
+There is a negative potentialy non-linear relationsip between `horsepower` and `mpg` (miles per gallon) according to visaul analisys.
+
+```R
+pairs(~ mpg + horsepower, Auto)
+```
+
 ![MPG vs Hourse Power](Rplot.svg)
 
-## Model parameters
+
+
+### Simple linear regression with mpg as the response and horsepower as the predictor
+
+```R
+lm.fit =lm(mpg~horsepower ,data=Auto,subset=train)
+summary(lm.fit)
+```
+
 
 ```
+Call:
+lm(formula = mpg ~ horsepower, data = Auto, subset = train)
+
 Residuals:
      Min       1Q   Median       3Q      Max 
--13.5710  -3.2592  -0.3435   2.7630  16.9240 
+-13.9927  -3.3274  -0.3231   2.8258  16.5115 
 
 Coefficients:
              Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 39.935861   0.717499   55.66   <2e-16 ***
-horsepower  -0.157845   0.006446  -24.49   <2e-16 ***
+(Intercept) 40.263828   0.982438   40.98   <2e-16 ***
+horsepower  -0.156543   0.008742  -17.91   <2e-16 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1’’
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 4.906 on 390 degrees of freedom
-Multiple R-squared:  0.6059,	Adjusted R-squared:  0.6049 
-F-statistic: 599.7 on 1 and 390 DF,  p-value: < 2.2e-16
+Residual standard error: 5.028 on 194 degrees of freedom
+Multiple R-squared:  0.6231,	Adjusted R-squared:  0.6211 
+F-statistic: 320.7 on 1 and 194 DF,  p-value: < 2.2e-16
 ```
-For the horsepower 90, 95,
+
+### b. How strong is the relationship between the predictor and the response?
+
+The relationship is strong: 
+* R-squared is 0.6211  meaning that 62.11% of the variability in `mpg` can be explained by `horsepower``
+
+
+### c. Is the relationship between the predictor and the response positive or negative?
+
+The relationship is `Negative`: the slope is `-0.156543`
 ```
-> predict (lm.fit ,data.frame(horsepower=c(90,95,98,100) ), interval ="confidence")
-       fit      lwr      upr
-1 25.72984 25.20932 26.25035
-2 24.94061 24.43890 25.44232
-3 24.46708 23.97308 24.96108
-4 24.15139 23.66096 24.64182
- 
+horsepower  -0.156543
 ```
-## Fitted Model
+
+### d. What is the predicted mpg associated with a horsepower of 98?
+
+`24.46708`
+
+#### d.1 What are the associated 95% confidence intervals?
+```R
+predict (lm.fit, level = 0.95, data.frame(horsepower=98 ), interval ="confidence")
+```
+Outputs:
+```
+fit      lwr      upr
+1 24.46708 23.97308 24.96108
+```
+#### d.2 What are the associated 95% prediction intervals?
+```R
+predict(lm.fit, level = 0.95, data.frame(horsepower = 98), interval = "prediction")
+```
+Outputs:
+```
+fit     lwr      upr
+1 24.46708 14.8094 34.12476
+
+```
+### Fitted Model
 
 ![Fitted Model](Rplot01.svg)
 
-## Fit parameters
+### Fit parameters
 
 ![fit data](Rplot02.svg)
 
-## Regression Line
-
+### e. Plot the response and the predictor. Please use the abline() function to display the least squares regression line.
+```R
+plot(horsepower ,mpg)
+abline (lm.fit)
+```
 ![fit data](Rplot05.svg)
+
+## 
