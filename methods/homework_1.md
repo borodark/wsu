@@ -239,10 +239,91 @@ Description
 leaps() performs an exhaustive search for the best subsets of the variables in x for predicting y in linear regression, using an efficient branch-and-bound algorithm. It is a compatibility wrapper for regsubsets does the same thing better.
 
 ```
+Doing the fit:
 
-#### What is the best model obtained according to Cp, BIC, and adjusted R2?
+```R
+require(leaps)
+df <- data.frame(y, x)
+fit <- regsubsets(y ~ poly(x, 10), data = df, nvmax = 10)
+fit_summary <- summary(fit)
+```
+Outcome:
+```
+Subset selection object
+Call: regsubsets.formula(y ~ poly(x, 10), data = df, nvmax = 10)
+10 Variables  (and intercept)
+              Forced in Forced out
+poly(x, 10)1      FALSE      FALSE
+poly(x, 10)2      FALSE      FALSE
+poly(x, 10)3      FALSE      FALSE
+poly(x, 10)4      FALSE      FALSE
+poly(x, 10)5      FALSE      FALSE
+poly(x, 10)6      FALSE      FALSE
+poly(x, 10)7      FALSE      FALSE
+poly(x, 10)8      FALSE      FALSE
+poly(x, 10)9      FALSE      FALSE
+poly(x, 10)10     FALSE      FALSE
+1 subsets of each size up to 10
+Selection Algorithm: exhaustive
+          poly(x, 10)1 poly(x, 10)2 poly(x, 10)3 poly(x, 10)4 poly(x, 10)5 poly(x, 10)6 poly(x, 10)7 poly(x, 10)8 poly(x, 10)9 poly(x, 10)10
+1  ( 1 )  " "          "*"          " "          " "          " "          " "          " "          " "          " "          " "          
+2  ( 1 )  "*"          "*"          " "          " "          " "          " "          " "          " "          " "          " "          
+3  ( 1 )  "*"          "*"          "*"          " "          " "          " "          " "          " "          " "          " "          
+4  ( 1 )  "*"          "*"          "*"          " "          " "          " "          " "          " "          " "          "*"          
+5  ( 1 )  "*"          "*"          "*"          " "          " "          " "          " "          "*"          " "          "*"          
+6  ( 1 )  "*"          "*"          "*"          "*"          " "          " "          " "          "*"          " "          "*"          
+7  ( 1 )  "*"          "*"          "*"          "*"          " "          " "          " "          "*"          "*"          "*"          
+8  ( 1 )  "*"          "*"          "*"          "*"          " "          "*"          " "          "*"          "*"          "*"          
+9  ( 1 )  "*"          "*"          "*"          "*"          " "          "*"          "*"          "*"          "*"          "*"          
+10  ( 1 ) "*"          "*"          "*"          "*"          "*"          "*"          "*"          "*"          "*"          "*"
+```
+#### What is the best model obtained according to Cp, BIC, and adjusted R2?  Show some plots to provide evidence for your answer and report the coefficients of the best model obtained.
 
-#### Show some plots to provide evidence for your answer and report the coefficients of the best model obtained.
+##### C_p
+Let's see selected coefficients for C_p:
+
+```
+> coef(fit, which.min(fit_summary$cp))
+  (Intercept)  poly(x, 10)1  poly(x, 10)2  poly(x, 10)3  poly(x, 10)8 poly(x, 10)10 
+    0.8418354    14.8863446   -31.5099343     3.0770032    -1.4883429    -1.6032467 
+```
+
+```R
+plot(fit_summary$cp, xlab = str_c("Best # is ",which.min(fit_summary$cp)), ylab = "C_p", type = "l")
+points(which.min(fit_summary$cp), fit_summary$cp[which.min(fit_summary$cp)], col = "green", cex = 2, pch = 20)
+```
+![C_p](Rplot04.svg)
+
+##### BIC
+Let's see selected coefficients for BIC:
+```
+> coef(fit, which.min(fit_summary$bic))
+
+(Intercept) poly(x, 10)1 poly(x, 10)2 poly(x, 10)3 
+   0.8418354   14.8863446  -31.5099343    3.0770032 
+```
+
+```R
+plot(fit_summary$bic, xlab = str_c("Best # is ", which.min(fit_summary$bic)) , ylab = "BIC", type = "l")
+points(which.min(fit_summary$bic), fit_summary$bic[which.min(fit_summary$bic)], col = "green", cex = 2, pch = 20)
+```
+![C_p](Rplot06.svg)
+
+
+##### Adjusted R^2
+Let's see about selected coefficients:
+```
+> coef(fit, which.max(fit_summary$adjr2))
+
+(Intercept)  poly(x, 10)1  poly(x, 10)2  poly(x, 10)3  poly(x, 10)4  poly(x, 10)8  poly(x, 10)9 poly(x, 10)10 
+    0.8418354    14.8863446   -31.5099343     3.0770032     1.1924927    -1.4883429    -1.1378195    -1.6032467 
+```
+
+```R
+plot(fit_summary$adjr2, xlab = str_c("Best # is ", which.max(fit_summary$adjr2)), ylab = "Adjusted R^2", type = "l")
+points(which.max(fit_summary$adjr2), fit_summary$adjr2[which.max(fit_summary$adjr2)], col = "green", cex = 2, pch = 20)
+```
+![Adjusted R^2](Rplot07.svg)
 
 Note you will need to use the data.frame() function to create a single data set containing both X and Y .
 
