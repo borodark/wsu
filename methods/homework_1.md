@@ -163,7 +163,7 @@ UrbanYes    -0.021916   0.271650  -0.081    0.936
 USYes        1.200573   0.259042   4.635 4.86e-06 ***
 ```
 
-* The `Price` coefficient has a negative relationship with `Sales`. A dollar of a price increase would mean 54.459 less units to be sold. 
+* The `Price` coefficient has a negative relationship with `Sales`. A dollar of a price increase predicts 54.459 less units to be sold. 
 * The `Urban` has a very high p-value, so it doesn’t prove any evidence of relevance for Sales.
 * The `US` factor indicates a strong influence in the model and assigns more 1.2 thousands sales units for each US location.
 
@@ -196,5 +196,55 @@ UrbanYes    -0.021916   0.271650  -0.081    0.936
 
 
 ## 3. In this exercise you will generate simulated data and perform feature selection.
+### a. Use the rnorm() function to generate a predictor _X_ of length 100 , as well as a noise vector _Yn_ of length n=100 .
+```R
+x = rnorm(100)
+Yn = rnorm(100)
+```
+Outputs:
+```
+> summary(x)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-2.09923 -0.79307  0.12273  0.03081  0.75102  2.11007 
+
+> summary(Yn)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-2.72017 -0.46211  0.06884  0.14745  0.73142  2.88842 
+```
+
+### b. Generate a response vector Y of length n =100 according to the model
+
+`Y = ß0 + ß1 * X + ß2 * X^2 + ß3 * X^3 + Yn`
+
+Where:
+`ß0 = 3 ß1 = 2 ß2 = -3 ß3 = 0.30`
+
+```R
+y = 3 + 2 * x - 3*x^2 + 0.3 * x^3 + Yn
+
+plot(x,y)
+```
+![Y = ß0 + ß1 * X + ß2 * X^2 + ß3 * X^3 + Yn](Rplot03.svg)
+
+
+### c. Use the regsubsets() function to perform best subset selection in order to choose the best model containing the predictors X1,X2,...,X10.
+
+From R library documentation on `leaps``
+```
+leaps {leaps}	R Documentation
+all-subsets regressiom
+
+Description
+
+leaps() performs an exhaustive search for the best subsets of the variables in x for predicting y in linear regression, using an efficient branch-and-bound algorithm. It is a compatibility wrapper for regsubsets does the same thing better.
+
+```
+
+#### What is the best model obtained according to Cp, BIC, and adjusted R2?
+
+#### Show some plots to provide evidence for your answer and report the coefficients of the best model obtained.
+
+Note you will need to use the data.frame() function to create a single data set containing both X and Y .
+
 
 ## 4. Please answer the following parts based on generated simulated data in question 3
