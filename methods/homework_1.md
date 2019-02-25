@@ -365,5 +365,32 @@ Results are the same for backward.
 
 
 ## 4. Please answer the following parts based on generated simulated data in question 3
+### (a) Please fit a lasso model to the simulated data, again using X1,X2,...,X10 as predictors. Use cross-validation to select the optimal value of λ . Create plots of the cross-validation error as a function of λ. Report the resulting coefficient estimates, and discuss the results obtained.
 
+```R
+library(glmnet)
+xmat <- model.matrix(y ~ poly(x, 10), data = df)[, -1]
 
+lasso.mod =glmnet(xmat,y,alpha =1)
+plot(lasso.mod)
+
+cv.lasso <- cv.glmnet(xmat, y, alpha = 1)
+plot(cv.lasso)
+```
+CV Errors 
+
+![FW](Rplot10.svg)
+
+Selecting minimum λ:
+```R
+lambda_m <- cv.lasso$lambda.min
+lambda_m
+log(lambda_m)
+```
+
+The values:
+ * λ =  0.05768644
+ * log( λ ) =  -2.852733 (Seen on the plot above)
+ 
+
+### (b) Please repeat part a using Rigid regression and principle component regression (PCR) (no plot is required).

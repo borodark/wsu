@@ -82,3 +82,20 @@ points(which.max(fit_bw_summary$adjr2), fit_bw_summary$adjr2[which.max(fit_bw_su
 
 ## Q4 
 library(glmnet)
+xmat <- model.matrix(y ~ poly(x, 10), data = df)[, -1]
+
+lasso.mod =glmnet(xmat,y,alpha =1)
+plot(lasso.mod)
+
+cv.lasso <- cv.glmnet(xmat, y, alpha = 1)
+plot(cv.lasso)
+lambda_m <- cv.lasso$lambda.min
+lambda_m
+log(lambda_m)
+
+out=glmnet (xmat,y,alpha =1)
+lasso.coef=predict (out ,type ="coefficients",s=lambda_m )
+lasso.coef
+#####################
+plot(lasso.mod)
+
