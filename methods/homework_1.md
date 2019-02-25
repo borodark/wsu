@@ -196,7 +196,8 @@ UrbanYes    -0.021916   0.271650  -0.081    0.936
 
 
 ## 3. In this exercise you will generate simulated data and perform feature selection.
-### a. Use the rnorm() function to generate a predictor _X_ of length 100 , as well as a noise vector _Yn_ of length n=100 .
+### (a) Use the rnorm() function to generate a predictor _X_ of length 100 , as well as a noise vector _Yn_ of length n=100 .
+
 ```R
 x = rnorm(100)
 Yn = rnorm(100)
@@ -212,22 +213,26 @@ Outputs:
 -2.72017 -0.46211  0.06884  0.14745  0.73142  2.88842 
 ```
 
-### b. Generate a response vector Y of length n =100 according to the model
+### (b) Generate a response vector Y of length n =100 according to the model
 
 `Y = ß0 + ß1 * X + ß2 * X^2 + ß3 * X^3 + Yn`
 
 Where:
 `ß0 = 3 ß1 = 2 ß2 = -3 ß3 = 0.30`
 
+Note you will need to use the data.frame() function to create a single data set containing both X and Y .
+
 ```R
 y = 3 + 2 * x - 3*x^2 + 0.3 * x^3 + Yn
+require(leaps)
+df <- data.frame(y, x)
+ggplot(data = df, mapping = aes(x = x, y = y)) + geom_point() + geom_smooth(method = 'loess')
 
-plot(x,y)
 ```
 ![Y = ß0 + ß1 * X + ß2 * X^2 + ß3 * X^3 + Yn](Rplot03.svg)
 
 
-### c. Use the regsubsets() function to perform best subset selection in order to choose the best model containing the predictors X1,X2,...,X10.
+### (c) Use the regsubsets() function to perform best subset selection in order to choose the best model containing the predictors X1,X2,...,X10. 
 
 From R library documentation on `leaps``
 ```
@@ -242,8 +247,6 @@ leaps() performs an exhaustive search for the best subsets of the variables in x
 Doing the fit:
 
 ```R
-require(leaps)
-df <- data.frame(y, x)
 fit <- regsubsets(y ~ poly(x, 10), data = df, nvmax = 10)
 fit_summary <- summary(fit)
 ```
@@ -325,7 +328,42 @@ points(which.max(fit_summary$adjr2), fit_summary$adjr2[which.max(fit_summary$adj
 ```
 ![Adjusted R^2](Rplot07.svg)
 
-Note you will need to use the data.frame() function to create a single data set containing both X and Y .
+### d. Please repeat c., using forward stepwise selection and using backwards stepwise selection. How does your answer compare to the results in (c)?
+```R
+fit_fw <- regsubsets(y ~ poly(x, 10), data = df, nvmax = 10, method = "forward")
+fit_fw_summary <- summary(fit_fw)
+fit_fw_summary
+par(mfrow=c(2,2))
+plot(fit_fw_summary$cp, xlab = str_c("Using Forward Best # is ",which.min(fit_fw_summary$cp)), ylab = "C_p", type = "l")
+points(which.min(fit_fw_summary$cp), fit_fw_summary$cp[which.min(fit_fw_summary$cp)], col = "green", cex = 2, pch = 20)
+plot(fit_fw_summary$bic, xlab = str_c("Using Forward Best # is ", which.min(fit_fw_summary$bic)) , ylab = "BIC", type = "l")
+points(which.min(fit_fw_summary$bic), fit_fw_summary$bic[which.min(fit_fw_summary$bic)], col = "green", cex = 2, pch = 20)
+plot(fit_fw_summary$adjr2, xlab = str_c("Using Forward Best # is ", which.max(fit_fw_summary$adjr2)), ylab = "Adjusted R^2", type = "l")
+points(which.max(fit_fw_summary$adjr2), fit_fw_summary$adjr2[which.max(fit_fw_summary$adjr2)], col = "green", cex = 2, pch = 20)
+```
+Results are the same for forward. 
+![FW](Rplot08.svg)
+
+```R
+fit_bw <- regsubsets(y ~ poly(x, 10), data = df, nvmax = 10, method = "backward")
+fit_bw_summary <- summary(fit_bw)
+fit_bw_summary
+par(mfrow=c(2,2))
+plot(fit_bw_summary$cp, xlab = str_c("Using Backward Best # is ",which.min(fit_bw_summary$cp)), ylab = "C_p", type = "l")
+points(which.min(fit_bw_summary$cp), fit_bw_summary$cp[which.min(fit_bw_summary$cp)], col = "green", cex = 2, pch = 20)
+coef(fit, which.min(fit_bw_summary$cp))
+plot(fit_bw_summary$bic, xlab = str_c("Using Backward Best # is ", which.min(fit_bw_summary$bic)) , ylab = "BIC", type = "l")
+points(which.min(fit_bw_summary$bic), fit_bw_summary$bic[which.min(fit_bw_summary$bic)], col = "green", cex = 2, pch = 20)
+coef(fit, which.min(fit_bw_summary$bic))
+plot(fit_bw_summary$adjr2, xlab = str_c("Using Backward Best # is ", which.max(fit_bw_summary$adjr2)), ylab = "Adjusted R^2", type = "l")
+points(which.max(fit_bw_summary$adjr2), fit_bw_summary$adjr2[which.max(fit_bw_summary$adjr2)], col = "green", cex = 2, pch = 20)
+```
+
+Results are the same for backward. 
+![FW](Rplot09.svg)
+
 
 
 ## 4. Please answer the following parts based on generated simulated data in question 3
+
+
