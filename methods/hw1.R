@@ -33,16 +33,19 @@ x = rnorm(100)
 Yn = rnorm(100)
 summary(x)
 summary(Yn)
-
+par(mfrow=c(1,1))
 y = 3 + 2 * x - 3*x^2 + 0.3 * x^3 + Yn
 require(leaps)
+require(ggplot2)
+require(stringr)
+
 df <- data.frame(y, x)
 ggplot(data = df, mapping = aes(x = x, y = y)) + geom_point() + geom_smooth(method = 'loess')
 
 fit <- regsubsets(y ~ poly(x, 10), data = df, nvmax = 10)
 fit_summary <- summary(fit)
 fit_summary
-
+par(mfrow=c(2,2))
 plot(fit_summary$cp, xlab = str_c("Best # is ",which.min(fit_summary$cp)), ylab = "C_p", type = "l")
 points(which.min(fit_summary$cp), fit_summary$cp[which.min(fit_summary$cp)], col = "green", cex = 2, pch = 20)
 
@@ -98,4 +101,18 @@ lasso.coef=predict (out ,type ="coefficients",s=lambda_m )
 lasso.coef
 #####################
 plot(lasso.mod)
+## ridge
+lasso.mod =glmnet(xmat,y,alpha =0)
+plot(lasso.mod)
 
+cv.lasso <- cv.glmnet(xmat, y, alpha = 1)
+plot(cv.lasso)
+lambda_m <- cv.lasso$lambda.min
+lambda_m
+log(lambda_m)
+
+out=glmnet (xmat,y,alpha =1)
+lasso.coef=predict (out ,type ="coefficients",s=lambda_m )
+lasso.coef
+#####################
+plot(lasso.mod)
