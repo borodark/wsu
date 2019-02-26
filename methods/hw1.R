@@ -99,20 +99,20 @@ log(lambda_m)
 out=glmnet (xmat,y,alpha =1)
 lasso.coef=predict (out ,type ="coefficients",s=lambda_m )
 lasso.coef
-#####################
 plot(lasso.mod)
+###
 ## ridge
-lasso.mod =glmnet(xmat,y,alpha =0)
-plot(lasso.mod)
+ridge.mod =glmnet(xmat,y,alpha =0)
+plot(ridge.mod)
 
-cv.lasso <- cv.glmnet(xmat, y, alpha = 1)
-plot(cv.lasso)
-lambda_m <- cv.lasso$lambda.min
+cv.ridge <- cv.glmnet(xmat, y, alpha = 0)
+plot(cv.ridge)
+lambda_m <- cv.ridge$lambda.min
 lambda_m
 log(lambda_m)
 
-out=glmnet (xmat,y,alpha =1)
+out=glmnet (xmat,y,alpha =0)
 lasso.coef=predict (out ,type ="coefficients",s=lambda_m )
 lasso.coef
 #####################
-plot(lasso.mod)
+plot(ridge.mod)
