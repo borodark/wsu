@@ -1,0 +1,329 @@
+
+MySQL [mydb]> describe demolitions;
++------------------------+--------------+------+-----+---------+-------+
+| Field                  | Type         | Null | Key | Default | Extra |
++------------------------+--------------+------+-----+---------+-------+
+| Address                | varchar(255) | YES  |     | NULL    |       |
+| Parcel_ID              | varchar(255) | YES  |     | NULL    |       |
+| Contractor_Name        | varchar(255) | YES  |     | NULL    |       |
+| Price                  | varchar(255) | YES  |     | NULL    |       |
+| Primary_Funding_Source | varchar(255) | YES  |     | NULL    |       |
+| Demolition_Date        | date         | YES  |     | NULL    |       |
+| Commercial_Building    | varchar(255) | YES  |     | NULL    |       |
+| Council_District       | varchar(255) | YES  |     | NULL    |       |
+| Neighborhood           | varchar(255) | YES  |     | NULL    |       |
+| Latitude               | varchar(255) | YES  |     | NULL    |       |
+| Longitude              | varchar(255) | YES  |     | NULL    |       |
+| Location               | varchar(255) | YES  |     | NULL    |       |
++------------------------+--------------+------+-----+---------+-------+
+12 rows in set (0.02 sec)
+
+1. Find distinct Contractor names in the dataset
+
+MySQL [mydb]> select distinct Contractor_Name from demolitions order by 1;
++--------------------------------------+
+| Contractor_Name                      |
++--------------------------------------+
+| "Adamo Group                         |
+| "Berkshire Development               |
+| 1 Way Service                        |
+| ABC Demolition                       |
+| Able Demolition                      |
+| BBEK Environmental                   |
+| Blackstar                            |
+| Blue Star                            |
+| Brown & Glo Wrecking                 |
+| Brown Environmental Construction     |
+| Den-Man Contractors                  |
+| Direct Construction Services         |
+| DMC Consultants                      |
+| Dore & Associates                    |
+| Esso Wrecking Co.                    |
+| Farrow Group                         |
+| Futurenet Group                      |
+| Gayanga Co                           |
+| GLO WRECKING CO                      |
+| Homrich                              |
+| Jenkins Construction                 |
+| Joy Construction                     |
+| Leadhead Construction                |
+| McDonagh Demolition Inc.             |
+| MCM                                  |
+| RDC Construction Services            |
+| Rickman Enterprise Group             |
+| Salenbien Trucking & Excavating Inc. |
+| SJ Design and Construction           |
+| Smalley                              |
+| Timesavers Contracting               |
+| Upright Wrecking                     |
++--------------------------------------+
+33 rows in set (0.03 sec)
+MySQL [mydb]>
+
+2. Count total number of demolitions for 'Franklin' neighborhood
+
+MySQL [mydb]> select count(1) from demolitions where Neighborhood = 'Franklin';
++----------+
+| count(1) |
++----------+
+|      102 |
++----------+
+1 row in set (0.02 sec)
+
+3. List  the highest priced demolition
+
+MySQL [mydb]> select * from demolitions where Price = (select max(Price) from demolitions);
++-------------------+-----------+----------------------------------+-------+------------------------+-----------------+---------------------+------------------+-----------------------+-----------+------------+----------------------+
+| Address           | Parcel_ID | Contractor_Name                  | Price | Primary_Funding_Source | Demolition_Date | Commercial_Building | Council_District | Neighborhood          | Latitude  | Longitude  | Location             |
++-------------------+-----------+----------------------------------+-------+------------------------+-----------------+---------------------+------------------+-----------------------+-----------+------------+----------------------+
+| 4791 Merritt      | 16001281  | Brown Environmental Construction | 9999  | Non-HHF                | 0000-00-00      | No                  | 6                | Central Southwest     | 42.323711 | -83.103897 | "location
+(42.323711 |
+| 3014 Kendall      | 12005106  | Able Demolition                  | 9999  | Non-HHF                | 0000-00-00      | No                  | 2                | Oakman Blvd Community | 42.396282 | -83.130088 | "location
+(42.396282 |
+| 6454 Hanson       | 18002912  | Brown Environmental Construction | 9999  | Non-HHF                | 0000-00-00      | No                  | 6                | Claytown              | 42.337807 | -83.12823  | "location
+(42.337807 |
+| 5708 28th St      | 14011052  | Able Demolition                  | 9999  | Non-HHF                | 0000-00-00      | No                  | 6                | Midwest               | 42.347298 | -83.115026 | "location
+(42.347298 |
+| 17239 W Mcnichols | 22013076  | Able Demolition                  | 9999  | Non-HHF                | 0000-00-00      | Yes                 | 1                | Crary/St Marys        | 42.415433 | -83.212902 | "location
+(42.415433 |
++-------------------+-----------+----------------------------------+-------+------------------------+-----------------+---------------------+------------------+-----------------------+-----------+------------+----------------------+
+5 rows in set (0.04 sec)
+
+
+4. Run any 'group by' query you think is appropriate.
+
+MySQL [mydb]> select Neighborhood, count(1) as "Number of Demolitions", cast(sum(Price) as decimal(10,2)) as "Total Cost" from demolitions group by Neighborhood;
++----------------------------+-----------------------+------------+
+| Neighborhood               | Number of Demolitions | Total Cost |
++----------------------------+-----------------------+------------+
+| 1                          |                   395 |       0.00 |
+| 2                          |                   392 |       0.00 |
+| 3                          |                   576 |       0.00 |
+| 4                          |                   555 |       0.00 |
+| 5                          |                   325 |       0.00 |
+| 6                          |                   322 |       0.00 |
+| 7                          |                   791 |       0.00 |
+| Airport Sub                |                   230 | 4103765.07 |
+| Aviation Sub               |                     3 |   52103.00 |
+| Bagley                     |                     7 |  108103.00 |
+| Barton-McFarland           |                   152 | 2458156.07 |
+| Belmont                    |                     8 |  105975.52 |
+| Berg-Lahser                |                    15 |  241370.08 |
+| Bethune Community          |                   140 | 2153792.09 |
+| Blackstone Park            |                     4 |   59625.00 |
+| Boston Edison              |                     3 |   67045.00 |
+| Boynton                    |                   173 | 2894014.66 |
+| Brightmoor                 |                   426 | 5808705.49 |
+| Buffalo Charles            |                    72 | 1120833.76 |
+| Butler                     |                    26 |  381281.33 |
+| Cadillac Community         |                    17 |  301182.45 |
+| Cadillac Heights           |                    69 | 1018668.25 |
+| Campau/Banglatown          |                   140 | 1896823.20 |
+| Carbon Works               |                    14 |  171331.00 |
+| Castle Rouge               |                     7 |   82954.09 |
+| Central Southwest          |                   163 | 2655865.09 |
+| Chadsey Condon             |                   223 | 4589510.86 |
+| Chalfonte                  |                    62 |  933066.50 |
+| Chandler Park              |                    65 | 1103722.47 |
+| Chandler Park-Chalmers     |                    64 | 1086407.60 |
+| Claytown                   |                   385 | 5887336.86 |
+| College Park               |                    95 | 1391245.53 |
+| Conant Gardens             |                    37 |  637620.84 |
+| Conner Creek               |                   135 | 1920595.94 |
+| Core City                  |                    33 |  527911.00 |
+| Cornerstone Village        |                   103 | 1210730.73 |
+| Crary/St Marys             |                    39 |  509745.84 |
+| Davison                    |                   171 | 2678033.05 |
+| Davison-Schoolcraft        |                    16 |  261972.22 |
+| Delray                     |                    77 | 1295707.70 |
+| Denby                      |                    39 |  692610.81 |
+| Dexter-Fenkell             |                    51 | 1177779.57 |
+| Dexter-Linwood             |                   235 | 6007847.25 |
+| East Canfield              |                    19 |  292272.24 |
+| East English Village       |                     6 |   91346.13 |
+| East Village               |                    81 | 1860067.90 |
+| Eastern Market             |                     5 |   75469.50 |
+| Eden Gardens               |                    69 | 1123464.84 |
+| Elijah McCoy               |                     5 |  124375.00 |
+| Eliza Howell               |                    10 |  172902.63 |
+| Evergreen Lahser 7/8       |                    84 | 1178547.67 |
+| Evergreen-Outer Drive      |                    64 |  843197.59 |
+| Far West Detroit           |                     3 |   25037.25 |
+| Farwell                    |                   133 | 1928783.31 |
+| Fiskhorn                   |                    22 |  254010.58 |
+| Fitzgerald/Marygrove       |                   216 | 3658117.72 |
+| Five Points                |                    29 |  486720.24 |
+| Forest Park                |                     2 |   37060.00 |
+| Fox Creek                  |                   102 | 1929587.99 |
+| Franklin                   |                   102 | 1656032.61 |
+| Franklin Park              |                   192 | 2736665.53 |
+| Garden Homes               |                    52 |  701790.40 |
+| Gateway Community          |                   155 | 2408777.71 |
+| Grand River-I96            |                    82 | 1434197.77 |
+| Grand River-St Marys       |                    41 |  599237.80 |
+| Grandmont                  |                     5 |   66313.00 |
+| Grandmont #1               |                     2 |   36989.92 |
+| Grant                      |                    53 |  805928.07 |
+| Gratiot Town/Ketterring    |                    67 | 3379340.07 |
+| Gratiot Woods              |                   176 | 3027634.56 |
+| Gratiot-Findlay            |                   112 | 2090186.07 |
+| Gratiot-Grand              |                   178 | 3090863.34 |
+| Green Acres                |                     1 |   13726.00 |
+| Greenfield                 |                    71 | 1006681.11 |
+| Greenfield Park            |                    14 |  598641.80 |
+| Greenfield-Grand River     |                    36 |  565768.25 |
+| Greenwich                  |                     1 |    9310.00 |
+| Grixdale Farms             |                    62 | 1176987.38 |
+| Happy Homes                |                     5 |   88106.10 |
+| Harmony Village            |                    19 |  416075.58 |
+| Hawthorne Park             |                    12 |  155500.10 |
+| Henry Ford                 |                     6 |   75991.70 |
+| Herman Kiefer              |                    78 | 1305507.13 |
+| Historic Atkinson          |                     2 |   84551.53 |
+| Holcomb Community          |                   369 | 5539543.35 |
+| Hubbard Farms              |                     5 |  116385.00 |
+| Hubbard Richard            |                     1 |   32170.00 |
+| Hubbell-Lyndon             |                   128 | 1961352.35 |
+| Hubbell-Puritan            |                    22 |  332602.84 |
+| Islandview                 |                   166 | 2864147.58 |
+| Jamison                    |                    69 | 1040432.74 |
+| Jefferson Chalmers         |                   200 | 2814888.82 |
+| Joy Community              |                   119 | 1898402.08 |
+| Joy-Schaefer               |                    15 |  213550.98 |
+| Krainz Woods               |                    51 |  793858.41 |
+| Lafayette Park             |                     1 |  123575.00 |
+| LaSalle College Park       |                    42 |  580138.84 |
+| LaSalle Gardens            |                    32 |  597873.60 |
+| Littlefield Community      |                    31 |  516606.31 |
+| Mapleridge                 |                   238 | 3707392.12 |
+| Martin Park                |                    36 |  626105.09 |
+| McDougall-Hunt             |                   192 | 3537075.32 |
+| McDowell                   |                     7 |  102587.00 |
+| McNichols Evergreen        |                     1 |   13900.00 |
+| Medbury Park               |                     2 |   31071.25 |
+| Melvern Hill               |                     1 |   12983.50 |
+| Mexicantown                |                     1 |   22310.00 |
+| Michigan-Martin            |                    23 |  281516.20 |
+| Midtown                    |                     2 |  146740.00 |
+| Midwest                    |                   371 | 7085604.90 |
+| Miller Grove               |                    17 |  284589.19 |
+| Milwaukee Junction         |                     1 |   23000.00 |
+| Minock Park                |                     2 |   17424.95 |
+| Mohican Regent             |                     4 |   54600.48 |
+| Morningside                |                   265 | 4185238.72 |
+| Moross-Morang              |                    54 |  749181.42 |
+| Mount Olivet               |                    28 |  472684.02 |
+| Nardin Park                |                    94 | 2179082.19 |
+| Nolan                      |                   111 | 1913937.07 |
+| North Campau               |                    61 |  927305.32 |
+| North Corktown             |                     8 |  168182.93 |
+| North End                  |                   249 | 3441703.36 |
+| North LaSalle              |                    47 | 1070132.65 |
+| North Rosedale Park        |                     9 |   98962.36 |
+| Northeast Central District |                    21 |  337131.15 |
+| Northwest Community        |                     6 |   91916.00 |
+| Nortown                    |                    84 | 1367985.13 |
+| NW Goldberg                |                    74 | 1330278.78 |
+| O'Hair Park                |                    89 | 1254940.02 |
+| Oak Grove                  |                    12 |  201130.85 |
+| Oakman Blvd Community      |                   220 | 4609390.57 |
+| Oakwood Heights            |                     2 |   29858.00 |
+| Old Redford                |                     6 |  107164.48 |
+| Outer Drive-Hayes          |                   456 | 7319033.56 |
+| Paveway                    |                     5 |   79100.14 |
+| Pembroke                   |                    13 |  207707.13 |
+| Penrose                    |                    36 |  514034.96 |
+| Pershing                   |                    58 |  637377.14 |
+| Petoskey-Otsego            |                    42 |  909522.34 |
+| Piety Hill                 |                    25 |  408284.35 |
+| Pilgrim Village            |                   238 | 3489779.03 |
+| Pingree Park               |                    69 | 1321096.40 |
+| Plymouth-Hubbell           |                    21 |  437695.61 |
+| Plymouth-I96               |                   130 | 1990356.44 |
+| Poletown East              |                    58 | 1408332.25 |
+| Pride Area Community       |                    28 |  421564.44 |
+| Pulaski                    |                   235 | 3289775.74 |
+| Ravendale                  |                    26 |  400119.50 |
+| Regent Park                |                   303 | 4189821.45 |
+| Riverbend                  |                   134 | 2709263.20 |
+| Riverdale                  |                    29 | 1155364.92 |
+| Rivertown                  |                     1 |   16550.00 |
+| San Bernardo               |                     3 |   41200.00 |
+| Schaefer 7/8 Lodge         |                     4 |   81494.00 |
+| Schoolcraft Southfield     |                   224 | 3227730.50 |
+| Schulze                    |                    12 |  258642.42 |
+| Seven Mile Lodge           |                     2 |   32606.00 |
+| Seven Mile-Rouge           |                    22 |  352679.83 |
+| Sherwood                   |                    51 |  698476.93 |
+| South of Six               |                    14 |  180173.48 |
+| Southfield Plymouth        |                    10 |  124417.20 |
+| Springwells                |                   217 | 3488701.10 |
+| The Eye                    |                    17 |  256835.40 |
+| Von Steuben                |                    67 |  965044.05 |
+| Wade                       |                   121 | 2036201.54 |
+| Warren Ave Community       |                   169 | 2393834.26 |
+| Warrendale                 |                   633 | 9336239.13 |
+| We Care Community          |                    34 |  497057.44 |
+| Weatherby                  |                   100 | 1353937.24 |
+| West End                   |                   132 | 2256904.84 |
+| West Outer Drive           |                     2 |   25580.00 |
+| West Side Industrial       |                     4 |  300750.00 |
+| West Village               |                     2 |   45400.00 |
+| West Virginia Park         |                     2 |   51930.00 |
+| Westwood Park              |                   148 | 1590349.86 |
+| Wildemere Park             |                    88 | 1334489.42 |
+| Winship                    |                    11 |  249555.04 |
+| Woodbridge                 |                     9 |  327687.00 |
+| Yorkshire Woods            |                    94 | 1488425.81 |
++----------------------------+-----------------------+------------+
+179 rows in set, 3356 warnings (0.04 sec)
+
+
+5. Get 'top' 10 records of the table
+MySQL [mydb]> select * from demolitions limit 10;
++------------------+---------------+--------------------------+--------+------------------------+-----------------+---------------------+------------------+-----------------------+-----------+------------+----------------------+
+| Address          | Parcel_ID     | Contractor_Name          | Price  | Primary_Funding_Source | Demolition_Date | Commercial_Building | Council_District | Neighborhood          | Latitude  | Longitude  | Location             |
++------------------+---------------+--------------------------+--------+------------------------+-----------------+---------------------+------------------+-----------------------+-----------+------------+----------------------+
+| 4153 W Warren    | 14001126      | Rickman Enterprise Group | 34984  | Non-HHF                | 0000-00-00      | No                  | 6                | Chadsey Condon        | 42.344463 | -83.110337 | "location
+(42.344463 |
+| 2916 Hammond     | 16001346.002L | Homrich                  | 143000 | Non-HHF                | 0009-10-18      | Yes                 | 6                | Central Southwest     | 42.324018 | -83.111067 | "location
+(42.324018 |
+| 217 S Morrell    | 16010179      | Smalley                  | 11550  | Non-HHF                | 0000-00-00      | No                  | 6                | Delray                | 42.306198 | -83.091528 | "location
+(42.306198 |
+| 3659 Oakman Blvd | 16025187      | Den-Man Contractors      | 69850  | Non-HHF                | 0009-07-18      | Yes                 | 7                | Oakman Blvd Community | 42.377966 | -83.144602 | "location
+(42.377966 |
+| 20046 St Aubin   | 9015867       | Smalley                  | 9450   | Non-HHF                | 0008-09-18      | No                  | 3                | Nolan                 | 42.442302 | -83.081625 | "location
+(42.442302 |
+| 11031 SHOEMAKER  | 21003300      | Smalley                  | 140000 | Non-HHF                | 2010-05-18      | Yes                 | 4                | West End              | 42.391059 | -82.988702 | "location
+(42.391059 |
+| 6781 Drake       | 15003465      | Leadhead Construction    | 9898   | Non-HHF                | 0000-00-00      | No                  | 3                | Grant                 | 42.421228 | -83.031867 | "location
+(42.421228 |
+| 1133 W Lantz     | 1007496       | Gayanga Co               | 16898  | Non-HHF                | 2010-09-18      | No                  | 2                | Penrose               | 42.436656 | -83.11672  | "location
+(42.436656 |
+| 13510 Mitchell   | 9010840       | Smalley                  | 15430  | Non-HHF                | 2010-11-18      | No                  | 3                | North Campau          | 42.41489  | -83.068115 | "location
+(42.41489  |
+| 4800 Newport     | 21053920      | Den-Man Contractors      | 36250  | Non-HHF                | 0008-07-18      | Yes                 | 4                | Fox Creek             | 42.39322  | -82.959988 | "location
+(42.39322  |
++------------------+---------------+--------------------------+--------+------------------------+-----------------+---------------------+------------------+-----------------------+-----------+------------+----------------------+
+10 rows in set (0.01 sec)
+
+MySQL [mydb]>
+
+MySQL [mydb]> select Neighborhood, count(1) as "Number of Demolitions", cast(sum(Price) as decimal(10,2)) as "Total Cost" from demolitions group by Neighborhood order by 3 desc limit 10;
++-----------------------+-----------------------+------------+
+| Neighborhood          | Number of Demolitions | Total Cost |
++-----------------------+-----------------------+------------+
+| Warrendale            |                   633 | 9336239.13 |
+| Outer Drive-Hayes     |                   456 | 7319033.56 |
+| Midwest               |                   371 | 7085604.90 |
+| Dexter-Linwood        |                   235 | 6007847.25 |
+| Claytown              |                   385 | 5887336.86 |
+| Brightmoor            |                   426 | 5808705.49 |
+| Holcomb Community     |                   369 | 5539543.35 |
+| Oakman Blvd Community |                   220 | 4609390.57 |
+| Chadsey Condon        |                   223 | 4589510.86 |
+| Regent Park           |                   303 | 4189821.45 |
++-----------------------+-----------------------+------------+
+10 rows in set, 3356 warnings (0.04 sec)
+
+MySQL [mydb]>
