@@ -179,7 +179,7 @@ AIC: 1354.5
 Number of Fisher Scoring iterations: 4
 ```
 
-#### Do fit and print confusion matrix
+#### Predict on 2009 - 2010 and print confusion matrix
 ```
 > glm.probs =predict(glm.fits,Weekly.2009 , type="response")
 > glm.pred=rep ("Down" ,104)
