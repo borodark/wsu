@@ -114,18 +114,15 @@ Interpretation:
 | Down      | True Down=  54 | False Down=  48 |  102 |
 | Up        | False Up=  430 | True Up=    557 |  987 |
 | totals    | 484            | 605             | 1089 |
-
 ```
-
-Let's assume "Positive" is to predict "Up"
 
 * Accuracy: Overall, how often is the classifier correct?
 (True Down +True Up)/total = (54+557)/1089 = 0.56
-__The 56% of time the classifier able to accuratly predict.__
+__The ~56% of time the classifier able to accuratly predict.__
 
 * Misclassification Rate: Overall, how often is it wrong?
 (Fase Down + False Up)/total = (430+48)/1089 = 0.44
-__Error Rate is 44%. It is also (1 - Accuracy)__
+__Error Rate is ~44%. It is also (1 - Accuracy)__
 
 * True Positive Rate: When it's actually __Up__, how often does it predict __Up__?
 True Down/actual Down = 557/987 = 0.56
@@ -140,14 +137,111 @@ TN/actual no = 54/102 = 0.53
 __It is 53%. Also it is (1 -  False Positive Rate)__
 
 * Precision: When it predicts __Up__, how often is it correct?
-TP/predicted __Up__ = 557/605 = 0.92
+TP/predicted __Up__ = 557/605 = ~0.92
 
 * Prevalence: How often does the __Up__ condition actually occur in our sample?
-actual Up/total Up = 987/1089 = 0.906
+actual Up/total Up = 987/1089 = ~0.906
 
 
 ### (d) Now fit the logistic regression model using a training data period from 1990 to 2008, with Lag2 as the only predictor. Compute the confusion matrix and the overall fraction of correct predictions for the held out data (that is, the data from 2009 and 2010).
+
+```
+> ## 1.d
+> train =(Year <2009)
+> Weekly.2009=Weekly[!train,]
+> Weekly.2009=Weekly[!train,]
+> Direction.2009= Direction[!train]
+> glm.fits=glm(Direction~Lag2,data=Weekly,family=binomial,subset=train)
+> summary (glm.fits)
+
+Call:
+glm(formula = Direction ~ Lag2, family = binomial, data = Weekly, 
+    subset = train)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-1.536  -1.264   1.021   1.091   1.368  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  0.20326    0.06428   3.162  0.00157 **
+Lag2         0.05810    0.02870   2.024  0.04298 * 
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1354.7  on 984  degrees of freedom
+Residual deviance: 1350.5  on 983  degrees of freedom
+AIC: 1354.5
+
+Number of Fisher Scoring iterations: 4
+```
+
+#### Do fit and print confusion matrix
+```
+> glm.probs =predict(glm.fits,Weekly.2009 , type="response")
+> glm.pred=rep ("Down" ,104)
+> glm.pred[glm.probs >.5]="Up"
+> table(glm.pred ,Direction.2009)
+        Direction.2009
+glm.pred Down Up
+    Down    9  5
+    Up     34 56
+> mean(glm.pred== Direction.2009)
+[1] 0.625
+> mean(glm.pred!= Direction.2009)
+[1] 0.375
+> 
+```
+* Accuracy: Overall, how often is the classifier correct?
+(True Down +True Up)/total = (9+56)/104 = 0.625
+__The 62.2% of time the classifier able to accuratly predict.__
+
+* Misclassification Rate: Overall, how often is it wrong?
+(Fase Down + False Up)/total = (34+5)/104 = 0.375
+__Error Rate is 37.5%.__
+
+* For weeks when the market trend is up-wards, the model is right ~91.80% of the time (56/(56+5))
+* For weeks when the market goes down, the model is correct only ~20.93% of the time (9/(9+34))
+
+
 ### (e) Repeat (d) using LDA.
+```
+> # 1.e
+> library (MASS)
+> lda.fit=lda(Direction~Lag2 ,data=Smarket ,subset =train)
+> lda.fit
+Call:
+lda(Direction ~ Lag2, data = Smarket, subset = train)
+
+Prior probabilities of groups:
+     Down        Up 
+0.4834206 0.5165794 
+
+Group means:
+            Lag2
+Down  0.04272202
+Up   -0.02882095
+
+Coefficients of linear discriminants:
+           LD1
+Lag2 0.8560537
+> lda.pred=predict (lda.fit , Smarket.2009)
+> names(lda.pred)
+[1] "class"     "posterior" "x"        
+> sum(lda.pred$posterior [ ,1] >=.5)
+[1] 2
+> sum(lda.pred$posterior [,1]<.5)
+[1] 102
+> sum(lda.pred$posterior [,1]>.9)
+[1] 0
+```
+LDA fit 
+![plot(lda.fit)](Rplot15.svg) 
+
+
 ### (f) Repeat (d) using QDA.
 ### (g) Repeat (d) using KNN with K = 1.
 ### (h) Which of these methods appears to provide the best results on this data?

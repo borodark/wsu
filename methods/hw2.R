@@ -1,52 +1,53 @@
 library (ISLR)
 names(Weekly)
 summary (Weekly)
-?Weekly
 cor(Weekly [,1:8])
 pairs(Weekly [,1:8])
-attach (Weekly )
+attach (Weekly)
+Weekly
 plot(Volume)
+# 1.c
 glm.fits=glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume , data=Weekly ,family=binomial)
 summary (glm.fits)
 coef(glm.fits)
-glm.probs =predict (glm.fits,type ="response")
-glm.probs [1:10]
+glm.fits$terms
+glm.pred =predict(glm.fits,type ="response")
 contrasts(Direction)
-glm.pred=rep ("Down " ,1250)
-glm.pred[glm.probs >.5]=" Up"
-table(glm.pred ,Direction )
-train =(Year <2005)
-Smarket.2005=Smarket[!train,]
-dim(Smarket.2005)
-Direction.2005= Direction[!train]
-glm.fits=glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Smarket,family=binomial,subset=train)
-glm.probs =predict(glm.fits,Smarket.2005 , type="response")
-glm.pred=rep ("Down" ,252)
-glm.pred[glm.probs >.5]=" Up"
-table(glm.pred ,Direction.2005)
-mean(glm.pred== Direction.2005)
-mean(glm.pred!= Direction.2005)
-
-glm.fits=glm(Direction~Lag1+Lag2+Volume , data=Smarket ,family=binomial)
+glm.prob=rep ("Down" ,1089)
+glm.prob[glm.pred >.5]="Up"
+## 
+table(glm.prob,Direction )
+## 1.d
+train =(Year <2009)
+Weekly.2009=Weekly[!train,]
+dim(Smarket.2009)
+Direction.2009= Direction[!train]
+glm.fits=glm(Direction~Lag2,data=Smarket,family=binomial,subset=train)
 summary (glm.fits)
 coef(glm.fits)
-glm.probs =predict (glm.fits,Smarket.2005 , type="response")
-glm.pred=rep("Down" ,252)
+glm.probs =predict(glm.fits,Smarket.2009 , type="response")
+glm.pred=rep ("Down" ,104)
 glm.pred[glm.probs >.5]="Up"
-table(glm.pred ,Direction.2005)
-mean(glm.pred== Direction.2005)
+table(glm.pred ,Direction.2009)
+mean(glm.pred== Direction.2009)
+mean(glm.pred!= Direction.2009)
 
-#####
-
+# 1.e
 library (MASS)
-lda.fit=lda(Direction~Lag1+Lag2 ,data=Smarket ,subset =train)
+lda.fit=lda(Direction~Lag2 ,data=Smarket ,subset =train)
 lda.fit
 plot(lda.fit)
-lda.pred=predict (lda.fit , Smarket.2005)
+lda.pred=predict (lda.fit , Smarket.2009)
 names(lda.pred)
+lda.pred
 sum(lda.pred$posterior [ ,1] >=.5)
 sum(lda.pred$posterior [,1]<.5)
-sum(lda.pred$posterior [,1]>.9)
+
+
+confusionmatrix(Direction.2009, lda.pred$class)
+
+# 1.f
+
 qda.fit=qda(Direction~Lag1+Lag2 ,data=Smarket ,subset =train)
 qda.fit
 qda.class =predict (qda.fit ,Smarket.2005) $class
