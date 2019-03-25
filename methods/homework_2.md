@@ -147,7 +147,7 @@ actual Up/total Up = 987/1089 = ~0.906
 
 ### (d) Now fit the logistic regression model using a training data period from 1990 to 2008, with Lag2 as the only predictor. Compute the confusion matrix and the overall fraction of correct predictions for the held out data (that is, the data from 2009 and 2010).
 
-```
+```R
 > ## 1.d
 > train =(Year <2009)
 > Weekly.2009=Weekly[!train,]
@@ -183,7 +183,7 @@ Number of Fisher Scoring iterations: 4
 
 #### Predict on 2009 - 2010 and print confusion matrix
 
-```
+```R
 > glm.probs =predict(glm.fits,Weekly.2009 , type="response")
 > glm.pred=rep ("Down" ,104)
 > glm.pred[glm.probs >.5]="Up"
@@ -213,7 +213,7 @@ __Error Rate is 37.5%.__
 
 
 ### (e) Repeat (d) using LDA.
-```
+```R
 > # 1.e
 > library (MASS)
 > lda.fit=lda(Direction~Lag2 ,data=Weekly ,subset =train)
@@ -254,7 +254,8 @@ LDA fit
 *  These results are __THE SAME__ as  _[Logistic Regression](#7)_ model which is not surpising
 
 ### (f) Repeat (d) using QDA.
-```
+
+```R
 > # 1.f
 > qda.fit=qda(Direction~Lag2 ,data=Weekly ,subset =train)
 > qda.fit
@@ -270,8 +271,10 @@ Group means:
 Down -0.03568254
 Up    0.26036581
 ```
+
 ####  Predict on 2009 - 2010 and print confusion matrix
-```
+
+```R
 > qda.pred =predict (qda.fit ,Weekly.2009)
 > table(qda.pred$class ,Direction.2009)
       Direction.2009
@@ -388,7 +391,7 @@ pred.glm Down Up
 
 #### LDA with Lag2 interaction with Lag1 => Accuracy: %57.69231
 
-```
+```R
 > fit.lda2= lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
 > pred.lda2= predict(fit.lda2, Weekly.2009)
 > mean(pred.lda2$class == Direction.2009)
@@ -397,7 +400,8 @@ pred.glm Down Up
 ```
 
 #### QDA: Lag 2+log(abs(Lag1)) => Accuracy: %56.73077
-```
+
+```R
 > fit.qda2= qda(Direction ~ Lag2 + log(abs(Lag1)), data = Weekly, subset = train)
 > pred.qda2= predict(fit.qda2, Weekly.2009)
 > table(pred.qda2$class, Direction.2009)
