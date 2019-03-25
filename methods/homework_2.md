@@ -443,6 +443,9 @@ pred.knn3 Down Up
 
 
 ### Summary for methods
+
+__Logistic Regression: Lag2:Lag1__ and __LDA: Lag2:Lag1__ gives the best results.
+
 ```
 |--------------------------------|-----------|
 | Method                         | Accuracy  |
