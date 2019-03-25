@@ -116,6 +116,8 @@ Interpretation:
 | totals    | 484            | 605             | 1089 |
 ```
 
+#### Logistical regression results interpretation
+
 * Accuracy: Overall, how often is the classifier correct?
 (True Down +True Up)/total = (54+557)/1089 = 0.56
 __The ~56% of time the classifier able to accuratly predict.__
@@ -180,6 +182,7 @@ Number of Fisher Scoring iterations: 4
 ```
 
 #### Predict on 2009 - 2010 and print confusion matrix
+
 ```
 > glm.probs =predict(glm.fits,Weekly.2009 , type="response")
 > glm.pred=rep ("Down" ,104)
@@ -195,12 +198,14 @@ glm.pred Down Up
 [1] 0.375
 > 
 ```
+
+##### Interpretation
 * Accuracy: Overall, how often is the classifier correct?
 (True Down +True Up)/total = (9+56)/104 = 0.625
 __The 62.2% of time the classifier able to accuratly predict.__
 
 * Misclassification Rate: Overall, how often is it wrong?
-(Fase Down + False Up)/total = (34+5)/104 = 0.375
+(False Down + False Up)/total = (5+34)/104 = 0.375
 __Error Rate is 37.5%.__
 
 * For weeks when the market trend is up-wards, the model is right ~91.80% of the time (56/(56+5))
@@ -211,39 +216,173 @@ __Error Rate is 37.5%.__
 ```
 > # 1.e
 > library (MASS)
-> lda.fit=lda(Direction~Lag2 ,data=Smarket ,subset =train)
+> lda.fit=lda(Direction~Lag2 ,data=Weekly ,subset =train)
 > lda.fit
 Call:
-lda(Direction ~ Lag2, data = Smarket, subset = train)
+lda(Direction ~ Lag2, data = Weekly, subset = train)
 
 Prior probabilities of groups:
      Down        Up 
-0.4834206 0.5165794 
+0.4477157 0.5522843 
 
 Group means:
             Lag2
-Down  0.04272202
-Up   -0.02882095
+Down -0.03568254
+Up    0.26036581
 
 Coefficients of linear discriminants:
            LD1
-Lag2 0.8560537
-> lda.pred=predict (lda.fit , Smarket.2009)
-> names(lda.pred)
-[1] "class"     "posterior" "x"        
-> sum(lda.pred$posterior [ ,1] >=.5)
-[1] 2
-> sum(lda.pred$posterior [,1]<.5)
-[1] 102
-> sum(lda.pred$posterior [,1]>.9)
-[1] 0
+Lag2 0.4414162
 ```
+
 LDA fit 
 ![plot(lda.fit)](Rplot15.svg) 
 
+####  Predict on 2009 - 2010 and print confusion matrix
+
+```R
+> pred.lda <- predict(lda.fit, Weekly.2009)
+> table(pred.lda$class, Direction.2009)
+      Direction.2009
+       Down Up
+  Down    9  5
+  Up     34 56
+  
+```
+##### Interpretation
+
+*  These results are __THE SAME__ as  _[Logistic Regression](#7)_ model which is not surpising
 
 ### (f) Repeat (d) using QDA.
+```
+> # 1.f
+> qda.fit=qda(Direction~Lag2 ,data=Weekly ,subset =train)
+> qda.fit
+Call:
+qda(Direction ~ Lag2, data = Weekly, subset = train)
+
+Prior probabilities of groups:
+     Down        Up 
+0.4477157 0.5522843 
+
+Group means:
+            Lag2
+Down -0.03568254
+Up    0.26036581
+```
+####  Predict on 2009 - 2010 and print confusion matrix
+```
+> qda.pred =predict (qda.fit ,Weekly.2009)
+> table(qda.pred$class ,Direction.2009)
+      Direction.2009
+       Down Up
+  Down    0  0
+  Up     43 61
+```
+##### Interpretation
+
+* Accuracy: Overall, how often is the classifier correct?
+(True Down +True Up)/total = 61/104 = ~0.5865
+__The 58.65% of time the classifier able to accuratly predict.__
+
+* Misclassification Rate: Overall, how often is it wrong?
+(Fase Down + False Up)/total = (43+0)/104 = %41.346
+__Error Rate is %41.346__
+
+* For weeks when the market trend is up-wards, the model is right 100% of the time (61/(61+0))
+* For weeks when the market goes down, the model is __never__ correct: 0/(0+43)
+
+
+
 ### (g) Repeat (d) using KNN with K = 1.
+
+```R
+> # 1.g
+> library (class)
+> train.X=  as.matrix(Lag2[train])
+> test.X=  as.matrix(Lag2[!train])
+> train.Direction =Direction[train]
+> set.seed(1)
+> knn.pred=knn (train.X,test.X,train.Direction ,k=1)
+> table(knn.pred, Direction.2009)
+        Direction.2009
+knn.pred Down Up
+    Down   21 30
+    Up     22 31
+    
+```
+
+##### Interpretation
+
+* Accuracy: (True Down +True Up)/total = (21+31)/104 = 0.5
+__The 50% of time the classifier able to accuratly predict.__
+
+* Misclassification Rate: Overall, how often is it wrong?
+(Fase Down + False Up)/total = (30+22)/104 = %50
+__Error Rate is %50__
+
+* For weeks when the market trend is __up__-wards, the model is right __~%50.81967__ of the time: (31/(61))
+* For weeks when the market goes __down__, the model is __~%48.8372__ correct: 21/(21+22)
+
+
 ### (h) Which of these methods appears to provide the best results on this data?
+
+The Logistical Regression and LDA are the best with the same Accuracy and Errors, followed by QDA and KNN with K=1
+```
+|----------------|----------|----------|
+| Method         | Accuracy | Error    |
+|----------------|----------|----------|
+| LDA/Logistical | %62.2    | %37.5    |
+| QDA            | %58.65~  | %41.346~ |
+| KNN            | %50      | %50      |
+|----------------|----------|----------|
+
+```
+
 ### (i) Experiment with different combinations of predictors, including possible transformations and interactions, for each of the methods. Report the variables, method, and associated confusion matrix that appears to provide the best results on the held out data. Note that you should also experiment with values for K in the KNN classifier.
+
+#### Logistical regression with combinations of Lag2 and Lag1
+
+```R
+> # Logistic regression with Lag2, Lag1
+> fit.glm= glm(Direction~Lag2:Lag1, data=Weekly, family = binomial, subset=train)
+> summary(fit.glm)
+
+Call:
+glm(formula = Direction ~ Lag2:Lag1, family = binomial, data = Weekly, 
+    subset = train)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-1.368  -1.269   1.077   1.089   1.353  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  0.21333    0.06421   3.322 0.000893 ***
+Lag2:Lag1    0.00717    0.00697   1.029 0.303649    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1354.7  on 984  degrees of freedom
+Residual deviance: 1353.6  on 983  degrees of freedom
+AIC: 1357.6
+
+Number of Fisher Scoring iterations: 4
+
+> probs1= predict(fit.glm, Weekly.2009, type = "response")
+> pred.glm= rep("Down", length(probs1))
+> pred.glm[probs > 0.5] = "Up"
+> table(pred.glm, Direction.2009)
+        Direction.2009
+pred.glm Down Up
+    Down    1  1
+    Up     42 60
+```
+#### Accuracy: %58.65385
+```
+> mean(pred.glm == Direction.2009)
+[1] 0.5865385
+```
 

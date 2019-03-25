@@ -48,6 +48,8 @@ names(lda.pred)
 sum(lda.pred$posterior [ ,1] >=.5)
 sum(lda.pred$posterior [,1]<.5)
 sum(lda.pred$posterior [,1]>.9)
+
+
 qda.fit=qda(Direction~Lag1+Lag2 ,data=Smarket ,subset =train)
 qda.fit
 qda.class =predict (qda.fit ,Smarket.2005) $class

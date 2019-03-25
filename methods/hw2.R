@@ -20,12 +20,12 @@ table(glm.prob,Direction )
 ## 1.d
 train =(Year <2009)
 Weekly.2009=Weekly[!train,]
-dim(Smarket.2009)
 Direction.2009= Direction[!train]
-glm.fits=glm(Direction~Lag2,data=Smarket,family=binomial,subset=train)
+glm.fits=glm(Direction~Lag2,data=Weekly,family=binomial,subset=train)
 summary (glm.fits)
 coef(glm.fits)
-glm.probs =predict(glm.fits,Smarket.2009 , type="response")
+
+glm.probs =predict(glm.fits,Weekly.2009 , type="response")
 glm.pred=rep ("Down" ,104)
 glm.pred[glm.probs >.5]="Up"
 table(glm.pred ,Direction.2009)
@@ -34,30 +34,39 @@ mean(glm.pred!= Direction.2009)
 
 # 1.e
 library (MASS)
-lda.fit=lda(Direction~Lag2 ,data=Smarket ,subset =train)
+lda.fit=lda(Direction~Lag2 ,data=Weekly ,subset =train)
 lda.fit
 plot(lda.fit)
-lda.pred=predict (lda.fit , Smarket.2009)
-names(lda.pred)
-lda.pred
-sum(lda.pred$posterior [ ,1] >=.5)
-sum(lda.pred$posterior [,1]<.5)
-
-
-confusionmatrix(Direction.2009, lda.pred$class)
+##
+pred.lda <- predict(lda.fit, Weekly.2009)
+table(pred.lda$class, Direction.2009)
 
 # 1.f
-
-qda.fit=qda(Direction~Lag1+Lag2 ,data=Smarket ,subset =train)
+qda.fit=qda(Direction~Lag2 ,data=Weekly ,subset =train)
 qda.fit
-qda.class =predict (qda.fit ,Smarket.2005) $class
-table(qda.class ,Direction.2005)
-mean(qda.class == Direction.2005)
 #
+qda.pred =predict (qda.fit ,Weekly.2009)
+table(qda.pred$class ,Direction.2009)
+
+# 1.g
 library (class)
-train.X=cbind(Lag1 ,Lag2)[train ,]
-test.X=cbind (Lag1 ,Lag2)[!train ,]
-train.Direction =Direction [train]
-set.seed (1)
+train.X=  as.matrix(Lag2[train])
+test.X=  as.matrix(Lag2[!train])
+train.Direction =Direction[train]
+set.seed(1)
 knn.pred=knn (train.X,test.X,train.Direction ,k=1)
-table(knn.pred ,Direction.2005)
+table(knn.pred, Direction.2009)
+
+# Logistic regression with Lag2, Lag1
+fit.glm= glm(Direction~Lag2:Lag1, data=Weekly, family = binomial, subset=train)
+summary(fit.glm)
+probs1= predict(fit.glm, Weekly.2009, type = "response")
+pred.glm= rep("Down", length(probs1))
+pred.glm[probs > 0.5] = "Up"
+table(pred.glm, Direction.2009)
+mean(pred.glm == Direction.2009)
+
+# LDA with Lag2 interaction with Lag1
+fit.lda2 <- lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
+pred.lda2 <- predict(fit.lda2, Weekly.2009)
+mean(pred.lda2$class == Direction.2009)
