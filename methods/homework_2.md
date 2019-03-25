@@ -380,9 +380,50 @@ pred.glm Down Up
     Down    1  1
     Up     42 60
 ```
-#### Accuracy: %58.65385
+##### Accuracy: %58.65385
 ```
 > mean(pred.glm == Direction.2009)
 [1] 0.5865385
 ```
 
+
+
+#### LDA with Lag2 interaction with Lag1 
+
+```
+> fit.lda2 <- lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
+> pred.lda2 <- predict(fit.lda2, Weekly.2009)
+```
+##### Accuracy: %57.69231
+```
+> mean(pred.lda2$class == Direction.2009)
+
+[1] 0.5769231
+```
+
+#### QDA: Lag 2+log(abs(Lag1))
+```
+> fit.qda2 <- qda(Direction ~ Lag2 + log(abs(Lag1)), data = Weekly, subset = train)
+> pred.qda2 <- predict(fit.qda2, Weekly.2009)
+> table(pred.qda2$class, Direction.2009)
+      Direction.2009
+       Down Up
+  Down    3  5
+  Up     40 56
+```
+##### Accuracy: %56.73077
+```
+> mean(pred.qda2$class == Direction.2009)
+[1] 0.5673077
+```
+
+####
+
+
+### Summary for methods
+|--------------------------------+-----------|
+| Method                         | Accuracy  |
+| Logistic Regression: Lag2:Lag1 | %58.65385 |
+| LDA: Lag2:Lag1                 | %57.69231 |
+| QDA: Lag 2+log(abs(Lag1))      | %56.73077 |
+|                                |           |
