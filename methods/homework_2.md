@@ -241,7 +241,7 @@ LDA fit
 ####  Predict on 2009 - 2010 and print confusion matrix
 
 ```R
-> pred.lda <- predict(lda.fit, Weekly.2009)
+> pred.lda= predict(lda.fit, Weekly.2009)
 > table(pred.lda$class, Direction.2009)
       Direction.2009
        Down Up
@@ -341,7 +341,7 @@ The Logistical Regression and LDA are the best with the same Accuracy and Errors
 
 ### (i) Experiment with different combinations of predictors, including possible transformations and interactions, for each of the methods. Report the variables, method, and associated confusion matrix that appears to provide the best results on the held out data. Note that you should also experiment with values for K in the KNN classifier.
 
-#### Logistical regression with combinations of Lag2 and Lag1
+#### Logistical regression with combinations of Lag2 and Lag1 => Accuracy: %58.65385
 
 ```R
 > # Logistic regression with Lag2, Lag1
@@ -379,51 +379,78 @@ Number of Fisher Scoring iterations: 4
 pred.glm Down Up
     Down    1  1
     Up     42 60
-```
-##### Accuracy: %58.65385
-```
+    
 > mean(pred.glm == Direction.2009)
 [1] 0.5865385
 ```
 
 
 
-#### LDA with Lag2 interaction with Lag1 
+#### LDA with Lag2 interaction with Lag1 => Accuracy: %57.69231
 
 ```
-> fit.lda2 <- lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
-> pred.lda2 <- predict(fit.lda2, Weekly.2009)
-```
-##### Accuracy: %57.69231
-```
+> fit.lda2= lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
+> pred.lda2= predict(fit.lda2, Weekly.2009)
 > mean(pred.lda2$class == Direction.2009)
 
 [1] 0.5769231
 ```
 
-#### QDA: Lag 2+log(abs(Lag1))
+#### QDA: Lag 2+log(abs(Lag1)) => Accuracy: %56.73077
 ```
-> fit.qda2 <- qda(Direction ~ Lag2 + log(abs(Lag1)), data = Weekly, subset = train)
-> pred.qda2 <- predict(fit.qda2, Weekly.2009)
+> fit.qda2= qda(Direction ~ Lag2 + log(abs(Lag1)), data = Weekly, subset = train)
+> pred.qda2= predict(fit.qda2, Weekly.2009)
 > table(pred.qda2$class, Direction.2009)
       Direction.2009
        Down Up
   Down    3  5
   Up     40 56
-```
-##### Accuracy: %56.73077
-```
 > mean(pred.qda2$class == Direction.2009)
 [1] 0.5673077
 ```
 
-####
+#### KNN k =10 => Accuracy: %54.80769
+
+```R
+> # KNN k =10
+> set.seed(1)
+> pred.knn2= knn(train.X, test.X, train.Direction, k = 10)
+> table(pred.knn2, Direction.2009)
+         Direction.2009
+pred.knn2 Down Up
+     Down   17 20
+     Up     26 41
+> mean(pred.knn2 == Direction.2009)
+[1] 0.5480769
+```
+
+#### KNN k =100 => Accuracy: %55.76923
+
+```R
+> # KNN k =100
+> pred.knn3= knn(train.X, test.X, train.Direction, k = 100)
+> table(pred.knn3, Direction.2009)
+         Direction.2009
+pred.knn3 Down Up
+     Down    9 12
+     Up     34 49
+> mean(pred.knn3 == Direction.2009)
+[1] 0.5576923
+
+```
+
+
 
 
 ### Summary for methods
-|--------------------------------+-----------|
+```
+|--------------------------------|-----------|
 | Method                         | Accuracy  |
 | Logistic Regression: Lag2:Lag1 | %58.65385 |
 | LDA: Lag2:Lag1                 | %57.69231 |
 | QDA: Lag 2+log(abs(Lag1))      | %56.73077 |
-|                                |           |
+| KNN k =100                     | %55.76923 |
+| KNN k =10                      | %54.80769 |
+|--------------------------------|-----------|
+
+```

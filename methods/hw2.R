@@ -38,7 +38,7 @@ lda.fit=lda(Direction~Lag2 ,data=Weekly ,subset =train)
 lda.fit
 plot(lda.fit)
 ##
-pred.lda <- predict(lda.fit, Weekly.2009)
+pred.lda= predict(lda.fit, Weekly.2009)
 table(pred.lda$class, Direction.2009)
 
 # 1.f
@@ -67,12 +67,23 @@ table(pred.glm, Direction.2009)
 mean(pred.glm == Direction.2009)
 
 # LDA with Lag2 interaction with Lag1
-fit.lda2 <- lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
-pred.lda2 <- predict(fit.lda2, Weekly.2009)
+fit.lda2= lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
+pred.lda2= predict(fit.lda2, Weekly.2009)
 mean(pred.lda2$class == Direction.2009)
 
 # QDA with Lag 2 + log(abs(Lag1))
-fit.qda2 <- qda(Direction ~ Lag2 + log(abs(Lag1)), data = Weekly, subset = train)
-pred.qda2 <- predict(fit.qda2, Weekly.2009)
+fit.qda2= qda(Direction ~ Lag2 + log(abs(Lag1)), data = Weekly, subset = train)
+pred.qda2= predict(fit.qda2, Weekly.2009)
 table(pred.qda2$class, Direction.2009)
 mean(pred.qda2$class == Direction.2009)
+
+
+# KNN k =10
+pred.knn2= knn(train.X, test.X, train.Direction, k = 10)
+table(pred.knn2, Direction.2009)
+mean(pred.knn2 == Direction.2009)
+
+# KNN k =100
+pred.knn3= knn(train.X, test.X, train.Direction, k = 100)
+table(pred.knn3, Direction.2009)
+
