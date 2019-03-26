@@ -4,86 +4,125 @@ summary (Weekly)
 cor(Weekly [,1:8])
 pairs(Weekly [,1:8])
 attach (Weekly)
-Weekly
 plot(Volume)
 # 1.c
-glm.fits=glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume , data=Weekly ,family=binomial)
-summary (glm.fits)
+glm.fits <- glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume , data=Weekly ,family=binomial)
+summary(glm.fits)
 coef(glm.fits)
 glm.fits$terms
-glm.pred =predict(glm.fits,type ="response")
+glm.pred <- predict(glm.fits,type ="response")
 contrasts(Direction)
-glm.prob=rep ("Down" ,1089)
-glm.prob[glm.pred >.5]="Up"
+glm.prob <- rep ("Down" ,1089)
+glm.prob[glm.pred >.5] <- "Up"
 ## 
 table(glm.prob,Direction )
 ## 1.d
-train =(Year <2009)
-Weekly.2009=Weekly[!train,]
-Direction.2009= Direction[!train]
-glm.fits=glm(Direction~Lag2,data=Weekly,family=binomial,subset=train)
-summary (glm.fits)
+train <- (Year <2009)
+Weekly.2009 <- Weekly[!train,]
+Direction.2009 <- Direction[!train]
+glm.fits <- glm(Direction~Lag2,data=Weekly,family=binomial,subset=train)
+summary(glm.fits)
 coef(glm.fits)
 
-glm.probs =predict(glm.fits,Weekly.2009 , type="response")
-glm.pred=rep ("Down" ,104)
-glm.pred[glm.probs >.5]="Up"
+glm.probs <- predict(glm.fits,Weekly.2009 , type="response")
+glm.pred <- rep ("Down" ,104)
+glm.pred[glm.probs >.5] <- "Up"
 table(glm.pred ,Direction.2009)
-mean(glm.pred== Direction.2009)
+mean(glm.pred == Direction.2009)
 mean(glm.pred!= Direction.2009)
 
 # 1.e
 library (MASS)
-lda.fit=lda(Direction~Lag2 ,data=Weekly ,subset =train)
+lda.fit <- lda(Direction~Lag2 ,data=Weekly ,subset =train)
 lda.fit
 plot(lda.fit)
 ##
-pred.lda= predict(lda.fit, Weekly.2009)
+pred.lda <- predict(lda.fit, Weekly.2009)
 table(pred.lda$class, Direction.2009)
 
 # 1.f
-qda.fit=qda(Direction~Lag2 ,data=Weekly ,subset =train)
+qda.fit <- qda(Direction~Lag2 ,data=Weekly ,subset =train)
 qda.fit
 #
-qda.pred =predict (qda.fit ,Weekly.2009)
+qda.pred <- predict (qda.fit ,Weekly.2009)
 table(qda.pred$class ,Direction.2009)
 
 # 1.g
 library (class)
-train.X=  as.matrix(Lag2[train])
-test.X=  as.matrix(Lag2[!train])
-train.Direction =Direction[train]
+train.X <-  as.matrix(Lag2[train])
+test.X <-  as.matrix(Lag2[!train])
+train.Direction <- Direction[train]
 set.seed(1)
-knn.pred=knn (train.X,test.X,train.Direction ,k=1)
+knn.pred <- knn (train.X,test.X,train.Direction ,k=1)
 table(knn.pred, Direction.2009)
 
 # Logistic regression with Lag2, Lag1
-fit.glm= glm(Direction~Lag2:Lag1, data=Weekly, family = binomial, subset=train)
+fit.glm <- glm(Direction~Lag2:Lag1, data=Weekly, family  <- binomial, subset=train)
 summary(fit.glm)
-probs1= predict(fit.glm, Weekly.2009, type = "response")
-pred.glm= rep("Down", length(probs1))
-pred.glm[probs > 0.5] = "Up"
+probs1 <- predict(fit.glm, Weekly.2009, type = "response")
+pred.glm <- rep("Down", length(probs1))
+pred.glm[probs > 0.5]  <- "Up"
 table(pred.glm, Direction.2009)
 mean(pred.glm == Direction.2009)
 
 # LDA with Lag2 interaction with Lag1
-fit.lda2= lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
-pred.lda2= predict(fit.lda2, Weekly.2009)
+fit.lda2 <- lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
+pred.lda2 <- predict(fit.lda2, Weekly.2009)
 mean(pred.lda2$class == Direction.2009)
 
 # QDA with Lag 2 + log(abs(Lag1))
-fit.qda2= qda(Direction ~ Lag2 + log(abs(Lag1)), data = Weekly, subset = train)
-pred.qda2= predict(fit.qda2, Weekly.2009)
+fit.qda2 <- qda(Direction ~ Lag2 + log(abs(Lag1)), data = Weekly, subset = train)
+pred.qda2 <- predict(fit.qda2, Weekly.2009)
 table(pred.qda2$class, Direction.2009)
 mean(pred.qda2$class == Direction.2009)
 
 
 # KNN k =10
-pred.knn2= knn(train.X, test.X, train.Direction, k = 10)
+set.seed(1)
+pred.knn2 <- knn(train.X, test.X, train.Direction, k = 10)
 table(pred.knn2, Direction.2009)
 mean(pred.knn2 == Direction.2009)
 
 # KNN k =100
-pred.knn3= knn(train.X, test.X, train.Direction, k = 100)
+pred.knn3 <- knn(train.X, test.X, train.Direction, k = 100)
 table(pred.knn3, Direction.2009)
+mean(pred.knn3 == Direction.2009)
+
+# 2 
+library(MASS)
+attach(Boston)
+#
+crim01 <- rep(0, length(crim))
+crim01[crim > median(crim)] <- 1
+index <- 1:length(crim)
+# crim01
+Boston <- data.frame(index,subset(Boston, select = -c(crim)), crim01)
+Boston.train <- Boston[sample(nrow(Boston), nrow(Boston) * .75 ), ]
+Boston.test <- Boston[ !(Boston$index %in% Boston.train$index), ]
+crim01.test <- crim01[Boston.test$index]
+# crim01.test
+dim(Boston.test)
+dim(Boston.train)
+#
+fit.glm <- glm(crim01 ~.-index, data= Boston.train, family= binomial)
+summary(fit.glm)
+#
+probs <- predict(fit.glm, Boston.test, type = "response")
+length(probs)
+pred.glm <- rep(0, length(probs))
+pred.glm[probs > 0.5] <- 1
+table(pred.glm, crim01.test)
+length(probs)
+#
+mean(pred.glm == crim01.test)
+mean(pred.glm != crim01.test)
+# 
+fit.glm2 <- glm(crim01 ~. -index -tax -rm, data = Boston.train, family = binomial)
+summary(fit.glm2)
+probs2 <- predict(fit.glm2, Boston.test, type = "response")
+pred.glm2 <- rep(0, length(probs2))
+pred.glm2[probs2 > 0.5] <- 1
+table(pred.glm2, crim01.test)
+mean(pred.glm2 == crim01.test)
+mean(pred.glm2 != crim01.test)
 

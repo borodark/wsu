@@ -1,5 +1,7 @@
 # Home Work 2
 
+The `R` source for this report is here: [hw2.R](hw2.R)
+
 ##(Question #10 from chapter 4)
 
 This question should be answered using the Weekly data set, which is part of the ISLR package. This data is similar in nature to the Smarket data from this chapter’s lab, except that it contains 1089 weekly returns for 21 years, from the beginning of 1990 to the end of 2010.
@@ -48,7 +50,7 @@ Volume corelates to the week number. Other relations are not so clear.
 ### (b) Use the full data set to perform a logistic regression with Direction as the response and the five lag variables plus Volume as predictors. Use the summary function to print the results. Do any of the predictors appear to be statistically significant? If so, which ones?
 
 ```R
-> glm.fits=glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume , data=Weekly ,family=binomial)
+> glm.fits <-_glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume , data=Weekly ,family=binomial)
 > summary (glm.fits)
 
 Call:
@@ -92,12 +94,12 @@ Number of Fisher Scoring iterations: 4
 ### (c) Compute the confusion matrix and overall fraction of correct predictions. Explain what the confusion matrix is telling you about the types of mistakes made by logistic regression.
 
 ```R
-> glm.pred =predict(glm.fits,type ="response")
+> glm.pred <- predict(glm.fits,type ="response")
 > contrasts(Direction)
      Up
 Down  0
 Up    1
-> glm.prob=rep ("Down" ,1089)
+> glm.prob <- rep ("Down" ,1089)
 > glm.prob[glm.pred >.5]="Up"
 > ## 
 > table(glm.prob,Direction )
@@ -149,12 +151,11 @@ actual Up/total Up = 987/1089 = ~0.906
 
 ```R
 > ## 1.d
-> train =(Year <2009)
-> Weekly.2009=Weekly[!train,]
-> Weekly.2009=Weekly[!train,]
-> Direction.2009= Direction[!train]
-> glm.fits=glm(Direction~Lag2,data=Weekly,family=binomial,subset=train)
-> summary (glm.fits)
+> train <- (Year <2009)
+> Weekly.2009 <- Weekly[!train,]
+> Direction.2009 <- Direction[!train]
+> glm.fits <- glm(Direction~Lag2,data=Weekly,family=binomial,subset=train)
+> summary(glm.fits)
 
 Call:
 glm(formula = Direction ~ Lag2, family = binomial, data = Weekly, 
@@ -184,9 +185,9 @@ Number of Fisher Scoring iterations: 4
 #### Predict on 2009 - 2010 and print confusion matrix
 
 ```R
-> glm.probs =predict(glm.fits,Weekly.2009 , type="response")
-> glm.pred=rep ("Down" ,104)
-> glm.pred[glm.probs >.5]="Up"
+> glm.probs <- predict(glm.fits,Weekly.2009 , type="response")
+> glm.pred <- rep("Down" ,104)
+> glm.pred[glm.probs >.5] <- "Up"
 > table(glm.pred ,Direction.2009)
         Direction.2009
 glm.pred Down Up
@@ -216,7 +217,7 @@ __Error Rate is 37.5%.__
 ```R
 > # 1.e
 > library (MASS)
-> lda.fit=lda(Direction~Lag2 ,data=Weekly ,subset =train)
+> lda.fit <- lda(Direction~Lag2 ,data=Weekly ,subset =train)
 > lda.fit
 Call:
 lda(Direction ~ Lag2, data = Weekly, subset = train)
@@ -241,7 +242,7 @@ LDA fit
 ####  Predict on 2009 - 2010 and print confusion matrix
 
 ```R
-> pred.lda= predict(lda.fit, Weekly.2009)
+> pred.lda <- predict(lda.fit, Weekly.2009)
 > table(pred.lda$class, Direction.2009)
       Direction.2009
        Down Up
@@ -257,7 +258,7 @@ LDA fit
 
 ```R
 > # 1.f
-> qda.fit=qda(Direction~Lag2 ,data=Weekly ,subset =train)
+> qda.fit <- qda(Direction~Lag2 ,data=Weekly ,subset =train)
 > qda.fit
 Call:
 qda(Direction ~ Lag2, data = Weekly, subset = train)
@@ -275,7 +276,7 @@ Up    0.26036581
 ####  Predict on 2009 - 2010 and print confusion matrix
 
 ```R
-> qda.pred =predict (qda.fit ,Weekly.2009)
+> qda.pred <- predict (qda.fit ,Weekly.2009)
 > table(qda.pred$class ,Direction.2009)
       Direction.2009
        Down Up
@@ -301,12 +302,12 @@ __Error Rate is %41.346__
 
 ```R
 > # 1.g
-> library (class)
-> train.X=  as.matrix(Lag2[train])
-> test.X=  as.matrix(Lag2[!train])
-> train.Direction =Direction[train]
+> library(class)
+> train.X <-  as.matrix(Lag2[train])
+> test.X <- as.matrix(Lag2[!train])
+> train.Direction <- Direction[train]
 > set.seed(1)
-> knn.pred=knn (train.X,test.X,train.Direction ,k=1)
+> knn.pred <- knn (train.X,test.X,train.Direction ,k=1)
 > table(knn.pred, Direction.2009)
         Direction.2009
 knn.pred Down Up
@@ -348,7 +349,7 @@ The Logistical Regression and LDA are the best with the same Accuracy and Errors
 
 ```R
 > # Logistic regression with Lag2, Lag1
-> fit.glm= glm(Direction~Lag2:Lag1, data=Weekly, family = binomial, subset=train)
+> fit.glm <- glm(Direction~Lag2:Lag1, data=Weekly, family = binomial, subset=train)
 > summary(fit.glm)
 
 Call:
@@ -374,9 +375,9 @@ AIC: 1357.6
 
 Number of Fisher Scoring iterations: 4
 
-> probs1= predict(fit.glm, Weekly.2009, type = "response")
-> pred.glm= rep("Down", length(probs1))
-> pred.glm[probs > 0.5] = "Up"
+> probs1 <- predict(fit.glm, Weekly.2009, type = "response")
+> pred.glm <- rep("Down", length(probs1))
+> pred.glm[probs > 0.5] <- "Up"
 > table(pred.glm, Direction.2009)
         Direction.2009
 pred.glm Down Up
@@ -392,8 +393,8 @@ pred.glm Down Up
 #### LDA with Lag2 interaction with Lag1 => Accuracy: %57.69231
 
 ```R
-> fit.lda2= lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
-> pred.lda2= predict(fit.lda2, Weekly.2009)
+> fit.lda2 <- lda(Direction ~ Lag2:Lag1, data = Weekly, subset = train)
+> pred.lda2 <- predict(fit.lda2, Weekly.2009)
 > mean(pred.lda2$class == Direction.2009)
 
 [1] 0.5769231
@@ -402,8 +403,8 @@ pred.glm Down Up
 #### QDA: Lag 2+log(abs(Lag1)) => Accuracy: %56.73077
 
 ```R
-> fit.qda2= qda(Direction ~ Lag2 + log(abs(Lag1)), data = Weekly, subset = train)
-> pred.qda2= predict(fit.qda2, Weekly.2009)
+> fit.qda2 <- qda(Direction ~ Lag2 + log(abs(Lag1)), data = Weekly, subset = train)
+> pred.qda2 <- predict(fit.qda2, Weekly.2009)
 > table(pred.qda2$class, Direction.2009)
       Direction.2009
        Down Up
@@ -418,7 +419,7 @@ pred.glm Down Up
 ```R
 > # KNN k =10
 > set.seed(1)
-> pred.knn2= knn(train.X, test.X, train.Direction, k = 10)
+> pred.knn2 <- knn(train.X, test.X, train.Direction, k = 10)
 > table(pred.knn2, Direction.2009)
          Direction.2009
 pred.knn2 Down Up
@@ -432,7 +433,7 @@ pred.knn2 Down Up
 
 ```R
 > # KNN k =100
-> pred.knn3= knn(train.X, test.X, train.Direction, k = 100)
+> pred.knn3 <- knn(train.X, test.X, train.Direction, k = 100)
 > table(pred.knn3, Direction.2009)
          Direction.2009
 pred.knn3 Down Up
@@ -442,9 +443,6 @@ pred.knn3 Down Up
 [1] 0.5576923
 
 ```
-
-
-
 
 ### Summary for methods
 
@@ -461,3 +459,221 @@ The __Logistic Regression: Lag2:Lag1__ and __LDA: Lag2:Lag1__ gives the best res
 |--------------------------------|-----------|
 
 ```
+
+## 2. (Question #13 from chapter 4)
+
+Using the Boston data set, fit classification models in order to predict whether a given suburb has a crime rate above or below the median. Explore logistic regression, LDA, and KNN models using various subsets of the predictors. Describe your findings.
+
+### Setup the dataset: use %75 for training and %25 for testing
+
+```R
+# 2 
+library(MASS)
+attach(Boston)
+#
+crim01 <- rep(0, length(crim))
+crim01[crim > median(crim)] <- 1
+index <- 1:length(crim)
+# crim01
+Boston <- data.frame(index,subset(Boston, select = -c(crim)), crim01)
+Boston.train <- Boston[sample(nrow(Boston), nrow(Boston) * .75 ), ]
+Boston.test <- Boston[ !(Boston$index %in% Boston.train$index), ]
+crim01.test <- crim01[Boston.test$index]
+# crim01.test
+dim(Boston.test)
+dim(Boston.train)
+```
+
+Output:
+
+```
+> # 2 
+> library(MASS)
+> attach(Boston)
+The following objects are masked from Boston (pos = 3):
+
+    ´age, black, chas, crim, dis, indus, lstat, medv, nox, ptratio, rad, rm, tax,
+    zn
+
+> #
+> crim01 <- rep(0, length(crim))
+> crim01[crim > median(crim)] <- 1
+> index <- 1:length(crim)
+> # crim01
+> Boston <- data.frame(index,subset(Boston, select = -c(crim)), crim01)
+> Boston.train <- Boston[sample(nrow(Boston), nrow(Boston) * .75 ), ]
+> Boston.test <- Boston[ !(Boston$index %in% Boston.train$index), ]
+> crim01.test <- crim01[Boston.test$index]
+> # crim01.test
+> dim(Boston.test)
+[1] 127  15
+> dim(Boston.train)
+[1] 379  15
+```
+
+### Fit Logistic Regression on `crim01` excluding the synthetic `index`
+
+```R
+fit.glm <- glm(crim01 ~.-index, data= Boston.train, family= binomial)
+summary(fit.glm)
+```
+
+Fit summary:
+
+```
+> fit.glm <- glm(crim01 ~.-index, data= Boston.train, family= binomial)
+> summary(fit.glm)
+
+Call:
+glm(formula = crim01 ~ . - index, family = binomial, data = Boston.train)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-1.95283  -0.11569  -0.00018   0.00088   2.61608  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -47.730768   8.910279  -5.357 8.47e-08 ***
+zn           -0.103735   0.046222  -2.244 0.024815 *  
+indus        -0.104064   0.060028  -1.734 0.082993 .  
+chas          0.956118   0.919618   1.040 0.298484    
+nox          58.790502  10.216563   5.754 8.69e-09 ***
+rm           -0.836545   0.825844  -1.013 0.311081    
+age           0.047268   0.016518   2.862 0.004215 ** 
+dis           1.033490   0.294461   3.510 0.000448 ***
+rad           0.733105   0.194354   3.772 0.000162 ***
+tax          -0.004341   0.003481  -1.247 0.212381    
+ptratio       0.603311   0.173427   3.479 0.000504 ***
+black        -0.008940   0.005723  -1.562 0.118282    
+lstat        -0.027346   0.061035  -0.448 0.654132    
+medv          0.243786   0.088590   2.752 0.005926 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 525.38  on 378  degrees of freedom
+Residual deviance: 139.71  on 365  degrees of freedom
+AIC: 167.71
+
+Number of Fisher Scoring iterations: 9
+
+```
+#### Run prediction with test data
+
+```R
+probs <- predict(fit.glm, Boston.test, type = "response")
+length(probs)
+pred.glm <- rep(0, length(probs))
+pred.glm[probs > 0.5] <- 1
+table(pred.glm, crim01.test)
+length(probs)
+#
+mean(pred.glm == crim01.test)
+mean(pred.glm != crim01.test)
+```
+Output:
+```
+> probs <- predict(fit.glm, Boston.test, type = "response")
+> length(probs)
+[1] 127
+> pred.glm <- rep(0, length(probs))
+> pred.glm[probs > 0.5] <- 1
+> table(pred.glm, crim01.test)
+        crim01.test
+pred.glm  0  1
+       0 56  8
+       1  6 57
+> length(probs)
+[1] 127
+> #
+> mean(pred.glm == crim01.test)
+[1] 0.8897638
+> mean(pred.glm != crim01.test)
+[1] 0.1102362
+```
+
+##### Interpretation
+For Logistic Regression on all predictors:
+* Accuracy: %88.97638
+* Misclassification Rate: %11.02362
+
+
+#### Logistic Regression excluding `tax` and `rm`
+```R
+fit.glm2 <- glm(crim01 ~. -index -tax -rm, data = Boston.train, family = binomial)
+summary(fit.glm2)
+```
+##### Fit Summary
+
+```
+> fit.glm2 <- glm(crim01 ~. -index -tax -rm, data = Boston.train, family = binomial)
+> summary(fit.glm2)
+
+Call:
+glm(formula = crim01 ~ . - index - tax - rm, family = binomial, 
+    data = Boston.train)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-2.07435  -0.13550  -0.00030   0.00154   2.72524  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -48.387078   8.717983  -5.550 2.85e-08 ***
+zn           -0.108008   0.046805  -2.308 0.021021 *  
+indus        -0.139526   0.055675  -2.506 0.012208 *  
+chas          1.206594   0.894788   1.348 0.177508    
+nox          55.975457   9.748499   5.742 9.36e-09 ***
+age           0.038713   0.014141   2.738 0.006189 ** 
+dis           0.999943   0.275103   3.635 0.000278 ***
+rad           0.599231   0.161877   3.702 0.000214 ***
+ptratio       0.513267   0.145658   3.524 0.000425 ***
+black        -0.008879   0.005951  -1.492 0.135707    
+lstat        -0.004217   0.056146  -0.075 0.940132    
+medv          0.184484   0.057095   3.231 0.001233 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 525.38  on 378  degrees of freedom
+Residual deviance: 142.50  on 367  degrees of freedom
+AIC: 166.5
+
+Number of Fisher Scoring iterations: 9
+```
+
+##### Run Prediction on test data
+
+```R
+probs2 <- predict(fit.glm2, Boston.test, type = "response")
+pred.glm2 <- rep(0, length(probs2))
+pred.glm2[probs2 > 0.5] <- 1
+table(pred.glm2, crim01.test)
+mean(pred.glm2 == crim01.test)
+mean(pred.glm2 != crim01.test)
+```
+
+__Results__
+
+```
+> probs2 <- predict(fit.glm2, Boston.test, type = "response")
+> pred.glm2 <- rep(0, length(probs2))
+> pred.glm2[probs2 > 0.5] <- 1
+> table(pred.glm2, crim01.test)
+         crim01.test
+pred.glm2  0  1
+        0 55 10
+        1  7 55
+> mean(pred.glm2 == crim01.test)
+[1] 0.8661417
+> mean(pred.glm2 != crim01.test)
+[1] 0.1338583
+```
+
+##### Interpretation
+For Logistic Regression on selected predictors:
+* Accuracy: %86.61417
+* Misclassification Rate: %13.38583
+
