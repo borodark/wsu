@@ -184,4 +184,27 @@ tst_table <- table(Predict = test.pred, Truth = test$Purchase)
 tr_table
 tst_table
 #
-sum(tr_table)
+(tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
+#
+(tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
+#
+#3.d
+tune.out <- tune(svm, Purchase ~ ., data = train, kernel = "linear", ranges = list(cost = 10^seq(-2, 1, by = 0.5)))
+summary(tune.out)
+
+tune.out$best.model
+# 3.e
+svm.linear <- svm(Purchase ~ ., kernel = "linear", data = train, cost = tune.out$best.parameter$cost)
+train.pred <- predict(svm.linear, train)
+test.pred <- predict(svm.linear, newdata = test)
+
+tr_table <- table(Predict = train.pred, Truth = train$Purchase)
+tst_table <- table(Predict = test.pred, Truth = test$Purchase)
+
+tr_table
+tst_table
+#
+(tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
+#
+(tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
+

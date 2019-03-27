@@ -984,6 +984,51 @@ Number of Support Vectors:  338
 
 
 ### (e) Compute the training and test error rates using this new value for cost.
+```R
+# 3.e
+svm.linear <- svm(Purchase ~ ., kernel = "linear", data = train, cost = tune.out$best.parameter$cost)
+train.pred <- predict(svm.linear, train)
+test.pred <- predict(svm.linear, newdata = test)
+
+tr_table <- table(Predict = train.pred, Truth = train$Purchase)
+tst_table <- table(Predict = test.pred, Truth = test$Purchase)
+
+tr_table
+tst_table
+#
+(tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
+#
+(tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
+```
+
+The error rates are: 
+* Training %16.4794 
+* Test: %19.33086
+
+```
+> # 3.e
+> svm.linear <- svm(Purchase ~ ., kernel = "linear", data = train, cost = tune.out$best.parameter$cost)
+> train.pred <- predict(svm.linear, train)
+> test.pred <- predict(svm.linear, newdata = test)
+> tr_table <- table(Predict = train.pred, Truth = train$Purchase)
+> tst_table <- table(Predict = test.pred, Truth = test$Purchase)
+> tr_table
+       Truth
+Predict  CH  MM
+     CH 437  75
+     MM  52 237
+> tst_table
+       Truth
+Predict  CH  MM
+     CH 134  22
+     MM  30  83
+> #
+> (tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
+[1] 0.1585518
+> #
+> (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
+[1] 0.1933086
+```
 
 ### (f) Repeat parts (b) through (e) using a support vector machine with a radial kernel. Use the default value for gamma.
 
