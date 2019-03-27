@@ -2,7 +2,7 @@
 
 The `R` source for this report is here: [hw2.R](hw2.R)
 
-##(Question #10 from chapter 4)
+## 1. Question #10 from chapter 4
 
 This question should be answered using the Weekly data set, which is part of the ISLR package. This data is similar in nature to the Smarket data from this chapter’s lab, except that it contains 1089 weekly returns for 21 years, from the beginning of 1990 to the end of 2010.
 ```R
@@ -839,3 +839,154 @@ __The KNN shows best results with k == 1. The KNN with k==3 outperforms Logistic
 | LDA                             | 85.82677 |   14.17323 |
 ```
 KNN, k=1 is the best, LDA is worst.
+
+
+## 3. (Question #8 from chapter 9)
+
+This problem involves the OJ data set which is part of the ISLR package.
+
+### (a) Create a training set containing a random sample of 800 observations, and a test set containing the remaining observations.
+
+```R
+#3.a 
+library(ISLR)
+library(caret)
+i.Train.o <- createDataPartition(y = OJ$Purchase, p = 800/nrow(OJ), list = FALSE)   
+train <- OJ[i.Train.o, ]
+test <- OJ[-i.Train.o, ]
+```
+
+### (b) Fit a support vector classifier to the training data using cost=0.01, with Purchase as the response and the other variables as predictors. Use the summary() function to produce summary statistics, and describe the results obtained.
+
+```R
+#3.b
+oj.svm.fit <- svm(Purchase ~. , data = train, cost = 0.01, kernel = 'linear')
+summary(oj.svm.fit)
+```
+The __Summary__
+```
+> #3.b
+> oj.svm.fit <- svm(Purchase ~. , data = train, cost = 0.01, kernel = 'linear')
+> summary(oj.svm.fit)
+
+Call:
+svm(formula = Purchase ~ ., data = train, cost = 0.01, kernel = "linear")
+
+
+Parameters:
+   SVM-Type:  C-classification 
+ SVM-Kernel:  linear 
+       cost:  0.01 
+      gamma:  0.05555556 
+
+Number of Support Vectors:  429
+
+ ( 215 214 )
+
+
+Number of Classes:  2 
+
+Levels: 
+ CH MM
+
+```
+#### (c) What are the training and test error rates?
+
+```R
+train.pred <- predict(svm.fit)
+test.pred <- predict(svm.fit, newdata = test)
+tr_table <- table(Predict = train.pred, Truth = train$Purchase)
+tst_table <- table(Predict = test.pred, Truth = test$Purchase)
+tr_table
+tst_table
+#
+(tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
+#
+(tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
+
+```
+Confusion matrixes and Error rates for Training and Test data
+
+```
+> train.pred <- predict(svm.fit)
+> test.pred <- predict(svm.fit, newdata = test)
+> tr_table <- table(Predict = train.pred, Truth = train$Purchase)
+> tst_table <- table(Predict = test.pred, Truth = test$Purchase)
+> tr_table
+       Truth
+Predict  CH  MM
+     CH 436  83
+     MM  53 229
+> tst_table
+       Truth
+Predict  CH  MM
+     CH 142  22
+     MM  22  83 
+> #
+> (tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
+[1] 0.1697878
+> #
+> (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
+[1] 0.1635688
+```
+__The training error rate is %16.97878 and test error rate is about %16.35688.__
+
+
+### (d) Use the tune() function to select an optimal cost. Consider values in the range 0.01 to 10.
+```R
+#3.d
+tune.out <- tune(svm, Purchase ~ ., data = train, kernel = "linear", ranges = list(cost = 10^seq(-2, 1, by = 0.5)))
+summary(tune.out)
+```
+```
+> #3.d
+> tune.out <- tune(svm, Purchase ~ ., data = train, kernel = "linear", ranges = list(cost = 10^seq(-2, 1, by = 0.5)))
+> summary(tune.out)
+
+Parameter tuning of ‘svm’:
+
+- sampling method: 10-fold cross validation 
+
+- best parameters:
+ cost
+    1
+
+- best performance: 0.169784 
+
+- Detailed performance results:
+         cost     error dispersion
+1  0.01000000 0.1735185 0.04093598
+2  0.03162278 0.1735340 0.04185215
+3  0.10000000 0.1722685 0.03934940
+4  0.31622777 0.1735185 0.04218911
+5  1.00000000 0.1697840 0.04130859
+6  3.16227766 0.1697840 0.03915084
+7 10.00000000 0.1785185 0.04122087
+```
+__The best _cost_ parameter is 1__
+
+```
+> tune.out$best.model
+
+Call:
+best.tune(method = svm, train.x = Purchase ~ ., data = train, ranges = list(cost = 10^seq(-2, 
+    1, by = 0.5)), kernel = "linear")
+
+
+Parameters:
+   SVM-Type:  C-classification 
+ SVM-Kernel:  linear 
+       cost:  1 
+      gamma:  0.05555556 
+
+Number of Support Vectors:  338
+```
+
+
+### (e) Compute the training and test error rates using this new value for cost.
+
+### (f) Repeat parts (b) through (e) using a support vector machine with a radial kernel. Use the default value for gamma.
+
+### (g) Repeat parts (b) through (e) using a support vector machine with a polynomial kernel. Set degree=2.
+
+### (h) Overall, which approach seems to give the best results on this data?

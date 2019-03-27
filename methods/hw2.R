@@ -165,3 +165,23 @@ table(knn.pred7, crim01.test)
 mean(knn.pred7 == crim01.test)
 mean(knn.pred7 != crim01.test)
 
+#3.a 
+library(ISLR)
+library(caret)
+library(e1071)
+i.Train.o <- createDataPartition(y = OJ$Purchase, p = 800/nrow(OJ), list = FALSE)   
+train <- OJ[i.Train.o, ]
+test <- OJ[-i.Train.o, ]
+
+#3.b
+svm.fit <- svm(Purchase ~. , data = train, cost = 0.01, kernel = 'linear')
+summary(svm.fit)
+#
+train.pred <- predict(svm.fit)
+test.pred <- predict(svm.fit, newdata = test)
+tr_table <- table(Predict = train.pred, Truth = train$Purchase)
+tst_table <- table(Predict = test.pred, Truth = test$Purchase)
+tr_table
+tst_table
+#
+sum(tr_table)
