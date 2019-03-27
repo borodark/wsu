@@ -208,3 +208,68 @@ tst_table
 #
 (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
 
+# 3.f
+#3.fb
+svm.fit <- svm(Purchase ~. , data = train, cost = 0.01, kernel = 'radial')
+summary(svm.fit)
+# 3.fc
+train.pred <- predict(svm.fit)
+test.pred <- predict(svm.fit, newdata = test)
+tr_table <- table(Predict = train.pred, Truth = train$Purchase)
+tst_table <- table(Predict = test.pred, Truth = test$Purchase)
+tr_table
+tst_table
+#
+(tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
+#
+(tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
+#
+#3.fd
+tune.out <- tune(svm, Purchase ~ ., data = train, kernel = "radial", ranges = list(cost = 10^seq(-2, 1, by = 0.5)))
+summary(tune.out)
+tune.out$best.model
+# 3.fe
+svm.radial <- svm(Purchase ~ ., kernel = "radial", data = train, cost = tune.out$best.parameter$cost)
+train.pred <- predict(svm.radial, train)
+test.pred <- predict(svm.radial, newdata = test)
+tr_table <- table(Predict = train.pred, Truth = train$Purchase)
+tst_table <- table(Predict = test.pred, Truth = test$Purchase)
+tr_table
+tst_table
+#
+(tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
+#
+(tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
+
+# 3.g
+#3.gb
+svm.fit <- svm(Purchase ~. , data = train, cost = 0.01, kernel = 'polynomial', degree=2)
+summary(svm.fit)
+# 3.gc
+train.pred <- predict(svm.fit)
+test.pred <- predict(svm.fit, newdata = test)
+tr_table <- table(Predict = train.pred, Truth = train$Purchase)
+tst_table <- table(Predict = test.pred, Truth = test$Purchase)
+tr_table
+tst_table
+#
+(tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
+#
+(tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
+#
+#3.gd
+tune.out <- tune(svm, Purchase ~ ., data = train, kernel = "polynomial",degree=2, ranges = list(cost = 10^seq(-2, 1, by = 0.5)))
+summary(tune.out)
+tune.out$best.model
+# 3.ge
+svm.polynomial <- svm(Purchase ~ ., kernel = "polynomial", degree=2, data = train, cost = tune.out$best.parameter$cost)
+train.pred <- predict(svm.polynomial, train)
+test.pred <- predict(svm.polynomial, newdata = test)
+tr_table <- table(Predict = train.pred, Truth = train$Purchase)
+tst_table <- table(Predict = test.pred, Truth = test$Purchase)
+tr_table
+tst_table
+#
+(tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
+#
+(tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
