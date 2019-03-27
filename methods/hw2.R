@@ -165,7 +165,8 @@ table(knn.pred7, crim01.test)
 mean(knn.pred7 == crim01.test)
 mean(knn.pred7 != crim01.test)
 
-#3.a 
+#3.a
+set.seed(10)
 library(ISLR)
 library(caret)
 library(e1071)
@@ -209,7 +210,7 @@ tst_table
 (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
 
 # 3.f
-#3.fb
+# 3.fb
 svm.fit <- svm(Purchase ~. , data = train, cost = 0.01, kernel = 'radial')
 summary(svm.fit)
 # 3.fc
@@ -224,7 +225,7 @@ tst_table
 #
 (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
 #
-#3.fd
+# 3.fd
 tune.out <- tune(svm, Purchase ~ ., data = train, kernel = "radial", ranges = list(cost = 10^seq(-2, 1, by = 0.5)))
 summary(tune.out)
 tune.out$best.model

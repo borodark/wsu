@@ -892,22 +892,10 @@ Levels:
 ```
 #### (c) What are the training and test error rates?
 
-```R
-train.pred <- predict(svm.fit)
-test.pred <- predict(svm.fit, newdata = test)
-tr_table <- table(Predict = train.pred, Truth = train$Purchase)
-tst_table <- table(Predict = test.pred, Truth = test$Purchase)
-tr_table
-tst_table
-#
-(tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
-#
-(tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
-
-```
 Confusion matrixes and Error rates for Training and Test data
 
 ```
+> #
 > train.pred <- predict(svm.fit)
 > test.pred <- predict(svm.fit, newdata = test)
 > tr_table <- table(Predict = train.pred, Truth = train$Purchase)
@@ -915,29 +903,25 @@ Confusion matrixes and Error rates for Training and Test data
 > tr_table
        Truth
 Predict  CH  MM
-     CH 436  83
-     MM  53 229
+     CH 424  72
+     MM  65 240
 > tst_table
        Truth
 Predict  CH  MM
-     CH 142  22
-     MM  22  83 
+     CH 148  30
+     MM  16  75
 > #
 > (tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
-[1] 0.1697878
+[1] 0.1710362
 > #
 > (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
-[1] 0.1635688
+[1] 0.1710037
 ```
-__The training error rate is %16.97878 and test error rate is about %16.35688.__
+
+__The training error rate is %17.10362 and test error rate is about %17.10037.__
 
 
 ### (d) Use the tune() function to select an optimal cost. Consider values in the range 0.01 to 10.
-```R
-#3.d
-tune.out <- tune(svm, Purchase ~ ., data = train, kernel = "linear", ranges = list(cost = 10^seq(-2, 1, by = 0.5)))
-summary(tune.out)
-```
 ```
 > #3.d
 > tune.out <- tune(svm, Purchase ~ ., data = train, kernel = "linear", ranges = list(cost = 10^seq(-2, 1, by = 0.5)))
@@ -949,21 +933,36 @@ Parameter tuning of ‘svm’:
 
 - best parameters:
  cost
-    1
+   10
 
-- best performance: 0.169784 
+- best performance: 0.1634722 
 
 - Detailed performance results:
          cost     error dispersion
-1  0.01000000 0.1735185 0.04093598
-2  0.03162278 0.1735340 0.04185215
-3  0.10000000 0.1722685 0.03934940
-4  0.31622777 0.1735185 0.04218911
-5  1.00000000 0.1697840 0.04130859
-6  3.16227766 0.1697840 0.03915084
-7 10.00000000 0.1785185 0.04122087
+1  0.01000000 0.1710031 0.03613883
+2  0.03162278 0.1697531 0.04359834
+3  0.10000000 0.1660185 0.04156263
+4  0.31622777 0.1634877 0.04701186
+5  1.00000000 0.1647222 0.04630648
+6  3.16227766 0.1659568 0.04741137
+7 10.00000000 0.1634722 0.04837044
+
+> tune.out$best.model
+
+Call:
+best.tune(method = svm, train.x = Purchase ~ ., data = train, ranges = list(cost = 10^seq(-2, 
+    1, by = 0.5)), kernel = "linear")
+
+
+Parameters:
+   SVM-Type:  C-classification 
+ SVM-Kernel:  linear 
+       cost:  10 
+      gamma:  0.05555556 
+
+Number of Support Vectors:  328
 ```
-__The best _cost_ parameter is 1__
+__The best _cost_ parameter is 10__
 
 ```
 > tune.out$best.model
@@ -976,36 +975,15 @@ best.tune(method = svm, train.x = Purchase ~ ., data = train, ranges = list(cost
 Parameters:
    SVM-Type:  C-classification 
  SVM-Kernel:  linear 
-       cost:  1 
+       cost:  10 
       gamma:  0.05555556 
 
-Number of Support Vectors:  338
+Number of Support Vectors:  328
 ```
 
 
 ### (e) Compute the training and test error rates using this new value for cost.
 ```R
-# 3.e
-svm.linear <- svm(Purchase ~ ., kernel = "linear", data = train, cost = tune.out$best.parameter$cost)
-train.pred <- predict(svm.linear, train)
-test.pred <- predict(svm.linear, newdata = test)
-
-tr_table <- table(Predict = train.pred, Truth = train$Purchase)
-tst_table <- table(Predict = test.pred, Truth = test$Purchase)
-
-tr_table
-tst_table
-#
-(tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
-#
-(tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
-```
-
-The error rates for linear kernel are: 
-* Training %16.4794 
-* Test: %19.33086
-
-```
 > # 3.e
 > svm.linear <- svm(Purchase ~ ., kernel = "linear", data = train, cost = tune.out$best.parameter$cost)
 > train.pred <- predict(svm.linear, train)
@@ -1015,26 +993,30 @@ The error rates for linear kernel are:
 > tr_table
        Truth
 Predict  CH  MM
-     CH 437  75
-     MM  52 237
+     CH 430  65
+     MM  59 247
 > tst_table
        Truth
 Predict  CH  MM
-     CH 134  22
-     MM  30  83
+     CH 149  31
+     MM  15  74
 > #
 > (tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
-[1] 0.1585518
+[1] 0.1548065
 > #
 > (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
-[1] 0.1933086
+[1] 0.1710037
 ```
+
+The error rates for linear kernel are: 
+* Training %15.48065 
+* Test: %17.10037
 
 ### (f) Repeat parts (b) through (e) using a support vector machine with a radial kernel. Use the default value for gamma.
 
 ```
 > # 3.f
-> #3.fb
+> # 3.fb
 > svm.fit <- svm(Purchase ~. , data = train, cost = 0.01, kernel = 'radial')
 > summary(svm.fit)
 
@@ -1082,7 +1064,7 @@ Predict  CH  MM
 > (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
 [1] 0.3903346
 > #
-> #3.fd
+> # 3.fd
 > tune.out <- tune(svm, Purchase ~ ., data = train, kernel = "radial", ranges = list(cost = 10^seq(-2, 1, by = 0.5)))
 > summary(tune.out)
 
@@ -1094,17 +1076,17 @@ Parameter tuning of ‘svm’:
  cost
     1
 
-- best performance: 0.1610802 
+- best performance: 0.1710802 
 
 - Detailed performance results:
          cost     error dispersion
-1  0.01000000 0.3895370 0.03787139
-2  0.03162278 0.3683025 0.05153434
-3  0.10000000 0.1785340 0.02437788
-4  0.31622777 0.1647994 0.03527850
-5  1.00000000 0.1610802 0.03471927
-6  3.16227766 0.1672994 0.04051568
-7 10.00000000 0.1735185 0.03548363
+1  0.01000000 0.3894753 0.03805332
+2  0.03162278 0.3582407 0.05570658
+3  0.10000000 0.1835957 0.05702007
+4  0.31622777 0.1773148 0.05686723
+5  1.00000000 0.1710802 0.05184946
+6  3.16227766 0.1760648 0.05644903
+7 10.00000000 0.1773148 0.05107722
 
 > tune.out$best.model
 
@@ -1119,7 +1101,7 @@ Parameters:
        cost:  1 
       gamma:  0.05555556 
 
-Number of Support Vectors:  367
+Number of Support Vectors:  370
 
 > # 3.fe
 > svm.radial <- svm(Purchase ~ ., kernel = "radial", data = train, cost = tune.out$best.parameter$cost)
@@ -1130,24 +1112,24 @@ Number of Support Vectors:  367
 > tr_table
        Truth
 Predict  CH  MM
-     CH 446  74
-     MM  43 238
+     CH 441  74
+     MM  48 238
 > tst_table
        Truth
 Predict  CH  MM
-     CH 142  33
-     MM  22  72
+     CH 151  29
+     MM  13  76
 > #
 > (tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
-[1] 0.1460674
+[1] 0.1523096
 > #
 > (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
-[1] 0.204461
+[1] 0.1561338
 ```
 
 #### The error rates for _optimal_ cost = 1 of radial kernel are: 
-* Training %14.60674
-* Test: %20.4461
+* Training %15.23096
+* Test: %15.61338
 
 
 ### (g) Repeat parts (b) through (e) using a support vector machine with a polynomial kernel. Set degree=2.
@@ -1170,9 +1152,9 @@ Parameters:
       gamma:  0.05555556 
      coef.0:  0 
 
-Number of Support Vectors:  628
+Number of Support Vectors:  626
 
- ( 316 312 )
+ ( 314 312 )
 
 
 Number of Classes:  2 
@@ -1190,19 +1172,19 @@ Levels:
 > tr_table
        Truth
 Predict  CH  MM
-     CH 484 291
-     MM   5  21
+     CH 484 287
+     MM   5  25
 > tst_table
        Truth
 Predict  CH  MM
-     CH 162  98
-     MM   2   7
+     CH 162 101
+     MM   2   4
 > #
 > (tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
-[1] 0.3695381
+[1] 0.3645443
 > #
 > (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
-[1] 0.3717472
+[1] 0.3828996
 > #
 > #3.gd
 > tune.out <- tune(svm, Purchase ~ ., data = train, kernel = "polynomial",degree=2, ranges = list(cost = 10^seq(-2, 1, by = 0.5)))
@@ -1216,17 +1198,17 @@ Parameter tuning of ‘svm’:
  cost
    10
 
-- best performance: 0.1697685 
+- best performance: 0.1834722 
 
 - Detailed performance results:
          cost     error dispersion
-1  0.01000000 0.3858333 0.05489890
-2  0.03162278 0.3533333 0.04878145
-3  0.10000000 0.3046296 0.03192767
-4  0.31622777 0.2059722 0.04784919
-5  1.00000000 0.1984722 0.04487852
-6  3.16227766 0.1872531 0.04282556
-7 10.00000000 0.1697685 0.03170840
+1  0.01000000 0.3807870 0.06080962
+2  0.03162278 0.3545370 0.05292458
+3  0.10000000 0.3133488 0.05007199
+4  0.31622777 0.2159722 0.04121281
+5  1.00000000 0.1972222 0.05148265
+6  3.16227766 0.1909568 0.04647537
+7 10.00000000 0.1834722 0.03191726
 
 > tune.out$best.model
 
@@ -1243,7 +1225,7 @@ Parameters:
       gamma:  0.05555556 
      coef.0:  0 
 
-Number of Support Vectors:  331
+Number of Support Vectors:  344
 
 > # 3.ge
 > svm.polynomial <- svm(Purchase ~ ., kernel = "polynomial", degree=2, data = train, cost = tune.out$best.parameter$cost)
@@ -1254,25 +1236,35 @@ Number of Support Vectors:  331
 > tr_table
        Truth
 Predict  CH  MM
-     CH 448  77
-     MM  41 235
+     CH 444  75
+     MM  45 237
 > tst_table
        Truth
 Predict  CH  MM
-     CH 138  32
-     MM  26  73
+     CH 155  35
+     MM   9  70
 > #
 > (tr_table[2,1] +  tr_table[1,2])/sum(tr_table)
-[1] 0.1473159
+[1] 0.1498127
 > #
 > (tst_table[2,1] +  tst_table[1,2])/sum(tst_table)
-[1] 0.2156134
+[1] 0.1635688
+
 ```
 
 #### The error rates for _optimal_ cost = 10 of of __polynomial__ kernel are: 
 
-* Training %14.73159
-* Test: %215634
+* Training %14.98127
+* Test: %16.35688
 
 
 ### (h) Overall, which approach seems to give the best results on this data?
+
+__Radial gives the least _testing_ error while _polynomial_ has the least of _training_ errors__
+```
+| Method              | Training Error Rate | Test Error Rate |
+| Polynomial, cost=10 |            14.98127 |        16.35688 |
+| Radial, cost = 1    |            15.23096 |        15.61338 |
+| Linear, cost = 0.01 |            15.48065 |        17.10037 |
+```
+
