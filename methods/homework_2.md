@@ -558,7 +558,10 @@ AIC: 167.71
 
 Number of Fisher Scoring iterations: 9
 
+
 ```
+![glm fit](Rplotglm.svg)
+
 #### Run prediction with test data
 
 ```R
@@ -677,3 +680,162 @@ For Logistic Regression on selected predictors:
 * Accuracy: %86.61417
 * Misclassification Rate: %13.38583
 
+
+#### LDA on all
+
+##### Fit LDA on train data
+
+```R
+library (MASS)
+lda.fit <- lda(crim01 ~. -index, data = Boston.train)
+lda.fit
+plot(lda.fit)
+```
+__Results__
+
+```
+> library (MASS)
+> lda.fit <- lda(crim01 ~. -index, data = Boston.train)
+> lda.fit
+Call:
+lda(crim01 ~ . - index, data = Boston.train)
+
+Prior probabilities of groups:
+        0         1 
+0.5039578 0.4960422 
+
+Group means:
+         zn    indus       chas       nox       rm      age      dis
+0 21.387435  7.21288 0.04712042 0.4701560 6.387330 51.30052 5.071453
+1  1.085106 15.19463 0.09574468 0.6370851 6.187803 86.31117 2.506793
+        rad      tax  ptratio    black     lstat     medv
+0  4.005236 304.5654 17.85550 389.4807  9.559372 24.97749
+1 15.452128 518.6064 19.19149 321.4862 16.076596 19.91277
+
+Coefficients of linear discriminants:
+                  LD1
+zn      -4.953667e-03
+indus   -1.202236e-02
+chas     8.792225e-02
+nox      9.147374e+00
+rm       1.092756e-01
+age      1.384027e-02
+dis      6.344807e-02
+rad      5.994941e-02
+tax     -4.384973e-05
+ptratio  9.442765e-02
+black   -1.140643e-03
+lstat    5.540860e-03
+medv     3.778847e-02
+> plot(lda.fit)
+```
+
+![glm fit](RplotLDA.svg)
+
+##### Run Prediction on test data
+
+```R
+pred.lda <- predict(lda.fit,Boston.test)
+table(pred.lda$class, crim01.test)
+mean(pred.lda$class == crim01.test)
+mean(pred.lda$class != crim01.test)
+```
+__Results__
+```
+> pred.lda <- predict(lda.fit,Boston.test)
+> table(pred.lda$class, crim01.test)
+   crim01.test
+     0  1
+  0 61 17
+  1  1 48
+> mean(pred.lda$class == crim01.test)
+[1] 0.8582677
+> mean(pred.lda$class != crim01.test)
+[1] 0.1417323
+> 
+```
+
+#### KNN for K in [1,3,7] 
+
+```R
+# drop "index" column
+train = Boston.train[,-1]
+test = Boston.test[,-1]
+
+#2 KNN=1
+library (class)
+knn.pred1 <- knn(train=train, test=test, cl=train$crim01, k=1)
+table(knn.pred1, crim01.test)
+mean(knn.pred1 == crim01.test)
+mean(knn.pred1 != crim01.test)
+
+#2 KNN=3
+knn.pred3 <- knn(train=train, test=test, cl=train$crim01, k=3)
+table(knn.pred3, crim01.test)
+mean(knn.pred3 == crim01.test)
+mean(knn.pred3 != crim01.test)
+
+#2 KNN=7
+knn.pred7 <- knn(train=train, test=test, cl=train$crim01, k=7)
+summary(knn.pred7)
+table(knn.pred7, crim01.test)
+mean(knn.pred7 == crim01.test)
+mean(knn.pred7 != crim01.test)
+```
+
+```
+> train = Boston.train[,-1]
+> test = Boston.test[,-1]
+> #2 KNN=1
+> library (class)
+> knn.pred1 <- knn(train=train, test=test, cl=train$crim01, k=1)
+> table(knn.pred1, crim01.test)
+         crim01.test
+knn.pred1  0  1
+        0 57  7
+        1  5 58
+> mean(knn.pred1 == crim01.test)
+[1] 0.9055118
+> mean(knn.pred1 != crim01.test)
+[1] 0.09448819
+> #2 KNN=3
+> knn.pred3 <- knn(train=train, test=test, cl=train$crim01, k=3)
+> table(knn.pred3, crim01.test)
+         crim01.test
+knn.pred3  0  1
+        0 57  8
+        1  5 57
+> mean(knn.pred3 == crim01.test)
+[1] 0.8976378
+> mean(knn.pred3 != crim01.test)
+[1] 0.1023622
+> #2 KNN=7
+> knn.pred7 <- knn(train=train, test=test, cl=train$crim01, k=7)
+> summary(knn.pred7)
+ 0  1 
+64 63 
+> table(knn.pred7, crim01.test)
+         crim01.test
+knn.pred7  0  1
+        0 55  9
+        1  7 56
+> mean(knn.pred7 == crim01.test)
+[1] 0.8740157
+> mean(knn.pred7 != crim01.test)
+[1] 0.1259843
+```
+##### Interpretation
+
+__The KNN shows best results with k == 1. The KNN with k==3 outperforms Logistic Regression__
+
+### Final comparison, %
+```
+| Method                          | Accuracy | Error Rate |
+| KNN, K = 1                      | 90.55118 |  09.448819 |
+| KNN, K = 3                      | 89.76378 |   10.23622 |
+| Logistical Regression           | 88.97638 |   11.02362 |
+| KNN, K = 7                      | 87.40157 |   12.59843 |
+| Logistical Regression on subset | 86.61417 |   13.38583 |
+| LDA                             | 85.82677 |   14.17323 |
+```
+KNN, k=1 is the best, LDA is worst.

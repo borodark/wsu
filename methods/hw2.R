@@ -106,7 +106,8 @@ dim(Boston.train)
 #
 fit.glm <- glm(crim01 ~.-index, data= Boston.train, family= binomial)
 summary(fit.glm)
-#
+par(mfrow=c(2,2))
+plot(fit.glm)
 probs <- predict(fit.glm, Boston.test, type = "response")
 length(probs)
 pred.glm <- rep(0, length(probs))
@@ -119,10 +120,48 @@ mean(pred.glm != crim01.test)
 # 
 fit.glm2 <- glm(crim01 ~. -index -tax -rm, data = Boston.train, family = binomial)
 summary(fit.glm2)
+par(mfrow=c(2,2))
+plot(fit.glm2)
 probs2 <- predict(fit.glm2, Boston.test, type = "response")
 pred.glm2 <- rep(0, length(probs2))
 pred.glm2[probs2 > 0.5] <- 1
 table(pred.glm2, crim01.test)
 mean(pred.glm2 == crim01.test)
 mean(pred.glm2 != crim01.test)
+
+#
+# 2 LDA
+library (MASS)
+lda.fit <- lda(crim01 ~. -index, data = Boston.train)
+lda.fit
+plot(lda.fit)
+##
+pred.lda <- predict(lda.fit,Boston.test)
+table(pred.lda$class, crim01.test)
+mean(pred.lda$class == crim01.test)
+mean(pred.lda$class != crim01.test)
+
+# drop "index" column
+train = Boston.train[,-1]
+test = Boston.test[,-1]
+
+#2 KNN=1
+library (class)
+knn.pred1 <- knn(train=train, test=test, cl=train$crim01, k=1)
+table(knn.pred1, crim01.test)
+mean(knn.pred1 == crim01.test)
+mean(knn.pred1 != crim01.test)
+
+#2 KNN=3
+knn.pred3 <- knn(train=train, test=test, cl=train$crim01, k=3)
+table(knn.pred3, crim01.test)
+mean(knn.pred3 == crim01.test)
+mean(knn.pred3 != crim01.test)
+
+#2 KNN=7
+knn.pred7 <- knn(train=train, test=test, cl=train$crim01, k=7)
+summary(knn.pred7)
+table(knn.pred7, crim01.test)
+mean(knn.pred7 == crim01.test)
+mean(knn.pred7 != crim01.test)
 
