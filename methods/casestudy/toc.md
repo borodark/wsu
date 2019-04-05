@@ -70,9 +70,62 @@ where **p<sub>t</sub>** = ln( **P<sub>t</sub>** ). Continuously compounded retur
 
 The theory of Support Vector Machines was develop by applied mathematins from Soviet Union Vapnik, Chervonenkis and others [2]. The Vapnic later worked in Bell Labs []. The SVM differs from other methods besause there are no probabalistic concepts emploied: it feels like typical Computer Sciense take on the problem of classification. The classification method in financial time series analisys can be employed if we consider that problem can be formulated the following way: given the history of financial instrument perdict the direction - will it be up or down. The _Up_ or _Down_ becomes categorical variables and a classification methods can be used.
 
-## Neyral networks application: RNN and LTSM
+## Deep learning and neural networks application: RNN and LTSM
+
+Deep learning neural networks characterized by these three relevant capabilities [2]:
+* support multiple inputs and outputs
+* capable of learning the arbitrary mappings of inputs to outputs
+* able to automatically extract patterns in inputs that spans over long sequences
+
+
+
+
+In time series, time isn’t just a metric, but a primary axis. This additional dimension represents both an opportunity and a constraint for time series data because it provides a source of additional information but makes time series problems more challenging, as specialized handling of the data is required. 
 
 ## Measure of performance of the forecasts
+
+There are number of important measures for judging forecast accuracy of a fitted model. Each has some unique properties. Conducting experiments one must consider more than one performance criteria to obtain key error components: amount, magnitude and direction. This will give an alternative opinion on the key components of overall forecast error.
+Please refer to [2] for formulas for each measure and let's consider important properties of each measure.
+
+* Mean Forecast Error (MFE)
+  * Measure of the average deviation of forecasted values from actual ones
+  * when MFE close to 0 one have a good forecast with minimum bias 
+* Mean Absolute Error (MAE)
+  * Measures the average absolute deviation of forecasted values from original ones, AKA as the Mean Absolute Deviation (MAD)
+  * Good forecast should have smallest possible MAE
+  * Shows the magnitude of overall error, occurred due to forecasting
+* Mean Absolute Percentage Error (MAPE)
+  * Represents the percentage of average absolute error occurred  
+* Mean Percentage Error (MPE)
+  * Shows the percentage of average error occurred
+  * Good forecast's MPE should be small
+* Mean Squared Error (MSE)
+  * Measures an average squared deviation of forecasted values
+  * Gives an overall idea about errors
+  * Not as intuitive and easily interpretable as the other measures
+* Sum of Squared Error (SSE)
+  * Measures the total squared deviation of forecasted observations from the actual values
+* Signed Mean Squared Error (SMSE)
+  * Same as MSE, except that the original sign of error is kept
+* Root Mean Squared Error (RMSE)
+  * the square root of calculated MSE
+* Normalized Mean Squared Error (NMSE)
+  * Normalizes the obtained MSE after dividing it by the test variance
+  * Balanced error measure effective in judging forecast accuracy of a model
+  * Smaller the NMSE value better the forecast
+* Theil’s U-statistics (TU-s)
+  * Values are between 0 ≤ U≤ 1; U=0 means a perfect fit.
+  * For assessing good forecast accuracy, it is desirable that the U-statistic is close to zero.
+
+| Measure/properties                      | MFE | MAE | MAPE | MPE | MSE | SSE | SMSE | RMSE | NMSE | TU-s |
+| :--                                     | --  | --  | ---  | --  | --- | --- | ---  | ---  | ---  | ---  |
+| shows error direction                   | +   | -   | -    | +   | -   | -   | +    | -    | -    | -    |
+| penalize extreme errors                 | -   | -   | -    | -   | +   | +   | +    | +    | +    | -    |
+| positive and negative errors cancel out | +   | -   | -    | +   | -   | -   | +    | -    | -    | -    |
+| depends on the scale of measurement     | +   | +   | +    | +   | +   | +   | +    | +    | +    | +    |
+| affected by data transformation         | +   | +   | +    | +   | +   | +   | +    | +    | +    | +    |
+
+Any time series analysis have to use more then one performance verification to make sure selected model is adequate.
 
 ## Applied analysis with R: libraries available
 ### ARIMA
@@ -87,4 +140,6 @@ The theory of Support Vector Machines was develop by applied mathematins from So
 [2] Ratnadip Adhikari R. K. Agrawal, An Introductory Study on Time Series Modeling and Forecasting
 [3] Analysis of Financial Time Series, Financial Econometrics, RUEY S. TSAY University of Chicago
 [4] Tsay, Ruey S., An introduction to analysis of financial data with R/Ruey S. Tsay. p. cm. Includes index. ISBN 978-0-470-89081-3
-[]
+[5] An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling, Shaojie Bai, J. Zico Kolter, Vladlen Koltun
+[6] Temporal Convolutional Networks: A Unified Approach to Action Segmentation by Colin Lea Rene ́ Vidal Austin Reiter Gregory D. Hager, Johns Hopkins University
+[7] A comparison of performance of several artificial intelligence methods for forecasting monthly discharge time series by Wen-Chuan Wang, Kwok-Wing Chau, Chun-Tian Cheng, Lin Qiu, Journal of Hydrology, Vol. 374, No. 3-4, 2009, pp 294–306
