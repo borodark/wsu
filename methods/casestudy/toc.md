@@ -77,14 +77,13 @@ Deep learning neural networks characterized by these three relevant capabilities
 * capable of learning the arbitrary mappings of inputs to outputs
 * able to automatically extract patterns in inputs that spans over long sequences
 
+In time series, time isn’t just a metric, but a primary axis. This additional dimension represents both an opportunity and a constraint for time series data because it provides a source of additional information but makes time series problems challenging. 
 
-
-
-In time series, time isn’t just a metric, but a primary axis. This additional dimension represents both an opportunity and a constraint for time series data because it provides a source of additional information but makes time series problems more challenging, as specialized handling of the data is required. 
+Neural networks can be useful for time series forecasting problems by eliminating the immediate need for massive feature engineering processes, data scaling procedures, and the need for making the data stationary by differencing
 
 ## Measure of performance of the forecasts
 
-There are number of important measures for judging forecast accuracy of a fitted model. Each has some unique properties. Conducting experiments one must consider more than one performance criteria to obtain key error components: amount, magnitude and direction. This will give an alternative opinion on the key components of overall forecast error.
+There are number of important measures for judging forecast accuracy of the fitted model. Each has some unique properties. Conducting experiments one must consider more than one performance criteria to obtain key error components: amount, magnitude and direction. This will give an alternative opinion on the key components of overall forecast error.
 Please refer to [2] for formulas for each measure and let's consider important properties of each measure.
 
 * Mean Forecast Error (MFE)
