@@ -68,9 +68,16 @@ where **p<sub>t</sub>** = ln( **P<sub>t</sub>** ). Continuously compounded retur
 
 ## SVM application to time series analisys
 
-The theory of Support Vector Machines was develop by applied mathematins from Soviet Union Vapnik, Chervonenkis and others [2]. The Vapnic later worked in Bell Labs []. The SVM differs from other methods besause there are no probabalistic concepts emploied: it feels like typical Computer Sciense take on the problem of classification. The classification method in financial time series analisys can be employed if we consider that problem can be formulated the following way: given the history of financial instrument perdict the direction - will it be up or down. The _Up_ or _Down_ becomes categorical variables and a classification methods can be used.
+The theory of Support Vector Machines was develop by applied mathematins from Soviet Union Vapnik, Chervonenkis and others [2]. The Vapnic later worked in Bell Labs. The SVM differs from other methods besause there are no probabalistic concepts emploied: it feels like typical Computer Sciense take on the problem of classification. The classification method in financial time series analisys can be employed if we consider that problem can be formulated the following way: given the history of financial instrument perdict the direction - will it be up or down. The _Up_ or _Down_ becomes categorical variables and a classification methods can be used.
 
-## Deep learning and neural networks application: RNN and LTSM
+To fing the hyperplane separating two classes the input space shall be mapped nonlinery into a higher dimensional feature space. Because of this the quality and complexity of SVM solution does not depend directly on the input space [2].
+The training process is solving a linearly constrained quadratic programming problem. The SVM solution is always unique and globally optimal. But the large training set requires an enormous amount of computatative power because of the increased time complexity of the solution [2].
+
+The [2] includes SVM into set of Time Series forecasting indespensible in cross - validations with other forecasting methods.
+The [7] concludes that SVM model achives better forecasting accuracy in terms of different evaluation measure during the validation phase during both the training phase and the validation phase.
+
+
+## Deep learning and neural networks application
 
 Deep learning neural networks characterized by these three relevant capabilities [2]:
 * support multiple inputs and outputs
@@ -78,8 +85,9 @@ Deep learning neural networks characterized by these three relevant capabilities
 * able to automatically extract patterns in inputs that spans over long sequences
 
 In time series, time isn’t just a metric, but a primary axis. This additional dimension represents both an opportunity and a constraint for time series data because it provides a source of additional information but makes time series problems challenging. 
-
-Neural networks can be useful for time series forecasting problems by eliminating the immediate need for massive feature engineering processes, data scaling procedures, and the need for making the data stationary by differencing
+Neural networks can be useful for time series forecasting problems by eliminating the immediate need for massive feature engineering processes, data scaling procedures, and the need differencing to make the data stationary.
+The Recurrent Neural Networks applyed to time series related tasks like language modeling and machine translation were succesful but RNN are difficult to train: during back propagation, recurrent neural networks suffer from the vanishing gradient problem. The vanishing gradient problem is when the gradient shrinks as it back propagates through time. The evolutions of this aproach are Long Short-Term Memory (LSTM) and Gated Recurrent Units (GRU). The LSTM and GRU offers the solution to short-term memory in the form of gates that can regulate the flow of information and can learn which data in a sequence is important to keep or throw away passing only relevant information down the chain of sequences of makeing predictions. 
+The succesfull applications of Convolutional Neural Networks and specifically new Temporal Convolutional Networks Architecture to analisys of video streams described in [6]. The article provides convinsing empirical evidense that TCNs exhibit longer memory than recurrent architectures with the same capacity and outperform generic recurrent architectures such as LSTMs and GRUs. But how one would compare the performance of many forecasts?
 
 ## Measure of performance of the forecasts
 
@@ -142,3 +150,4 @@ Any time series analysis have to use more then one performance verification to m
 [5] An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling, Shaojie Bai, J. Zico Kolter, Vladlen Koltun
 [6] Temporal Convolutional Networks: A Unified Approach to Action Segmentation by Colin Lea Rene ́ Vidal Austin Reiter Gregory D. Hager, Johns Hopkins University
 [7] A comparison of performance of several artificial intelligence methods for forecasting monthly discharge time series by Wen-Chuan Wang, Kwok-Wing Chau, Chun-Tian Cheng, Lin Qiu, Journal of Hydrology, Vol. 374, No. 3-4, 2009, pp 294–306
+[8] https://people.duke.edu/~rnau/411diff.htm
