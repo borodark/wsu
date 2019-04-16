@@ -167,13 +167,13 @@ Please refer to [2] for formulas for each measure and let's consider important p
   * Values are between 0 ≤ U≤ 1; U=0 means a perfect fit.
   * For assessing good forecast accuracy, it is desirable that the U-statistic is close to zero.
 
-| Measure/properties                      | MFE | MAE | MAPE | MPE | MSE | SSE | SMSE | RMSE | NMSE | TU-s |   |
-| :--                                     | --  | --  | ---  | --  | --- | --- | ---  | ---  | ---  | ---  |   |
-| shows error direction                   | +   | -   | -    | +   | -   | -   | +    | -    | -    | -    |   |
-| penalize extreme errors                 | -   | -   | -    | -   | +   | +   | +    | +    | +    | -    |   |
-| positive and negative errors cancel out | +   | -   | -    | +   | -   | -   | +    | -    | -    | -    |   |
-| depends on the scale of measurement     | +   | +   | +    | +   | +   | +   | +    | +    | +    | +    |   |
-| affected by data transformation         | +   | +   | +    | +   | +   | +   | +    | +    | +    | +    |   |
+| Measure/properties                      | MFE | MAE | MAPE | MPE | MSE | SSE | SMSE | RMSE | NMSE | TU-s | 
+| :--                                     | --  | --  | ---  | --  | --- | --- | ---  | ---  | ---  | ---  | 
+| shows error direction                   | +   | -   | -    | +   | -   | -   | +    | -    | -    | -    | 
+| penalize extreme errors                 | -   | -   | -    | -   | +   | +   | +    | +    | +    | -    | 
+| positive and negative errors cancel out | +   | -   | -    | +   | -   | -   | +    | -    | -    | -    | 
+| depends on the scale of measurement     | +   | +   | +    | +   | +   | +   | +    | +    | +    | +    | 
+| affected by data transformation         | +   | +   | +    | +   | +   | +   | +    | +    | +    | +    | 
 
 Any time series analysis have to use more then one performance verification to make sure selected model is adequate.
 
