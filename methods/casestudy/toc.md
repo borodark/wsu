@@ -64,18 +64,62 @@ where **p<sub>t</sub>** = ln( **P<sub>t</sub>** ). Continuously compounded retur
 
 ## ARIMA models
 
+The Autoregressive Integrated Moving Average (ARIMA) Model is widely used method in Time series Forecasting. 
+
+### AR
+
+The Autoregressive models are based on the idea that the current value of the series, _x<sub>t</sub>_, can be explained as a function of _p_ past values, _x<sub>t−1</sub>_,_x<sub>t−2</sub>_,...,_x<sub>t−p</sub>_, where *p* determines the number of steps into the past needed to forecast the current value. The assumption is that value x depends only on past values, so we can say that it regresses on itself, hence the name - _autoregressive_.
+
+An autoregressive model of order **p**, abbreviated **AR** ( _p_ ), according to [1]:
+
+ * x<sub>t</sub> = φ<sub>1</sub> * x<sub>t−1</sub> + φ<sub>2</sub> * x<sub>t−2</sub> +···+φ<sub>p</sub> * x<sub>t−p</sub> + w<sub>t</sub> <---- **(a)**
+where x<sub>t</sub> is stationary, w<sub>t</sub> ∼ wn(0, σ<sub>w</sub><sup>2</sup> ), and φ<sub>1</sub>, φ<sub>2</sub>, . . . , φ<sub>p</sub> are constants (φ<sub>p</sub> !=  0).
+
+The mean of x<sub>t</sub> is zero. If the mean, μ, of x<sub>t</sub> is not zero, replace x<sub>t</sub> by x<sub>t</sub> − μ in **(a)** or write
+
+x<sub>t</sub> − μ = φ<sub>1</sub> * (x<sub>t-1</sub> −μ)+φ<sub>2</sub>(x<sub>t-2</sub> −μ)+···+φ<sub>p</sub> * (x<sub>t-p</sub> −μ) + w<sub>t</sub>,
+
+* x<sub> = α + φ<sub>1</sub>x<sub>t-1</sub> +φ<sub>2</sub>x<sub>t-2</sub> +···+φ<sub>p</sub>x<sub>t-p</sub> +w<sub>t</sub>
+
+where α = μ(1 − φ<sub>1</sub> − · · · − φ<sub>p</sub>).
+
+### MA
+
+MA(q) model uses past errors as the explanatory variables. The MA(q) model as per [2]:
+
+![MA](ma.png)
+
+Here _μ_ is the mean of the series, _θ_<sub>j</sub> (j=1,2,...,q) are the model parameters and _q_ is the order of the model. 
+
+### ARIMA 
+To remove non-stationarity the finite differencing is applied to the data points [8]. The ARIMA(_p_,_d_,_q_) as defined in [2] has:
+
+* _p_, _d_ and _q_ are integers greater than or equal to zero and are respectively the orders of the autoregressive, integrated, and moving average components of the model.
+* The integer _d_ controls the level of differencing. When _d_ = 0, then it reduces to an ARMA(_p_,_q_) model.
+* ARIMA(_p_,0,0) is the AR(_p_) model 
+* ARIMA(0,0,_q_) is the MA(_q_) model.
+* ARIMA(0,1,0), when y<sub>t</sub> = y<sub>t−1</sub> +ε<sub>t</sub>, becomes the _Random Walk_ model [2].
+
 ## Box-Jenkins Methodology for ARIMA models
+
+The methodology for selecting (_p_,_d_,_q_) parameters involves steps outlined bellow. It is an iterative aproach where results can be also be crossvalidated with other models like _SVM._
+
+ 1. Postulate a general class of ARIMA model
+ 2. Identify the model, which can be tentatively entertained
+ 3. Estimate parameters in the tentatively entertained model
+ 4. Diagnosis Checking: Is the model adequate? YES: do _5_. NO: do _2_.
+ 5. Use this model to generate forecast
 
 ## SVM application to time series analisys
 
-The theory of Support Vector Machines was develop by applied mathematins from Soviet Union Vapnik, Chervonenkis and others [2]. The Vapnic later worked in Bell Labs. The SVM differs from other methods besause there are no probabalistic concepts emploied: it feels like typical Computer Sciense take on the problem of classification. The classification method in financial time series analisys can be employed if we consider that problem can be formulated the following way: given the history of financial instrument perdict the direction - will it be up or down. The _Up_ or _Down_ becomes categorical variables and a classification methods can be used.
+The theory of Support Vector Machines was develop by applied mathematitions from Soviet Union: Vapnik, Chervonenkis and others [2]. Vapnik later worked in Bell Labs. The SVM differs from other methods besause there are no probabalistic concepts employed: it feels like typical Computer Sciense take on the problem of classification. The classification method in financial time series analisys can be used if we consider that problem can be formulated the following way: given the history of financial instrument perdict the direction - will it be up or down. The _Up_ or _Down_ becomes categorical variables and a classification methods can be used.
 
-To fing the hyperplane separating two classes the input space shall be mapped nonlinery into a higher dimensional feature space. Because of this the quality and complexity of SVM solution does not depend directly on the input space [2].
+To find the hyperplane separating two classes the input space shall be mapped nonlinery into a higher dimensional feature space. Because of this the quality and complexity of SVM solution does not depend directly on the input space [2].
 The training process is solving a linearly constrained quadratic programming problem. The SVM solution is always unique and globally optimal. But the large training set requires an enormous amount of computatative power because of the increased time complexity of the solution [2].
 
 The [2] includes SVM into set of Time Series forecasting indespensible in cross - validations with other forecasting methods.
-The [7] concludes that SVM model achives better forecasting accuracy in terms of different evaluation measure during the validation phase during both the training phase and the validation phase.
 
+The [7] concludes that SVM model achives better forecasting accuracy in terms of different evaluation measure during the validation phase during both the training phase and the validation phase.
 
 ## Deep learning and neural networks application
 
@@ -84,10 +128,9 @@ Deep learning neural networks characterized by these three relevant capabilities
 * capable of learning the arbitrary mappings of inputs to outputs
 * able to automatically extract patterns in inputs that spans over long sequences
 
-In time series, time isn’t just a metric, but a primary axis. This additional dimension represents both an opportunity and a constraint for time series data because it provides a source of additional information but makes time series problems challenging. 
-Neural networks can be useful for time series forecasting problems by eliminating the immediate need for massive feature engineering processes, data scaling procedures, and the need differencing to make the data stationary.
+The use of Neural networks for time series forecasting helps to remove manual feature engineering, data scaling, and differencing to make the data stationary.
 The Recurrent Neural Networks applyed to time series related tasks like language modeling and machine translation were succesful but RNN are difficult to train: during back propagation, recurrent neural networks suffer from the vanishing gradient problem. The vanishing gradient problem is when the gradient shrinks as it back propagates through time. The evolutions of this aproach are Long Short-Term Memory (LSTM) and Gated Recurrent Units (GRU). The LSTM and GRU offers the solution to short-term memory in the form of gates that can regulate the flow of information and can learn which data in a sequence is important to keep or throw away passing only relevant information down the chain of sequences of makeing predictions. 
-The succesfull applications of Convolutional Neural Networks and specifically new Temporal Convolutional Networks Architecture to analisys of video streams described in [6]. The article provides convinsing empirical evidense that TCNs exhibit longer memory than recurrent architectures with the same capacity and outperform generic recurrent architectures such as LSTMs and GRUs. But how one would compare the performance of many forecasts?
+The succesfull applications of Convolutional Neural Networks and specifically new Temporal Convolutional Networks Architecture to analisys of video streams described in [6]. The article provides an empirical evidense that TCN exhibits longer memory compared to recurrent architectures with the same capacity and outperforms generic recurrent architectures such as LSTMs and GRUs. But how one would compare the performance of many forecasts?
 
 ## Measure of performance of the forecasts
 
@@ -124,19 +167,23 @@ Please refer to [2] for formulas for each measure and let's consider important p
   * Values are between 0 ≤ U≤ 1; U=0 means a perfect fit.
   * For assessing good forecast accuracy, it is desirable that the U-statistic is close to zero.
 
-| Measure/properties                      | MFE | MAE | MAPE | MPE | MSE | SSE | SMSE | RMSE | NMSE | TU-s |
-| :--                                     | --  | --  | ---  | --  | --- | --- | ---  | ---  | ---  | ---  |
-| shows error direction                   | +   | -   | -    | +   | -   | -   | +    | -    | -    | -    |
-| penalize extreme errors                 | -   | -   | -    | -   | +   | +   | +    | +    | +    | -    |
-| positive and negative errors cancel out | +   | -   | -    | +   | -   | -   | +    | -    | -    | -    |
-| depends on the scale of measurement     | +   | +   | +    | +   | +   | +   | +    | +    | +    | +    |
-| affected by data transformation         | +   | +   | +    | +   | +   | +   | +    | +    | +    | +    |
+| Measure/properties                      | MFE | MAE | MAPE | MPE | MSE | SSE | SMSE | RMSE | NMSE | TU-s |   |
+| :--                                     | --  | --  | ---  | --  | --- | --- | ---  | ---  | ---  | ---  |   |
+| shows error direction                   | +   | -   | -    | +   | -   | -   | +    | -    | -    | -    |   |
+| penalize extreme errors                 | -   | -   | -    | -   | +   | +   | +    | +    | +    | -    |   |
+| positive and negative errors cancel out | +   | -   | -    | +   | -   | -   | +    | -    | -    | -    |   |
+| depends on the scale of measurement     | +   | +   | +    | +   | +   | +   | +    | +    | +    | +    |   |
+| affected by data transformation         | +   | +   | +    | +   | +   | +   | +    | +    | +    | +    |   |
 
 Any time series analysis have to use more then one performance verification to make sure selected model is adequate.
 
-## Applied analysis with R: libraries available
+## Applied analysis with R and python: libraries available
+The `R` is the open source functional language used in statistical programming ecosystem containing many Statistical Learning methods implementations. It is available for Windows, Linux, FreeBSD, Mac OSX and can be compiled  The power of `R` is in the wast number of libraries containing real and simulated datasets and functions. The general functions can manipulate datasets and draw plots. The statistical model fit and analysis functions provide ability to fit models and gage the errors and model fit parameters. The loops and other constructs allow to build complex data driven applications. To follow Box Jenkins Methodology the programming system has to iterate over several methods, compare the performance results and recommend severa leading models. This all can be done in one `R` programm. However `R` has it's own limitaions and the most important is the one related to the fact that `R` runtime has to fit all initial, intermediate and resulting data in a memory of the single computer system. It may not always be possible because of the size of the dataset.
+
 ### ARIMA
+
 ### SVM
+
 ### ANN
 
 ## The plan for Log return analisys of daily time series in the Course Project
