@@ -95,7 +95,7 @@ Here _μ_ is the mean of the series, _θ_<sub>j</sub> (j=1,2,...,q) are the mode
 To remove non-stationarity the finite differencing is applied to the data points [8]. The ARIMA(_p_,_d_,_q_) as defined in [2] has:
 
 * _p_, _d_ and _q_ are integers greater than or equal to zero and are respectively the orders of the autoregressive, integrated, and moving average components of the model.
-* The integer _d_ controls the level of differencing. When _d_ = 0, then it reduces to an ARMA(_p_,_q_) model.
+* The integer _d_ controls the level of differencing[8]. When _d_ = 0, then it reduces to an ARMA(_p_,_q_) model.
 * ARIMA(_p_,0,0) is the AR(_p_) model 
 * ARIMA(0,0,_q_) is the MA(_q_) model.
 * ARIMA(0,1,0), when y<sub>t</sub> = y<sub>t−1</sub> +ε<sub>t</sub>, becomes the _Random Walk_ model [2].
@@ -178,13 +178,32 @@ Please refer to [2] for formulas for each measure and let's consider important p
 Any time series analysis have to use more then one performance verification to make sure selected model is adequate.
 
 ## Applied analysis with R and python: libraries available
-The `R` is the open source functional language used in statistical programming ecosystem containing many Statistical Learning methods implementations. It is available for Windows, Linux, FreeBSD, Mac OSX and can be compiled  The power of `R` is in the wast number of libraries containing real and simulated datasets and functions. The general functions can manipulate datasets and draw plots. The statistical model fit and analysis functions provide ability to fit models and gage the errors and model fit parameters. The loops and other constructs allow to build complex data driven applications. To follow Box Jenkins Methodology the programming system has to iterate over several methods, compare the performance results and recommend severa leading models. This all can be done in one `R` programm. However `R` has it's own limitaions and the most important is the one related to the fact that `R` runtime has to fit all initial, intermediate and resulting data in a memory of the single computer system. It may not always be possible because of the size of the dataset.
+The `R` is the open source functional language used in statistical programming ecosystem. A lot of Statistical Learning methods are implemented by different contributors and distributed as libraries. It is available for Windows, Linux, FreeBSD, Mac OSX and can be compiled to almost any OS. The power of `R` is in the wast number of libraries containing real and simulated datasets and functions. The general functions can manipulate datasets and draw plots. The statistical model fit and analysis functions provide ability to fit models and gauge the errors and model fit parameters. The loops and other constructs allow to build complex data driven applications. To follow Box Jenkins Methodology the programming system has to iterate over several methods, compare the performance results and recommend severa leading models. This all can be done in one `R` programm. However `R` has it's own limitaions and the most important is the one related to the fact that `R` runtime has to fit all initial, intermediate and resulting data in a memory of the single computer system. It may not always be possible because of the size of the dataset.
+
+The `python` becomes another main stream language for statistical programming. The libraries are not so numerous and less mature but python has advantage of being a standard _glue_ language for systems integration. Most of the deep learning systems like `TensorFlow` choose pyhton as an API language to define computational parameters, define models, prepare intermidiate results and supply hyperparameters structure.
+
+Let's examine the libraries avaiable for the methods mentioned here.
 
 ### ARIMA
 
+The two packages found by google search are `forecast` and `tseries`. Some functions avaiable in `stats` help to decompose a time series into seasonal, trend and irregular components. To mention a few:
+
+* `forecast`
+  * `tsclean` - Identify and replace outliers and missing values in a time series
+  * `accuracy` - to gauge measures of the forecast accuracy
+
+* `tseries`
+  * `adf.test` - Augmented Dickey-Fuller test to help to determine if series is stationary
+  * `kpss` - Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test for the null hypothesis that x is level or trend stationary
+* `stats`
+  * `stl` - decompose a time series into seasonal, trend and irregular components
+  * `decompose` - decompose a time series into seasonal, trend and irregular components using moving averages
+  
 ### SVM
+The `R` package `e1071` contain methods for linear, polynomial, radial basis function, and sigmoidal kernels and  k-fold cross validation
 
 ### ANN
+
 
 ## The plan for Log return analisys of daily time series in the Course Project
 
