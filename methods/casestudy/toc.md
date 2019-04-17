@@ -204,16 +204,18 @@ The `R` package `e1071` contain methods for linear, polynomial, radial basis fun
 
 ### ANN
 
+The main library to be use in in the final project for Time Series Analysis and Forecasting is `TensorFlow`. But instead of using it directly the `keras` _metaframework_ employed to inteface `TensorFlow`. The `keras` also works with `Microsoft Cognitive Toolkit`, `Theano`, or `PlaidML`. The main supporting libraries for data cleaning, matrix manipulations and visual effects are: `collections`, `pandas`,`numpy`, `matplotlib`.
 
-## The plan for Log return analisys of daily time series in the Course Project
+## Conclusion
+The Time Series analisys and forecasting these days become easyer. Many scientist and engineers contributing to the development of statistical programming systems like `R`. The firms and universities making available the interanlly developed software as open source. The books, tutorials and lecture videos are openly available. The entry point becomes low and accessible to everyone who can have efford time and have dedication. The massive adoption of stastistical methodology has potential to succed on the massive scale. However causion need to be taken becasuse the results require interpretation and understanding of where things can go wrong. The statistical thinking has to be empoloyed: the results are never defenitive 1 or 0 and everithing has certain probabality. 
 
 ## Literature
 
-[1] Robert H. Shumway David S. Stoffer, Time Series Analysis and Its Applications With R Examples, Fourth Edition
-[2] Ratnadip Adhikari R. K. Agrawal, An Introductory Study on Time Series Modeling and Forecasting
-[3] Analysis of Financial Time Series, Financial Econometrics, RUEY S. TSAY University of Chicago
-[4] Tsay, Ruey S., An introduction to analysis of financial data with R/Ruey S. Tsay. p. cm. Includes index. ISBN 978-0-470-89081-3
-[5] An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling, Shaojie Bai, J. Zico Kolter, Vladlen Koltun
-[6] Temporal Convolutional Networks: A Unified Approach to Action Segmentation by Colin Lea Rene ́ Vidal Austin Reiter Gregory D. Hager, Johns Hopkins University
-[7] A comparison of performance of several artificial intelligence methods for forecasting monthly discharge time series by Wen-Chuan Wang, Kwok-Wing Chau, Chun-Tian Cheng, Lin Qiu, Journal of Hydrology, Vol. 374, No. 3-4, 2009, pp 294–306
-[8] https://people.duke.edu/~rnau/411diff.htm
+* [1] Robert H. Shumway David S. Stoffer, Time Series Analysis and Its Applications With R Examples, Fourth Edition
+* [2] Ratnadip Adhikari R. K. Agrawal, An Introductory Study on Time Series Modeling and Forecasting
+* [3] Analysis of Financial Time Series, Financial Econometrics, RUEY S. TSAY University of Chicago
+* [4] Tsay, Ruey S., An introduction to analysis of financial data with R/Ruey S. Tsay. p. cm. Includes index. ISBN 978-0-470-89081-3
+* [5] An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling, Shaojie Bai, J. Zico Kolter, Vladlen Koltun
+* [6] Temporal Convolutional Networks: A Unified Approach to Action Segmentation by Colin Lea Rene ́ Vidal Austin Reiter Gregory D. Hager, Johns Hopkins University
+* [7] A comparison of performance of several artificial intelligence methods for forecasting monthly discharge time series by Wen-Chuan Wang, Kwok-Wing Chau, Chun-Tian Cheng, Lin Qiu, Journal of Hydrology, Vol. 374, No. 3-4, 2009, pp 294–306
+* [8] https://people.duke.edu/~rnau/411diff.htm
