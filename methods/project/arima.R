@@ -3,37 +3,58 @@ log_ret <- function(P) {c(NA, log(P[2:length(P)]/P[1:(length(P)-1)]))}
 airlaines.file <- 'data/stock_market_data-AAL.csv'
 rel.file <- 'data/RELIANCE.csv'
 
-df._aal <- read.csv(airlaines.file, colClasses = c('numeric','Date','numeric','numeric','numeric','numeric'))
+df.aal <- read.csv(airlaines.file, colClasses = c('numeric','Date','numeric','numeric','numeric','numeric'))
 df.rel <- read.csv(rel.file, colClasses = c('Date','numeric','numeric','numeric','numeric','numeric','numeric'))
-# AAL sorted backwards
+
 library(dplyr)
 
-
-df._aal <- df._aal %>% select(Date, Close)
-df.aal <- df._aal[order(df._aal$Date),]
+df.aal <- df.aal %>% select(Date, Close)
+# AAL sorted backwards
+df.aal <- df.aal[order(df.aal$Date),]
 
 # AAL returns
 df.aal$ar_ret <- ar_ret(df.aal$Close)
 df.aal$log_ret <- log_ret(df.aal$Close)
-# na.omit(df.aal$ret)
+df.aal <- na.omit(df.aal)
+
+# REL returns
+df.rel <- df.rel %>% select(Date, Close)
+df.rel$ar_ret <- ar_ret(df.rel$Close)
+df.rel$log_ret <- log_ret(df.rel$Close)
+df.rel <- na.omit(df.rel)
+
+
 library(tseries)
 # https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test
 # ADF test on ariphmetic return
-print(adf.test(na.omit(df.aal$ar_ret)))
+print(adf.test(df.aal$ar_ret))
 # ADF test on log return
-print(adf.test(na.omit(df.aal$log_ret)))
+print(adf.test(df.aal$log_ret))
 # ADF test on Close
-print(adf.test(na.omit(df.aal$Close)))
-# Realiance returns
-df.rel$ar_ret <- ar_ret(df.rel$Close)
-df.rel$log_ret <- log_ret(df.rel$Close)
-# na.omit(df.aal$ret)
+print(adf.test(df.aal$Close))
+library(ggplot2)
+# Plot Close
+ggplot(df.aal, aes(df.aal$Date, y = Close, color = variable)) + 
+  geom_line(aes(y = df.aal$Close, col = "Close"))
+# Plot Returns
+ggplot(df.aal, aes(df.aal$Date, y = Returns, color = variable)) + 
+  geom_line(aes(y = df.aal$ar_ret, col = "ar_ret")) +  
+  geom_line(aes(y = df.aal$log_ret, col = "log_ret"))
+
 # ADF test on return
-print(adf.test(na.omit(df.rel$ar_ret)))
-print(adf.test(na.omit(df.rel$log_ret)))
+print(adf.test(df.rel$ar_ret))
+print(adf.test(df.rel$log_ret))
 # ADF test on Close
-print(adf.test(na.omit(df.rel$Close)))
+print(adf.test(df.rel$Close))
 #
+# Plot Close
+ggplot(df.rel, aes(df.rel$Date, y = Close, color = variable)) + 
+  geom_line(aes(y = df.rel$Close, col = "Close"))
+# Plot Returns
+ggplot(df.rel, aes(df.rel$Date, y = Returns, color = variable)) + 
+  geom_line(aes(y = df.rel$ar_ret, col = "ar_ret")) +  
+  geom_line(aes(y = df.rel$log_ret, col = "log_ret"))
+
 library(stats)
 aal.arima <- arima(x = df.aal$ar_ret, order = c(2,0,2) )
 print(coef(aal.arima))
