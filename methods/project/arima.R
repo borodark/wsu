@@ -55,8 +55,14 @@ ggplot(df.rel, aes(df.rel$Date, y = Returns, color = variable)) +
   geom_line(aes(y = df.rel$ar_ret, col = "ar_ret")) +  
   geom_line(aes(y = df.rel$log_ret, col = "log_ret"))
 
+df100 <- df.aal[99:200,]
+ggplot(df100, aes(df100$Date, y = Returns, color = variable)) + 
+  geom_line(aes(y = df100$ar_ret, col = "ar_ret")) +  
+  geom_line(aes(y = df100$log_ret, col = "log_ret"))
+
 library(stats)
 aal.arima <- arima(x = df.aal$ar_ret, order = c(2,0,2) )
+accuracy(aal.arima)
 print(coef(aal.arima))
 print(summary(aal.arima))
 library(forecast)
