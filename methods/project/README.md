@@ -248,5 +248,52 @@ Let's see about `Log Returns`
 
 For `Log` returns the best model is ARIMA(_p_ = 4, _d_ = 0, _q_ = 5). Same: _d_ is 0 because the `Log Returns` is already a differentiated measure.
 
+Let's asses the selected model parameters.
+
+##### Arithemtic returns fit
+
+```
+> print(aal.ar.autoarima)
+Series: df.aal[1:3000, ]$ar_ret 
+ARIMA(3,0,3) with non-zero mean 
+
+Coefficients:
+         ar1     ar2      ar3      ma1      ma2     ma3    mean
+      0.5436  0.5205  -0.8897  -0.5292  -0.4805  0.8788  0.0013
+s.e.  0.0424  0.0552   0.0325   0.0440   0.0568  0.0374  0.0008
+
+sigma^2 estimated as 0.001958:  log likelihood=5100.31
+AIC=-10184.62   AICc=-10184.57   BIC=-10136.57
+```
+
+##### Log Returns Fit
+
+```
+> print(aal.ar.autoarima.log)
+Series: df.aal[1:3000, ]$log_ret 
+ARIMA(4,0,5) with zero mean 
+
+Coefficients:
+         ar1     ar2     ar3      ar4      ma1      ma2      ma3     ma4      ma5
+      0.1674  0.1579  0.1176  -0.8557  -0.1406  -0.1308  -0.1099  0.8818  -0.0110
+s.e.  0.2363  0.2416  0.1131   0.1287   0.2400   0.2168   0.0880  0.1263   0.0422
+
+sigma^2 estimated as 0.001914:  log likelihood=5135.17
+AIC=-10250.35   AICc=-10250.27   BIC=-10190.28
+```
+TODO ALi - explain what model is better comparing AIC, BIC and other params??
+
+#### Assessing Residuals of the Arithmetic and Log Returns fits
+
+Arithemtic Returns Fit Residuals:
+
+![Arithmetic Returns fit residuals](residuals_ar.svg)
+
+Log Returns Fit Residuals:
+
+![Log Returns fit residuals](residuals_logs.svg)
+
+
 
 #### Find the best model for 5500 observations of `REL` 
+
