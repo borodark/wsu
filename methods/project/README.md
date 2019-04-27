@@ -4,16 +4,28 @@ By
 * Igor Ostaptchenko <igor_ost@wayne.edu>
 * Ali Milhem <gu...@wayne.edu>
 
+The `R` source for this report is: ![arima.R](arima.R)
+The datasets: 
+* AAL Daily: ![data/stock_market_data-AAL.csv](data/stock_market_data-AAL.csv)
+* REL Daily: ![data/RELIANCE.csv](data/RELIANCE.csv)
+
+
 ## Time Series Analisys
+
+TODO Ali
 
 ## Finantial data
 
+TODO Ali - describe common sources and properties of fin tech data
+
 ### AAL
+TODO Ali - describe this dataset - chart shows only `close`
 
 ![American Airlines](aal_close.svg)
 
 ### REL
 
+TODO Ali 
 ![Reliance](rel_close.svg)
 
 ## Fitting ARIMA
@@ -93,7 +105,7 @@ TODO Ali - write interpretation
 
 ![Reliance](ret_zoom.svg)
 
-##### The Augmented Dickey-Fuller Test on Returns
+#### The Augmented Dickey-Fuller Test on Returns
 
 TODO Ali - write interpretation comparing values with ADF of `Close` above??
 
@@ -148,3 +160,93 @@ In adf.test(df.rel$log_ret, alternative = "stationary") :
 ```
 
 Conclusion: the Arithmetic and Log Returns hastime series is stationary properties thus allowing to apply ARIMA class models to forecast the time series.
+
+###  Use Auto.Arima
+
+The `R`s `forecast` package provides `auto.arima` function to select best ARIMA model according to either AIC, AICc or BIC value. The function conducts a search over possible model within the order constraints provided.
+
+The first 3000 returns of `AAL` dataset will be used to train the model.
+
+#### Find the best model for 3000 observations of `AAL` 
+
+```
+> aal.ar.autoarima <- auto.arima(df.aal[1:3000,]$ar_ret,
++                                max.order=300,
++                                trace = TRUE)
+
+ Fitting models using approximations to speed things up...
+
+ ARIMA(2,0,2) with non-zero mean : -10161.53
+ ARIMA(0,0,0) with non-zero mean : -10158.63
+ ARIMA(1,0,0) with non-zero mean : -10161.04
+ ARIMA(0,0,1) with non-zero mean : -10160
+ ARIMA(0,0,0) with zero mean     : -10158.25
+ ARIMA(1,0,2) with non-zero mean : -10158.91
+ ARIMA(2,0,1) with non-zero mean : -10158.22
+ ARIMA(3,0,2) with non-zero mean : -10164.8
+ ARIMA(3,0,1) with non-zero mean : -10156.83
+ ARIMA(4,0,2) with non-zero mean : -10155.13
+ ARIMA(3,0,3) with non-zero mean : -10177.41
+ ARIMA(2,0,3) with non-zero mean : -10154.9
+ ARIMA(4,0,3) with non-zero mean : -10164.45
+ ARIMA(3,0,4) with non-zero mean : -10164.72
+ ARIMA(2,0,4) with non-zero mean : -10156.56
+ ARIMA(4,0,4) with non-zero mean : -10162.49
+ ARIMA(3,0,3) with zero mean     : -10177.19
+
+ Now re-fitting the best model(s) without approximations...
+
+ ARIMA(3,0,3) with non-zero mean : -10184.57
+
+ Best model: ARIMA(3,0,3) with non-zero mean 
+ ```
+
+For `ariphmetic` returns the best model is ARIMA(_p_ =3, _d_ = 0, _q_ = 3). Note that _d_ is 0 because the `Returns` is already a differentiated measure.
+
+Let's see about `Log Returns`
+
+```
+> aal.ar.autoarima.log <- auto.arima(df.aal[1:3000,]$log_ret,
++                                max.order=300,
++                                trace = TRUE)
+
+ Fitting models using approximations to speed things up...
+
+ ARIMA(2,0,2) with non-zero mean : -10229.61
+ ARIMA(0,0,0) with non-zero mean : -10226.48
+ ARIMA(1,0,0) with non-zero mean : -10228.72
+ ARIMA(0,0,1) with non-zero mean : -10227.68
+ ARIMA(0,0,0) with zero mean     : -10228.36
+ ARIMA(1,0,2) with non-zero mean : -10226.69
+ ARIMA(2,0,1) with non-zero mean : -10226.01
+ ARIMA(3,0,2) with non-zero mean : -10239.06
+ ARIMA(3,0,1) with non-zero mean : -10224.36
+ ARIMA(4,0,2) with non-zero mean : -10220.88
+ ARIMA(3,0,3) with non-zero mean : -10244.42
+ ARIMA(2,0,3) with non-zero mean : -10222.57
+ ARIMA(4,0,3) with non-zero mean : -10230.23
+ ARIMA(3,0,4) with non-zero mean : -10230.58
+ ARIMA(2,0,4) with non-zero mean : -10222.16
+ ARIMA(4,0,4) with non-zero mean : -10246.03
+ ARIMA(5,0,4) with non-zero mean : -10245.72
+ ARIMA(4,0,5) with non-zero mean : -10247.3
+ ARIMA(3,0,5) with non-zero mean : -10243.32
+ ARIMA(5,0,5) with non-zero mean : -10245.82
+ ARIMA(4,0,5) with zero mean     : -10249.5
+ ARIMA(3,0,5) with zero mean     : -10245.2
+ ARIMA(4,0,4) with zero mean     : -10240.45
+ ARIMA(5,0,5) with zero mean     : -10246.98
+ ARIMA(3,0,4) with zero mean     : -10232.42
+ ARIMA(5,0,4) with zero mean     : -10248.12
+
+ Now re-fitting the best model(s) without approximations...
+
+ ARIMA(4,0,5) with zero mean     : -10250.27
+
+ Best model: ARIMA(4,0,5) with zero mean     
+ ```
+
+For `Log` returns the best model is ARIMA(_p_ = 4, _d_ = 0, _q_ = 5). Same: _d_ is 0 because the `Log Returns` is already a differentiated measure.
+
+
+#### Find the best model for 5500 observations of `REL` 

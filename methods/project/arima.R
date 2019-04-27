@@ -38,7 +38,9 @@ log_ret <- function(P) {c(NA, log(P[2:length(P)]/P[1:(length(P)-1)]))}
 # AAL returns
 df.aal$ar_ret <- ar_ret(df.aal$Close)
 df.aal$log_ret <- log_ret(df.aal$Close)
+head(df.aal)
 df.aal <- na.omit(df.aal)
+
 # REL returns
 df.rel$ar_ret <- ar_ret(df.rel$Close)
 df.rel$log_ret <- log_ret(df.rel$Close)
@@ -83,10 +85,12 @@ print(adf.test(df.rel$log_ret, alternative = "stationary"))
 
 library(stats)
 library(forecast)
-#
+#6. Fit ARIMA
+
 aal.ar.autoarima <- auto.arima(df.aal[1:3000,]$ar_ret,
                                max.order=300,
                                trace = TRUE)
+
 aal.ar.autoarima.log <- auto.arima(df.aal[1:3000,]$log_ret,
                                max.order=300,
                                trace = TRUE)
@@ -135,7 +139,6 @@ plot(forecast(aal.model,h=14), include=28)
 
 # Apply fitted model to later data
 aal.model2 <- Arima(df.aal.test$ar_ret,model=aal.model)
-
 # Forecast accuracy measures on the log scale.
 # in-sample one-step forecasts.
 accuracy(aal.model)
