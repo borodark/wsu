@@ -291,7 +291,7 @@ Arithemtic Returns Fit Residuals:
 
 Log Returns Fit Residuals:
 
-![Log Returns fit residuals](residuals_logs.svg)
+![Log Returns fit residuals](residuals_log.svg)
 
 
 
