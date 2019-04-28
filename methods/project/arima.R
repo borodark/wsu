@@ -106,11 +106,10 @@ lines(df.aal$ar_ret)
 aal.ar.autoarima.log <- auto.arima(df.aal[1:3000,]$log_ret,
                                max.order=300,
                                trace = TRUE)
-tsdisplay(residuals(aal.ar.autoarima.log), lag.max=15)
 print(summary(aal.ar.autoarima.log))
 
 f_log <- forecast(aal.ar.autoarima.log,h=14)
-checkresiduals(f_log)#aal.ar.autoarima)
+checkresiduals(f_log)
 plot(f_log, include= 30,
      ylab = 'Log Returns', 
      xlab = 'Day', 
