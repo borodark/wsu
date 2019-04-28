@@ -362,11 +362,18 @@ Log Returns Fit Residuals:
 Training set 0.0002679830 0.04368722 0.02885307      NaN      Inf 0.7083174 0.0007081013
 Test set     0.0002783467 0.01844228 0.01419282 97.74705 97.74705 0.3484213           NA
 ```
+
 TODO ALI: Please find how to interpret Errors?
 
 ![](for_log_aal.svg)
 
 #### Find the best model for 5500 observations of `REL` 
 
+Maybe not?
+
+## Fitting time series using ANN
+
+
+![Jupiter Notebook](RNN/RNN_LSTM_GRU.ipynb)
 
 
