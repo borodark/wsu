@@ -2,7 +2,7 @@
 This is the report on the course final project for DSA 6100: Statistical Methods for Data Science and Analytics
 By 
 * Igor Ostaptchenko <igor_ost@wayne.edu>
-* Ali Milhem <gu5993@wayne.edu>
+* Ali Milhem <gu599@wayne.edu>
 
 The `R` source for this report is: ![arima.R](arima.R)
 The datasets: 
