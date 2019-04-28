@@ -86,63 +86,57 @@ print(adf.test(df.rel$log_ret, alternative = "stationary"))
 library(stats)
 library(forecast)
 #6. Fit ARIMA
-
 aal.ar.autoarima <- auto.arima(df.aal[1:3000,]$ar_ret,
                                max.order=300,
                                trace = TRUE)
+print(summary(aal.ar.autoarima))
+f_ar <- forecast(aal.ar.autoarima, h= 14)
+checkresiduals(f_ar)
+#
+accuracy(f_ar,x=df.aal[3001:3014,]$ar_ret)
+#
+plot(f_ar, include= 30,
+     ylab = 'Ariphmetic Returns', 
+     xlab = 'Day', 
+     main = 'Arithmetic Returns: Actual vs Predicted')
+lines(df.aal$ar_ret)
 
+
+# Log Returns
 aal.ar.autoarima.log <- auto.arima(df.aal[1:3000,]$log_ret,
                                max.order=300,
                                trace = TRUE)
-
-print(aal.ar.autoarima)
-print(aal.ar.autoarima.log)
-
-tsdisplay(residuals(aal.ar.autoarima), lag.max=15)
 tsdisplay(residuals(aal.ar.autoarima.log), lag.max=15)
-print(summary(aal.ar.autoarima))
 print(summary(aal.ar.autoarima.log))
 
-test_f <- forecast(aal.ar.autoarima,h=14)
-checkresiduals(test_f)#aal.ar.autoarima)
-plot(test_f, include= 30,
-     ylab = 'Ariphmetic Returns', 
-     xlab = 'Day', 
-     main = 'Arithmetic Returns: Actual vs Prodicted')
-lines(df.aal$ar_ret)
-
-test_f_log <- forecast(aal.ar.autoarima.log,h=14)
-checkresiduals(test_f_log)#aal.ar.autoarima)
-plot(test_f_log, include= 30,
+f_log <- forecast(aal.ar.autoarima.log,h=14)
+checkresiduals(f_log)#aal.ar.autoarima)
+plot(f_log, include= 30,
      ylab = 'Log Returns', 
      xlab = 'Day', 
-     main = 'Log Returns: Actual vs Prodicted')
+     main = 'Log Returns: Actual vs Predicted')
 lines(df.aal$log_ret)
+accuracy(f_log, x=df.aal[3001:3014,]$log_ret)
 #
-# Fit REL
+# Fit REL ar
 rel.ar.autoarima <- auto.arima(df.rel[1:5500,]$ar_ret,
                                stepwise=FALSE,
                                parallel = TRUE, 
                                num.cores = 4,
                                max.order=300)
 print(rel.ar.autoarima)
-plot(forecast(rel.ar.autoarima,h=10),include = 30)
-
-#AAL Training set
-df.aal.train <- head(df.aal,3000)
-#AAL Testinng set
-df.aal.test <- tail(df.aal,length(df.aal)-3000)
-
-aal.model <- Arima(df.aal.train$ar_ret,order=c(3,0,3))
-plot(forecast(aal.model,h=14), include=28)
-#lines(df.aal.test$ar_ret)
-
-# Apply fitted model to later data
-aal.model2 <- Arima(df.aal.test$ar_ret,model=aal.model)
-# Forecast accuracy measures on the log scale.
-# in-sample one-step forecasts.
-accuracy(aal.model)
-# out-of-sample one-step forecasts.
-accuracy(aal.model2)
-# out-of-sample multi-step forecasts
-accuracy(forecast(aal.model,h=14,lambda=NULL),df.aal.test$ar_ret)
+f_rel_ar <- forecast(rel.ar.autoarima,h=10)
+plot(f_rel_ar,include = 20)
+lines(df.rel$ar_ret)
+accuracy(f_rel_ar, x=df.rel[5501:5510,]$ar_ret)
+# fit REL log
+rel.log.autoarima <- auto.arima(df.rel[1:5500,]$log_ret,
+                               stepwise=FALSE,
+                               parallel = TRUE, 
+                               num.cores = 4,
+                               max.order=300)
+print(rel.log.autoarima)
+f_rel_log <- forecast(rel.log.autoarima,h=10)
+plot(f_rel_log,include = 20)
+lines(df.rel$log_ret)
+accuracy(f_rel_log, x=df.rel[5501:5510,]$log_ret)

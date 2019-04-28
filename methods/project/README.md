@@ -266,6 +266,46 @@ sigma^2 estimated as 0.001958:  log likelihood=5100.31
 AIC=-10184.62   AICc=-10184.57   BIC=-10136.57
 ```
 
+
+#### Forecasting AAL on Arithmetic Returns
+
+Lets run the forecast for 14 days ahead with the Residuals check
+```
+> f_ar <- forecast(aal.ar.autoarima, h= 14)
+> checkresiduals(f_ar)
+
+	Ljung-Box test
+
+data:  Residuals from ARIMA(3,0,3) with non-zero mean
+Q* = 13.101, df = 3, p-value = 0.004424
+
+Model df: 7.   Total lags used: 10
+```
+TODO ALI - interpret the residuals bellow
+
+##### Residuals of the Arithmetic and Log Returns fits
+
+Arithemtic Returns Fit Residuals:
+
+![Arithmetic Returns fit residuals](residuals_ar_aal.svg)
+
+##### The Forecast Errors 
+
+```
+> accuracy(f_ar,x=df.aal[3001:3014,]$ar_ret)
+                        ME       RMSE        MAE      MPE     MAPE      MASE
+Training set -1.406339e-05 0.04419841 0.02888782      NaN      Inf 0.7071239
+Test set     -7.936604e-04 0.01879774 0.01475044 106.2668 106.2668 0.3610654
+                  ACF1
+Training set 0.0137817
+Test set            NA
+```
+TODO ALI: Please find how to interpret Errors?
+
+![](for_ar_aal.svg)
+
+
+
 ##### Log Returns Fit
 
 ```
@@ -281,19 +321,15 @@ s.e.  0.2363  0.2416  0.1131   0.1287   0.2400   0.2168   0.0880  0.1263   0.042
 sigma^2 estimated as 0.001914:  log likelihood=5135.17
 AIC=-10250.35   AICc=-10250.27   BIC=-10190.28
 ```
+
+##### Residuals of the Log Returns fits
+
+![Log Returns fit residuals](residuals_log_aal.svg)
+
+
 TODO ALi - explain what model is better comparing AIC, BIC and other params??
 
-#### Assessing Residuals of the Arithmetic and Log Returns fits
-
-Arithemtic Returns Fit Residuals:
-
-![Arithmetic Returns fit residuals](residuals_ar.svg)
-
-Log Returns Fit Residuals:
-
-![Log Returns fit residuals](residuals_log.svg)
-
-
-
 #### Find the best model for 5500 observations of `REL` 
+
+
 
