@@ -373,7 +373,6 @@ Maybe not?
 
 ## Fitting time series using ANN
 
-
-![Jupiter Notebook](RNN/RNN_LSTM_GRU.ipynb)
-
-
+ Some!!!
+ TODO ALI
+ ![Jupiter Notebook](RNN/RNN_LSTM_GRU.ipynb)
