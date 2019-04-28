@@ -253,7 +253,7 @@ Let's asses the selected model parameters.
 ##### Arithemtic returns fit
 
 ```
-> print(aal.ar.autoarima)
+> print(summary(aal.ar.autoarima))
 Series: df.aal[1:3000, ]$ar_ret 
 ARIMA(3,0,3) with non-zero mean 
 
@@ -264,6 +264,12 @@ s.e.  0.0424  0.0552   0.0325   0.0440   0.0568  0.0374  0.0008
 
 sigma^2 estimated as 0.001958:  log likelihood=5100.31
 AIC=-10184.62   AICc=-10184.57   BIC=-10136.57
+
+Training set error measures:
+                        ME       RMSE        MAE MPE MAPE      MASE      ACF1
+Training set -1.406339e-05 0.04419841 0.02888782 NaN  Inf 0.7071239 0.0137817
+                        ME       RMSE        MAE MPE MAPE      MASE      ACF1
+Training set -1.406339e-05 0.04419841 0.02888782 NaN  Inf 0.7071239 0.0137817
 ```
 
 
@@ -283,33 +289,29 @@ Model df: 7.   Total lags used: 10
 ```
 TODO ALI - interpret the residuals bellow
 
-##### Residuals of the Arithmetic and Log Returns fits
+##### Residuals of the Arithmetic Return Fit
 
 Arithemtic Returns Fit Residuals:
 
 ![Arithmetic Returns fit residuals](residuals_ar_aal.svg)
 
-##### The Forecast Errors 
+##### The Arithemtic Return Forecast Errors 
 
 ```
 > accuracy(f_ar,x=df.aal[3001:3014,]$ar_ret)
-                        ME       RMSE        MAE      MPE     MAPE      MASE
-Training set -1.406339e-05 0.04419841 0.02888782      NaN      Inf 0.7071239
-Test set     -7.936604e-04 0.01879774 0.01475044 106.2668 106.2668 0.3610654
-                  ACF1
-Training set 0.0137817
-Test set            NA
+                        ME       RMSE        MAE      MPE     MAPE      MASE      ACF1
+Training set -1.406339e-05 0.04419841 0.02888782      NaN      Inf 0.7071239 0.0137817
+Test set     -7.936604e-04 0.01879774 0.01475044 106.2668 106.2668 0.3610654        NA
+> 
 ```
 TODO ALI: Please find how to interpret Errors?
 
 ![](for_ar_aal.svg)
 
-
-
 ##### Log Returns Fit
-
+TODO ALi - explain what model is better comparing AIC, BIC and other params??
 ```
-> print(aal.ar.autoarima.log)
+> print(summary(aal.ar.autoarima.log))
 Series: df.aal[1:3000, ]$log_ret 
 ARIMA(4,0,5) with zero mean 
 
@@ -320,14 +322,49 @@ s.e.  0.2363  0.2416  0.1131   0.1287   0.2400   0.2168   0.0880  0.1263   0.042
 
 sigma^2 estimated as 0.001914:  log likelihood=5135.17
 AIC=-10250.35   AICc=-10250.27   BIC=-10190.28
+
+Training set error measures:
+                      ME       RMSE        MAE MPE MAPE      MASE         ACF1
+Training set 0.000267983 0.04368722 0.02885307 NaN  Inf 0.7083174 0.0007081013
+                      ME       RMSE        MAE MPE MAPE      MASE         ACF1
+Training set 0.000267983 0.04368722 0.02885307 NaN  Inf 0.7083174 0.0007081013
+
 ```
 
-##### Residuals of the Log Returns fits
+#### Forecasting AAL on Log Returns
 
-![Log Returns fit residuals](residuals_log_aal.svg)
+Lets run the forecast for 14 days ahead with the Residuals check
 
+```
+> f_log <- forecast(aal.ar.autoarima.log,h=14)
+> checkresiduals(f_log)
 
-TODO ALi - explain what model is better comparing AIC, BIC and other params??
+	Ljung-Box test
+
+data:  Residuals from ARIMA(4,0,5) with zero mean
+Q* = 18.839, df = 3, p-value = 0.0002952
+
+Model df: 9.   Total lags used: 12
+```
+TODO ALI - interpret the residuals bellow
+
+##### Residuals of the Log Return Fit
+
+Log Returns Fit Residuals:
+
+![lopg Returns fit residuals](residuals_log_aal.svg)
+
+##### The Log Return Forecast Errors 
+
+```
+> accuracy(f_log, x=df.aal[3001:3014,]$log_ret)
+                       ME       RMSE        MAE      MPE     MAPE      MASE         ACF1
+Training set 0.0002679830 0.04368722 0.02885307      NaN      Inf 0.7083174 0.0007081013
+Test set     0.0002783467 0.01844228 0.01419282 97.74705 97.74705 0.3484213           NA
+```
+TODO ALI: Please find how to interpret Errors?
+
+![](for_log_aal.svg)
 
 #### Find the best model for 5500 observations of `REL` 
 
