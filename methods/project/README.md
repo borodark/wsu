@@ -3,6 +3,7 @@ This is the report on the course final project for DSA 6100: Statistical Methods
 By 
 * Igor Ostaptchenko <igor_ost@wayne.edu>
 * Ali Milhem <gu599@wayne.edu>
+TODO FIX THE EMAIL!!!
 
 The `R` source for this report is: ![arima.R](arima.R)
 The datasets: 
