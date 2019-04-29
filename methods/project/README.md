@@ -36,7 +36,7 @@ Close: is the closing price on that day when the market closed. We based our ana
 
 ### Stationarity
 
-Let's asses the Stationarity of AAL and REL `Close` price values 
+Let's asses the Stationarity of AAL `Close` price values 
 
 #### The Augmented Dickey-Fuller Test 
 For the daily `Close` prices of AAL time series :
@@ -48,18 +48,6 @@ For the daily `Close` prices of AAL time series :
 
 data:  df.aal$Close
 Dickey-Fuller = -1.4708, Lag order = 15, p-value = 0.8024
-alternative hypothesis: stationary
-```
-
-For the daily `Close` prices of REL time series :
-
-```
-> print(adf.test(df.rel$Close,alternative = "stationary"))
-
-	Augmented Dickey-Fuller Test
-
-data:  df.rel$Close
-Dickey-Fuller = -1.3671, Lag order = 17, p-value = 0.8464
 alternative hypothesis: stationary
 ```
 
