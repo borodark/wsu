@@ -258,13 +258,13 @@ Q* = 13.101, df = 3, p-value = 0.004424
 
 Model df: 7.   Total lags used: 10
 ```
-TODO ALI - interpret the residuals bellow
+
 
 ##### Residuals of the Arithmetic Return Fit
 A residual value is what is left ver after fitting a model. Residual values are equal to the difference between the observations and the corresponding fitted values: et=yt−^yt.
 In order for residual values to be useful, they should have the following properties:
 1. They sould not be correlated; otherwise, there is some information that is not used in the calculations.
-2. The should not be biased, which means that the mean of them should equal to zero.
+2. The should not be biased, which means that the mean of them should not equal to zero; which is the case in our analysis.
 
 
 Arithemtic Returns Fit Residuals:
