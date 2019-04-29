@@ -317,7 +317,12 @@ Q* = 18.839, df = 3, p-value = 0.0002952
 
 Model df: 9.   Total lags used: 12
 ```
-TODO ALI - interpret the residuals bellow
+Residual values in time series are not uncommon. A residual value is what is left ver after fitting a model. Residual values are equal to the difference between the observations and the corresponding fitted values: et=yt−^yt.
+In order for residual values to be useful, they should have the following properties:
+1. They sould not be correlated; otherwise, there is some information that is not used in the calculations.
+2. The should not be biased, which means that the mean of them should equal to zero.
+
+Our time series' residual values ...........???????
 
 ##### Residuals of the Log Return Fit
 
