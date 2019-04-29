@@ -17,10 +17,17 @@ Time series analysis is the techniques of processing data based on the assumptio
 
 ## Finantial data
 
-TODO Ali - describe common sources and properties of fin tech data
+Our purpose is to forcast the rate of return of American Airlines stock (AAL). We used the closing price starting from 09/27/2005 until 03/21/2019 as the basis f the analysis. We collected data from Yahoo Finance. The table include the following parameters: Date, Close, Open, High and Low. 
 
 ### AAL
-TODO Ali - describe this dataset - chart shows only `close`
+
+American Airlines Group Inc (AAL) operates as a network air carrier; providing air transportation for passengers and cargo. As of December 31, 2018, the company operated a mainline fleet of 956 aircraft, whch makes it a major American airline company, and that is why we chose it for analysis. The data set is composed of the following parameters:
+Date: on which the price is given.
+High: is the highest price on that day.
+Low: is the lowest price on that day.
+Open: is the price at which the stock opened, when the stock market opened on that day.
+Close: is the closing price on that day when the market closed. We based our analysis on this parameter.
+
 
 ![American Airlines](aal_close.svg)
 
