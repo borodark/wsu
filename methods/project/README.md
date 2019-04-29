@@ -371,14 +371,9 @@ Log Returns Fit Residuals:
 Training set 0.0002679830 0.04368722 0.02885307      NaN      Inf 0.7083174 0.0007081013
 Test set     0.0002783467 0.01844228 0.01419282 97.74705 97.74705 0.3484213           NA
 ```
-
 TODO ALI: Please find how to interpret Errors?
-
 ![](for_log_aal.svg)
-
-
 ## Fitting time series using ANN
-
 
 The Artificail Neural Network forecasting for the same `AAL` data is done in the python notebook.
 See: ![Jupiter Notebook](ANN.ipynb). The input layer for ANN has the same number of inputs as the desired number of intevals we want to look back. The primitive model is shown in the picture bellow. 
@@ -386,16 +381,29 @@ See: ![Jupiter Notebook](ANN.ipynb). The input layer for ANN has the same number
 
 The data preparation is crutial steps and involves creating several aditional vectors for _y<sub>t</sub>_ and _x<sub>t</sub>_ for several values of _t_ [_t-1_, _t-2_ ...]. The detailed decription is in ![Jupiter Notebook](ANN.ipynb).
 
+### The RNN forecasting results
+
 The following results were aquired running `RNN` with `GRU` cell for forecasting the stock prices.
 
 ![The RNN Fit](ann_fit.png)
 
-{'ME': -0.003913519198776012, 'RMSE': 0.01641030210773595, 'MAE': 0.012216668323480898, 'MPE': -0.006660415917080657, 'MAPE': 1.9340046033527194, 'MASE': inf}
-=======
+RNN Forecasting Errors:
 
-![Jupiter Notebook](RNN/RNN_LSTM_GRU.ipynb)
+```python
+{'ME': -0.003913519198776012, 'RMSE': 0.01641030210773595, 'MAE': 0.012216668323480898, 'MPE': -0.6660415917080657, 'MAPE': 1.9340046033527194, 'MASE': inf}
+```
+Some values were not calculated
 
-TODO remove test
+## Conclusions
 
-$$e^x=\sum_{i=0}^\infty \frac{1}{i!}x^i$$
+The error metrics compared in the table bellow:
+```
+| Forecasting method |            ME |       RMSE |        MAE |       MPE |     MAPE | MASE      |
+|--------------------|---------------|------------|------------|-----------|----------|-----------|
+| ARIMA              |  0.0002783467 | 0.01844228 | 0.01419282 |  97.74705 | 97.74705 | 0.3484213 |
+| RNN                | -0.0039135191 | 0.01641030 | 0.01221667 | -0.666041 |  1.93400 | -         |
+```
+While `RMSE`, `MAE` are at the same scale the ARIMA has shown less absolute value `ME`. Where `RNN` is superriour is in `MPE` and `MAPE`. The ARIMA error values for `MPE` and `MAPE` on this dataset renders it useles for predictions.
 
+Overall in our opinion both methods are valuable options for the Time Series Forecasting. The ARIMA is more sensitive to data being non-stationary and financial data, unfortunatelly for ARIMA, has plenty of cases where the stationarity is possible to achive only by clever feature engineering. The some error measures in predictions of `Log Returns` were accepatble but ANN was able to acheave solid results on the four Price vectors. The ANN  has an advantage in multivariate Time Series analisys: all vectors are being fed to network simultaniously and contributed to prediction. The literature suggests however, that succesfull applications of ARIMA is possible for datasets avalable in natural sciense.
+Both methods requred feature engeneering and data preparation to be usefull. The the process of creating aditional vectors and arrays are signigicantly more laborous for ANN: the amount of python code written is significant and possibility of erros increase in the absens of qualified data-sciense aware software engineers. Maybe with time the python libraries will be avaiable with the same level of abstraction avalable in `R` - the ultimate languge for statistical calculations. The 'R's ARIMA fit was done in signigicantly less time then training of ANN, that are more computationly intencive on the training phase. It will be interesting to see how ANN methods evolve to reach the `R`s ease of use and level of abstraction. 
