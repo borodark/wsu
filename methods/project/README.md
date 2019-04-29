@@ -261,6 +261,11 @@ Model df: 7.   Total lags used: 10
 TODO ALI - interpret the residuals bellow
 
 ##### Residuals of the Arithmetic Return Fit
+A residual value is what is left ver after fitting a model. Residual values are equal to the difference between the observations and the corresponding fitted values: et=yt−^yt.
+In order for residual values to be useful, they should have the following properties:
+1. They sould not be correlated; otherwise, there is some information that is not used in the calculations.
+2. The should not be biased, which means that the mean of them should equal to zero.
+
 
 Arithemtic Returns Fit Residuals:
 
@@ -275,12 +280,12 @@ Training set -1.406339e-05 0.04419841 0.02888782      NaN      Inf 0.7071239 0.0
 Test set     -7.936604e-04 0.01879774 0.01475044 106.2668 106.2668 0.3610654        NA
 > 
 ```
-TODO ALI: Please find how to interpret Errors?
 
-![](for_ar_aal.svg)
+
+![Arithmetic Returns: Actual vs Predicted](for_ar_aal.svg)
 
 ##### Log Returns Fit
-TODO ALi - explain what model is better comparing AIC, BIC and other params??
+
 ```
 > print(summary(aal.ar.autoarima.log))
 Series: df.aal[1:3000, ]$log_ret 
@@ -317,13 +322,6 @@ Q* = 18.839, df = 3, p-value = 0.0002952
 
 Model df: 9.   Total lags used: 12
 ```
-Residual values in time series are not uncommon. A residual value is what is left ver after fitting a model. Residual values are equal to the difference between the observations and the corresponding fitted values: et=yt−^yt.
-In order for residual values to be useful, they should have the following properties:
-1. They sould not be correlated; otherwise, there is some information that is not used in the calculations.
-2. The should not be biased, which means that the mean of them should equal to zero.
-
-Our time series' residual values ...........???????
-
 ##### Residuals of the Log Return Fit
 
 Log Returns Fit Residuals:
@@ -338,8 +336,20 @@ Log Returns Fit Residuals:
 Training set 0.0002679830 0.04368722 0.02885307      NaN      Inf 0.7083174 0.0007081013
 Test set     0.0002783467 0.01844228 0.01419282 97.74705 97.74705 0.3484213           NA
 ```
-TODO ALI: Please find how to interpret Errors?
-![](for_log_aal.svg)
+![Log Returns: Actual vs Predicted](for_log_aal.svg)
+
+### Conclusion
+
+The Errors of the Log Return forecast smaller everywhere except Mean Errors. The `MPE` and `MAPE` rates are disturbing that is unfortunatelly confirmed by detail analisys of the `Log Returns: Actual vs Predicted` and `Arithmetic Returns: Actual vs Predicted` plots shown above: each line is the day and even visally the forecast errors are seen.
+
+```
+| Test Errors       |            ME |       RMSE |        MAE |      MPE |     MAPE |      MASE | ACF1 |
+|-------------------|---------------|------------|------------|----------|----------|-----------|------|
+| Arithmetic Return | -7.936604e-04 | 0.01879774 | 0.01475044 | 106.2668 | 106.2668 | 0.3610654 | NA   |
+| Log Return        |  0.0002783467 | 0.01844228 | 0.01419282 | 97.74705 | 97.74705 | 0.3484213 | NA   |
+```
+
+
 ## Fitting time series using ANN
 
 The Artificail Neural Network forecasting for the same `AAL` data is done in the python notebook.
@@ -350,27 +360,31 @@ The data preparation is crutial steps and involves creating several aditional ve
 
 ### The RNN forecasting results
 
-The following results were aquired running `RNN` with `GRU` cell for forecasting the stock prices.
+The following results were aquired running `RNN` with `GRU` cell for forecasting the stock prices. The price on the picture is `scaled` - this is typical for ANN to operate on valies scaled from `[0:1]` or `[-1:1]`:
+
 
 ![The RNN Fit](ann_fit.png)
 
 RNN Forecasting Errors:
 
-```python
+![
 {'ME': -0.003913519198776012, 'RMSE': 0.01641030210773595, 'MAE': 0.012216668323480898, 'MPE': -0.6660415917080657, 'MAPE': 1.9340046033527194, 'MASE': inf}
-```
+](ANN.ipynb)
+
 Some values were not calculated
 
 ## Conclusions
 
 The error metrics compared in the table bellow:
-```
+
+
 | Forecasting method |            ME |       RMSE |        MAE |       MPE |     MAPE | MASE      |
 |--------------------|---------------|------------|------------|-----------|----------|-----------|
 | ARIMA              |  0.0002783467 | 0.01844228 | 0.01419282 |  97.74705 | 97.74705 | 0.3484213 |
 | RNN                | -0.0039135191 | 0.01641030 | 0.01221667 | -0.666041 |  1.93400 | -         |
-```
+
+
 While `RMSE`, `MAE` are at the same scale the ARIMA has shown less absolute value `ME`. Where `RNN` is superriour is in `MPE` and `MAPE`. The ARIMA error values for `MPE` and `MAPE` on this dataset renders it useles for predictions.
 
-Overall in our opinion both methods are valuable options for the Time Series Forecasting. The ARIMA is more sensitive to data being non-stationary and financial data, unfortunatelly for ARIMA, has plenty of cases where the stationarity is possible to achive only by clever feature engineering. The some error measures in predictions of `Log Returns` were accepatble but ANN was able to acheave solid results on the four Price vectors. The ANN  has an advantage in multivariate Time Series analisys: all vectors are being fed to network simultaniously and contributed to prediction. The literature suggests however, that succesfull applications of ARIMA is possible for datasets avalable in natural sciense.
-Both methods requred feature engeneering and data preparation to be usefull. The the process of creating aditional vectors and arrays are signigicantly more laborous for ANN: the amount of python code written is significant and possibility of erros increase in the absens of qualified data-sciense aware software engineers. Maybe with time the python libraries will be avaiable with the same level of abstraction avalable in `R` - the ultimate languge for statistical calculations. The 'R's ARIMA fit was done in signigicantly less time then training of ANN, that are more computationly intencive on the training phase. It will be interesting to see how ANN methods evolve to reach the `R`s ease of use and level of abstraction. 
+Overall in our opinion both methods are valuable options for the Time Series Forecasting. The ARIMA is more sensitive to data being non-stationary and financial data, unfortunatelly for ARIMA, has plenty of cases where the stationarity is possible to achive only by clever feature engineering. The some error measures in predictions of `Log Returns` were accepatble but ANN was able to acheave solid results on the four Price vectors. The ANN  has an advantage in multivariate Time Series analisys: all vectors haad been fed to network simultaniously and contributed to prediction. The literature suggests however, that succesfull applications of ARIMA is possible for datasets avalable in natural sciense.
+Both methods requred feature engeneering and data preparation to be usefull. The the process of creating aditional vectors and arrays are signigicantly more laborous for ANN: the amount of python code written is significant and possibility of erros increase in the absens of qualified data-sciense aware software engineers. The `R` function for `Arithmetic/Log Returns` has done the job for ARIMA fit in one line. Maybe with time the python libraries will be avaiable with the same level of abstraction avalable in `R` - the ultimate languge for statistical calculations. The 'R's ARIMA fit was done in signigicantly less time then training of ANN, that are more computationly intensive on the training phase. It will be interesting to see how ANN methods evolve to reach the `R`s ease of use and level of abstraction. 
