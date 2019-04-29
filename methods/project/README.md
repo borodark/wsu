@@ -15,6 +15,9 @@ The datasets:
 
 TODO Ali
 
+$$e^x=\sum_{i=0}^\infty \frac{1}{i!}x^i$$
+
+
 ## Finantial data
 
 TODO Ali - describe common sources and properties of fin tech data
@@ -368,12 +371,17 @@ TODO ALI: Please find how to interpret Errors?
 
 ![](for_log_aal.svg)
 
-#### Find the best model for 5500 observations of `REL` 
-
-Maybe not?
 
 ## Fitting time series using ANN
 
- Some!!!
- TODO ALI
- ![Jupiter Notebook](RNN/RNN_LSTM_GRU.ipynb)
+The Artificail Neural Network forecasting for the same `AAL` data is done in the python notebook.
+See: ![Jupiter Notebook](ANN.ipynb). The input layer for ANN has the same number of inputs as the desired number of intevals we want to look back. The primitive model is shown in the picture bellow. 
+![](time_lagged.png)
+
+The data preparation is crutial steps and involves creating several aditional vectors for _y<sub>t</sub>_ and _x<sub>t</sub>_ for several values of _t_ [_t-1_, _t-2_ ...]. The detailed decription is in ![Jupiter Notebook](ANN.ipynb).
+
+The following results were aquired running `RNN` with `GRU` cell for forecasting the stock prices.
+
+![The RNN Fit](ann_fit.png)
+
+{'ME': -0.003913519198776012, 'RMSE': 0.01641030210773595, 'MAE': 0.012216668323480898, 'MPE': -0.006660415917080657, 'MAPE': 1.9340046033527194, 'MASE': inf}
