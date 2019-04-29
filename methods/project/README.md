@@ -63,8 +63,8 @@ Dickey-Fuller = -1.3671, Lag order = 17, p-value = 0.8464
 alternative hypothesis: stationary
 ```
 
-Stationary time series means that the statistical properties of it does not change; that doe not mean the values don't change, but the way they change is the sam. In other words, its mean and variance do not change.
-Based on the above fit, we find the P-vale is high, which means that using ARIMA model to predict the price effective. Therefore, we will use rate of return prediction. 
+Stationary of the time series means that the statistical properties of it does not change; it's mean and variance do not change.
+Based on the above test, we find the P-vale is high, which means that using ARIMA model to predict based on the price is not possible. Therefore, we will use `Returns` for prediction. 
 
 
 ### Moving focus to Arithmetic and Log Returns
