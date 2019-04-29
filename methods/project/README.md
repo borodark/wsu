@@ -12,7 +12,8 @@ The datasets:
 
 ## Time Series Analisys
 
-TODO Ali
+Time series is a series of data that occurs at a fixed intervals, for example: daily stock price, seasonal sales, etc. 
+Time series analysis is the techniques of processing data based on the assumption that the successive values in the data represents measurements that take place in equal intevals. The purpose of time series analysis is to forecast future values of the time series variables. 
 
 ## Finantial data
 
