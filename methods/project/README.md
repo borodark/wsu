@@ -2,8 +2,7 @@
 This is the report on the course final project for DSA 6100: Statistical Methods for Data Science and Analytics
 By 
 * Igor Ostaptchenko <igor_ost@wayne.edu>
-* Ali Milhem <gu599@wayne.edu>
-TODO FIX THE EMAIL!!!
+* Ali Milhem <gu5993@wayne.edu>
 
 The `R` source for this report is: ![arima.R](arima.R)
 The datasets: 
@@ -13,17 +12,23 @@ The datasets:
 
 ## Time Series Analisys
 
-TODO Ali
-
-$$e^x=\sum_{i=0}^\infty \frac{1}{i!}x^i$$
+Time series is a series of data that occurs at a fixed intervals, for example: daily stock price, seasonal sales, etc. 
+Time series analysis is the techniques of processing data based on the assumption that the successive values in the data represents measurements that take place in equal intevals. The purpose of time series analysis is to forecast future values of the time series variables. 
 
 
 ## Finantial data
 
-TODO Ali - describe common sources and properties of fin tech data
+Our purpose is to forcast the rate of return of American Airlines stock (AAL). We used the closing price starting from 09/27/2005 until 03/21/2019 as the basis f the analysis. We collected data from Yahoo Finance. The table include the following parameters: Date, Close, Open, High and Low. 
 
 ### AAL
-TODO Ali - describe this dataset - chart shows only `close`
+
+American Airlines Group Inc (AAL) operates as a network air carrier; providing air transportation for passengers and cargo. As of December 31, 2018, the company operated a mainline fleet of 956 aircraft, whch makes it a major American airline company, and that is why we chose it for analysis. The data set is composed of the following parameters:
+Date: on which the price is given.
+High: is the highest price on that day.
+Low: is the lowest price on that day.
+Open: is the price at which the stock opened, when the stock market opened on that day.
+Close: is the closing price on that day when the market closed. We based our analysis on this parameter.
+
 
 ![American Airlines](aal_close.svg)
 
@@ -374,6 +379,7 @@ TODO ALI: Please find how to interpret Errors?
 
 ## Fitting time series using ANN
 
+
 The Artificail Neural Network forecasting for the same `AAL` data is done in the python notebook.
 See: ![Jupiter Notebook](ANN.ipynb). The input layer for ANN has the same number of inputs as the desired number of intevals we want to look back. The primitive model is shown in the picture bellow. 
 ![](time_lagged.png)
@@ -385,3 +391,11 @@ The following results were aquired running `RNN` with `GRU` cell for forecasting
 ![The RNN Fit](ann_fit.png)
 
 {'ME': -0.003913519198776012, 'RMSE': 0.01641030210773595, 'MAE': 0.012216668323480898, 'MPE': -0.006660415917080657, 'MAPE': 1.9340046033527194, 'MASE': inf}
+=======
+
+![Jupiter Notebook](RNN/RNN_LSTM_GRU.ipynb)
+
+TODO remove test
+
+$$e^x=\sum_{i=0}^\infty \frac{1}{i!}x^i$$
+
