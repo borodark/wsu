@@ -1,14 +1,14 @@
 # Time Series Analisys
+
 This is the report on the course final project for DSA 6100: Statistical Methods for Data Science and Analytics
 By 
+
 * Igor Ostaptchenko <igor_ost@wayne.edu>
 * Ali Milhem <gu5993@wayne.edu>
 
 The `R` source for this report is: ![arima.R](arima.R)
 The datasets: 
 * AAL Daily: ![data/stock_market_data-AAL.csv](data/stock_market_data-AAL.csv)
-* REL Daily: ![data/RELIANCE.csv](data/RELIANCE.csv)
-
 
 ## Time Series Analisys
 
@@ -31,11 +31,6 @@ Close: is the closing price on that day when the market closed. We based our ana
 
 
 ![American Airlines](aal_close.svg)
-
-### REL
-
-TODO Ali 
-![Reliance](rel_close.svg)
 
 ## Fitting ARIMA
 
@@ -114,20 +109,11 @@ Notice that first row has blank returns. The first record will be dropped in fut
 In the first chart (yearly scaled), we see that in 2008 there ere outliers (extreme values) in the chart. Afterwards, the fluctioations continue to occure but withou outlier values,; within a dcreasing range until after the year of 2011.
 The other chart is for a different scale (monthly) which shows a stable trend.
 
-
-##### Reliance
-
-![Reliance](rel_returns.svg)
-
-TODO Ali - write interpretation
-
 ##### Closer look on returns
 
-![Reliance](ret_zoom.svg)
+![100 days](ret_zoom.svg)
 
 #### The Augmented Dickey-Fuller Test on Returns
-
-TODO Ali - write interpretation comparing values with ADF of `Close` above??
 
 ```
 > # ADF test on ariphmetic return
