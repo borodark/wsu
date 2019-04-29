@@ -71,12 +71,10 @@ alternative hypothesis: stationary
 Stationary time series means that the statistical properties of it does not change; that doe not mean the values don't change, but the way they change is the sam. In other words, its mean and variance do not change.
 Based on the above fit, we find the P-vale is high, which means that using ARIMA model to predict the price effective. Therefore, we will use rate of return prediction. 
 
-TODO Ali - write up the conclusion and motivation to do fitting on Returns instead 
-
 
 ### Moving focus to Arithmetic and Log Returns
 
-Arithmetic Return: is calculatec as the following:
+Arithmetic Return: is calculated as the following:
 Rt = (Pt – Pt-1) / Pt-1 = Pt / Pt-1 – 1.
 Where: R: is the rate of return, t: time at which the return is calculated, Pt: the current price, Pt-1: the previous price.
 
@@ -84,7 +82,6 @@ Log Return: is calculated as the follwing formula:
 Rt = log(Pt / Pt-1) = log(Pt) – log(Pt-1).
 We use logarithms to calculate the return.
 
-TODO Ali - write up the rules and formulas for returns 
 
 #### Transform `Close` prices to `Returns`
 The `R` functions to calculate returns are as follows:
@@ -114,9 +111,9 @@ Notice that first row has blank returns. The first record will be dropped in fut
 ##### AAL
 ![AAL](aal_returns.svg)
 
-In the first chart (yearly scaled), we see that the trend in stable in general except arounf the years: 1997 and 2009.
-The monthly-scaled chart also shows a stable chart.
-TODO Ali - write interpretation
+In the first chart (yearly scaled), we see that in 2008 there ere outliers (extreme values) in the chart. Afterwards, the fluctioations continue to occure but withou outlier values,; within a dcreasing range until after the year of 2011.
+The other chart is for a different scale (monthly) which shows a stable trend.
+
 
 ##### Reliance
 
