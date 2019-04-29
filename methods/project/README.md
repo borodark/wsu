@@ -114,7 +114,8 @@ Notice that first row has blank returns. The first record will be dropped in fut
 ##### AAL
 ![AAL](aal_returns.svg)
 
-
+In the first chart (yearly scaled), we see that the trend in stable in general except arounf the years: 1997 and 2009.
+The monthly-scaled chart also shows a stable chart.
 TODO Ali - write interpretation
 
 ##### Reliance
