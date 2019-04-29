@@ -94,7 +94,7 @@ Notice that first row has blank returns. The first record will be dropped in fut
 ##### AAL
 ![AAL](aal_returns.svg)
 
-In the first chart (yearly scaled), we see that in 2008 there ere outliers (extreme values) in the chart. Afterwards, the fluctioations continue to occure but withou outlier values,; within a dcreasing range until after the year of 2011.
+In the first chart (yearly scaled), we see that in 2008 there are outliers (extreme values) in the chart. Afterwards, the fluctioations continue to occure but withou outlier values,; within a dcreasing range until after the year of 2011.
 The other chart is for a different scale (monthly) which shows a stable trend.
 
 ##### Closer look on returns
