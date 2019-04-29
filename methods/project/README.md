@@ -75,6 +75,15 @@ TODO Ali - write up the conclusion and motivation to do fitting on Returns inste
 
 
 ### Moving focus to Arithmetic and Log Returns
+
+Arithmetic Return: is calculatec as the following:
+Rt = (Pt – Pt-1) / Pt-1 = Pt / Pt-1 – 1.
+Where: R: is the rate of return, t: time at which the return is calculated, Pt: the current price, Pt-1: the previous price.
+
+Log Return: is calculated as the follwing formula:
+Rt = log(Pt / Pt-1) = log(Pt) – log(Pt-1).
+We use logarithms to calculate the return.
+
 TODO Ali - write up the rules and formulas for returns 
 
 #### Transform `Close` prices to `Returns`
@@ -104,6 +113,7 @@ Notice that first row has blank returns. The first record will be dropped in fut
 
 ##### AAL
 ![AAL](aal_returns.svg)
+
 
 TODO Ali - write interpretation
 
