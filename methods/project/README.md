@@ -258,7 +258,6 @@ Q* = 13.101, df = 3, p-value = 0.004424
 
 Model df: 7.   Total lags used: 10
 ```
-TODO ALI - interpret the residuals bellow
 
 ##### Residuals of the Arithmetic Return Fit
 A residual value is what is left ver after fitting a model. Residual values are equal to the difference between the observations and the corresponding fitted values: et=yt−^yt.
@@ -388,3 +387,15 @@ While `RMSE`, `MAE` are at the same scale the ARIMA has shown less absolute valu
 
 Overall in our opinion both methods are valuable options for the Time Series Forecasting. The ARIMA is more sensitive to data being non-stationary and financial data, unfortunatelly for ARIMA, has plenty of cases where the stationarity is possible to achive only by clever feature engineering. The some error measures in predictions of `Log Returns` were accepatble but ANN was able to acheave solid results on the four Price vectors. The ANN  has an advantage in multivariate Time Series analisys: all vectors haad been fed to network simultaniously and contributed to prediction. The literature suggests however, that succesfull applications of ARIMA is possible for datasets avalable in natural sciense.
 Both methods requred feature engeneering and data preparation to be usefull. The the process of creating aditional vectors and arrays are signigicantly more laborous for ANN: the amount of python code written is significant and possibility of erros increase in the absens of qualified data-sciense aware software engineers. The `R` function for `Arithmetic/Log Returns` has done the job for ARIMA fit in one line. Maybe with time the python libraries will be avaiable with the same level of abstraction avalable in `R` - the ultimate languge for statistical calculations. The 'R's ARIMA fit was done in signigicantly less time then training of ANN, that are more computationly intensive on the training phase. It will be interesting to see how ANN methods evolve to reach the `R`s ease of use and level of abstraction. 
+
+## Literature
+
+* https://github.com/borodark/wsu/blob/master/methods/casestudy/toc.md
+* Robert H. Shumway David S. Stoffer, Time Series Analysis and Its Applications With R Examples, Fourth Edition
+* Ratnadip Adhikari R. K. Agrawal, An Introductory Study on Time Series Modeling and Forecasting
+* Analysis of Financial Time Series, Financial Econometrics, RUEY S. TSAY University of Chicago
+* Tsay, Ruey S., An introduction to analysis of financial data with R/Ruey S. Tsay. p. cm. Includes index. ISBN 978-0-470-89081-3
+* An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling, Shaojie Bai, J. Zico Kolter, Vladlen Koltun
+* Temporal Convolutional Networks: A Unified Approach to Action Segmentation by Colin Lea Rene ́ Vidal Austin Reiter Gregory D. Hager, Johns Hopkins University
+* A comparison of performance of several artificial intelligence methods for forecasting monthly discharge time series by Wen-Chuan Wang, Kwok-Wing Chau, Chun-Tian Cheng, Lin Qiu, Journal of Hydrology, Vol. 374, No. 3-4, 2009, pp 294–306
+* https://people.duke.edu/~rnau/411diff.htm
