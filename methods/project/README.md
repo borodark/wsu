@@ -165,7 +165,7 @@ In adf.test(df.rel$log_ret, alternative = "stationary") :
   p-value smaller than printed p-value
 ```
 
-Conclusion: the Arithmetic and Log Returns hastime series is stationary properties thus allowing to apply ARIMA class models to forecast the time series.
+Conclusion: the Arithmetic and Log Returns Time Series is stationary enough thus allowing to apply ARIMA class models to forecast the time series.
 
 ###  Use Auto.Arima
 
