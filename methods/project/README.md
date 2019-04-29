@@ -128,29 +128,6 @@ alternative hypothesis: stationary
 Warning message:
 In adf.test(df.aal$log_ret, alternative = "stationary") :
   p-value smaller than printed p-value
-> # ADF test on return
-> print(adf.test(df.rel$ar_ret, alternative = "stationary"))
-
-	Augmented Dickey-Fuller Test
-
-data:  df.rel$ar_ret
-Dickey-Fuller = -18.868, Lag order = 17, p-value = 0.01
-alternative hypothesis: stationary
-
-Warning message:
-In adf.test(df.rel$ar_ret, alternative = "stationary") :
-  p-value smaller than printed p-value
-> print(adf.test(df.rel$log_ret, alternative = "stationary"))
-
-	Augmented Dickey-Fuller Test
-
-data:  df.rel$log_ret
-Dickey-Fuller = -18.717, Lag order = 17, p-value = 0.01
-alternative hypothesis: stationary
-
-Warning message:
-In adf.test(df.rel$log_ret, alternative = "stationary") :
-  p-value smaller than printed p-value
 ```
 
 Conclusion: the Arithmetic and Log Returns Time Series is stationary enough thus allowing to apply ARIMA class models to forecast the time series.
