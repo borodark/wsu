@@ -45,8 +45,7 @@ include_directories( lib )
 
 include_directories( include )
 
-#include_directories( include/sorting )
 
-FILE(GLOB SOURCES "src/*.cpp" "src/sorting/*.cpp")
+FILE(GLOB SOURCES "src/*.cpp" "include/*.cpp" "include/*.h")
 
 ADD_EXECUTABLE(${EXECUTABLE_NAME} ${SOURCES})

@@ -1,48 +1,8 @@
 #include <iostream>
-#include <string>
 #include <cassert>
+#include "Employee.h"
 
 using namespace std;
-
-class Employee{
-
-public:
-
-  explicit Employee(string fn, string ln, int ms)
-    :first_name(fn),
-     last_name(ln),
-     monthly_salary(ms)
-  {
-    if (monthly_salary < 0){
-      monthly_salary = 0;
-    }
-  }
-  string getFirstName() const {
-    return first_name;
-  }
-  string getLastName() const {
-    return last_name;
-  }
-  int getMonthlySalary() const {
-    return monthly_salary;
-  }
-  void setFirstName(const string fn){
-    first_name = fn;
-  }
-  void setLastName(const string ln){
-    last_name = ln;
-  }
-  void setMonthlySalary(const int ms){
-    monthly_salary = ms;
-  }
-
-private:
-  string first_name;
-  string last_name;
-  int monthly_salary;
-
-};
-
 
 void q1(){
   Employee emp1{"Igor", "Osten", 200000};
