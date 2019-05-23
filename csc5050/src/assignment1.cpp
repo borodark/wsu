@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cassert>
 #include "Employee.h"
+#include "recursion.h"
 
 using namespace std;
 
@@ -23,8 +24,16 @@ void q1(){
 
 }
 
+void q2(){
+  cout << "The factorial of 30 is " << question2::fact(30) << "!" << endl;
+  cout << "The factorial of 10 is " << question2::fact(10) << "!" << endl;
+  cout << "The factorial of 4 is " << question2::fact(4) << "!" << endl;
+
+}
+
 int main(){
   q1();
+  q2();
   return 0;
 }
 
