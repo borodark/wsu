@@ -25,9 +25,16 @@ void q1(){
 }
 
 void q2(){
-  cout << "The factorial of 30 is " << question2::fact(30) << "!" << endl;
-  cout << "The factorial of 10 is " << question2::fact(10) << "!" << endl;
-  cout << "The factorial of 4 is " << question2::fact(4) << "!" << endl;
+  cout << "The factorial of 100 is " << question2::fact_r(100) << "!" << endl;
+  cout << "The factorial of 10 is " << question2::fact_r(10) << "!" << endl;
+  cout << "The factorial of 4 is " << question2::fact_r(4) << "!" << endl;
+  //
+  cout << "************************* " << endl;
+
+  cout << "The factorial of 100 is " << question2::fact_w(100) << "!" << endl;
+  cout << "The factorial of 10 is " << question2::fact_w(10) << "!" << endl;
+  cout << "The factorial of 4 is " << question2::fact_w(4) << "!" << endl;
+
 
 }
 
