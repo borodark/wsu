@@ -2,17 +2,18 @@
 
 ## Q 1,2, 4
 
+### source code:
+
+Driver: ![](src/assignment1.cpp)
+
+Employee(.cpp, .h) and recursion.h ![](include/)
+
+### Results
 Please see the ascicasts for two runs here
 https://asciinema.org/a/248094
 
 https://asciinema.org/a/248094
 
-### source code:
-Driver: ![src/assignment1.cpp](src/assignment1.cpp)
-Employee ![include/](include/)
-
-
-The `R` source for this report is: ![arima.R](arima.R)
 
 
 ## Question 3
