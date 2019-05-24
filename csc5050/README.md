@@ -4,9 +4,9 @@
 
 ### source code:
 
-Driver: ![src/assignment1.cpp]()
+Driver: ![src/assignment1.cpp](src/assignment1.cpp)
 
-Employee(.cpp, .h) and recursion.h ![include/]()
+Employee(.cpp, .h) and recursion.h ![include/](include/)
 
 ### Results
 Please see the ascicasts for two runs here
