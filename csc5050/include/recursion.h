@@ -1,3 +1,4 @@
+#include<cmath>
 
 namespace question2
 {
@@ -8,14 +9,24 @@ namespace question2
       return n * fact_r(n - 1); // n * (n-1)! is n!
   }
 
-  long double fact_w(long long n)
-  {
-    long double fact=1.0;
-    if( n > 1 )
-      for(unsigned long long k=2; k<=n; k++)
-        fact = fact*k;
+  long double e_pow(long x, int number_of_terms) {
+    unsigned int n = 1;
+    double long epowx = 1.0;
+    while( n <= number_of_terms ){
+      epowx += pow(x,n)/fact_r(n);
+      n++;
+    }
+    return epowx;
+  }
 
-    return fact;
+  long double euler_e(int number_of_terms) {
+    unsigned int n = 1;
+    double long e = 1.0;
+    while( n <= number_of_terms ) {
+      e += 1/fact_r(n);
+      n++;
+    }
+    return e;
   }
 }
 
