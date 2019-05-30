@@ -4,7 +4,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 set(CMAKE_CXX_STANDARD 11)
 SET(CMAKE_BUILD_TYPE Debug)
 SET(CMAKE_PROJECT_NAME "cs5050")
-SET(EXECUTABLE_NAME "cs5050")
+#SET(EXECUTABLE_NAME "cs5050")
 
 SET(EXECUTABLE_VERSION_MAJOR "1")
 SET(EXECUTABLE_VERSION_MINOR "0")
@@ -46,6 +46,10 @@ include_directories( lib )
 include_directories( include )
 
 
-FILE(GLOB SOURCES "src/*.cpp" "include/*.cpp" "include/*.h")
+FILE(GLOB SOURCES "include/*.h" "src/*.cpp" "include/*.cpp")
 
-ADD_EXECUTABLE(${EXECUTABLE_NAME} ${SOURCES})
+ADD_EXECUTABLE(q1 "src/q1.cpp")
+ADD_EXECUTABLE(q2 "src/q2.cpp")
+ADD_EXECUTABLE(q4 "src/q4.cpp")
+
+#ADD_EXECUTABLE(${EXECUTABLE_NAME} ${SOURCES})
