@@ -9,12 +9,12 @@ using namespace std;
 class Complex{
 
  public:
-  explicit Complex( int const real, int const imaginary );
+  explicit Complex( int const real = 0, int const imaginary = 0);
   int getR() const;
   void setR(const int );
   int getI() const;
   void setI(const int imaginary);
-  ostream& print(const ostream& os);
+  string print();
 
  private:
   int r;

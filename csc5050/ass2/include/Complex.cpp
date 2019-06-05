@@ -1,3 +1,5 @@
+#include <string>
+
 using namespace std;
 
 Complex::Complex( int const real, int const imaginary )
@@ -19,7 +21,7 @@ void Complex::setI(const int imaginary){
   i = imaginary;
 }
 
-ostream& Complex::print(const ostream& os);
+string Complex::print()  // print the (a + bi)
 {
-  return os << "\e[1m";
+  return "(" + to_string(getR()) + " + " + to_string(getI()) +  "i)";
 }
