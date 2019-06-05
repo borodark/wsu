@@ -9,16 +9,8 @@ int Complex::getR() const {
   return r;
 }
 
-void Complex::setR(const int real){
-  r = real;
-}
-
 int Complex::getI() const {
   return i;
-}
-
-void Complex::setI(const int imaginary){
-  i = imaginary;
 }
 
 string Complex::print() const  // print the (a + bi)
