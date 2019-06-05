@@ -21,7 +21,27 @@ void Complex::setI(const int imaginary){
   i = imaginary;
 }
 
-string Complex::print()  // print the (a + bi)
+string Complex::print() const  // print the (a + bi)
 {
   return "(" + to_string(getR()) + " + " + to_string(getI()) +  "i)";
+}
+
+const Complex Complex::add(const Complex toAdd){
+  int ourR = getR();
+  int theirsR = toAdd.getR();
+
+  int ourI = getI();
+  int theirsI = toAdd.getI();
+  Complex rc{ (ourR + theirsR), (ourI + theirsI) };
+  return rc;
+}
+
+const Complex Complex::subtract(const Complex toSubtrack){
+  int ourR = getR();
+  int theirsR = toSubtrack.getR();
+
+  int ourI = getI();
+  int theirsI = toSubtrack.getI();
+  Complex rc{ (ourR - theirsR), (ourI - theirsI) };
+  return rc;
 }

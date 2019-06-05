@@ -14,8 +14,9 @@ class Complex{
   void setR(const int );
   int getI() const;
   void setI(const int imaginary);
-  string print();
-
+  string print() const;
+  const Complex add(const Complex toAdd);
+  const Complex subtract(const Complex toSubtrack);
  private:
   int r;
   int i;
