@@ -1,3 +1,9 @@
+/**
+   @author: Igor Ostaptchenko igor_ost@wayne.edu AKA borodark@gmail.com
+   This is a driver/test for Question 4 of Assignment 2
+ **/
+
+
 #include <iostream>
 #include <cassert>
 #include "Complex.h"

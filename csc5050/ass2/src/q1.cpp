@@ -1,33 +1,57 @@
+/**
+   @author: Igor Ostaptchenko igor_ost@wayne.edu AKA borodark@gmail.com
+   This is a driver/test for Question 1 of Assignment 2
+**/
+
 #include <iostream>
 #include <cassert>
-#include "Employee.h"
-#include "Employee.cpp"
 
 using namespace std;
-
-void q1(){
-  cout << endl;
-  cout << "+ q1 ++++++++++" << endl;
-
-  Employee emp1{"Igor", "Osten1", 200000};
-  cout << "Welcome, the new emp1, making staggering " << emp1.getMonthlySalary() << "." << endl;
-  assert(emp1.getFirstName() == "Igor");
-  Employee emp2{"Igor", "Osten2", -1000};
-  cout << "Welcome, the new emp2, making staggering " << emp2.getMonthlySalary() << "." << endl;
-  assert(emp2.getMonthlySalary() == 0);
-  emp2.setMonthlySalary(1000000);
-  cout << "HR mistake is fixed! emp2 is now making " << emp2.getMonthlySalary() << "." << endl;
-  cout << "Promotions are coming!" << endl;
-  emp1.setMonthlySalary(emp1.getMonthlySalary() * 1.1);
-  assert(emp1.getMonthlySalary() == 220000);
-  emp2.setMonthlySalary(emp2.getMonthlySalary() * 1.1);
-  assert(emp2.getMonthlySalary() == 1100000);
-  cout << "The " << emp1.getLastName() << " is now making " << emp1.getMonthlySalary() << "." << endl;
-  cout << "The " << emp2.getLastName() << " is now making " << emp2.getMonthlySalary() << "." << endl;
+/*
+  print the maze state
+ */
+void print_maze(const short* maze, const char walls, const char background, const char been, const int nrows, const int ncols ){
+  for(int i = 0; i < nrows; i++){
+    for(int j = 0; j < ncols; j++){
+      short cell = *(maze + (i * nrows + j));
+      // 0 - background
+      // 1 - walls
+      // 2 - been
+      cout << ((cell == 0)?background:((cell == 1)?walls:been));
+      //cout << cell;
+    }
+    cout << endl;
+  }
   cout << endl;
 }
 
+void q1(){
+
+  short maze[12][12] = 
+    {     {1,1,1,1,1,1,1,1,0,1,1,1},
+          {1,0,1,1,1,1,0,0,0,0,1,1},
+          {2,0,0,1,1,1,0,1,1,0,1,1},
+          {1,1,0,1,1,1,0,1,0,0,0,1},
+          {1,0,0,0,1,1,0,1,1,1,0,1},
+          {1,1,1,0,1,1,0,0,0,1,0,1},
+          {1,0,0,0,1,0,1,1,0,1,1,1},
+          {1,1,1,0,1,1,1,1,0,0,1,1},
+          {1,0,1,0,0,0,1,1,1,0,1,1},
+          {1,0,0,0,0,0,1,0,1,0,0,1},
+          {1,0,1,0,0,0,0,0,0,0,1,1},
+          {1,1,1,1,1,1,1,1,1,1,1,1}};
+
+  cout << endl;
+  cout << "+ q1 ++++++++++" << endl;
+  cout << " Maze size: " << sizeof(maze) << " and " << sizeof(maze[1][1]) << endl;
+  const short *mazePtr = &maze[0][0];
+ 
+  print_maze(mazePtr, 'o',' ', '.', 12,12);
+
+}
+
 int main(){
-q1();
+  q1();
+
 }
 

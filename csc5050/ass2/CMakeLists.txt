@@ -14,8 +14,8 @@ SET(CMAKE_MODULE_PATH
   ${CMAKE_SOURCE_DIR}/CMake/Modules
  )
 
-SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/lib)
-SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/lib)
+SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
 
 #set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
@@ -46,9 +46,9 @@ include_directories( lib )
 include_directories( include )
 
 
-FILE(GLOB SOURCES "include/*.h" "src/*.cpp" "include/*.cpp")
+FILE(GLOB SOURCES "include/*.h" "include/*.cpp" "src/*.cpp")
 
-#ADD_EXECUTABLE(q1 "src/q1.cpp")
+ADD_EXECUTABLE(q1 "src/q1.cpp")
 #ADD_EXECUTABLE(q2 "src/q2.cpp")
 ADD_EXECUTABLE(q4 "src/q4.cpp")
 
