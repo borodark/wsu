@@ -1,6 +1,6 @@
 /**
    @author: Igor Ostaptchenko igor_ost@wayne.edu AKA borodark@gmail.com
-   @src 
+   @src https://github.com/borodark/wsu/blob/master/csc5050/ass2/src/q1.cpp
    This is a driver/test for Question 1 of Assignment 2
    The program is compiles and run correctly. Produces the correct results.
    Works for any size and dimentions of maze: 12 X 12 and 14 X 12 are used in this code.

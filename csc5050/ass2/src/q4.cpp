@@ -1,7 +1,7 @@
 /**
    @author: Igor Ostaptchenko igor_ost@wayne.edu AKA borodark@gmail.com
    This is a driver/test for Question 4 of Assignment 2
-   @src
+   @src https://github.com/borodark/wsu/blob/master/csc5050/ass2/src/q4.cpp
    The program is compiles and run correctly. Produces the correct results.
    See inline comments
 **/

@@ -1,7 +1,7 @@
 /**
    @author: Igor Ostaptchenko igor_ost@wayne.edu AKA borodark@gmail.com
    This is a Class defenition for Complex type used in answering Question 4 of Assignment 2
-   @src
+   @src https://github.com/borodark/wsu/blob/master/csc5050/ass2/include/Complex.h
    The program is compiles and run correctly. Produces the correct results.
 **/
 #include <string>
