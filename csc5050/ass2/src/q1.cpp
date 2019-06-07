@@ -1,27 +1,53 @@
 /**
    @author: Igor Ostaptchenko igor_ost@wayne.edu AKA borodark@gmail.com
+   @src 
    This is a driver/test for Question 1 of Assignment 2
+   The program is compiles and run correctly. Produces the correct results.
+   Works for any size and dimentions of maze: 12 X 12 and 14 X 12 are used in this code.
+   The Mazes 1, 2 and 3 has solutions.
+   The Maze 4 has no solution.
+   The MazePro is the one from assign
 **/
 
 #include <iostream>
 #include <cassert>
 
 using namespace std;
-
+/*
+ * constants to form array and mark state.
+ */
 const short PATH = 0;
 const short WALL = 1;
 const short BEEN = 2;
-
+/**
+ * Calculate pointer to array element given an array pointer, row and column index and array dimentions.
+ *
+ * @param maze - pointer to the array head
+ * @param row - index in dimention 1
+ * @param col - index in dimention 2
+ * @param row_len - array size - first dimention.
+ * @return a pointer to array element
+ */
 short* cellPtr(short* maze, const int row, const int col, const int row_len) {
   return maze + (row * row_len + col);
 }
+/**
+ * Return the value of the array element given an array pointer,
+ * row and column index and array dimentions.
+ *
+ * @param maze - pointer to the array head
+ * @param row - index in dimention 1
+ * @param col - index in dimention 2
+ * @param row_len - array size - first dimention.
+ * @return a value of the array element
+ */
 
 short cell(short* maze, const int row, const int col, const int row_len){
   short cell = *(cellPtr(maze,row,col,row_len));
   return cell;
 }
 /*
-  return if the position in the maze is not the edge, or tried already, exit or entrance?
+  return if the position in the maze is not the edge, or tried already.
   0 notation
 */
 bool valid_cell(short* maze, const int row, const int col, const int maxrows, const int maxcols ) {
@@ -54,7 +80,13 @@ void print_maze(short* maze, const char walls, const char background, const char
   cout << endl;
 }
 /*
-  traverse the array 
+  traverse the array, modifies values, mark seen spots with `short` of value 2.
+  * @param maze - pointer to the array head
+  * @param row - index in dimention 1
+  * @param col - index in dimention 2
+  * @param maxrows - array size - first dimention.
+  * @param maxcols - array size - second dimention.
+  * @param steps - to track recursion depth and treat the special way the start point, that is the edge of maze
 */
 bool solve(short* maze, const int row, const int col, const int maxrows, const int maxcols, int steps ) {
   bool done = 0;
@@ -66,9 +98,8 @@ bool solve(short* maze, const int row, const int col, const int maxrows, const i
                       ((row == 0 || col == 0 || row == maxrows-1 || col == maxcols-1)
                        && *cellP == BEEN)))
       // at exits with more then one step
-      {  // the maze is solved
+      {  // the maze is solved or we hit the wall or we had been here
         //print_maze(maze, '0',' ', '.', maxrows, maxcols);
-
         done = 1;
       }
     else
@@ -87,7 +118,6 @@ bool solve(short* maze, const int row, const int col, const int maxrows, const i
   // cout << " Steps is: " <<  steps << " Cell value:" << *cellP <<endl;
   //   printf("\nPress enter key to see next move\n"); //displays and asks user to see the next move on maze
   // getchar(); 
-
   return done;
 }
 
@@ -188,8 +218,8 @@ void q1(){
           {1,1,0,1,0,1,0,1,0,1,0,1},
           {1,0,0,1,0,1,0,1,0,1,0,1},
           {1,1,1,1,0,1,0,1,0,1,0,1},
-          {1,0,0,0,0,1,1,1,0,1,0,0},
-          {1,1,1,0,1,0,0,0,0,1,0,1}, // <- exit/enter
+          {1,0,0,0,0,1,1,1,0,1,0,0},// <- exit/enter
+          {1,1,1,0,1,0,0,0,0,1,0,1}, 
           {0,0,1,0,1,0,1,1,1,1,0,1},
           //^ <- exit/enter
           {1,0,0,0,1,0,0,0,0,0,0,1},
@@ -203,8 +233,8 @@ void q1(){
           {1,1,0,1,0,1,0,1,0,1,0,1},
           {1,0,0,1,0,1,0,1,0,1,0,1},
           {1,1,1,1,0,1,0,1,0,1,0,1},
-          {1,0,0,0,0,1,1,1,0,1,0,0},
-          {1,1,1,0,1,0,0,0,0,1,0,1}, // <- exit/enter
+          {1,0,0,0,0,1,1,1,0,1,0,0},// <- exit/enter
+          {1,1,1,0,1,0,0,0,0,1,0,1},
           {0,0,1,0,1,0,1,1,1,1,0,1},
           //^ <- exit/enter
           {1,0,0,0,1,0,0,0,0,0,0,1},

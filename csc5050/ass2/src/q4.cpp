@@ -1,8 +1,10 @@
 /**
    @author: Igor Ostaptchenko igor_ost@wayne.edu AKA borodark@gmail.com
    This is a driver/test for Question 4 of Assignment 2
- **/
-
+   @src
+   The program is compiles and run correctly. Produces the correct results.
+   See inline comments
+**/
 
 #include <iostream>
 #include <cassert>
