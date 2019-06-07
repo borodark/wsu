@@ -20,7 +20,6 @@ bool a_palindrome(int x) {
   if(x < 0 || (x % 10 == 0 && x != 0)) {
     return 0;
   }
-
   int revertedX = 0;
   while(x > revertedX) {
     revertedX = revertedX * 10 + x % 10;
@@ -29,21 +28,17 @@ bool a_palindrome(int x) {
   return x == revertedX || x == revertedX/10;
 }
 
-
-
 void q3(){
   cout << endl;
   cout << "+ q3 ++++++++++" << endl;
 
-  cout << "Please enter a numbers for palindrome check, or a " << bold_on << "Negative" << bold_off << " number to " << bold_on << "Exit" << bold_off << endl;
-  int palindrome_of = read_number();
-
+  int palindrome_of = 0;
   while ( palindrome_of >= 0 ) {
+    cout << "Please enter a numbers for palindrome check, or a " << bold_on << "Negative" << bold_off << " number to " << bold_on << "Exit" << bold_off << endl;
+    palindrome_of= read_number();
     bool isP = a_palindrome(palindrome_of);
     string rc = isP?"IS A":"IS NOT A";
     cout << "The "<< palindrome_of << " "<< bold_on << rc  << bold_off << "  palindrome!"<< endl;
-    cout << "Please enter a numbers for palindrome check, or a " << bold_on << "Negative" << bold_off << " number to " << bold_on << "Exit" << bold_off << endl;
-    palindrome_of= read_number();
   }
 
 }
