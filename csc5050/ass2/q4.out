@@ -1,0 +1,21 @@
+
++ q4 ++++++++++
+ Creating an instanse of the Complex Number class with default no Argument constructor:
+a Complex is [1m(0 + 0i)[0m
+
+ Creating an instanse of the Complex Number class
+Please enter the [1mReal[0m part: 
+Please enter the [1mImaginary[0m part, or 0 to exit
+
+a Complex is [1m(55 + 88i)[0m
+
+Adding first one to the second one 
+The [1mSumm[0m of two Complexes is [1m(55 + 88i)[0m
+
+Another Complex constructed is [1m(6 + 7i)[0m
+
+Let's [1mSubtrack[0m the [1m(6 + 7i)[0m from the [1m(55 + 88i)[0m
+The [1mDifference[0m of two is [1m(49 + 81i)[0m
+
+Let's [1mAdd[0m the [1m(6 + 7i)[0m to the [1m(55 + 88i)[0m
+The [1mSum[0m of two is [1m(61 + 95i)[0m
