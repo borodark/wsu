@@ -21,12 +21,12 @@ bool is_palindrome(int x) {
     return false;
   }
 
-  int revertedNumber = 0;
-  while(x > revertedNumber) {
-    revertedNumber = revertedNumber * 10 + x % 10;
+  int revertedX = 0;
+  while(x > revertedX) {
+    revertedX = revertedX * 10 + x % 10;
     x /= 10;
   }
-  return x == revertedNumber || x == revertedNumber/10;
+  return x == revertedX || x == revertedX/10;
 }
 
 
@@ -35,12 +35,11 @@ void q3(){
   cout << endl;
   cout << "+ q3 ++++++++++" << endl;
 
-  cout << "Please enter the numbers for palindrome check, to break the loop enter a negative number" << endl;
+  cout << "Please enter a numbers for palindrome check, or a " << bold_on << "Negative" << bold_off << " number to " << bold_on << "Exit" << bold_off << endl;
   int palindrome_of = read_number();
 
   while ( palindrome_of >= 0 ) {
-    cout << "The palindrome is " << endl ;
-    cout << "Please enter the numbers for factorial to be calculated, to break the loop enter a negative number" << endl;
+    cout << "Please enter a numbers for palindrome check, or a " << bold_on << "Negative" << bold_off << " number to " << bold_on << "Exit" << bold_off << endl;
     palindrome_of= read_number();
   }
 
