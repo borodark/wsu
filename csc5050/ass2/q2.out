@@ -1,0 +1,58 @@
+iostaptchenko@C02W837HHTDD:~/projects/secret/wsu/wsu/csc5050/ass2$ bin/q2
+
++ q2 ++++++++++
+This is a game to learnMultiplication
+The system will show the exersise, you will enter the answer!
+ For example: 
+How much is 6 times 7?
+
+You enter 42 and press Enter
+How much is 7 times 9 ?
+Please enter the result and press enter! Use CTRL+C to quit!
+63
+Very good!
+
+How much is 3 times 8 ?
+Please enter the result and press enter! Use CTRL+C to quit!
+44
+No. Please try again.
+
+How much is 3 times 8 ?
+Please enter the result and press enter! Use CTRL+C to quit!
+24
+Very good!
+
+How much is 0 times 2 ?
+Please enter the result and press enter! Use CTRL+C to quit!
+5
+No. Please try again.
+
+How much is 0 times 2 ?
+Please enter the result and press enter! Use CTRL+C to quit!
+6
+No. Please try again.
+
+How much is 0 times 2 ?
+Please enter the result and press enter! Use CTRL+C to quit!
+-1
+No. Please try again.
+
+How much is 0 times 2 ?
+Please enter the result and press enter! Use CTRL+C to quit!
+00009999999
+No. Please try again.
+
+How much is 0 times 2 ?
+Please enter the result and press enter! Use CTRL+C to quit!
+safdasdfasdf
+You have entered wrong input, numbers only, please!
+0
+Very good!
+
+How much is 4 times 8 ?
+Please enter the result and press enter! Use CTRL+C to quit!
+32
+Very good!
+
+How much is 3 times 9 ?
+Please enter the result and press enter! Use CTRL+C to quit!
