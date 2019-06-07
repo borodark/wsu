@@ -1,5 +1,18 @@
 # CS5050 Assignment 2
 
+## To run
+
+Developed and tested in Mac OSX 
+
+Install `cmake` and `make` , pull this repo change to this directory, run:
+
+`cmake .` to create Makefile
+
+`make` to comple
+
+The compiled binaries go to ![bin/](bin/)
+
+
 ## Q 1,2,3 4
 
 ### source code:
