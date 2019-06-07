@@ -16,9 +16,9 @@ using namespace std;
    if the last digit of the number is 0 then the first digit of the number
    also needs to be 0. <=> 0 is the only number that is the palindrome with 0at the end.
 **/
-bool is_palindrome(int x) {
+bool a_palindrome(int x) {
   if(x < 0 || (x % 10 == 0 && x != 0)) {
-    return false;
+    return 0;
   }
 
   int revertedX = 0;
@@ -39,6 +39,9 @@ void q3(){
   int palindrome_of = read_number();
 
   while ( palindrome_of >= 0 ) {
+    bool isP = a_palindrome(palindrome_of);
+    string rc = isP?"IS A":"IS NOT A";
+    cout << "The "<< palindrome_of << " "<< bold_on << rc  << bold_off << "  palindrome!"<< endl;
     cout << "Please enter a numbers for palindrome check, or a " << bold_on << "Negative" << bold_off << " number to " << bold_on << "Exit" << bold_off << endl;
     palindrome_of= read_number();
   }
@@ -48,5 +51,5 @@ void q3(){
 int main(){
   q3();
   return 0;
-}
+} 
 
