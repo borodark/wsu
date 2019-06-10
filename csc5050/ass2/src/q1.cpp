@@ -93,7 +93,8 @@ bool solve(unsigned char* maze, const int row, const int col, const int maxrows,
   unsigned char* cellP = cellPtr(maze,row,col,maxcols);
   if (valid_cell(maze, row, col, maxrows, maxcols)){
     *cellP = BEEN; // this cell has been tried
-    cout << " At  " << row << ":" << col <<endl;
+    cout << "... in progress: @  " << row << ":" << col <<endl;
+    print_maze(maze, '0',' ', '.', maxrows, maxcols);
     if (steps > 1 && ((row == 0 || col == 0 || row == maxrows-1 || col == maxcols-1) ||
                       ((row == 0 || col == 0 || row == maxrows-1 || col == maxcols-1)
                        && *cellP == BEEN)))
