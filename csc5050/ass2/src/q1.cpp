@@ -114,7 +114,7 @@ bool solve(short* maze, const int row, const int col, const int maxrows, const i
           done = solve(maze,row,col-1,maxrows, maxcols, steps++);   // left
       }
   }
-  print_maze(maze, '#',' ', '.', maxrows, maxcols);
+  // print_maze(maze, '#',' ', '.', maxrows, maxcols);
   // cout << " Steps is: " <<  steps << " Cell value:" << *cellP <<endl;
   //   printf("\nPress enter key to see next move\n"); //displays and asks user to see the next move on maze
   // getchar(); 
@@ -138,6 +138,7 @@ void test(short *mazePtr)
 
 void test_print(short *mazePtr, int rows, int cols){
   print_maze(mazePtr, '#',' ', '.', rows, cols);
+  //cout << " maze cell value size: " << sizeof((&mazePtr)[0][0])  << endl;
 }
 
 
@@ -245,16 +246,16 @@ void q1(){
   cout << "+ q1 ++++++++++" << endl;
   int   steps = 0;
   short *mazePtr1 = &maze1[0][0];
-  cout  << endl << "The Maze 1:" << endl;
+  cout  << endl << "The Maze 1 size:"  << sizeof(maze1) << endl;
   test_print(mazePtr1,12,12);
   short *mazePtr2 = &maze2[0][0];
-  cout  << endl << "The Maze 2:" << endl;
+  cout  << endl << "The Maze 2 size:"  << sizeof(maze2) << endl;
   test_print(mazePtr2,12,12);
   short *mazePtr3 = &maze3[0][0];
-  cout  << endl << "The Maze 3:" << endl;
+  cout << endl << "The Maze 3 size:"  << sizeof(maze3) << endl;
   test_print(mazePtr3,14,12);
   short *mazePtr4 = &maze4[0][0];
-  cout  << endl << "The Maze 4:" << endl;
+  cout << endl << "The Maze 4 size:"  << sizeof(maze4) << endl;
   test_print(mazePtr4,14,12);
   // enter at the right
   if (solve(mazePtr1, 9, 11, 12,12, steps)){
@@ -262,6 +263,7 @@ void q1(){
   } else {
     cout << "The maze 1 has NO solution" << endl;
   }
+  test_print(mazePtr1,12,12);
   steps = 0;
 
   // enter on the left
@@ -270,6 +272,7 @@ void q1(){
   } else {
     cout << "The maze 2 has NO solution" << endl;
   }
+  test_print(mazePtr2,12,12);
   steps = 0;
   // MAZE 4
   // enter on the left
@@ -278,6 +281,8 @@ void q1(){
   } else {
     cout << "The maze 3 has NO solution" << endl;
   }
+  test_print(mazePtr3,14,12);
+
   // MAZE 4
   steps = 0;
   // enter on the left
@@ -286,25 +291,29 @@ void q1(){
   } else {
     cout << "The maze 4 has NO solution" << endl;
   }
+  test_print(mazePtr4,14,12);
+
   short *mazePtrP1 = &mazePro1[0][0];
-  cout  << endl << "The Maze PRO:" << endl;
+  cout << endl << "The Maze PRO 1 size:"  << sizeof(mazePro1) << endl;
   test_print(mazePtrP1,12,12);
   if (solve(mazePtrP1, 9, 0, 12, 12, steps)){
     cout << "The maze PRO has A solution entering from the left" << endl;
   } else {
     cout << "The maze PRO has NO solution entering from the left" << endl;
   }
+  test_print(mazePtrP1,12,12);
+
 
   // enter from the right
   short *mazePtrP2 = &mazePro2[0][0];
-  cout  << endl << "The Maze PRO:" << endl;
+  cout << endl << "The Maze PRO 2 size:"  << sizeof(mazePro2) << endl;
   test_print(mazePtrP2,12,12);
   if (solve(mazePtrP2, 7, 11, 12, 12, steps)){
     cout << "The maze PRO has A solution entering from the right" << endl;
   } else {
     cout << "The maze PRO has NO solution entering from the right" << endl;
   }
-
+  test_print(mazePtrP2,12,12);
 
 }
 int main(){
