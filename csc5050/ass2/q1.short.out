@@ -1,7 +1,7 @@
 
 + q1 ++++++++++
 
-The Maze 1 size:144
+The Maze 1 size:288
 ######## ###
 # ####    ##
 #  ### ## ##
@@ -16,7 +16,7 @@ The Maze 1 size:144
 ############
 
 
-The Maze 2 size:144
+The Maze 2 size:288
 ############
 # ####    ##
 #  ### ## ##
@@ -31,7 +31,7 @@ The Maze 2 size:144
 ############
 
 
-The Maze 3 size:168
+The Maze 3 size:336
 ############
 # ####    ##
 #  ### ## ##
@@ -48,7 +48,7 @@ The Maze 3 size:168
 ############
 
 
-The Maze 4 size:168
+The Maze 4 size:336
 ############
 # ####    ##
 #  ### ## ##
@@ -286,7 +286,7 @@ The maze 4 has NO solution
 ############
 
 
-The Maze PRO 1 size:144
+The Maze PRO 1 size:288
 ############
 #      #   #
 ###### ### #
@@ -351,7 +351,7 @@ The maze PRO has A solution entering from the left
 ############
 
 
-The Maze PRO 2 size:144
+The Maze PRO 2 size:288
 ############
 #      #   #
 ###### ### #

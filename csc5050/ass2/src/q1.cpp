@@ -16,9 +16,9 @@ using namespace std;
 /*
  * constants to form array and mark state.
  */
-const short PATH = 0;
-const short WALL = 1;
-const short BEEN = 2;
+const unsigned char PATH = 0;
+const unsigned char WALL = 1;
+const unsigned char BEEN = 2;
 /**
  * Calculate pointer to array element given an array pointer, row and column index and array dimentions.
  *
@@ -28,7 +28,7 @@ const short BEEN = 2;
  * @param row_len - array size - first dimention.
  * @return a pointer to array element
  */
-short* cellPtr(short* maze, const int row, const int col, const int row_len) {
+unsigned char* cellPtr(unsigned char* maze, const int row, const int col, const int row_len) {
   return maze + (row * row_len + col);
 }
 /**
@@ -42,20 +42,20 @@ short* cellPtr(short* maze, const int row, const int col, const int row_len) {
  * @return a value of the array element
  */
 
-short cell(short* maze, const int row, const int col, const int row_len){
-  short cell = *(cellPtr(maze,row,col,row_len));
+unsigned char cell(unsigned char* maze, const int row, const int col, const int row_len){
+  unsigned char cell = *(cellPtr(maze,row,col,row_len));
   return cell;
 }
 /*
   return if the position in the maze is not the edge, or tried already.
   0 notation
 */
-bool valid_cell(short* maze, const int row, const int col, const int maxrows, const int maxcols ) {
+bool valid_cell(unsigned char* maze, const int row, const int col, const int maxrows, const int maxcols ) {
   // within the outer walls or at exit
   if (row >= 0 && row < maxrows && col >= 0 && col < maxcols) {
     //  check if cell is not a wall = 1
     //  previously  tried = 2
-    short value = cell(maze, row, col, maxcols);
+    unsigned char value = cell(maze, row, col, maxcols);
     return !(value == WALL || value == BEEN); // wall or been
   } else {
     return 0;
@@ -66,10 +66,10 @@ bool valid_cell(short* maze, const int row, const int col, const int maxrows, co
 /*
   print the maze state
 */
-void print_maze(short* maze, const char walls, const char background, const char been, const int nrows, const int ncols ){
+void print_maze(unsigned char* maze, const char walls, const char background, const char been, const int nrows, const int ncols ){
   for(int i = 0; i < nrows; i++){
     for(int j = 0; j < ncols; j++){
-      short cel = cell(maze, i, j, ncols);
+      unsigned char cel = cell(maze, i, j, ncols);
       // 0 - background
       // 1 - walls
       // 2 - been
@@ -80,7 +80,7 @@ void print_maze(short* maze, const char walls, const char background, const char
   cout << endl;
 }
 /*
-  traverse the array, modifies values, mark seen spots with `short` of value 2.
+  traverse the array, modifies values, mark seen spots with `unsigned char` of value 2.
   * @param maze - pointer to the array head
   * @param row - index in dimention 1
   * @param col - index in dimention 2
@@ -88,9 +88,9 @@ void print_maze(short* maze, const char walls, const char background, const char
   * @param maxcols - array size - second dimention.
   * @param steps - to track recursion depth and treat the special way the start point, that is the edge of maze
 */
-bool solve(short* maze, const int row, const int col, const int maxrows, const int maxcols, int steps ) {
+bool solve(unsigned char* maze, const int row, const int col, const int maxrows, const int maxcols, int steps ) {
   bool done = 0;
-  short* cellP = cellPtr(maze,row,col,maxcols);
+  unsigned char* cellP = cellPtr(maze,row,col,maxcols);
   if (valid_cell(maze, row, col, maxrows, maxcols)){
     *cellP = BEEN; // this cell has been tried
     cout << " At  " << row << ":" << col <<endl;
@@ -114,14 +114,14 @@ bool solve(short* maze, const int row, const int col, const int maxrows, const i
           done = solve(maze,row,col-1,maxrows, maxcols, steps++);   // left
       }
   }
-  print_maze(maze, '#',' ', '.', maxrows, maxcols);
+  // print_maze(maze, '#',' ', '.', maxrows, maxcols);
   // cout << " Steps is: " <<  steps << " Cell value:" << *cellP <<endl;
   //   printf("\nPress enter key to see next move\n"); //displays and asks user to see the next move on maze
   // getchar(); 
   return done;
 }
 
-void test(short *mazePtr)
+void test(unsigned char *mazePtr)
 {
   // cout << " Maze size: " << sizeof(maze) << " and " << sizeof(maze[1][1]) << endl;
   // tests
@@ -136,8 +136,9 @@ void test(short *mazePtr)
  
 }
 
-void test_print(short *mazePtr, int rows, int cols){
+void test_print(unsigned char *mazePtr, int rows, int cols){
   print_maze(mazePtr, '#',' ', '.', rows, cols);
+  //cout << " maze cell value size: " << sizeof((&mazePtr)[0][0])  << endl;
 }
 
 
@@ -145,7 +146,7 @@ void q1(){
   // 0 - path
   // 1 - walls
   // 2 - to mark as been during execution
-  short maze1[12][12] =
+  unsigned char maze1[12][12] =
     {     {1,1,1,1,1,1,1,1,0,1,1,1},
           //               ^ entrence/exit 
           {1,0,1,1,1,1,0,0,0,0,1,1},
@@ -160,7 +161,7 @@ void q1(){
           {1,0,1,0,0,0,0,0,0,0,1,1},
           {1,1,1,1,1,1,1,1,1,1,1,1}};
 
-  short maze2[12][12] =
+  unsigned char maze2[12][12] =
     {     {1,1,1,1,1,1,1,1,1,1,1,1},
           {1,0,1,1,1,1,0,0,0,0,1,1},
           {1,0,0,1,1,1,0,1,1,0,1,1},
@@ -175,7 +176,7 @@ void q1(){
           {1,0,1,0,0,0,0,0,0,0,1,1},
           {1,1,1,1,1,1,1,1,1,1,1,1}};
 
-  short maze3[14][12] =
+  unsigned char maze3[14][12] =
     {     {1,1,1,1,1,1,1,1,1,1,1,1},
           {1,0,1,1,1,1,0,0,0,0,1,1},
           {1,0,0,1,1,1,0,1,1,0,1,1},
@@ -193,7 +194,7 @@ void q1(){
           {1,1,1,1,1,1,1,1,1,1,1,1}
     };
 
-  short maze4[14][12] =
+  unsigned char maze4[14][12] =
     {     {1,1,1,1,1,1,1,1,1,1,1,1},
           {1,0,1,1,1,1,0,0,0,0,1,1},
           {1,0,0,1,1,1,0,1,1,0,1,1},
@@ -210,7 +211,7 @@ void q1(){
           {1,0,1,0,1,0,1,0,0,0,1,1},
           {1,1,1,1,1,1,1,1,1,1,1,1}
     };
-  short mazePro1[12][12] =
+  unsigned char mazePro1[12][12] =
     {     {1,1,1,1,1,1,1,1,1,1,1,1},
           {1,0,0,0,0,0,0,1,0,0,0,1},
           {1,1,1,1,1,1,0,1,1,1,0,1},
@@ -225,7 +226,7 @@ void q1(){
           {1,0,0,0,1,0,0,0,0,0,0,1},
           {1,1,1,1,1,1,1,1,1,1,1,1}};
 
-  short mazePro2[12][12] =
+  unsigned char mazePro2[12][12] =
     {     {1,1,1,1,1,1,1,1,1,1,1,1},
           {1,0,0,0,0,0,0,1,0,0,0,1},
           {1,1,1,1,1,1,0,1,1,1,0,1},
@@ -244,17 +245,17 @@ void q1(){
   cout << endl;
   cout << "+ q1 ++++++++++" << endl;
   int   steps = 0;
-  short *mazePtr1 = &maze1[0][0];
-  cout  << endl << "The Maze 1:" << endl;
+  unsigned char *mazePtr1 = &maze1[0][0];
+  cout  << endl << "The Maze 1 size:"  << sizeof(maze1) << endl;
   test_print(mazePtr1,12,12);
-  short *mazePtr2 = &maze2[0][0];
-  cout  << endl << "The Maze 2:" << endl;
+  unsigned char *mazePtr2 = &maze2[0][0];
+  cout  << endl << "The Maze 2 size:"  << sizeof(maze2) << endl;
   test_print(mazePtr2,12,12);
-  short *mazePtr3 = &maze3[0][0];
-  cout  << endl << "The Maze 3:" << endl;
+  unsigned char *mazePtr3 = &maze3[0][0];
+  cout << endl << "The Maze 3 size:"  << sizeof(maze3) << endl;
   test_print(mazePtr3,14,12);
-  short *mazePtr4 = &maze4[0][0];
-  cout  << endl << "The Maze 4:" << endl;
+  unsigned char *mazePtr4 = &maze4[0][0];
+  cout << endl << "The Maze 4 size:"  << sizeof(maze4) << endl;
   test_print(mazePtr4,14,12);
   // enter at the right
   if (solve(mazePtr1, 9, 11, 12,12, steps)){
@@ -262,6 +263,7 @@ void q1(){
   } else {
     cout << "The maze 1 has NO solution" << endl;
   }
+  test_print(mazePtr1,12,12);
   steps = 0;
 
   // enter on the left
@@ -270,6 +272,7 @@ void q1(){
   } else {
     cout << "The maze 2 has NO solution" << endl;
   }
+  test_print(mazePtr2,12,12);
   steps = 0;
   // MAZE 4
   // enter on the left
@@ -278,6 +281,8 @@ void q1(){
   } else {
     cout << "The maze 3 has NO solution" << endl;
   }
+  test_print(mazePtr3,14,12);
+
   // MAZE 4
   steps = 0;
   // enter on the left
@@ -286,25 +291,29 @@ void q1(){
   } else {
     cout << "The maze 4 has NO solution" << endl;
   }
-  short *mazePtrP1 = &mazePro1[0][0];
-  cout  << endl << "The Maze PRO:" << endl;
+  test_print(mazePtr4,14,12);
+
+  unsigned char *mazePtrP1 = &mazePro1[0][0];
+  cout << endl << "The Maze PRO 1 size:"  << sizeof(mazePro1) << endl;
   test_print(mazePtrP1,12,12);
   if (solve(mazePtrP1, 9, 0, 12, 12, steps)){
     cout << "The maze PRO has A solution entering from the left" << endl;
   } else {
     cout << "The maze PRO has NO solution entering from the left" << endl;
   }
+  test_print(mazePtrP1,12,12);
+
 
   // enter from the right
-  short *mazePtrP2 = &mazePro2[0][0];
-  cout  << endl << "The Maze PRO:" << endl;
+  unsigned char *mazePtrP2 = &mazePro2[0][0];
+  cout << endl << "The Maze PRO 2 size:"  << sizeof(mazePro2) << endl;
   test_print(mazePtrP2,12,12);
   if (solve(mazePtrP2, 7, 11, 12, 12, steps)){
     cout << "The maze PRO has A solution entering from the right" << endl;
   } else {
     cout << "The maze PRO has NO solution entering from the right" << endl;
   }
-
+  test_print(mazePtrP2,12,12);
 
 }
 int main(){
