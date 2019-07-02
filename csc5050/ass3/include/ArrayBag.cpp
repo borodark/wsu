@@ -106,12 +106,22 @@ bool ArrayBag<ItemType>::contains(const ItemType& anEntry) const
 template<class ItemType>
 vector<ItemType> ArrayBag<ItemType>::toVector() const
 {
-	vector<ItemType> bagContents;
-	for (int i = 0; i < itemCount; i++)
-		bagContents.push_back(items[i]);
-
-  return bagContents;
+  vector<ItemType> accumulator;
+  return toVectorR(0, accumulator);
 }  // end toVector
+
+// private
+template<class ItemType>
+vector <ItemType> ArrayBag<ItemType>::toVectorR( int currentIndex, vector<ItemType>& accumulator) const
+{
+  if (currentIndex > getCurrentSize()){
+    return accumulator; // return accumulator vector - we are done! 
+  } else {
+    accumulator.push_back(items[currentIndex]); // push an item to accumulator
+    return toVectorR(currentIndex + 1, accumulator); // call self with incremented index
+  }  // end if
+}
+
 
 // private
 template<class ItemType>

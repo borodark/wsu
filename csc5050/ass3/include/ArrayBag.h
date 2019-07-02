@@ -22,6 +22,8 @@ class ArrayBag : public BagInterface<ItemType>
   // contains the given target or -1, if the array does not contain 
   // the target.
   int getIndexOf(const ItemType& target) const;
+  // Recursive toVectorR helper function
+  vector <ItemType> toVectorR( int currentIndex, vector<ItemType>& accumulator) const;
 
  public:
 	ArrayBag();
