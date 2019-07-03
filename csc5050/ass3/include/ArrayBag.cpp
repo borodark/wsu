@@ -6,6 +6,7 @@
 
 #include "ArrayBag.h"
 #include <cstddef>
+#include <iostream>
 
 /*
   the implementation checks if bag is empty and or item is not found first.
@@ -30,9 +31,28 @@ bool ArrayBag<ItemType>::replace(const ItemType& oldEntry,const ItemType& newEnt
 }  // end replace
 
 template<class ItemType>
-ArrayBag<ItemType>::ArrayBag(): itemCount(0), maxItems(DEFAULT_CAPACITY)
-{
+ArrayBag<ItemType>::ArrayBag():
+  itemCount(0),
+  maxItems(DEFAULT_CAPACITY),
+  items(new ItemType[DEFAULT_CAPACITY]){
+  cout << "constructor default for size " << DEFAULT_CAPACITY << endl;
 }  // end default constructor
+
+// Explicit capcity constructor
+template<class ItemType>
+ArrayBag<ItemType>::ArrayBag(int capacity):
+  itemCount(0),
+  maxItems(capacity),
+  items(new ItemType[capacity]){
+  cout << "constructor explicit for size " << capacity << endl;
+} // end explicit capacity constructor
+
+template<class ItemType>
+ArrayBag<ItemType>::~ArrayBag(){
+  delete[] items;
+  items = nullptr;
+  cout << "destruct" << endl;
+}
 
 template<class ItemType>
 int ArrayBag<ItemType>::getCurrentSize() const
@@ -106,13 +126,13 @@ bool ArrayBag<ItemType>::contains(const ItemType& anEntry) const
 template<class ItemType>
 vector<ItemType> ArrayBag<ItemType>::toVector() const
 {
-  vector<ItemType> accumulator;
-  return toVectorR(0, accumulator);
+  vector<ItemType> accumulator; // declare accumulator
+  return toVectorR(0, accumulator); // pass accumulator to collect values into 
 }  // end toVector
 
 // private
 template<class ItemType>
-vector <ItemType> ArrayBag<ItemType>::toVectorR( int currentIndex, vector<ItemType>& accumulator) const
+vector<ItemType> ArrayBag<ItemType>::toVectorR( int currentIndex, vector<ItemType>& accumulator) const
 {
   if (currentIndex < getCurrentSize()){
     accumulator.push_back(items[currentIndex]); // push an item to accumulator

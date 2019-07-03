@@ -11,18 +11,38 @@
 #include "ArrayBag.h"
 #include <vector>
 
-
-
 using namespace std;
+
 
 template<class Item>
 void printVector(vector<Item> const &input)
 {
+
   for (int i = 0; i < input.size(); i++) {
 		cout << input.at(i) << ' ';
 	} //	copy(input.begin(),            input.end(),            ostream_iterator<Item>(cout, ", "));
+  cout << endl;
 }
 
+template<class Item>
+void mergeBags(ArrayBag<Item> const &b1, ArrayBag<Item> const &b2)
+{
+  int newsize = b1.getCurrentSize() + b2.getCurrentSize();
+  ArrayBag<Item> target{newsize};
+  vector<Item> v1 = b1.toVector();
+  vector<Item> v2 = b2.toVector();
+  for (Item const &element: v1) {
+    cout << "adding v1 item: " << element << endl;
+    target.add(element);
+  }
+  for (Item const &element: v2) {
+    cout << "adding v2 item: " << element << endl;
+    target.add(element);
+  }
+  cout << "size of the target is: " << target.getCurrentSize() << endl;
+  cout << "the target is: " << endl;
+  printVector(target.toVector());
+}
 
 void q3(){
   ArrayBag<int> arrayBag;
@@ -48,9 +68,19 @@ void q3(){
   cout << "Vector out of the array" << endl;
   printVector<int>(v);
   cout << endl;
+  // q3.3 
+  ArrayBag<int> ab2;
+  ab2.add(10);
+  ab2.add(210);
+  ab2.add(120);
+  ab2.add(160);
+  ab2.add(104);
+  // 5 elements
+  mergeBags<int>(arrayBag, ab2);
 }
 
 int main(){
   q3();
   return 0;
 }
+

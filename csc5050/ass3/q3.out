@@ -1,9 +1,31 @@
+constructor default for size 6
 The arraybag has 6 items
 The array is: 
 1 7 9 12 15 19 
+
 Was an attemt to replace 9 with 10 succesful?  -> 1
 Does the arraybag has item with value 9? -> 0
 Does the arraybag has item with value 10?  -> 1
 Was the second attemt to replace 9 with 10 succesful? -> 0
 Vector out of the array
 1 7 10 12 15 19 
+
+constructor default for size 6
+constructor explicit for size 11
+adding v1 item: 1
+adding v1 item: 7
+adding v1 item: 10
+adding v1 item: 12
+adding v1 item: 15
+adding v1 item: 19
+adding v2 item: 10
+adding v2 item: 210
+adding v2 item: 120
+adding v2 item: 160
+adding v2 item: 104
+size of the target is: 11
+the target is: 
+1 7 10 12 15 19 10 210 120 160 104 
+destruct
+destruct
+destruct
