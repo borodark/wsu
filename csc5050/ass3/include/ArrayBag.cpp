@@ -114,11 +114,11 @@ vector<ItemType> ArrayBag<ItemType>::toVector() const
 template<class ItemType>
 vector <ItemType> ArrayBag<ItemType>::toVectorR( int currentIndex, vector<ItemType>& accumulator) const
 {
-  if (currentIndex > getCurrentSize()){
-    return accumulator; // return accumulator vector - we are done! 
-  } else {
+  if (currentIndex < getCurrentSize()){
     accumulator.push_back(items[currentIndex]); // push an item to accumulator
     return toVectorR(currentIndex + 1, accumulator); // call self with incremented index
+  } else {
+    return accumulator; // return accumulator vector - we are done!
   }  // end if
 }
 
