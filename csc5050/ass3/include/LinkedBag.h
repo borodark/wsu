@@ -34,9 +34,9 @@ class LinkedBag : public BagInterface<ItemType>
   bool contains(const ItemType& anEntry) const;
   int getFrequencyOf(const ItemType& anEntry) const;
   vector<ItemType> toVector() const;
-  void reverseLoop() const;
-  void reverseRecursion() const;
-  bool removeDuplicates() const;
+  void reverseLoop();
+  void reverseRecursion();
+  bool removeDuplicates();
 }; // end LinkedBag
 
 #include "LinkedBag.cpp"

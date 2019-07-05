@@ -7,6 +7,7 @@
 #include "LinkedBag.h"
 #include "Node.h"
 #include <cstddef>
+//#include <iostream>
 
 template<class ItemType>
 LinkedBag<ItemType>::LinkedBag() : headPtr(nullptr), itemCount(0)
@@ -17,46 +18,44 @@ template<class ItemType>
 LinkedBag<ItemType>::LinkedBag(const LinkedBag<ItemType>& aBag)
 {
 	itemCount = aBag.itemCount;
-   Node<ItemType>* origChainPtr = aBag.headPtr;  // Points to nodes in original chain
-   
-   if (origChainPtr == nullptr)
-      headPtr = nullptr;  // Original bag is empty
-   else
-   {
+  Node<ItemType>* origChainPtr = aBag.headPtr;  // Points to nodes in original chain
+  if (origChainPtr == nullptr)
+    headPtr = nullptr;  // Original bag is empty
+  else
+    {
       // Copy first node
       headPtr = new Node<ItemType>();
       headPtr->setItem(origChainPtr->getItem());
-      
       // Copy remaining nodes
       Node<ItemType>* newChainPtr = headPtr;      // Points to last node in new chain
       origChainPtr = origChainPtr->getNext();     // Advance original-chain pointer
       
       while (origChainPtr != nullptr)
-      {
-         // Get next item from original chain
-         ItemType nextItem = origChainPtr->getItem();
+        {
+          // Get next item from original chain
+          ItemType nextItem = origChainPtr->getItem();
          
-         // Create a new node containing the next item
-         Node<ItemType>* newNodePtr = new Node<ItemType>(nextItem);
+          // Create a new node containing the next item
+          Node<ItemType>* newNodePtr = new Node<ItemType>(nextItem);
          
-         // Link new node to end of new chain
-         newChainPtr->setNext(newNodePtr);
+          // Link new node to end of new chain
+          newChainPtr->setNext(newNodePtr);
          
-         // Advance pointer to new last node
-         newChainPtr = newChainPtr->getNext();
+          // Advance pointer to new last node
+          newChainPtr = newChainPtr->getNext();
          
-         // Advance original-chain pointer
-         origChainPtr = origChainPtr->getNext();
-      }  // end while
+          // Advance original-chain pointer
+          origChainPtr = origChainPtr->getNext();
+        }  // end while
       
       newChainPtr->setNext(nullptr);              // Flag end of chain
-   }  // end if
+    }  // end if
 }  // end copy constructor
 
 template<class ItemType>
 LinkedBag<ItemType>::~LinkedBag()
 {
-   clear();
+  clear();
 }  // end destructor
 
 template<class ItemType>
@@ -74,42 +73,84 @@ int LinkedBag<ItemType>::getCurrentSize() const
 template<class ItemType>
 bool LinkedBag<ItemType>::add(const ItemType& newEntry)
 {
-   // Add to beginning of chain: new node references rest of chain;
-   // (headPtr is null if chain is empty)        
-   Node<ItemType>* nextNodePtr = new Node<ItemType>();
-   nextNodePtr->setItem(newEntry);
-   nextNodePtr->setNext(headPtr);  // New node points to chain
-//   Node<ItemType>* nextNodePtr = new Node<ItemType>(newEntry, headPtr); // alternate code
+  // Add to beginning of chain: new node references rest of chain;
+  // (headPtr is null if chain is empty)        
+  Node<ItemType>* nextNodePtr = new Node<ItemType>();
+  nextNodePtr->setItem(newEntry);
+  nextNodePtr->setNext(headPtr);  // New node points to chain
+  //   Node<ItemType>* nextNodePtr = new Node<ItemType>(newEntry, headPtr); // alternate code
 
-   headPtr = nextNodePtr;          // New node is now first node
-   itemCount++;
+  headPtr = nextNodePtr;          // New node is now first node
+  itemCount++;
    
-   return true;
+  return true;
 }  // end add
 
 template<class ItemType>
 vector<ItemType> LinkedBag<ItemType>::toVector() const
 {
-   vector<ItemType> bagContents;
-   Node<ItemType>* curPtr = headPtr;
-   int counter = 0;
+  vector<ItemType> bagContents;
+  Node<ItemType>* curPtr = headPtr;
+  int counter = 0;
 	while ((curPtr != nullptr) && (counter < itemCount))
-   {
-		bagContents.push_back(curPtr->getItem());
+    {
+      bagContents.push_back(curPtr->getItem());
       curPtr = curPtr->getNext();
       counter++;
-   }  // end while
+    }  // end while
    
-   return bagContents;
+  return bagContents;
 }  // end toVector
+
+template<class ItemType>
+void LinkedBag<ItemType>::reverseLoop()
+{
+  Node<ItemType>* hPtr = headPtr;
+  Node<ItemType>* curPtr = hPtr->getNext();
+  headPtr = nullptr;
+  int counter = 0;
+  bool atTheEnd = false;
+	while ((!atTheEnd)&&(counter < itemCount))
+    {
+      Node<ItemType>* tmpPtr = curPtr->getNext(); // save next
+      if(counter == 0) // at the head - special case
+        {
+          hPtr->setNext(nullptr); // former head node - set next to nullpointer
+          //to not break the semmantics of the proper linked bag
+          curPtr->setNext(hPtr); // fix the next to former head
+          hPtr = nullptr; // free  
+          hPtr = curPtr; // swap
+          curPtr = tmpPtr; // advance
+          tmpPtr = nullptr; //clear
+        }
+      else
+        {
+          if(tmpPtr != nullptr) // in between 
+            {
+              curPtr->setNext(hPtr); // fix the next to former head
+              hPtr = nullptr; // free  
+              hPtr = curPtr; // swap
+              curPtr = tmpPtr; // advance
+              tmpPtr = nullptr; //clear
+            } else // last node
+            {
+              atTheEnd = true;// exit loop 
+              curPtr->setNext(hPtr); // fix the next to former head
+              headPtr = curPtr; // keep the the head
+            }
+        }
+      counter++;
+    }  // end while
+
+}
 
 template<class ItemType>
 bool LinkedBag<ItemType>::remove(const ItemType& anEntry)
 {
-   Node<ItemType>* entryNodePtr = getPointerTo(anEntry);
-   bool canRemoveItem = !isEmpty() && (entryNodePtr != nullptr);
-   if (canRemoveItem)
-   {
+  Node<ItemType>* entryNodePtr = getPointerTo(anEntry);
+  bool canRemoveItem = !isEmpty() && (entryNodePtr != nullptr);
+  if (canRemoveItem)
+    {
       // Copy data from first node to located node
       entryNodePtr->setItem(headPtr->getItem());
       
@@ -123,7 +164,7 @@ bool LinkedBag<ItemType>::remove(const ItemType& anEntry)
       nodeToDeletePtr = nullptr;
       
       itemCount--;
-   } // end if
+    } // end if
    
 	return canRemoveItem;
 }  // end remove
@@ -131,9 +172,9 @@ bool LinkedBag<ItemType>::remove(const ItemType& anEntry)
 template<class ItemType>
 void LinkedBag<ItemType>::clear()
 {
-   Node<ItemType>* nodeToDeletePtr = headPtr;
-   while (headPtr != nullptr)
-   {
+  Node<ItemType>* nodeToDeletePtr = headPtr;
+  while (headPtr != nullptr)
+    {
       headPtr = headPtr->getNext();
       
       // Return node to the system
@@ -141,8 +182,8 @@ void LinkedBag<ItemType>::clear()
       delete nodeToDeletePtr;
       
       nodeToDeletePtr = headPtr;
-   }  // end while
-   // headPtr is nullptr; nodeToDeletePtr is nullptr
+    }  // end while
+  // headPtr is nullptr; nodeToDeletePtr is nullptr
    
 	itemCount = 0;
 }  // end clear
@@ -152,18 +193,18 @@ template<class ItemType>
 int LinkedBag<ItemType>::getFrequencyOf(const ItemType& anEntry) const
 {
 	int frequency = 0;
-   int counter = 0;
-   Node<ItemType>* curPtr = headPtr;
-   while ((curPtr != nullptr) && (counter < itemCount))
-   {
+  int counter = 0;
+  Node<ItemType>* curPtr = headPtr;
+  while ((curPtr != nullptr) && (counter < itemCount))
+    {
       if (anEntry == curPtr->getItem())
-      {
-         frequency++;
-      } // end if
+        {
+          frequency++;
+        } // end if
       
       counter++;
       curPtr = curPtr->getNext();
-   } // end while
+    } // end while
    
 	return frequency;
 }  // end getFrequencyOf
@@ -175,14 +216,44 @@ bool LinkedBag<ItemType>::contains(const ItemType& anEntry) const
 }  // end contains
 
 template<class ItemType>
-void LinkedBag<ItemType>::reverseLoop() const
+void LinkedBag<ItemType>::reverseRecursion()
 {
-  // TODO Impelent
-}
-
-template<class ItemType>
-void LinkedBag<ItemType>::reverseRecursion() const
-{
+  Node<ItemType>* hPtr = headPtr;
+  Node<ItemType>* curPtr = hPtr->getNext();
+  headPtr = nullptr;
+  int counter = 0;
+  bool atTheEnd = false;
+	while ((!atTheEnd)&&(counter < itemCount))
+    {
+      Node<ItemType>* tmpPtr = curPtr->getNext(); // save next
+      if(counter == 0) // at the head - special case
+        {
+          hPtr->setNext(nullptr); // former head node - set next to nullpointer
+          //to not break the semmantics of the proper linked bag
+          curPtr->setNext(hPtr); // fix the next to former head
+          hPtr = nullptr; // free  
+          hPtr = curPtr; // swap
+          curPtr = tmpPtr; // advance
+          tmpPtr = nullptr; //clear
+        }
+      else
+        {
+          if(tmpPtr != nullptr) // in between 
+            {
+              curPtr->setNext(hPtr); // fix the next to former head
+              hPtr = nullptr; // free  
+              hPtr = curPtr; // swap
+              curPtr = tmpPtr; // advance
+              tmpPtr = nullptr; //clear
+            } else // last node
+            {
+              atTheEnd = true;// exit loop 
+              curPtr->setNext(hPtr); // fix the next to former head
+              headPtr = curPtr; // keep the the head
+            }
+        }
+      counter++;
+    }  // end while
   // TODO Impelent
 }
 
@@ -194,7 +265,7 @@ bool LinkedBag<ItemType>::replace(const ItemType& oldEntry,const ItemType& newEn
 }
 
 template<class ItemType>
-bool LinkedBag<ItemType>::removeDuplicates() const
+bool LinkedBag<ItemType>::removeDuplicates()
 {
   // TODO Impelent
   return false; // Stubbed
@@ -206,17 +277,17 @@ bool LinkedBag<ItemType>::removeDuplicates() const
 template<class ItemType>
 Node<ItemType>* LinkedBag<ItemType>::getPointerTo(const ItemType& anEntry) const
 {
-   bool found = false;
-   Node<ItemType>* curPtr = headPtr;
-   while (!found && (curPtr != nullptr))
-   {
+  bool found = false;
+  Node<ItemType>* curPtr = headPtr;
+  while (!found && (curPtr != nullptr))
+    {
       if (anEntry == curPtr->getItem())
-         found = true;
+        found = true;
       else
-         curPtr = curPtr->getNext();
-   } // end while
+        curPtr = curPtr->getNext();
+    } // end while
    
-   return curPtr;
+  return curPtr;
 } // end getPointerTo
 
 
