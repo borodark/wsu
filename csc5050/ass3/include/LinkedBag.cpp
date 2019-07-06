@@ -229,7 +229,7 @@ Node<ItemType>* LinkedBag<ItemType>::reverse(Node<ItemType>* curPtr,
                                                   Node<ItemType>* nextPtr)
 {
   Node<ItemType>* result = nullptr;
-  if (nextPtr == nullptr){ // we reached the tail
+  if (nextPtr == nullptr){ // we have reached the tail
     result = curPtr; // curPtr becomes the headPtr
   } else {
     Node<ItemType>* nextOfTheNext = nextPtr->getNext(); // extract the next of the next
