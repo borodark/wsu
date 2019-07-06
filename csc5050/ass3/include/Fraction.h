@@ -10,7 +10,9 @@ class Fraction
   long long int n; // numerator
   long long int d; // denominator
   // Reduces this
-  Fraction& reduceToLowestTerms();
+  void reduceToLowestTerms();
+  long long int greatestCommonDivizor(long long int x,long long int y);
+
  public:
 	explicit Fraction(long long int n, long long int d); // construct only valid fractions
   /** Adds a fraction to this

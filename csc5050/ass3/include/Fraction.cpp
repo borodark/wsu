@@ -6,27 +6,44 @@ Fraction::Fraction(long long int n, long long int d) // construct only valid fra
    d(d)
 {
   if (d == 0)
-    throw std::invalid_argument("Invalid denominator! Can't be zero 0 ... ");
-
-  }
+    throw std::invalid_argument("Invalid denominator! Can't be zero AKA 0 or \"0\" ... ");
+  else
+    reduceToLowestTerms();
+}
 
 std::string Fraction::print() const  // print the n/b
 {
   return std::to_string(n) + "/" + std::to_string(d);
 }
 
-Fraction& Fraction::reduceToLowestTerms(){
-  return *this; //TODO IMPLEMENT
+long long int Fraction::greatestCommonDivizor(long long int num,long long int den){
+  if (den == 0) 
+    return num;
+  return greatestCommonDivizor(den, num % den);
+}
+
+void Fraction::reduceToLowestTerms(){
+  long long int gcd = greatestCommonDivizor(n, d);
+  std::cout << n << "/" << d << " has gcd of " << gcd;
+  d=d/gcd;
+  n=n/gcd;
+  std::cout << " is  reduced to " << print() << std::endl;
+
 }
 
 bool Fraction::equals(const Fraction& another){
-  return false; //TODO IMPLEMENT
+  return (another.d == d && another.n == n); 
 }
 
   /** Adds a fraction to this
       @return this to have chain operations. */
 Fraction& Fraction::add(const Fraction& a){
-  return *this; //TODO IMPLEMENT
+  // 1/2 + 1/3 = 3/6 + 2/6 = 5/6
+  std::cout << n << "/" << d << " + " << a.n << "/" << a.d << " = ";
+  n = n * a.d + a.n * d;
+  d = d * a.d;
+  reduceToLowestTerms();
+  return *this;
 }
   /** subtract a fraction to this
       @return this to have chain operations. */

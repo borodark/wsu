@@ -14,8 +14,20 @@ using namespace std;
 
 int main(){
   Fraction a = Fraction{1,2};
-  cout << a.add(Fraction{1,2}).print() << endl;
-  
+  Fraction b = Fraction{1,2};
+  assert(a.equals(b));
+  cout << a.add(b).print() << endl;
+  Fraction c = Fraction{1,4};
+  assert(!a.equals(c) && !b.equals(c));
+  cout << b.add(c).print() << endl;
+  assert((Fraction{1,2}).add(Fraction{1,4}).equals(Fraction{3,4}));
+  Fraction d = Fraction{2,4};
+  Fraction d1 = Fraction{2,3};
+  Fraction e = Fraction{3,9};
+  Fraction g = Fraction{64,32};
+  Fraction h = Fraction{12,15};
+  cout << g.add(h).print() << endl;
+
   Fraction invalid = Fraction{1,0};
 
   return 0;
