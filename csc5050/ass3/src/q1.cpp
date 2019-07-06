@@ -16,17 +16,17 @@ using namespace std;
    Implement the function in C++ and do a box trace of Acker (1, 2).
 */
 
-long double acker(long double m, long double n) {
-  if (m == 0.0){
+long long int acker(long long int m, long long int n) {
+  if (m == 0){
     cout << "m is 0 returning n + 1 ..." << endl;
-    return n + 1.0;
+    return n + 1;
   }
-  else if (n == 0.0){ 
+  else if (n == 0){ 
     cout << "n is 0 returning acker(m - 1,1) ..." << endl;
-    return acker(m - 1.0,1.0); 
+    return acker(m - 1,1); 
   } else {
     cout << "n is " << n << " m is " << m << " ..." << endl;
-    return acker(m - 1.0, acker(m,n-1.0));
+    return acker(m - 1, acker(m,n-1));
   }
 }
 
@@ -34,14 +34,17 @@ long double acker(long double m, long double n) {
 
 int main(){
   cout << "What is Acker (1, 2)?" << endl;
-  long double a1 = acker(1, 2);
+  long long int a1 = acker(1, 2);
   cout << "The Acker (1, 2) is: "<< a1 << endl;
   cout << "What is Acker (2, 2)?" << endl;
-  long double a2 = acker(2, 2);
+  long long int a2 = acker(2, 2);
   cout << "The Acker (2, 2) is: " << a2 << endl;
   cout << "What is Acker (2, 5)? It is: " << endl;
-  long double a3 = acker(2, 5);
-  cout << "The Acker (2, 5) is: " << a3<< endl;
+  long long int a3 = acker(2, 5);
+  cout << "The Acker (2, 5) is: " << a3 << endl;
+  cout << "What is Acker (3, 7)? It is: " << endl;
+  long long int a4 = acker(3, 7);
+  cout << "The Acker (3, 7) is: " << a4 << endl;
   return 0;
 }
 
