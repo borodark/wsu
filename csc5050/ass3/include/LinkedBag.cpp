@@ -102,6 +102,7 @@ vector<ItemType> LinkedBag<ItemType>::toVector() const
   return bagContents;
 }  // end toVector
 
+
 template<class ItemType>
 void LinkedBag<ItemType>::reverseLoop()
 {
@@ -137,10 +138,13 @@ void LinkedBag<ItemType>::reverseLoop()
               atTheEnd = true;// exit loop 
               curPtr->setNext(hPtr); // fix the next to former head
               headPtr = curPtr; // keep the the head
+              tmpPtr = nullptr; //clear
             }
         }
       counter++;
     }  // end while
+  hPtr = nullptr; // free  
+  curPtr = nullptr; // free 
 
 }
 
@@ -254,7 +258,6 @@ void LinkedBag<ItemType>::reverseRecursion()
         }
       counter++;
     }  // end while
-  // TODO Impelent
 }
 
 template<class ItemType>
@@ -268,11 +271,49 @@ template<class ItemType>
 bool LinkedBag<ItemType>::removeDuplicates()
 {
   // TODO Impelent
-  return false; // Stubbed
+  // loop while not last
+  // if frequency > 1 
+  Node<ItemType>* hPtr = headPtr;
+  Node<ItemType>* curPtr = hPtr->getNext();
+  headPtr = nullptr;
+  int counter = 0;
+  bool atTheEnd = false;
+	while ((!atTheEnd)&&(counter < itemCount))
+    {
+      Node<ItemType>* tmpPtr = curPtr->getNext(); // save next
+      if(counter == 0) // at the head - special case
+        {
+          hPtr->setNext(nullptr); // former head node - set next to nullpointer
+          //to not break the semmantics of the proper linked bag
+          curPtr->setNext(hPtr); // fix the next to former head
+          hPtr = nullptr; // free  
+          hPtr = curPtr; // swap
+          curPtr = tmpPtr; // advance
+          tmpPtr = nullptr; //clear
+        }
+      else
+        {
+          if(tmpPtr != nullptr) // in between 
+            {
+              curPtr->setNext(hPtr); // fix the next to former head
+              hPtr = nullptr; // free  
+              hPtr = curPtr; // swap
+              curPtr = tmpPtr; // advance
+              tmpPtr = nullptr; //clear
+            } else // last node
+            {
+              atTheEnd = true;// exit loop 
+              curPtr->setNext(hPtr); // fix the next to former head
+              headPtr = curPtr; // keep the the head
+            }
+        }
+      counter++;
+    }  // end while  
+  return true;
 }
 
-// private
-// Returns either a pointer to the node containing a given entry 
+
+// Returns either a pointer to the node containing a given entry
 // or the null pointer if the entry is not in the bag.
 template<class ItemType>
 Node<ItemType>* LinkedBag<ItemType>::getPointerTo(const ItemType& anEntry) const

@@ -35,7 +35,8 @@ void reverseLoopTest(){
   lb2.add(104);
   lb2.add(103);
   lb2.add(1220);
-
+  cout << "Reverse with loop!" << endl;
+  
   vector<int> v1 = lb2.toVector();
   cout << "The l before is: " << endl;
   printVector<int>(v1);
@@ -62,7 +63,7 @@ void reverseRecursionTest(){
   lb2.add(104);
   lb2.add(103);
   lb2.add(1220);
-
+  cout << "Reverse with recursion!" << endl;
   vector<int> v1 = lb2.toVector();
   cout << "The l before is: " << endl;
   printVector<int>(v1);
