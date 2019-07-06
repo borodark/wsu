@@ -52,7 +52,6 @@ void reverseLoopTest(){
 
 
 void reverseRecursionTest(){
-
   // q4.2.2
   // keep one occurence
   LinkedBag<int> lb2;
@@ -63,6 +62,7 @@ void reverseRecursionTest(){
   lb2.add(104);
   lb2.add(103);
   lb2.add(1220);
+  cout << "------------------------" << endl;
   cout << "Reverse with recursion!" << endl;
   vector<int> v1 = lb2.toVector();
   cout << "The l before is: " << endl;
@@ -73,7 +73,8 @@ void reverseRecursionTest(){
   vector<int> v = lb2.toVector();
   cout << "The l is after reverse: " << endl;
   printVector<int>(v);
-  // me function to check the 1220 is the first - only visual 
+  cout << "------------------------" << endl;
+  // me function to check the 1220 is the first - only visual
 }
 
 void removeDuplicatesTest(){

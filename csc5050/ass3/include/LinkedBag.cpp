@@ -102,7 +102,6 @@ vector<ItemType> LinkedBag<ItemType>::toVector() const
   return bagContents;
 }  // end toVector
 
-
 template<class ItemType>
 void LinkedBag<ItemType>::reverseLoop()
 {
@@ -219,45 +218,35 @@ bool LinkedBag<ItemType>::contains(const ItemType& anEntry) const
 	return (getPointerTo(anEntry) != nullptr);
 }  // end contains
 
+
+/**
+   makes left -> rigft -> far_right to left <- rigft
+   returns pointer to far_right
+*/
+
+template<class ItemType>
+Node<ItemType>* LinkedBag<ItemType>::reverse(Node<ItemType>* curPtr,
+                                                  Node<ItemType>* nextPtr)
+{
+  Node<ItemType>* result = nullptr;
+  if (nextPtr == nullptr){ // we reached the tail
+    result = curPtr; // curPtr becomes the headPtr
+  } else {
+    Node<ItemType>* nextOfTheNext = nextPtr->getNext(); // extract the next of the next
+    nextPtr->setNext(curPtr);
+    result = reverse(nextPtr, nextOfTheNext);
+  } // end if
+  return result;
+}  // end 
+
 template<class ItemType>
 void LinkedBag<ItemType>::reverseRecursion()
 {
-  Node<ItemType>* hPtr = headPtr;
-  Node<ItemType>* curPtr = hPtr->getNext();
+  Node<ItemType>* head = headPtr;
   headPtr = nullptr;
-  int counter = 0;
-  bool atTheEnd = false;
-	while ((!atTheEnd)&&(counter < itemCount))
-    {
-      Node<ItemType>* tmpPtr = curPtr->getNext(); // save next
-      if(counter == 0) // at the head - special case
-        {
-          hPtr->setNext(nullptr); // former head node - set next to nullpointer
-          //to not break the semmantics of the proper linked bag
-          curPtr->setNext(hPtr); // fix the next to former head
-          hPtr = nullptr; // free  
-          hPtr = curPtr; // swap
-          curPtr = tmpPtr; // advance
-          tmpPtr = nullptr; //clear
-        }
-      else
-        {
-          if(tmpPtr != nullptr) // in between 
-            {
-              curPtr->setNext(hPtr); // fix the next to former head
-              hPtr = nullptr; // free  
-              hPtr = curPtr; // swap
-              curPtr = tmpPtr; // advance
-              tmpPtr = nullptr; //clear
-            } else // last node
-            {
-              atTheEnd = true;// exit loop 
-              curPtr->setNext(hPtr); // fix the next to former head
-              headPtr = curPtr; // keep the the head
-            }
-        }
-      counter++;
-    }  // end while
+  Node<ItemType>* nextToHead = head->getNext();
+  head->setNext(nullptr);
+  headPtr = reverse(head, nextToHead); 
 }
 
 template<class ItemType>

@@ -20,6 +20,7 @@ class LinkedBag : public BagInterface<ItemType>
   // Returns either a pointer to the node containing a given entry
   // or the null pointer if the entry is not in the bag.
   Node<ItemType>* getPointerTo(const ItemType& target) const;
+  Node<ItemType>* reverse(Node<ItemType>* curPtr, Node<ItemType>* nextPtr);
 
  public:
   LinkedBag();
