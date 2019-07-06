@@ -1,7 +1,9 @@
+Reverse with loop!
 The l before is: 
 1220 103 104 160 120 210 10 
 The l is after reverse: 
 10 210 120 160 104 103 1220 
+Reverse with recursion!
 The l before is: 
 1220 103 104 160 120 210 10 
 The l is after reverse: 
@@ -9,4 +11,4 @@ The l is after reverse:
 The l before is: 
 104 120 104 120 104 160 120 210 120 10 
 The l is: 
-104 120 104 120 104 160 120 210 120 10 
+10 210 160 120 104 
