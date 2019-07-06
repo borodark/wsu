@@ -266,50 +266,40 @@ bool LinkedBag<ItemType>::replace(const ItemType& oldEntry,const ItemType& newEn
   // TODO Impelent
   return false; // Stubbed
 }
-
+/**
+   As the assignment does not state the return type of the removeDuplicates function
+   I took a liberty to return a new LinkedBag without duplicates.
+   All pointers should be dereferenced and nodes deleted.
+   It is still n^2 but the memory should shrink while duplicates freed.
+ */
 template<class ItemType>
-bool LinkedBag<ItemType>::removeDuplicates()
+LinkedBag<ItemType> LinkedBag<ItemType>::removeDuplicates()
 {
-  // TODO Impelent
-  // loop while not last
-  // if frequency > 1 
+  LinkedBag<ItemType> rc;
   Node<ItemType>* hPtr = headPtr;
-  Node<ItemType>* curPtr = hPtr->getNext();
+  rc.add(hPtr-> getItem());
+  delete headPtr;
   headPtr = nullptr;
   int counter = 0;
   bool atTheEnd = false;
 	while ((!atTheEnd)&&(counter < itemCount))
     {
-      Node<ItemType>* tmpPtr = curPtr->getNext(); // save next
-      if(counter == 0) // at the head - special case
-        {
-          hPtr->setNext(nullptr); // former head node - set next to nullpointer
-          //to not break the semmantics of the proper linked bag
-          curPtr->setNext(hPtr); // fix the next to former head
-          hPtr = nullptr; // free  
-          hPtr = curPtr; // swap
-          curPtr = tmpPtr; // advance
-          tmpPtr = nullptr; //clear
-        }
-      else
-        {
-          if(tmpPtr != nullptr) // in between 
-            {
-              curPtr->setNext(hPtr); // fix the next to former head
-              hPtr = nullptr; // free  
-              hPtr = curPtr; // swap
-              curPtr = tmpPtr; // advance
-              tmpPtr = nullptr; //clear
-            } else // last node
-            {
-              atTheEnd = true;// exit loop 
-              curPtr->setNext(hPtr); // fix the next to former head
-              headPtr = curPtr; // keep the the head
-            }
-        }
+      Node<ItemType>* node = hPtr->getNext();
+      ItemType v = node->getItem();
+      if(!rc.contains(v)){
+        rc.add(v);
+      }
+      hPtr = node->getNext();
+      if( hPtr == nullptr){
+        atTheEnd = true;
+      }
       counter++;
-    }  // end while  
-  return true;
+      delete node;
+      node = nullptr;
+    }  // end while
+  delete hPtr;
+  hPtr =  nullptr;
+  return rc;
 }
 
 

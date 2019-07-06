@@ -95,24 +95,23 @@ void removeDuplicatesTest(){
   vector<int> v1 = lb2.toVector();
   cout << "The l before is: " << endl;
   printVector<int>(v1);
-
   // expect 10 120 210 160 104 only
-  lb2.removeDuplicates();
-  vector<int> v = lb2.toVector();
+  LinkedBag<int> lb3 = lb2.removeDuplicates();
+  vector<int> v = lb3.toVector();
   cout << "The l is: " << endl;
   printVector<int>(v);
 
-  assert(lb2.contains(10));
-  assert(lb2.getFrequencyOf(10) == 1);
-  assert(lb2.contains(120));
-  assert(lb2.getFrequencyOf(120) == 1);
-  assert(lb2.contains(210));
-  assert(lb2.getFrequencyOf(210) == 1);
-  assert(lb2.contains(160));
-  assert(lb2.getFrequencyOf(160) == 1);
-  assert(lb2.contains(104));
-  assert(lb2.getFrequencyOf(104) == 1);
-  assert(lb2.getCurrentSize() == 5);
+  assert(lb3.contains(10));
+  assert(lb3.getFrequencyOf(10) == 1);
+  assert(lb3.contains(120));
+  assert(lb3.getFrequencyOf(120) == 1);
+  assert(lb3.contains(210));
+  assert(lb3.getFrequencyOf(210) == 1);
+  assert(lb3.contains(160));
+  assert(lb3.getFrequencyOf(160) == 1);
+  assert(lb3.contains(104));
+  assert(lb3.getFrequencyOf(104) == 1);
+  assert(lb3.getCurrentSize() == 5);
 }
 
 int main(){

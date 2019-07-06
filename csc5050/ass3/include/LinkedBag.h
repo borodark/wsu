@@ -36,7 +36,7 @@ class LinkedBag : public BagInterface<ItemType>
   vector<ItemType> toVector() const;
   void reverseLoop();
   void reverseRecursion();
-  bool removeDuplicates();
+  LinkedBag<ItemType> removeDuplicates();
 }; // end LinkedBag
 
 #include "LinkedBag.cpp"
