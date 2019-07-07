@@ -25,8 +25,14 @@ Install `cmake` and `make` , pull this repo change to this directory, run:
   * Specify and implement an *ADT for fractions*: see [Fraction Header](include/Fraction.h) [Fraction Implementation](include/Fraction.cpp). Provide operations that [add](include/Fraction.cpp#L52), [subtract](include/Fraction.cpp#L62), [multiply](include/Fraction.cpp#L71), and [divide](include/Fraction.cpp#L80) these numbers. The results of all arithmetic operations should be in lowest terms, so include a private function [reduceToLowestTerms](include/Fraction.cpp#L27). To simplify the determination of a fraction’s sign, you can assume that the denominator of the fraction is positive. Next, Specify and implement an ADT for mixed numbers: see  [MixedNumber Header](include/MixedNumber.h), [MixedNumber Implementation](include/MixedNumber.cpp) , each of which contains an integer portion and a fractional portion in lowest terms. You can utilize the ADT fraction you created in the first part of this problem. Provide operations that [add](include/MixedNumber.cpp#L43), [subtract](include/MixedNumber.cpp#L52), [multiply](include/MixedNumber.cpp#L64), and [divide](include/MixedNumber.cpp#L77) mixed numbers. The results of all arithmetic operations should have fractional portions that are in the lowest terms: see [void MixedNumber::reduce()](include/MixedNumber.cpp#L6). Also, include an operation that converts a fraction to a mixed number: see constructor that takes *Fraction* [MixedNumber::MixedNumber(const Fraction& f)](include/MixedNumber.cpp#L18).
 
 * Q3 - [src/q3.cpp](src/q3.cpp)   - driver and implementation
-  * Modified ArrayBag interface, header,cpp - [include/](include/)
   * Results: [q3.out](q3.out)
+  * Modified ArrayBag interface, header,cpp - [include/](include/)
+  * Modify the ArrayBag class: see [ArrayBag Header](include/ArrayBag.h) [ArrayBag Implementation](include/ArrayBag.cpp), given in Chapter 3 to meet the following specs:
+    * Write a member function replace that replaces a given item in a given bag with another given item. The function should return a boolean value to indicate whether the replacement was successful.
+    * Write a recursive array-based implementation of the method toVector for the class ArrayBag.
+    * Write a client function that merges two bags into a new third bag. Do not destroy the original two bags
+
+
   
   
 * Q4 - [src/q4.cpp](src/q4.cpp)   - driver
