@@ -59,11 +59,19 @@ Fraction& Fraction::subtract(const Fraction& s){
 }
   /** multiply a fraction by this
       @return this to have chain operations. */
-Fraction& Fraction::multiply(const Fraction& m){
-  return *this; //TODO IMPLEMENT
+Fraction& Fraction::multiply(const Fraction& multiplier){
+  std::cout << n << "/" << d << " * " << multiplier.n << "/" << multiplier.d << " = ";
+  n = n * multiplier.n;
+  d = d * multiplier.d;
+  reduceToLowestTerms();
+  return *this;
 }
   /** divide this by a fraction
       @return this to have chain operations. */
-Fraction& Fraction::divide(const Fraction& d){
-  return *this; //TODO IMPLEMENT
+Fraction& Fraction::divide(const Fraction& divisor){
+  std::cout << n << "/" << d << " / " << divisor.n << "/" << divisor.d << " = ";
+  n = n * divisor.d;
+  d = d * divisor.n;
+  reduceToLowestTerms();
+  return *this;
 }

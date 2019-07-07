@@ -34,6 +34,23 @@ int main(){
   Fraction k = Fraction{2,3};
   cout << k.subtract(k1).print() << endl;
 
+  Fraction l = Fraction{1,3};
+  Fraction l1 = Fraction{3,4};
+  cout << l.multiply(l1).print() << endl;
+
+  Fraction m = Fraction{1,3};
+  Fraction m1 = Fraction{3,4};
+  cout << m.divide(m1).print() << endl;
+
+
+  Fraction n = Fraction{23,3};
+  Fraction n1 = Fraction{5,4};
+  cout << n.divide(n1).print() << endl;
+
+  /// chain
+
+  cout << d1.divide(h).add(k1).subtract(l1).multiply(n1).print() << endl;
+
 
   Fraction invalid = Fraction{1,0};
 
