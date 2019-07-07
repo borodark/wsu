@@ -39,7 +39,7 @@ Install `cmake` and `make` , pull this repo change to this directory, run:
 * Q4 - [src/q4.cpp](src/q4.cpp)   - driver
   * [include/](include/) Classes declaration and implementation
   * Results: [q4.out](q4.out)
-  * Write two _reverse_ functions for the linkedBag ADT: [LinkedBag Header](include/LinkedBag.h) [LinkedBag Implementation](include/LinkedBag.cpp), using both [iterative](include/LinkedBag.cpp#L106) and [recursive]((include/LinkedBag.cpp#L228)) approaches. The function is supposed to reverse the linked list data structure. See trace here: [reverse loop](q4.out#L1), [reverse recursive](q4.out#L6)
+  * Write two _reverse_ functions for the linkedBag ADT: [LinkedBag Header](include/LinkedBag.h) [LinkedBag Implementation](include/LinkedBag.cpp), using both [iterative](include/LinkedBag.cpp#L106) and [recursive](include/LinkedBag.cpp#L228) approaches. The function is supposed to reverse the linked list data structure. See trace here: [reverse loop](q4.out#L1), [reverse recursive](q4.out#L6)
      
   * Also, write another function _removeDuplicates_ that will locate and remove any duplicates in the linked list (only one occurrence of each linked list entry is allowed): see here  [iterative](include/LinkedBag.cpp#L258). Test your functions using a driver program: [see trace here](q4.out#L12) 
   
