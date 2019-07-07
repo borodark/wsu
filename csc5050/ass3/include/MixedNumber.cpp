@@ -62,11 +62,11 @@ MixedNumber& MixedNumber::subtract(const MixedNumber& s){
   /** multiply a fraction by this
       @return this to have chain operations. */
 MixedNumber& MixedNumber::multiply(const MixedNumber& m){
-  // consrtuct, multiply and reduce fractions
+  // consrtuct, multiply and reduce fractions, handling negatives
   bool negate_this = (iPart < 0) || (fPart.n < 0);
   bool negate_m = (m.iPart < 0) || (m.fPart.n < 0);
-  Fraction product = (Fraction{(negate_this?-1:1)*(abs(iPart)*fPart.d + abs(fPart.n)),fPart.d}).
-    multiply(Fraction{(negate_m?-1:1)*(abs(m.iPart)*m.fPart.d+abs(m.fPart.n)),m.fPart.d});
+  Fraction product = (Fraction{(negate_this?-1:1) * (abs(iPart)*fPart.d + abs(fPart.n)), fPart.d}).
+    multiply(Fraction{(negate_m?-1:1) * (abs(m.iPart)*m.fPart.d + abs(m.fPart.n)), m.fPart.d});
   MixedNumber rc = MixedNumber(product);
   iPart = rc.iPart;
   fPart = rc.fPart;
@@ -75,12 +75,12 @@ MixedNumber& MixedNumber::multiply(const MixedNumber& m){
   /** divide this by a fraction
       @return this to have chain operations. */
 MixedNumber& MixedNumber::divide(const MixedNumber& d){
-  // consrtuct, multiply and reduce fractions
+  // consrtuct, multiply and reduce fractions, handling negatives
   bool negate_this = (iPart < 0) || (fPart.n < 0);
   bool negate_d = (d.iPart < 0) || (d.fPart.n < 0);
-  Fraction division = (Fraction{(negate_this?-1:1)*(abs(iPart)*fPart.d + abs(fPart.n)),fPart.d}).
-     multiply(Fraction{d.fPart.d, (negate_d?-1:1)*(abs(d.iPart)*d.fPart.d+abs(d.fPart.n))});
-     // division of is oppsed to multiplication
+  Fraction division = (Fraction{(negate_this?-1:1)*(abs(iPart)*fPart.d + abs(fPart.n)), fPart.d}).
+     multiply(Fraction{d.fPart.d, (negate_d?-1:1)*(abs(d.iPart)*d.fPart.d + abs(d.fPart.n))});
+     // division is the operation opposed to multiplication
   MixedNumber rc = MixedNumber(division);
   iPart = rc.iPart;
   fPart = rc.fPart;
