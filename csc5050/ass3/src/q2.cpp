@@ -23,10 +23,17 @@ int main(){
   assert((Fraction{1,2}).add(Fraction{1,4}).equals(Fraction{3,4}));
   Fraction d = Fraction{2,4};
   Fraction d1 = Fraction{2,3};
+  cout << d.subtract(d1).print() << endl;
+
   Fraction e = Fraction{3,9};
   Fraction g = Fraction{64,32};
   Fraction h = Fraction{12,15};
   cout << g.add(h).print() << endl;
+
+  Fraction k1 = Fraction{8,31};
+  Fraction k = Fraction{2,3};
+  cout << k.subtract(k1).print() << endl;
+
 
   Fraction invalid = Fraction{1,0};
 

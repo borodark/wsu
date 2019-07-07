@@ -25,6 +25,9 @@ long long int Fraction::greatestCommonDivizor(long long int num,long long int de
 void Fraction::reduceToLowestTerms(){
   long long int gcd = greatestCommonDivizor(n, d);
   std::cout << n << "/" << d << " has gcd of " << gcd;
+  if (gcd < 0){ // deal with negative gcd
+    gcd *= -1; // n keeps negtive sign from here
+  }
   d=d/gcd;
   n=n/gcd;
   std::cout << " is  reduced to " << print() << std::endl;
@@ -48,7 +51,11 @@ Fraction& Fraction::add(const Fraction& a){
   /** subtract a fraction to this
       @return this to have chain operations. */
 Fraction& Fraction::subtract(const Fraction& s){
-  return *this; //TODO IMPLEMENT
+  std::cout << n << "/" << d << " - " << s.n << "/" << s.d << " = ";
+  n = n * s.d - s.n * d;
+  d = d * s.d;
+  reduceToLowestTerms();
+  return *this;
 }
   /** multiply a fraction by this
       @return this to have chain operations. */
