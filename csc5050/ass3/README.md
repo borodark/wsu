@@ -29,9 +29,9 @@ Install `cmake` and `make` , pull this repo change to this directory, run:
   * Modified ArrayBag interface, header,cpp - [include/](include/)
   * Modify the ArrayBag class: see [ArrayBag Header](include/ArrayBag.h) [ArrayBag Implementation](include/ArrayBag.cpp), given in Chapter 3 to meet the following specs:
     * Write a member function replace that replaces a given item in a given bag with another given item. The function should return a boolean value to indicate whether the replacement was successful: [bool ArrayBag<ItemType>::replace(const ItemType& oldEntry,const ItemType& newEntry)
-](include/ArrayBag.cpp#L18). See trace: [q3.out#L6](q3.out#L6)
-    * Write a recursive array-based implementation of the method toVector for the class ArrayBag.
-    * Write a client function that merges two bags into a new third bag. Do not destroy the original two bags
+](include/ArrayBag.cpp#L18). See trace: [q3.out#L6](q3.out#L6) of driver code starting here: [q3.cpp](q3.cpp#L61).
+    * Write a recursive array-based implementation of the method [toVector](include/ArrayBag.cpp#L127) for the class ArrayBag. See helper function: [toVectorR](include/ArrayBag.cpp#L135) 
+    * Write a client function that [merges](q3.cpp#L28) two bags into a new third bag. Do not destroy the original two bags
 
 
   
