@@ -32,7 +32,7 @@ class Fraction
 
   bool equals(const Fraction& d) const;
 
-  bool greater(const Fraction& d) const;
+  bool less(const Fraction& d) const;
 
   std::string print() const;
 };

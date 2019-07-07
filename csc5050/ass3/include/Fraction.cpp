@@ -7,8 +7,10 @@ Fraction::Fraction(long long int n, long long int d) // construct only valid fra
 {
   if (d == 0)
     throw std::invalid_argument("Invalid denominator! Can't be zero AKA 0 or \"0\" ... ");
-  else
+  else{
     reduceToLowestTerms();
+    std::cout << "Constructed " << print() << std::endl;
+  }
 }
 
 std::string Fraction::print() const  // print the n/b
@@ -38,11 +40,11 @@ bool Fraction::equals(const Fraction& another) const {
   return (another.d == d && another.n == n); 
 }
 
-bool Fraction::greater(const Fraction& another) const {
+bool Fraction::less(const Fraction& another) const {
   long long int this_n, another_n = 0;
   this_n = n * another.d; // cross multiply ans and dees
   another_n = another.n * d; //
-  return this_n > another_n;
+  return this_n < another_n;
 }
 
   /** Adds a fraction to this

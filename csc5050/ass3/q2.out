@@ -1,38 +1,148 @@
+Constructed 1/2
+Constructed 1/2
 1/1
+Constructed 1/4
 3/4
+Constructed 1/2
+Constructed 1/4
+Constructed 3/4
+Constructed -1/2
+Constructed 1/2
+Constructed -1/4
+Constructed 1/2
+Constructed 2/3
 -1/6
+Constructed 1/3
+Constructed 2/1
+Constructed 4/5
 14/5
+Constructed 8/31
+Constructed 2/3
 38/93
+Constructed 1/3
+Constructed 3/4
 1/4
+Constructed 1/3
+Constructed 3/4
 4/9
+Constructed 23/3
+Constructed 33/7
 161/99
-1397/868
+-----------------------
+ Chain call produced value of 1397/868
+Constructed 5/7
 Constructed 5 5/7
+Constructed 5/7
 Constructed 4 5/7
+Constructed 5/7
 Constructed 5 5/7
 -----------------------
-(5 5/7) + (5 5/7) = 11 3/7
+(5 5/7) + (5 5/7) = Constructed 3/7
+11 3/7
+Constructed 5/7
 Constructed 5 5/7
 -----------------------
-(5 5/7) - (5 5/7) = 0 0/1
+(5 5/7) - (5 5/7) = 
+Constructed 0/1
+0 0/1
+Constructed 5/7
 Constructed 4 5/7
 -----------------------
-(5 5/7) - (4 5/7) = Constructed 1 0/1
+(5 5/7) - (4 5/7) = 
+Constructed 0/1
+Constructed 0/1
+Constructed 1 0/1
 1 0/1
 -----------------------
-(4 5/7) - (5 5/7) = (-1 0/1)Constructed 5 5/7
+(4 5/7) - (5 5/7) = (-1 0/1)
+Constructed 5/7
+Constructed 5 5/7
+Constructed 0/1
+Constructed 0/1
 Constructed -1 0/1
 -1 0/1
 -----------------------
-(1 7/5) - (7/5) = (-1 0/1)Constructed 1 7/5
-Constructed 2 7/5
+(1 7/5) - (7/5) = (-1 0/1)
+Constructed 2/5
+Constructed 2 2/5
+Constructed 2/5
+Constructed 3 2/5
+Constructed 0/1
+Constructed 0/1
 Constructed -1 0/1
 -----------------------
-(2 1/5) - (1 3/5) = (0 3/5)Constructed 2 1/5
+(2 1/5) - (1 3/5) = (0 3/5)
+Constructed 1/5
+Constructed 2 1/5
+Constructed 3/5
 Constructed 1 3/5
+Constructed 1/1
+Constructed 3/5
+Constructed 3/5
 Constructed 0 3/5
 -----------------------
-(3 2/3) - (2 3/5) = (1 1/15)Constructed 3 2/3
+(3 2/3) - (2 3/5) = (1 1/15)
+Constructed 2/3
+Constructed 3 2/3
+Constructed 3/5
 Constructed 2 3/5
+Constructed 1/15
+Constructed 1/15
 Constructed 1 1/15
+-----------------------
+145/15 = Constructed 8/15
+Constructed 9 8/15
+9 8/15
+-----------------------
+(3 2/3) * (2 3/5) = (9 8/15)
+Constructed 2/3
+Constructed 3 2/3
+Constructed 3/5
+Constructed 2 3/5
+Constructed 11/3
+Constructed 13/5
+Constructed 8/15
+Constructed 9 8/15
+Constructed 8/15
+Constructed 9 8/15
+-----------------------
+-145/15 = Constructed 8/15
+Constructed -9 8/15
+-9 8/15
+-----------------------
+(-3 2/3) * (2 3/5) = (-9 8/15)
+Constructed 2/3
+Constructed -3 2/3
+Constructed 3/5
+Constructed 2 3/5
+Constructed -11/3
+Constructed 13/5
+Constructed 8/15
+Constructed -9 8/15
+Constructed 8/15
+Constructed -9 8/15
+-----------------------
+(-3 2/3) / (2 3/5) = (-11/3)/(13/5) = (-55/39) = (-1 16/39)
+Constructed 2/3
+Constructed -3 2/3
+Constructed 3/5
+Constructed 2 3/5
+Constructed -11/3
+Constructed 5/13
+Constructed 16/39
+Constructed -1 16/39
+Constructed 16/39
+Constructed -1 16/39
+-----------------------
+(3 2/3) / (-2 3/5) = (-11/3)/(13/5) = (-55/39) = (-1 16/39)
+Constructed 2/3
+Constructed 3 2/3
+Constructed 3/5
+Constructed -2 3/5
+Constructed 11/3
+Constructed 5/-13
+Constructed 16/-39
+Constructed -1 16/-39
+Constructed 16/39
+Constructed -1 16/39
 libc++abi.dylib: terminating with uncaught exception of type std::invalid_argument: Invalid denominator! Can't be zero AKA 0 or "0" ... 

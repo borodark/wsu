@@ -13,6 +13,7 @@
 using namespace std;
 
 int main(){
+
   Fraction a = Fraction{1,2};
   Fraction b = Fraction{1,2};
   assert(a.equals(b));
@@ -20,7 +21,11 @@ int main(){
   Fraction c = Fraction{1,4};
   assert(!a.equals(c) && !b.equals(c));
   cout << b.add(c).print() << endl;
+
   assert((Fraction{1,2}).add(Fraction{1,4}).equals(Fraction{3,4}));
+
+  assert((Fraction{-1,2}).multiply(Fraction{1,2}).equals(Fraction{-1,4}));
+
   Fraction d = Fraction{2,4};
   Fraction d1 = Fraction{2,3};
   cout << d.subtract(d1).print() << endl;
@@ -48,6 +53,8 @@ int main(){
   cout << n.divide(n1).print() << endl;
 
   /// chain
+  cout << "-----------------------" << endl;
+  cout << " Chain call produced value of ";
 
   cout << d1.divide(h).add(k1).subtract(l1).multiply(n1).print() << endl;
 
@@ -65,34 +72,60 @@ int main(){
   MixedNumber m557 = MixedNumber{5, 5, 7};
   assert(m5and5by7.equals(m557));
   cout << "-----------------------" << endl;
-  cout << "(5 5/7) - (5 5/7) = ";
+  cout << "(5 5/7) - (5 5/7) = " << endl;
 
   cout << m557.subtract(m5and5by7).print() << endl;
 
   MixedNumber m457 = MixedNumber{4, 5, 7};
   cout << "-----------------------" << endl;
-  cout << "(5 5/7) - (4 5/7) = ";
+  cout << "(5 5/7) - (4 5/7) = " << endl;
   m5and5by7.subtract(m457);
   assert(m5and5by7.equals(MixedNumber{1,0,1}));
   cout << m5and5by7.print() << endl;
 
   cout << "-----------------------" << endl;
-  cout << "(4 5/7) - (5 5/7) = (-1 0/1)";
+  cout << "(4 5/7) - (5 5/7) = (-1 0/1)"<< endl;
   m457.subtract(MixedNumber{5, 5, 7});
   assert(m457.equals(MixedNumber{-1,0,1}));
   cout << m457.print() << endl;
 
   cout << "-----------------------" << endl;
-  cout << "(1 7/5) - (7/5) = (-1 0/1)";
+  cout << "(1 7/5) - (7/5) = (-1 0/1)"<< endl;
   assert((MixedNumber{1, 7, 5}).subtract(MixedNumber{2, 7, 5}).equals(MixedNumber{-1,0,1}));
 
   cout << "-----------------------" << endl;
-  cout << "(2 1/5) - (1 3/5) = (0 3/5)";
+  cout << "(2 1/5) - (1 3/5) = (0 3/5)" << endl;
   assert((MixedNumber{2, 1, 5}).subtract(MixedNumber{1, 3, 5}).equals(MixedNumber{0,3,5}));
 
   cout << "-----------------------" << endl;
-  cout << "(3 2/3) - (2 3/5) = (1 1/15)";
+  cout << "(3 2/3) - (2 3/5) = (1 1/15)" << endl;
   assert((MixedNumber{3, 2, 3}).subtract(MixedNumber{2, 3, 5}).equals(MixedNumber{1,1,15}));
+
+  cout << "-----------------------" << endl;
+  cout << "145/15 = ";
+  cout << (MixedNumber{0,143,15}).print() << endl;
+
+  cout << "-----------------------" << endl;
+  cout << "(3 2/3) * (2 3/5) = (9 8/15)" << endl;
+  assert((MixedNumber{3, 2, 3}).multiply(MixedNumber{2, 3, 5}).equals(MixedNumber{9,8,15}));
+
+
+  cout << "-----------------------" << endl;
+  cout << "-145/15 = ";
+  cout << (MixedNumber{0,-143,15}).print() << endl;
+
+
+  cout << "-----------------------" << endl;
+  cout << "(-3 2/3) * (2 3/5) = (-9 8/15)" << endl;
+  assert((MixedNumber{-3, 2, 3}).multiply(MixedNumber{2, 3, 5}).equals(MixedNumber{-9,8,15}));
+
+  cout << "-----------------------" << endl;
+  cout << "(-3 2/3) / (2 3/5) = (-11/3)/(13/5) = (-55/39) = (-1 16/39)" << endl;
+  assert((MixedNumber{-3, 2, 3}).divide(MixedNumber{2, 3, 5}).equals(MixedNumber{-1,16,39}));
+
+  cout << "-----------------------" << endl;
+  cout << "(3 2/3) / (-2 3/5) = (-11/3)/(13/5) = (-55/39) = (-1 16/39)" << endl;
+  assert((MixedNumber{3, 2, 3}).divide(MixedNumber{-2, 3, 5}).equals(MixedNumber{-1,16,39}));
 
   Fraction invalid = Fraction{1,0};
 
