@@ -4,15 +4,18 @@
 #ifndef _MIXED_NUMBER
 #define _MIXED_NUMBER
 
+
 class MixedNumber
 {
  private:
   long long int iPart; // Integer part
   Fraction fPart; // Fractional part
+  void reduce();
 
  public:
 	explicit MixedNumber(long long int i, const Fraction& f); // 
   explicit MixedNumber(const Fraction& f); // 
+  explicit MixedNumber(long long int i, long long int numerator, long long int denominator);
   /** Adds a fraction to this
       @return this to have chain operations. */
   MixedNumber& add(const MixedNumber& a);

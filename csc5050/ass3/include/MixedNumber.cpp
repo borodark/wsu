@@ -3,22 +3,34 @@
 #include "Fraction.h"
 
 
+void MixedNumber::reduce(){
+  iPart += fPart.n/fPart.d;
+  fPart = Fraction{fPart.n%fPart.d,fPart.d};
+}
+
 MixedNumber::MixedNumber(long long int i, const Fraction& f)
   :iPart(i + f.n/f.d),
    fPart(Fraction{f.n%f.d,f.d})
 {
-  std::cout << print() << std::endl;
+  std::cout << "Constructed " << print() << std::endl;
 }
 
 MixedNumber::MixedNumber(const Fraction& f)
   :iPart(f.n/f.d),
    fPart(Fraction{f.n%f.d,f.d})
 {
-  std::cout << print() << std::endl;
+  std::cout << "Constructed " << print() << std::endl;
+}
+
+MixedNumber::MixedNumber(long long int i, long long int numerator, long long int denominator)
+  :iPart(i),
+   fPart(Fraction{numerator, denominator})
+{
+  std::cout << "Constructed "<< print() << std::endl;
 }
 
 std::string MixedNumber::print() const {
-  return "MixedNumber is " + std::to_string(iPart) +  " and " + fPart.print();
+  return std::to_string(iPart)+" " + fPart.print();
 }
 
 
@@ -29,15 +41,26 @@ bool MixedNumber::equals(const MixedNumber& another) const {
   /** Adds a fraction to this
       @return this to have chain operations. */
 MixedNumber& MixedNumber::add(const MixedNumber& a){
-  // std::cout << n << "/" << d << " + " << a.n << "/" << a.d << " = ";
-  // TODO implement!!!
+  iPart += a.iPart;
+  fPart.add(a.fPart);
+  // std::cout << print() << " + " << a.print() << " = ";
+  reduce();
   return *this;
 }
   /** subtract a fraction to this
       @return this to have chain operations. */
 MixedNumber& MixedNumber::subtract(const MixedNumber& s){
-  // std::cout << n << "/" << d << " - " << s.n << "/" << s.d << " = ";
-  // TODO implement!!!
+  iPart -= s.iPart;
+  if(fPart.greater(s.fPart)){
+    // no need to borrow 1 from iPart before subrtracttion
+    fPart.subtract(s.fPart);
+  } else {
+    iPart -= 1; // borrow one to keep fraction positive
+    fPart.add(Fraction{1,1}); // add one to fraction part
+    fPart.subtract(s.fPart);
+  }
+  // std::cout << print() << " + " << a.print() << " = ";
+  reduce();
   return *this;
 }
   /** multiply a fraction by this

@@ -24,13 +24,13 @@ long long int Fraction::greatestCommonDivizor(long long int num,long long int de
 
 void Fraction::reduceToLowestTerms(){
   long long int gcd = greatestCommonDivizor(n, d);
-  std::cout << n << "/" << d << " has gcd of " << gcd;
+  // std::cout << n << "/" << d << " has gcd of " << gcd;
   if (gcd < 0){ // deal with negative gcd
     gcd *= -1; // n keeps negtive sign from here
   }
   d=d/gcd;
   n=n/gcd;
-  std::cout << " is  reduced to " << print() << std::endl;
+  // std::cout << " is  reduced to " << print() << std::endl;
 
 }
 
@@ -38,11 +38,18 @@ bool Fraction::equals(const Fraction& another) const {
   return (another.d == d && another.n == n); 
 }
 
+bool Fraction::greater(const Fraction& another) const {
+  long long int this_n, another_n = 0;
+  this_n = n * another.d; // cross multiply ans and dees
+  another_n = another.n * d; //
+  return this_n > another_n;
+}
+
   /** Adds a fraction to this
       @return this to have chain operations. */
 Fraction& Fraction::add(const Fraction& a){
   // 1/2 + 1/3 = 3/6 + 2/6 = 5/6
-  std::cout << n << "/" << d << " + " << a.n << "/" << a.d << " = ";
+  // std::cout << n << "/" << d << " + " << a.n << "/" << a.d << " = ";
   n = n * a.d + a.n * d;
   d = d * a.d;
   reduceToLowestTerms();
@@ -51,7 +58,7 @@ Fraction& Fraction::add(const Fraction& a){
   /** subtract a fraction to this
       @return this to have chain operations. */
 Fraction& Fraction::subtract(const Fraction& s){
-  std::cout << n << "/" << d << " - " << s.n << "/" << s.d << " = ";
+  // std::cout << n << "/" << d << " - " << s.n << "/" << s.d << " = ";
   n = n * s.d - s.n * d;
   d = d * s.d;
   reduceToLowestTerms();
@@ -60,7 +67,7 @@ Fraction& Fraction::subtract(const Fraction& s){
   /** multiply a fraction by this
       @return this to have chain operations. */
 Fraction& Fraction::multiply(const Fraction& multiplier){
-  std::cout << n << "/" << d << " * " << multiplier.n << "/" << multiplier.d << " = ";
+  // std::cout << n << "/" << d << " * " << multiplier.n << "/" << multiplier.d << " = ";
   n = n * multiplier.n;
   d = d * multiplier.d;
   reduceToLowestTerms();
@@ -69,7 +76,7 @@ Fraction& Fraction::multiply(const Fraction& multiplier){
   /** divide this by a fraction
       @return this to have chain operations. */
 Fraction& Fraction::divide(const Fraction& divisor){
-  std::cout << n << "/" << d << " / " << divisor.n << "/" << divisor.d << " = ";
+  // std::cout << n << "/" << d << " / " << divisor.n << "/" << divisor.d << " = ";
   n = n * divisor.d;
   d = d * divisor.n;
   reduceToLowestTerms();
