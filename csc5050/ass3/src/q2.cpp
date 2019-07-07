@@ -9,7 +9,7 @@
 #include <iostream>
 #include <cassert>
 #include "Fraction.h"
-
+#include "MixedNumber.h"
 using namespace std;
 
 int main(){
@@ -44,13 +44,15 @@ int main(){
 
 
   Fraction n = Fraction{23,3};
-  Fraction n1 = Fraction{5,4};
+  Fraction n1 = Fraction{66,14};
   cout << n.divide(n1).print() << endl;
 
   /// chain
 
   cout << d1.divide(h).add(k1).subtract(l1).multiply(n1).print() << endl;
 
+  MixedNumber mn = MixedNumber{1, n1};
+  MixedNumber mnf = MixedNumber{n1};
 
   Fraction invalid = Fraction{1,0};
 

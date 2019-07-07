@@ -6,6 +6,8 @@
 
 class Fraction
 {
+  friend class MixedNumber;
+  
  private:
   long long int n; // numerator
   long long int d; // denominator
@@ -28,7 +30,7 @@ class Fraction
       @return this to have chain operations. */
   Fraction& divide(const Fraction& d);
 
-  bool equals(const Fraction& d);
+  bool equals(const Fraction& d) const;
   std::string print() const;
 };
 #include "Fraction.cpp"

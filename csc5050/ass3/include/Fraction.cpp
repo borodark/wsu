@@ -34,7 +34,7 @@ void Fraction::reduceToLowestTerms(){
 
 }
 
-bool Fraction::equals(const Fraction& another){
+bool Fraction::equals(const Fraction& another) const {
   return (another.d == d && another.n == n); 
 }
 
