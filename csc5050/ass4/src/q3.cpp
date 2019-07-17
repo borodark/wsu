@@ -9,13 +9,17 @@
 #include <iostream>
 #include <cassert>
 #include "Node.h"
-
+#include "Profile.h"
 using namespace std;
 
+void q3(){
 
+  Profile buzz = Profile{"buzz", "0-)", single};
+
+}
 
 int main(){
-  //  q3();
+   q3();
   return 0;
 }
 

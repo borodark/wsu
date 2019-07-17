@@ -21,5 +21,14 @@ const bool Profile::isMember(){
   return memberPtr != nullptr;
 }
 
+
+const string Profile::print() const  // 
+{
+  return "-> " + getName() +
+    " -> " + getPicture() +
+    " -> " + getStatus() +
+    " -> is member: " + (isMember()? "Y":"N");
+}
+
 // TODO Accessors, print , etc 
 
