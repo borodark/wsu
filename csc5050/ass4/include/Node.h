@@ -20,11 +20,13 @@ class Node {
    const string printFriends() const;
 
  public:
-   Node(Profile* aProfile); // constructor
+   Node(Profile* const aProfile); // constructor
    ~Node(); // destructor
-   Profile* getProfile() const ;
+   const Profile* getProfile() const ;
    string getId() const;
    list<Node*> getFriends() const;
+   const Node* addFriend(Node* const aMember);
+
    const string print() const;
 }; // end Node
 

@@ -9,7 +9,7 @@
 
 class Node;
 
-enum Status { single = 0 , rel, complicated };
+enum Status { single = 0 , rel, comp };
 const char *statuses[] = { "Single", "In Relationship", "It\'s complicated" };
 
 using namespace std;

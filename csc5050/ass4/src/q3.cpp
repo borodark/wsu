@@ -14,12 +14,21 @@ using namespace std;
 
 void q3(){
 
-  Profile buzz = Profile{"buzz", "0-)", single};
+  Profile buzz = Profile{"buzz", "03-)", single};
   cout << buzz.print() << endl;
-  
+
   Node buzzFB = Node{&buzz};
-  
-  cout << buzzFB.print() << endl;
+
+  Profile trexx = Profile{"T-Rexx", "8*#", rel};
+  Node trexxFB = Node{&trexx};
+
+
+  Profile woody = Profile{"woody", "=);-)", single};
+  Node woodyFB = Node{&woody};
+
+  woodyFB.addFriend(&buzzFB);
+  woodyFB.addFriend(&trexxFB);
+  cout << woodyFB.print() << endl;
   
 }
 
