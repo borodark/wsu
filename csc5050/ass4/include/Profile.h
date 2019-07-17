@@ -9,7 +9,8 @@
 
 class Node;
 
-enum Status { single, rel, complicated };
+enum Status { single = 0 , rel, complicated };
+const char *statuses[] = { "Single", "In Relationship", "It\'s complicated" };
 
 using namespace std;
 
@@ -20,13 +21,14 @@ class Profile {
   Status status;
   Node* memberPtr; // Pointer to the member owning thias profile 
 
- public:
+ public: 
   Profile();
   Profile(const string name,const string picture, const Status status);
-  const string getName();
-  const string getPicture(); 
-  const Status getStatus();
-  const bool isMember();
+  const string getName() const;
+  const string getPicture() const; 
+  const Status getStatus() const;
+  const bool isMember() const;
+  const string print() const;
  // TODO print , etc
 }; // end Profile
 

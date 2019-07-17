@@ -15,7 +15,7 @@ using namespace std;
 void q3(){
 
   Profile buzz = Profile{"buzz", "0-)", single};
-
+  cout << buzz.print() << endl;
 }
 
 int main(){

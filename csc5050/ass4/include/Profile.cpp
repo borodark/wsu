@@ -8,25 +8,25 @@ Profile::Profile(const string name,const string picture, const Status status) : 
 {
 } // end constructor
 
-const string Profile::getName(){
+const string Profile::getName() const {
   return name;
 }
-const string Profile::getPicture(){
+const string Profile::getPicture() const {
   return picture;
 }
-const Status Profile::getStatus(){
+const Status Profile::getStatus() const {
   return status;
 }
-const bool Profile::isMember(){
+const bool Profile::isMember() const {
   return memberPtr != nullptr;
 }
 
 
-const string Profile::print() const  // 
+const string Profile::print() const // 
 {
   return "-> " + getName() +
     " -> " + getPicture() +
-    " -> " + getStatus() +
+    " -> " + statuses[getStatus()] +
     " -> is member: " + (isMember()? "Y":"N");
 }
 
