@@ -8,6 +8,10 @@ Profile::Profile(const string name,const string picture, const Status status) : 
 {
 } // end constructor
 
+void Profile::setMember(const Node* aMemberPtr){
+  memberPtr = aMemberPtr;
+}
+
 const string Profile::getName() const {
   return name;
 }
@@ -18,13 +22,13 @@ const Status Profile::getStatus() const {
   return status;
 }
 const bool Profile::isMember() const {
-  return memberPtr != nullptr;
+  return (memberPtr != nullptr);
 }
 
 
 const string Profile::print() const // 
 {
-  return "-> " + getName() +
+  return " Profile: " + getName() +
     " -> " + getPicture() +
     " -> " + statuses[getStatus()] +
     " -> is member: " + (isMember()? "Y":"N");

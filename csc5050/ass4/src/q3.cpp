@@ -16,6 +16,11 @@ void q3(){
 
   Profile buzz = Profile{"buzz", "0-)", single};
   cout << buzz.print() << endl;
+  
+  Node buzzFB = Node{&buzz};
+  
+  cout << buzzFB.print() << endl;
+  
 }
 
 int main(){

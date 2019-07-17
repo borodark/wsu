@@ -15,11 +15,15 @@ const char *statuses[] = { "Single", "In Relationship", "It\'s complicated" };
 using namespace std;
 
 class Profile {
+
+  friend class Node;
+
  private:
   string name; // A data about Profile
   string picture; // ;-) or :-) or &-)
   Status status;
-  Node* memberPtr; // Pointer to the member owning thias profile 
+  const Node* memberPtr; // Pointer to the member owning thias profile 
+  void setMember(const Node* aMemberPtr);
 
  public: 
   Profile();
