@@ -55,7 +55,7 @@ void TheFaceBooks::deleteProfile(Profile* aProfile){
 
 void TheFaceBooks::leaveTFB(Node* looser){
   members.remove(looser); // remove from "global" list of members
-  delete looser;
+  delete looser; // Destructor is called
   looser = nullptr;
 }
 

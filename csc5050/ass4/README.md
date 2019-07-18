@@ -39,7 +39,7 @@ The profile can be created without joining:
 
 The _Member_ encapsulates the [Profile](include/Node.h#L18) and the [list of friends](include/Node.h#L20)
 * The [include/Node.h](include/Node.h) defines  behaviour
-* The [include/Node.cpp](include/Node.cpp) provides impleemntation
+* The [include/Node.cpp](include/Node.cpp) provides implementation
 
 
 #### Your application should allow a user to join the network, leave the network, create a profile, modify the profile, search for other profiles, and add friends. (6 points)
