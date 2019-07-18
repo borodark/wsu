@@ -20,18 +20,38 @@ void q3(){
   Profile* buzzPtr = fb.createProfile("buzz", "(:-)]", single);
   cout << buzzPtr->print() << endl;
 
-  Node buzzFB = Node{buzzPtr};
 
-  Profile trexx = Profile{"T-Rexx", "8-0", rel};
-  Node trexxFB = Node{&trexx};
+  Node* buzzFBPtr = fb.joinTFB(buzzPtr);
 
+  Profile* trexx = fb.createProfile("T-Rexx", "8-0", rel);
+  Node* trexxFB = fb.joinTFB(trexx);
 
-  Profile woody = Profile{"woody", "=);-l", single};
-  Node woodyFB = Node{&woody};
+  Profile* woody = fb.createProfile("woody", "=);-l", single);
+  // Node* woodyFB = Node{&woody};
 
-  //TODO woodyFB.addFriend(&buzzFB);
-  //TODO woodyFB.addFriend(&trexxFB);
-  cout << woodyFB.print() << endl;
+  cout << fb.printMembers() << endl;
+
+  cout << fb.printProfiles() << endl;
+
+  cout << "Woody is deleting his profile!!!" << endl;
+
+  fb.deleteProfile(woody);
+
+  cout << fb.printProfiles() << endl;
+
+  cout << "WOODY LEFT OMG!!!" << endl;
+  cout << ":-(" << endl;
+  cout << ":-(" << endl;
+  cout << ":-(" << endl;
+  cout << "Woody? Come back! Please!!!" << endl;
+  woody = fb.createProfile("woody", "=);-l", single);
+  cout << fb.printProfiles() << endl;
+  cout << "He is back!!!" << endl;
+  cout << ":-)" << endl;
+  
+  //  woodyFB.addFriend(&buzzFB);
+  //woodyFB.addFriend(&trexxFB);
+  //cout << woodyFB.print() << endl;
 }
 
 int main(){

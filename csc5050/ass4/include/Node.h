@@ -13,6 +13,7 @@
 using namespace std;
 
 class Node {
+  friend class TheFaceBooks;
  private:
    Profile* profile; // A data about Profile
    string id; // capitalized Name from profile
@@ -20,9 +21,11 @@ class Node {
    const string printFriends() const;
    list<Node*> getFriends() const;
    const Node* addFriend(Node* const aMember);
+   Node(Profile* aProfile); // constructor
+   void removeFriend(Node* const aMember);
 
  public:
-   Node(Profile* aProfile); // constructor
+   Node(); // 
    ~Node(); // destructor
    const Profile* getProfile() const ;
    string getId() const;

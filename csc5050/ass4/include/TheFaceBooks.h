@@ -22,8 +22,9 @@ class TheFaceBooks {
    TheFaceBooks(); // constructor
    ~TheFaceBooks(); // destructor
    Profile* createProfile(const string name,const string picture, const Status status);
-   bool deleteProfile(Profile* aProfile);
-
+   void deleteProfile(Profile* aProfile);
+   Node* joinTFB(Profile* nub);
+   void leaveTFB(Node* looser);
    const string printMembers() const;
    const string printProfiles() const;
 };

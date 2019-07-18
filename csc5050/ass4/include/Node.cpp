@@ -12,10 +12,7 @@ Node::Node(Profile* aProfile) : profile(aProfile)
 Node::~Node()
 {
   profile = nullptr;
-  // TODO delete friends;
 } // end default constructor
-
-// TODO Accessors, print , etc 
 
 const Profile* Node::getProfile() const {
   return profile;
@@ -32,6 +29,10 @@ list<Node*> Node::getFriends() const {
 const Node* Node::addFriend(Node* const aMember){
   friends.push_back(aMember);
   return aMember;
+}
+
+void Node::removeFriend(Node* const aMember){
+  friends.remove(aMember);
 }
 
 const string Node::printFriends() const {
