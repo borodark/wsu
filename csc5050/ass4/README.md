@@ -37,7 +37,7 @@ The profile can be created without joining:
 * The [include/Profile.h](include/Profile.h) defines  behaviour
 * The [include/Profile.cpp](include/Profile.cpp) provides implementation
 
-The _Member_ encapsulates the [Profile](include/Node.cpp#L18) and the [list of friends](include/Node.cpp#L20)
+The _Member_ encapsulates the [Profile](include/Node.h#L18) and the [list of friends](include/Node.h#L20)
 * The [include/Node.h](include/Node.h) defines  behaviour
 * The [include/Node.cpp](include/Node.cpp) provides impleemntation
 
