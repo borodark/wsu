@@ -1,21 +1,21 @@
- Profile: buzz -> (:-)] -> Single -> is member: N
+ Profile: buzz -> |(:-)]| -> Single -> is member: N
  TFB has 2 members -> [
-1. Member Profile: buzz -> (:-)] -> Single -> is member: Y. 
+1. Member Profile: buzz -> |(:-)]| -> Single -> is member: Y. 
  Has 0 friends -> [
 ],
-2. Member Profile: T-Rexx -> 8-0 -> In Relationship -> is member: Y. 
+2. Member Profile: T-Rexx -> | 8-0 | -> In Relationship -> is member: Y. 
  Has 0 friends -> [
 ],
 ]
  TFB has 3 Profiles ->  [
-1.  Profile: buzz -> (:-)] -> Single -> is member: Y,
-2.  Profile: T-Rexx -> 8-0 -> In Relationship -> is member: Y,
-3.  Profile: woody -> =);-l -> Single -> is member: N,
+1.  Profile: buzz -> |(:-)]| -> Single -> is member: Y,
+2.  Profile: T-Rexx -> | 8-0 | -> In Relationship -> is member: Y,
+3.  Profile: woody -> |=);-l| -> Single -> is member: N,
 ]
 Woody is deleting his profile!!!
  TFB has 2 Profiles ->  [
-1.  Profile: buzz -> (:-)] -> Single -> is member: Y,
-2.  Profile: T-Rexx -> 8-0 -> In Relationship -> is member: Y,
+1.  Profile: buzz -> |(:-)]| -> Single -> is member: Y,
+2.  Profile: T-Rexx -> | 8-0 | -> In Relationship -> is member: Y,
 ]
 WOODY LEFT OMG!!!
 :-(
@@ -23,9 +23,41 @@ WOODY LEFT OMG!!!
 :-(
 Woody? Come back! Please!!!
  TFB has 3 Profiles ->  [
-1.  Profile: buzz -> (:-)] -> Single -> is member: Y,
-2.  Profile: T-Rexx -> 8-0 -> In Relationship -> is member: Y,
-3.  Profile: woody -> =);-l -> Single -> is member: N,
+1.  Profile: buzz -> |(:-)]| -> Single -> is member: Y,
+2.  Profile: T-Rexx -> | 8-0 | -> In Relationship -> is member: Y,
+3.  Profile: woody -> |=);-l| -> Single -> is member: N,
 ]
 He is back!!!
 :-)
+Woody joins TFB!!!
+ TFB has 3 Profiles ->  [
+1.  Profile: buzz -> |(:-)]| -> Single -> is member: Y,
+2.  Profile: T-Rexx -> | 8-0 | -> In Relationship -> is member: Y,
+3.  Profile: woody -> |=);-l| -> Single -> is member: Y,
+]
+ TFB has 3 members -> [
+1. Member Profile: buzz -> |(:-)]| -> Single -> is member: Y. 
+ Has 0 friends -> [
+],
+2. Member Profile: T-Rexx -> | 8-0 | -> In Relationship -> is member: Y. 
+ Has 0 friends -> [
+],
+3. Member Profile: woody -> |=);-l| -> Single -> is member: Y. 
+ Has 0 friends -> [
+],
+]
+Woody is in frends with buzz and trexx!!!
+Member Profile: woody -> |=);-l| -> Single -> is member: Y. 
+ Has 2 friends -> [
+1. T-Rexx,
+2. buzz,
+]
+All are in frends with Woody!!!
+Member Profile: buzz -> |(:-)]| -> Single -> is member: Y. 
+ Has 1 friends -> [
+1. woody,
+]
+Member Profile: T-Rexx -> | 8-0 | -> In Relationship -> is member: Y. 
+ Has 1 friends -> [
+1. woody,
+]

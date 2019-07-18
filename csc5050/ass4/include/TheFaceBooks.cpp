@@ -33,6 +33,17 @@ void TheFaceBooks::leaveTFB(Node* looser){
   members.remove(looser); // remove from "global" list of members
 }
 
+void TheFaceBooks::beFriend(Node* me, Node* bff){
+  me->addFriend(bff);
+  bff->addFriend(me);
+}
+
+void TheFaceBooks::unFriend(Node* me, Node* bff_not){
+  me->removeFriend(bff_not);
+  bff_not->removeFriend(me);
+}
+
+
 const string TheFaceBooks::printMembers() const {
   string rc = " TFB has " + to_string(members.size()) + " members -> [\n";
   int i = 1;

@@ -25,6 +25,9 @@ class TheFaceBooks {
    void deleteProfile(Profile* aProfile);
    Node* joinTFB(Profile* nub);
    void leaveTFB(Node* looser);
+   void beFriend(Node* me, Node* bff);
+   void unFriend(Node* me, Node* bff_not);
+
    const string printMembers() const;
    const string printProfiles() const;
 };
