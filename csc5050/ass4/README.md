@@ -1,5 +1,5 @@
 
-# CS5050 Assignment 3
+# CS5050 Assignment 4
 
 ## To run
 
@@ -12,7 +12,7 @@ Install `cmake` and `make` , pull this repo change to this directory, run:
 `make` to comple
 
 
-## Q 1,2,3 4
+## Q 1,2,3
 
 ### source code:
 
