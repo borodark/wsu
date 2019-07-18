@@ -8,7 +8,7 @@ Profile::Profile(const string name,const string picture, const Status status) : 
 } // end constructor
 
 Profile::~Profile(){
-  cout << "Profile "<< name << " is destroyed!";
+  cout << "Profile "<< name << " is destroyed!" << endl;
   memberPtr = nullptr;
 } // end default constructor
 

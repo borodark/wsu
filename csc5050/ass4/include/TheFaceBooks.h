@@ -24,6 +24,7 @@ class TheFaceBooks {
    Profile* createProfile(const string name,const string picture, const Status status);
    void deleteProfile(Profile* aProfile);
    Node* joinTFB(Profile* nub);
+   list<Node*> search(string nameOrPicture);
    void leaveTFB(Node* looser);
    void beFriend(Node* me, Node* bff);
    void unFriend(Node* me, Node* bff_not);

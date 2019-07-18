@@ -25,8 +25,25 @@ Node* TheFaceBooks::joinTFB(Profile* nub){
   return rc;
 }
 
+list<Node*> TheFaceBooks::search(string nameOrPicture){
+  list<Node*> rc;
+  for (auto it=members.cbegin(); it != members.cend(); ++it) {
+    const Profile * p = (*it)->getProfile();
+    if((p->getName() == nameOrPicture)||(p->getPicture() == nameOrPicture)){
+      rc.push_back((*it));
+    }
+    p= nullptr;
+  }
+  return rc;
+}
+
 void TheFaceBooks::deleteProfile(Profile* aProfile){
+  aProfile->setMember(nullptr);
   profiles.remove(aProfile); // remove from "global" list of profiles
+  delete aProfile;
+  aProfile = nullptr;
+  cout << "Profile delete exits." << endl;
+
 }
 
 void TheFaceBooks::leaveTFB(Node* looser){

@@ -63,6 +63,13 @@ void q3(){
   woody->setPicture("|=}:-)|");
   cout << "Woody got a job, a new hat and smiling!!" << endl;
   cout << woodyFB->print() << endl;
+  //
+  cout << "Seen Woody\'s new picture? Let's find him by picture?" << endl;
+  list<Node*> woodies = fb.search("|=}:-)|");
+  assert(woodies.size() == 1);
+  cout << "Search by picture Works! ...Here is the Woody:" << endl;
+  Node* newFoundWoody = woodies.front();
+  cout << newFoundWoody->print() << endl;
   cout << "All are in frends with Woody!!!" << endl;
   cout << buzzFBPtr->print() << endl;
   cout << trexxFB->print() << endl;
@@ -75,13 +82,20 @@ void q3(){
   cout << fb.printMembers() << endl;
 
   cout << "WOODY LEFT TFB!!!" << endl;
+  cout << "No! Let's find him by name?" << endl;
+  woodies = fb.search("Woody");
+  assert(woodies.size() == 0);
+  cout << "No! He was last known as Woody, The Sherriffffff" << endl;
+  woodies = fb.search("Woody, The Sherriffffff");
+  assert(woodies.size() == 0);
+  cout << "Still no sign of him! - He may have left for good..." << endl;
   cout << "Woody is deleting his profile!!!" << endl;
 
   fb.deleteProfile(woody);
 
   cout << fb.printProfiles() << endl;
 
-  cout << "WOODY LEFT OMG!!! This time it is final ;-) ..." << endl;
+  cout << "WOODY LEFT OMG!!! This time it is final ;-) ... Perhaps that search by picture is creepy after all." << endl;
 
 }
 
