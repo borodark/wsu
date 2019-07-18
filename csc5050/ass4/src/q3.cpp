@@ -8,8 +8,6 @@
 
 #include <iostream>
 #include <cassert>
-// #include "Node.h"
-// #include "Profile.h"
 #include "TheFaceBooks.h"
 using namespace std;
 
@@ -64,7 +62,7 @@ void q3(){
   cout << "Woody got a job, a new hat and smiling!!" << endl;
   cout << woodyFB->print() << endl;
   //
-  cout << "Seen Woody\'s new picture? Let's find him by picture?" << endl;
+  cout << "Seen Woody\'s new picture? Let's find him by the picture?" << endl;
   list<Node*> woodies = fb.search("|=}:-)|");
   assert(woodies.size() == 1);
   cout << "Search by picture Works! ...Here is the Woody:" << endl;

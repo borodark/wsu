@@ -24,10 +24,28 @@ Install `cmake` and `make` , pull this repo change to this directory, run:
   
 ## Q3
 The popular social network Facebook was founded by Mark Zuckerberg and his classmates at Harvard University in 2004. At the time, he was a sophomore studying computer science.
-Design and implement an application that maintains the data for a simple social network. Each person in the network should have a profile that contains the person’s name, optional image, current status, and a list of friends. Your application should allow a user to join the network, leave the network, create a profile, modify the profile, search for other profiles, and add friends. (6 points)
 
-### implementtion 
-[src/q3.cpp](src/q3.cpp)   - driver and implementation
-Results: [q3.out](q3.out)
+* _The implentation is provided as library, no UI provided_. 
+* All testing is done from the driver: [src/q3.cpp](src/q3.cpp). 
+  * See output [q3.out](q3.out)
+
+### Design and implement an application that maintains the data for a simple social network.
+
+* Interface [include/TheFaceBooks.h](include/TheFaceBooks.h) provide encapsulation of data and the public interface for:
+   * createProfile [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L23)
+   * deleteProfile [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L47)
+   * joinTFB  [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L29)
+   * search
+   * leaveTFB
+   * beFriend
+   * unFriend
+
+   const string printMembers() const;
+   const string printProfiles() const;
+
+
+
+### Each person in the network should have a profile that contains the person’s name, optional image, current status, and a list of friends. 
+### Your application should allow a user to join the network, leave the network, create a profile, modify the profile, search for other profiles, and add friends. (6 points)
 
  

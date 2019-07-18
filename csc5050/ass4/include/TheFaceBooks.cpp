@@ -1,3 +1,10 @@
+/**
+   @author: Igor Ostaptchenko igor_ost@wayne.edu AKA borodark@gmail.com
+   This is a TheFacebooks interface implementationfor Question 3 of Assignment 4
+   @src https://github.com/borodark/wsu/blob/master/csc5050/ass4/include/TheFaceBooks.cpp
+   The program is compiles and run correctly. Produces the correct results.
+   See inline comments
+**/
 #include <cctype>
 #include <string>
 
