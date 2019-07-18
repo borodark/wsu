@@ -34,11 +34,11 @@ The popular social network Facebook was founded by Mark Zuckerberg and his class
 * Interface [include/TheFaceBooks.h](include/TheFaceBooks.h) provide encapsulation of data and the public interface for:
    * createProfile [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L23)
    * deleteProfile [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L47)
-   * joinTFB  [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L29)
-   * search
-   * leaveTFB
-   * beFriend
-   * unFriend
+   * joinTFB [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L29)
+   * search [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L35)
+   * leaveTFB [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L56)
+   * beFriend [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L62)
+   * unFriend [include/TheFaceBooks.cpp](include/TheFaceBooks.cpp#L67)
 
    const string printMembers() const;
    const string printProfiles() const;
