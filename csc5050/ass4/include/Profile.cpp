@@ -19,11 +19,21 @@ void Profile::setMember(const Node* aMemberPtr){
 const string Profile::getName() const {
   return name;
 }
+void Profile::setName(string newOne){
+  name = newOne;
+}
+
 const string Profile::getPicture() const {
   return picture;
 }
+void Profile::setPicture(string newOne){
+  picture = newOne;
+}
 const Status Profile::getStatus() const {
   return status;
+}
+void Profile::setStatus(Status newOne){
+  status = newOne;
 }
 const bool Profile::isMember() const {
   return (memberPtr != nullptr);

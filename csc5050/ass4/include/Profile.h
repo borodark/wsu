@@ -32,8 +32,11 @@ class Profile {
   Profile(const string name,const string picture, const Status status);
   ~Profile();
   const string getName() const;
+  void setName(string newOne);
   const string getPicture() const; 
+  void setPicture(string newOne);
   const Status getStatus() const;
+  void setStatus(Status newOne);
   const bool isMember() const;
   const string print() const;
 }; // end Profile

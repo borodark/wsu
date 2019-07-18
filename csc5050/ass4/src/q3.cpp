@@ -59,8 +59,11 @@ void q3(){
   cout << "Woody is in frends with buzz and trexx!!!" << endl;
   fb.beFriend(woodyFB, buzzFBPtr);
   cout << woodyFB->print() << endl;
+  woody->setName("Woody, The Sherriffffff");
+  woody->setPicture("|=}:-)|");
+  cout << "Woody got a job, a new hat and smiling!!" << endl;
+  cout << woodyFB->print() << endl;
   cout << "All are in frends with Woody!!!" << endl;
-
   cout << buzzFBPtr->print() << endl;
   cout << trexxFB->print() << endl;
 
@@ -72,6 +75,13 @@ void q3(){
   cout << fb.printMembers() << endl;
 
   cout << "WOODY LEFT TFB!!!" << endl;
+  cout << "Woody is deleting his profile!!!" << endl;
+
+  fb.deleteProfile(woody);
+
+  cout << fb.printProfiles() << endl;
+
+  cout << "WOODY LEFT OMG!!! This time it is final ;-) ..." << endl;
 
 }
 
