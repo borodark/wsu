@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Node::Node(Profile* const aProfile) : profile(aProfile)
+Node::Node(Profile* aProfile) : profile(aProfile)
 {
   id = this->profile->getName();
   this->profile->setMember(this);

@@ -8,6 +8,7 @@
 #include <string>
 
 class Node;
+class TheFaceBooks;
 
 enum Status { single = 0 , rel, comp };
 const char *statuses[] = { "Single", "In Relationship", "It\'s complicated" };
@@ -16,6 +17,7 @@ using namespace std;
 
 class Profile {
 
+  friend class TheFaceBooks;
   friend class Node;
 
  private:
@@ -25,7 +27,7 @@ class Profile {
   const Node* memberPtr; // Pointer to the member owning thias profile 
   void setMember(const Node* aMemberPtr);
 
- public: 
+ public:
   Profile();
   Profile(const string name,const string picture, const Status status);
   const string getName() const;
@@ -33,7 +35,6 @@ class Profile {
   const Status getStatus() const;
   const bool isMember() const;
   const string print() const;
- // TODO print , etc
 }; // end Profile
 
 #include "Profile.cpp"

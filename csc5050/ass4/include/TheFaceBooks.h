@@ -21,8 +21,9 @@ class TheFaceBooks {
  public:
    TheFaceBooks(); // constructor
    ~TheFaceBooks(); // destructor
-   const list<Profile*> getProfiles() const ;
-   const list<Node*> getMembers() const;
+   Profile* createProfile(const string name,const string picture, const Status status);
+   bool deleteProfile(Profile* aProfile);
+
    const string printMembers() const;
    const string printProfiles() const;
 };

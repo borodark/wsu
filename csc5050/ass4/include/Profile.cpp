@@ -2,8 +2,7 @@ using namespace std;
 
 Profile::Profile()
 {
-} // end default constructor
-
+} // end constructor
 Profile::Profile(const string name,const string picture, const Status status) : name(name), picture(picture), status(status), memberPtr(nullptr)
 {
 } // end constructor

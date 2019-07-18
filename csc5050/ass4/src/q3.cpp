@@ -16,10 +16,11 @@ using namespace std;
 void q3(){
 
   TheFaceBooks fb = TheFaceBooks{};
-  Profile buzz = Profile{"buzz", "(:-)]", single};
-  cout << buzz.print() << endl;
 
-  Node buzzFB = Node{&buzz};
+  Profile* buzzPtr = fb.createProfile("buzz", "(:-)]", single);
+  cout << buzzPtr->print() << endl;
+
+  Node buzzFB = Node{buzzPtr};
 
   Profile trexx = Profile{"T-Rexx", "8-0", rel};
   Node trexxFB = Node{&trexx};
@@ -28,8 +29,8 @@ void q3(){
   Profile woody = Profile{"woody", "=);-l", single};
   Node woodyFB = Node{&woody};
 
-  woodyFB.addFriend(&buzzFB);
-  woodyFB.addFriend(&trexxFB);
+  //TODO woodyFB.addFriend(&buzzFB);
+  //TODO woodyFB.addFriend(&trexxFB);
   cout << woodyFB.print() << endl;
 }
 

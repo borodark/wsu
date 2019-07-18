@@ -13,12 +13,13 @@ TheFaceBooks::~TheFaceBooks()
   // TODO delete all;
 } // end default constructor
 
-const list<Node*> TheFaceBooks::getMembers() const {
-  return members;
+Profile* TheFaceBooks::createProfile(const string name,const string picture, const Status status){
+  return (new Profile(name, picture, status));
 }
 
-const list<Profile*> TheFaceBooks::getProfiles() const {
-  return profiles;
+bool TheFaceBooks::deleteProfile(Profile* aProfile){
+  //TODO
+  return true;
 }
 
 const string TheFaceBooks::printMembers() const {
