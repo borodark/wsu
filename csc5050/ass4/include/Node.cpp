@@ -11,8 +11,16 @@ Node::Node(Profile* aProfile) : profile(aProfile)
 
 Node::~Node()
 {
-  profile = nullptr;
-} // end default constructor
+  cout << "Member "<< id << " is destroyed!" << endl;
+  profile->setMember(nullptr);
+  int i = 0;
+  for (auto it=friends.cbegin(); it != friends.cend(); ++it) {
+    (*it)->removeFriend(this);
+    i++;
+  }
+  cout << "Member had "<< i << " friends!" << endl;
+  profile  = nullptr;
+} // end destructor
 
 const Profile* Node::getProfile() const {
   return profile;

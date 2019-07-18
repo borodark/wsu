@@ -64,6 +64,15 @@ void q3(){
   cout << buzzFBPtr->print() << endl;
   cout << trexxFB->print() << endl;
 
+  cout << "Woody is leaving TFB!!!" << endl;
+
+  fb.leaveTFB(woodyFB);
+
+  cout << fb.printProfiles() << endl;
+  cout << fb.printMembers() << endl;
+
+  cout << "WOODY LEFT TFB!!!" << endl;
+
 }
 
 int main(){

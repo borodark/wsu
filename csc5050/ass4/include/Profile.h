@@ -30,6 +30,7 @@ class Profile {
  public:
   Profile();
   Profile(const string name,const string picture, const Status status);
+  ~Profile();
   const string getName() const;
   const string getPicture() const; 
   const Status getStatus() const;

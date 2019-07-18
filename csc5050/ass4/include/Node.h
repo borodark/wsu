@@ -20,7 +20,7 @@ class Node {
    list<Node*> friends; //list of network members that are friends
    list<Node*> getFriends() const;
    const Node* addFriend(Node* const aMember);
-   const Node* unFriend(Node* const aMember);
+   //   const Node* unFriend(Node* const aMember);
    Node(Profile* aProfile); // constructor
    void removeFriend(Node* const aMember);
 

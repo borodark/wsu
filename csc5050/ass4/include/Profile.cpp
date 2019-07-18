@@ -7,6 +7,11 @@ Profile::Profile(const string name,const string picture, const Status status) : 
 {
 } // end constructor
 
+Profile::~Profile(){
+  cout << "Profile "<< name << " is destroyed!";
+  memberPtr = nullptr;
+} // end default constructor
+
 void Profile::setMember(const Node* aMemberPtr){
   memberPtr = aMemberPtr;
 }

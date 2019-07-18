@@ -31,6 +31,8 @@ void TheFaceBooks::deleteProfile(Profile* aProfile){
 
 void TheFaceBooks::leaveTFB(Node* looser){
   members.remove(looser); // remove from "global" list of members
+  delete looser;
+  looser = nullptr;
 }
 
 void TheFaceBooks::beFriend(Node* me, Node* bff){
