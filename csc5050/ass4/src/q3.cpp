@@ -8,28 +8,29 @@
 
 #include <iostream>
 #include <cassert>
-#include "Node.h"
-#include "Profile.h"
+// #include "Node.h"
+// #include "Profile.h"
+#include "TheFaceBooks.h"
 using namespace std;
 
 void q3(){
 
-  Profile buzz = Profile{"buzz", "03-)", single};
+  TheFaceBooks fb = TheFaceBooks{};
+  Profile buzz = Profile{"buzz", "(:-)]", single};
   cout << buzz.print() << endl;
 
   Node buzzFB = Node{&buzz};
 
-  Profile trexx = Profile{"T-Rexx", "8*#", rel};
+  Profile trexx = Profile{"T-Rexx", "8-0", rel};
   Node trexxFB = Node{&trexx};
 
 
-  Profile woody = Profile{"woody", "=);-)", single};
+  Profile woody = Profile{"woody", "=);-l", single};
   Node woodyFB = Node{&woody};
 
   woodyFB.addFriend(&buzzFB);
   woodyFB.addFriend(&trexxFB);
   cout << woodyFB.print() << endl;
-  
 }
 
 int main(){
