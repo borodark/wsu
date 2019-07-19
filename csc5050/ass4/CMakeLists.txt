@@ -49,6 +49,6 @@ include_directories( include )
 FILE(GLOB SOURCES "include/*.h" "include/*.cpp" "src/*.cpp")
 
 #ADD_EXECUTABLE(q1 "src/q1.cpp")
-#ADD_EXECUTABLE(q2 "src/q2.cpp")
+ADD_EXECUTABLE(q2 "src/q2.cpp")
 ADD_EXECUTABLE(q3 "src/q3.cpp")
 
