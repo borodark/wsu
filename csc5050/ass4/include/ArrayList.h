@@ -23,7 +23,7 @@ class ArrayList : public ListInterface<ItemType>
  private:
 	static const int DEFAULT_CAPACITY = 5; // Small capacity to test for a full list 
 
-  static const int REVERSED_GROWS_FACTOR = 2; // to grow with max_items + maxItems/REVERSED_GROWS_FACTOR
+  static const int GROW_BY = 5; // to grow with max_items + GROW_BY
 
 	ItemType *items = nullptr;      // Keep the pointer too
   int itemCount;                         // Current count of list items 

@@ -46,7 +46,7 @@ void ArrayList<ItemType>::ensureCapacity(int newPosition) {
     && (itemCount < maxItems);
   if (!ableToInsert) {
     cout << "Allocating ...." << endl;
-    int newSize = newPosition + 5; // Add 5 to encure O(n) penalty only every 5 objects over capacity
+    int newSize = newPosition + GROW_BY; // Add 5 to encure O(n) penalty only every 5 objects over capacity
     // trade off must be observed here
     // either O(n) penalty or pre alocate and not use the memory
     ItemType* newArray = new ItemType[newSize];
