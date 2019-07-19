@@ -1,5 +1,13 @@
 //  Created by Frank M. Carrano and Tim Henry.
 //  Copyright (c) 2013 __Pearson Education__. All rights reserved.
+/**
+   Modified and possibly indented by
+   @author: Igor Ostaptchenko igor_ost@wayne.edu AKA borodark@gmail.com
+   for Question 2 of Assignment 4
+   @src https://github.com/borodark/wsu/blob/master/csc5050/ass4/include/
+   The program is compiles and run correctly. Produces the correct results.
+   See inline comments
+**/
 
 /** Interface for the ADT list
     Listing 8-1
@@ -12,6 +20,7 @@ template<class ItemType>
 class ListInterface
 {
  public:
+  /**  Cause the array is allocated from heap with new the cleanup is manual */
   virtual ~ListInterface() = default;
   /** Sees whether this list is empty.
       @return True if the list is empty; otherwise returns false. */
@@ -29,7 +38,7 @@ class ListInterface
       @param newEntry  The entry to insert into the list.
       @return  True if insertion is successful, or false if not. */
   virtual bool insert(int newPosition, const ItemType& newEntry) = 0;
-   
+
   /** Removes the entry at a given position from this list.
       @pre  None.
       @post  If 1 <= position <= getLength() and the removal is successful,

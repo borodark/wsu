@@ -22,16 +22,18 @@ class ArrayList : public ListInterface<ItemType>
 {
  private:
 	static const int DEFAULT_CAPACITY = 5; // Small capacity to test for a full list 
-  /** multiplier for dynamic allocation: the expanded size will be 1.5 of current */
+
   static const int REVERSED_GROWS_FACTOR = 2; // to grow with max_items + maxItems/REVERSED_GROWS_FACTOR
+
 	ItemType *items = nullptr;      // Keep the pointer too
   int itemCount;                         // Current count of list items 
   int maxItems;                          // Maximum capacity of the list
-  bool ensureCapacity();
+  void ensureCapacity(int newPosition);
  public:
   ArrayList();
   // Copy constructor and destructor are supplied by compiler
-	explicit ArrayList(int capacity); // new constructor to ensure capacity
+	explicit ArrayList(int capacity); // new constructor for dinamicly allocating array from constructor
+  /**  Cause the array is allocated from heap with new the cleanup is manual */
   ~ArrayList();
   bool isEmpty() const;
   int getLength() const;
