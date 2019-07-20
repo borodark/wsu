@@ -32,9 +32,23 @@ Towers::Towers(int ofDisks) : disks(ofDisks)
 }// end default constructor
 void Towers::print()
 {
-  for(int i = disks * 3 +2 ; i > 0; i--){
-    for(int j = disks * 3 +2 ; j > 0; j--){
-      cout << "= "; // print top line of spaces
+  for(int i = 0; i < disks ; i++){ // from the top
+
+    for(int j = 0 ; j < disks * 3 + 2 ; j++){
+      // if j belongs to A [0..disks-1]
+      if ((j >= 0) && (j < disks - 1)){ // A
+        cout << "= "; // TODO print A
+      }
+      // if j belongs to B [disks..2*disks-1]
+      else if ((j >= disks) && (j < 2*disks - 1)){ // A
+        cout << "+ "; // TODO print B
+      }
+      // if j belongs to C [2*disks .. 3*disks -1]
+      else if ((j >= 2*disks) && (j < 3*disks - 1)){ // A
+        cout << "- "; //TODO print C
+      }
+      else
+        cout << "  "; // print space
     }
     cout << endl;
   }
@@ -57,6 +71,10 @@ void solveTowers(unsigned char disksLeft,
     solveTowers(disksLeft -1,spare, dest, src);
   }
 }
+
+
+
+
 
 void q1(){
   Towers for2 = Towers{2};
