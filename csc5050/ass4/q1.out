@@ -1,0 +1,52 @@
+pushing i = 1
+pushing i = 2
+pushing i = 2
+pushing i = 1
+for2 has 1 at the top
+=       = =     
+= =     =       
+
+Solving for 2
+Moving a disk from A to C.
+Moving a disk from A to B.
+Moving a disk from C to B.
+pushing i = 1
+pushing i = 2
+pushing i = 3
+pushing i = 4
+pushing i = 5
+pushing i = 6
+pushing i = 7
+pushing i = 8
+pushing i = 9
+pushing i = 10
+pushing i = 10
+pushing i = 9
+pushing i = 8
+pushing i = 7
+pushing i = 6
+pushing i = 5
+pushing i = 4
+pushing i = 3
+pushing i = 2
+pushing i = 1
+for10 has 1 at the top
+=                                       = = = = = = = = = =     
+= =                                     = = = = = = = = =       
+= = =                                   = = = = = = = =         
+= = = =                                 = = = = = = =           
+= = = = =                               = = = = = =             
+= = = = = =                             = = = = =               
+= = = = = = =                           = = = =                 
+= = = = = = = =                         = = =                   
+= = = = = = = = =                       = =                     
+= = = = = = = = = =                     =                       
+
+Solving for 3
+Moving a disk from A to B.
+Moving a disk from A to C.
+Moving a disk from B to C.
+Moving a disk from A to B.
+Moving a disk from C to A.
+Moving a disk from C to B.
+Moving a disk from A to B.
