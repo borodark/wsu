@@ -6,7 +6,7 @@ Inserted two at position 2
 Inserted three at position 3
 Inserted four at position 4
 Inserted five at position 5
-Allocating ....
+Allocating ..... Done! the new size is: 88. The new maxItems is: 11
 Inserted six at position 6
 Inserted 0 at position 1
 Inserted 1 at position 2
@@ -18,63 +18,63 @@ Inserted 6 at position 7
 Inserted 7 at position 8
 Inserted 8 at position 9
 Inserted 9 at position 10
-Allocating ....
+Allocating ..... Done! the new size is: 128. The new maxItems is: 16
 Inserted 10 at position 11
 Inserted 11 at position 12
 Inserted 12 at position 13
 Inserted 13 at position 14
 Inserted 14 at position 15
 Inserted 15 at position 16
-Allocating ....
+Allocating ..... Done! the new size is: 176. The new maxItems is: 22
 Inserted 16 at position 17
 Inserted 17 at position 18
 Inserted 18 at position 19
 Inserted 19 at position 20
 Inserted 20 at position 21
 Inserted 21 at position 22
-Allocating ....
+Allocating ..... Done! the new size is: 224. The new maxItems is: 28
 Inserted 22 at position 23
 Inserted 23 at position 24
 Inserted 24 at position 25
 Inserted 25 at position 26
 Inserted 26 at position 27
 Inserted 27 at position 28
-Allocating ....
+Allocating ..... Done! the new size is: 272. The new maxItems is: 34
 Inserted 28 at position 29
 Inserted 29 at position 30
 Inserted 30 at position 31
 Inserted 31 at position 32
 Inserted 32 at position 33
 Inserted 33 at position 34
-Allocating ....
+Allocating ..... Done! the new size is: 320. The new maxItems is: 40
 Inserted 34 at position 35
 Inserted 35 at position 36
 Inserted 36 at position 37
 Inserted 37 at position 38
 Inserted 38 at position 39
 Inserted 39 at position 40
-Allocating ....
+Allocating ..... Done! the new size is: 368. The new maxItems is: 46
 Inserted 40 at position 41
 Inserted 41 at position 42
 Inserted 42 at position 43
 Inserted 43 at position 44
 Inserted 44 at position 45
 Inserted 45 at position 46
-Allocating ....
+Allocating ..... Done! the new size is: 416. The new maxItems is: 52
 Inserted 46 at position 47
 Inserted 47 at position 48
 Inserted 48 at position 49
 Inserted 49 at position 50
 Inserted 50 at position 51
 Inserted 51 at position 52
-Allocating ....
+Allocating ..... Done! the new size is: 464. The new maxItems is: 58
 Inserted 52 at position 53
 Inserted 53 at position 54
 Inserted 54 at position 55
 Inserted 55 at position 56
 Inserted 56 at position 57
 Inserted 57 at position 58
-Allocating ....
+Allocating ..... Done! the new size is: 512. The new maxItems is: 64
 Inserted 58 at position 59
 Inserted 59 at position 60
 Destructing array list ...
