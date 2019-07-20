@@ -26,14 +26,14 @@ Profile* TheFaceBooks::createProfile(const string name,const string picture, con
   return rc;
 }
 
-Node* TheFaceBooks::joinTFB(Profile* nub){
-  Node* rc = new Node(nub);
+TFBMember* TheFaceBooks::joinTFB(Profile* nub){
+  TFBMember* rc = new TFBMember(nub);
   members.push_back(rc); // add to "global" list of members
   return rc;
 }
 
-list<Node*> TheFaceBooks::search(string nameOrPicture){
-  list<Node*> rc;
+list<TFBMember*> TheFaceBooks::search(string nameOrPicture){
+  list<TFBMember*> rc;
   for (auto it=members.cbegin(); it != members.cend(); ++it) {
     const Profile * p = (*it)->getProfile();
     if((p->getName() == nameOrPicture)||(p->getPicture() == nameOrPicture)){
@@ -53,18 +53,18 @@ void TheFaceBooks::deleteProfile(Profile* aProfile){
 
 }
 
-void TheFaceBooks::leaveTFB(Node* looser){
+void TheFaceBooks::leaveTFB(TFBMember* looser){
   members.remove(looser); // remove from "global" list of members
   delete looser; // Destructor is called
   looser = nullptr;
 }
 
-void TheFaceBooks::beFriend(Node* me, Node* bff){
+void TheFaceBooks::beFriend(TFBMember* me, TFBMember* bff){
   me->addFriend(bff);
   bff->addFriend(me);
 }
 
-void TheFaceBooks::unFriend(Node* me, Node* bff_not){
+void TheFaceBooks::unFriend(TFBMember* me, TFBMember* bff_not){
   me->removeFriend(bff_not);
   bff_not->removeFriend(me);
 }

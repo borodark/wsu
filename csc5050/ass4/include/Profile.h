@@ -7,7 +7,7 @@
 
 #include <string>
 
-class Node;
+class TFBMember;
 class TheFaceBooks;
 
 enum Status { single = 0 , rel, comp };
@@ -18,14 +18,14 @@ using namespace std;
 class Profile {
 
   friend class TheFaceBooks;
-  friend class Node;
+  friend class TFBMember;
 
  private:
   string name; // A data about Profile
   string picture; // ;-) or :-) or &-)
   Status status;
-  const Node* memberPtr; // Pointer to the member owning thias profile 
-  void setMember(const Node* aMemberPtr);
+  const TFBMember* memberPtr; // Pointer to the member owning thias profile 
+  void setMember(const TFBMember* aMemberPtr);
 
  public:
   Profile();

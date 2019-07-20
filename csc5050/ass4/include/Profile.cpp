@@ -12,7 +12,7 @@ Profile::~Profile(){
   memberPtr = nullptr;
 } // end default constructor
 
-void Profile::setMember(const Node* aMemberPtr){
+void Profile::setMember(const TFBMember* aMemberPtr){
   memberPtr = aMemberPtr;
 }
 

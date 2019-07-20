@@ -19,13 +19,13 @@ void q3(){
   cout << buzzPtr->print() << endl;
 
 
-  Node* buzzFBPtr = fb.joinTFB(buzzPtr);
+  TFBMember* buzzFBPtr = fb.joinTFB(buzzPtr);
 
   Profile* trexx = fb.createProfile("T-Rexx", "| 8-0 |", rel);
-  Node* trexxFB = fb.joinTFB(trexx);
+  TFBMember* trexxFB = fb.joinTFB(trexx);
 
   Profile* woody = fb.createProfile("woody", "|=);-l|", single);
-  // Node* woodyFB = Node{&woody};
+  // TFBMember* woodyFB = TFBMember{&woody};
 
   cout << fb.printMembers() << endl;
 
@@ -48,7 +48,7 @@ void q3(){
   cout << ":-)" << endl;
 
   cout << "Woody joins TFB!!!" << endl;
-  Node* woodyFB = fb.joinTFB(woody);
+  TFBMember* woodyFB = fb.joinTFB(woody);
   cout << fb.printProfiles() << endl;
 
   cout << fb.printMembers() << endl;
@@ -63,10 +63,10 @@ void q3(){
   cout << woodyFB->print() << endl;
   //
   cout << "Seen Woody\'s new picture? Let's find him by the picture?" << endl;
-  list<Node*> woodies = fb.search("|=}:-)|");
+  list<TFBMember*> woodies = fb.search("|=}:-)|");
   assert(woodies.size() == 1);
   cout << "Search by picture Works! ...Here is the Woody:" << endl;
-  Node* newFoundWoody = woodies.front();
+  TFBMember* newFoundWoody = woodies.front();
   cout << newFoundWoody->print() << endl;
   cout << "All are in frends with Woody!!!" << endl;
   cout << buzzFBPtr->print() << endl;

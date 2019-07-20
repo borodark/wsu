@@ -9,13 +9,13 @@
 #include <string>
 
 #include "Profile.h"
-#include "Node.h"
+#include "TFBMember.h"
 
 using namespace std;
 
 class TheFaceBooks {
  private:
-   list<Node*> members; //list of all network members
+   list<TFBMember*> members; //list of all network members
    list<Profile*> profiles; //list of all network members
 
  public:
@@ -23,11 +23,11 @@ class TheFaceBooks {
    ~TheFaceBooks(); // destructor
    Profile* createProfile(const string name,const string picture, const Status status);
    void deleteProfile(Profile* aProfile);
-   Node* joinTFB(Profile* nub);
-   list<Node*> search(string nameOrPicture);
-   void leaveTFB(Node* looser);
-   void beFriend(Node* me, Node* bff);
-   void unFriend(Node* me, Node* bff_not);
+   TFBMember* joinTFB(Profile* nub);
+   list<TFBMember*> search(string nameOrPicture);
+   void leaveTFB(TFBMember* looser);
+   void beFriend(TFBMember* me, TFBMember* bff);
+   void unFriend(TFBMember* me, TFBMember* bff_not);
 
    const string printMembers() const;
    const string printProfiles() const;

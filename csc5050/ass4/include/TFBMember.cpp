@@ -3,13 +3,13 @@
 
 using namespace std;
 
-Node::Node(Profile* aProfile) : profile(aProfile)
+TFBMember::TFBMember(Profile* aProfile) : profile(aProfile)
 {
   id = this->profile->getName();
   this->profile->setMember(this);
 } // end default constructor
 
-Node::~Node()
+TFBMember::~TFBMember()
 {
   cout << "Member "<< id << " is destroyed!" << endl;
   profile->setMember(nullptr);
@@ -22,28 +22,28 @@ Node::~Node()
   profile  = nullptr;
 } // end destructor
 
-const Profile* Node::getProfile() const {
+const Profile* TFBMember::getProfile() const {
   return profile;
 }
 
-string Node::getId() const {
+string TFBMember::getId() const {
   return id;
 }
 
-list<Node*> Node::getFriends() const {
+list<TFBMember*> TFBMember::getFriends() const {
   return friends;
 }
 
-const Node* Node::addFriend(Node* const aMember){
+const TFBMember* TFBMember::addFriend(TFBMember* const aMember){
   friends.push_back(aMember);
   return aMember;
 }
 
-void Node::removeFriend(Node* const aMember){
+void TFBMember::removeFriend(TFBMember* const aMember){
   friends.remove(aMember);
 }
 
-const string Node::printFriends() const {
+const string TFBMember::printFriends() const {
   string rc = " Has " + to_string(friends.size()) + " friends -> [\n";
   int i = 1;
   for (auto it=friends.cbegin(); it != friends.cend(); ++it) {
@@ -55,7 +55,7 @@ const string Node::printFriends() const {
   return rc;
 }
 
-const string Node::print() const 
+const string TFBMember::print() const 
 {
   string friends = printFriends();
   return "Member" + getProfile()->print() + ". \n"+ friends;
