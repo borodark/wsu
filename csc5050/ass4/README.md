@@ -23,7 +23,8 @@ Install `cmake` and `make` , pull this repo change to this directory, run:
   * Results: [q2.out](q2.out)
   
 ## Q3
-The popular social network Facebook was founded by Mark Zuckerberg and his classmates at Harvard University in 2004. At the time, he was a sophomore studying computer science.
+The
+popular social network Facebook was founded by Mark Zuckerberg and his classmates at Harvard University in 2004. At the time, he was a sophomore studying computer science.
 
 ### Design and implement an application that maintains the data for a simple social network.
 
@@ -37,9 +38,9 @@ The profile can be created without joining:
 * The [include/Profile.h](include/Profile.h) defines  behaviour
 * The [include/Profile.cpp](include/Profile.cpp) provides implementation
 
-The _Member_ encapsulates the [Profile](include/Node.h#L18) and the [list of friends](include/Node.h#L20)
-* The [include/Node.h](include/Node.h) defines  behaviour
-* The [include/Node.cpp](include/Node.cpp) provides implementation
+The _Member_ encapsulates the [Profile](include/TFBMember.h#L18) and the [list of friends](include/TFBMember.h#L20)
+* The [include/TFBMember.h](include/TFBMember.h) defines  behaviour
+* The [include/TFBMember.cpp](include/TFBMember.cpp) provides implementation
 
 
 #### Your application should allow a user to join the network, leave the network, create a profile, modify the profile, search for other profiles, and add friends. (6 points)
