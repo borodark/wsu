@@ -1,25 +1,18 @@
-pushing i = 1
-pushing i = 2
+pushing 2 disks ... 
 pushing i = 2
 pushing i = 1
 for2 has 1 at the top
-=       = =     
-= =     =       
+= =             
+=               
 
 Solving for 2
-Moving a disk from A to C.
-Moving a disk from A to B.
-Moving a disk from C to B.
-pushing i = 1
-pushing i = 2
-pushing i = 3
-pushing i = 4
-pushing i = 5
-pushing i = 6
-pushing i = 7
-pushing i = 8
-pushing i = 9
-pushing i = 10
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+pushing 10 disks ... 
 pushing i = 10
 pushing i = 9
 pushing i = 8
@@ -30,23 +23,2061 @@ pushing i = 4
 pushing i = 3
 pushing i = 2
 pushing i = 1
-for10 has 1 at the top
-=                                       = = = = = = = = = =     
-= =                                     = = = = = = = = =       
-= = =                                   = = = = = = = =         
-= = = =                                 = = = = = = =           
-= = = = =                               = = = = = =             
-= = = = = =                             = = = = =               
-= = = = = = =                           = = = =                 
-= = = = = = = =                         = = =                   
-= = = = = = = = =                       = =                     
-= = = = = = = = = =                     =                       
+= = = = = = = = = =                                             
+= = = = = = = = =                                               
+= = = = = = = =                                                 
+= = = = = = =                                                   
+= = = = = =                                                     
+= = = = =                                                       
+= = = =                                                         
+= = =                                                           
+= =                                                             
+=                                                               
 
-Solving for 3
-Moving a disk from A to B.
-Moving a disk from A to C.
-Moving a disk from B to C.
-Moving a disk from A to B.
-Moving a disk from C to A.
-Moving a disk from C to B.
-Moving a disk from A to B.
+Solving for 10
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 6 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 7 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 5 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 6 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 8 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 6 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 5 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 7 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 6 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 9 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 5 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 6 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 7 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 6 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 5 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 8 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 6 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 7 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 5 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 6 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 10 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 6 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 5 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 7 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 6 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 8 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 5 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 6 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 7 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 6 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 5 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 9 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 6 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 7 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 5 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 6 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 8 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 6 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 5 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 7 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 5 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 4 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 6 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 4 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from b to a.
+moving 3 from b to a
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 5 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from a to c.
+moving 3 from a to c
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from b to c.
+moving 2 from b to c
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 4 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
+Moving a disk from c to a.
+moving 2 from c to a
+Moving a disk from b to a.
+moving 1 from b to a
+Moving a disk from c to b.
+moving 3 from c to b
+Moving a disk from a to c.
+moving 1 from a to c
+Moving a disk from a to b.
+moving 2 from a to b
+Moving a disk from c to b.
+moving 1 from c to b
