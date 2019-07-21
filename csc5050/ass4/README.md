@@ -17,7 +17,11 @@ Install `cmake` and `make` , pull this repo change to this directory, run:
 Using stacks, write a [non-recursive function solveTowers( )](src/q1.cpp#L56) to solve the towers of Hanoi problem. Furthermore, implement a driver file to test your code. (2 points)
 
 * [src/q1.cpp](src/q1.cpp) - driver and implementation
-* Results: [q1.out](q1.out)
+Results
+
+* 10 disks 
+  * [Start iteration over 10](q1.out#L1134)
+  * [Destination stack print:](q1.out##L2175) 
 
 I have also impweHighlights:
 
