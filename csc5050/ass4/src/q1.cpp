@@ -141,6 +141,7 @@ void q1(){
   for10.print();
   cout << "Solving for 10" << endl;
   solveTowers(10, 'a','b','c', &for10);
+  for10.print();
 }
 
 int main(){
