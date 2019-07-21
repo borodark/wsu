@@ -26,7 +26,9 @@ Write an array-based implementation of the ADT list that expands the size of the
 * The [include/ArrayList.h](include/ArrayList.h) defines  behaviour
 * The [include/ArrayList.cpp](include/ArrayList.cpp) provides implementation
 
-The expand is implementated here: [include/ArrayList.cpp](include/ArrayList.cpp#L42)
+The expand is implementated here: [include/ArrayList.cpp](include/ArrayList.cpp#L42) and used during 
+* insert [include/ArrayList.cpp](include/ArrayList.cpp#L81) 
+* setEntry [include/ArrayList.cpp](include/ArrayList.cpp#L136) 
 
 * Q2 - [src/q2.cpp](src/q2.cpp)  - driver and implementation
   * Results: [q2.out](q2.out)
