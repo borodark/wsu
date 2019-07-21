@@ -46,13 +46,3 @@ int main()
   list10 = nullptr;
   return 0;
 }  // end main
-
-/*
-  isEmpty: returns 1; should be 1 (true)
-  Inserted one at position 1
-  Inserted two at position 2
-  Inserted three at position 3
-  Inserted four at position 4
-  Inserted five at position 5
-  Cannot insert six at position 6
-*/

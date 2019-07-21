@@ -22,6 +22,12 @@ Using stacks, write a non-recursive function solveTowers( ) to solve the towers 
 ## Q2
 
 Write an array-based implementation of the ADT list that expands the size of the array of list entries as needed so that the list can always accommodate a new entry. (2 points)
+
+* The [include/ArrayList.h](include/ArrayList.h) defines  behaviour
+* The [include/ArrayList.cpp](include/ArrayList.cpp) provides implementation
+
+The expand is implementated here: [include/ArrayList.cpp](include/ArrayList.cpp#L42)
+
 * Q2 - [src/q2.cpp](src/q2.cpp)  - driver and implementation
   * Results: [q2.out](q2.out)
   
