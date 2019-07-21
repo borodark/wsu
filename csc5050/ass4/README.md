@@ -12,19 +12,22 @@ Install `cmake` and `make` , pull this repo change to this directory, run:
 `make` to comple
 
 
-## Q 1,2,3
+## Q1
 
-### source code:
+Using stacks, write a non-recursive function solveTowers( ) to solve the towers of Hanoi problem. Furthermore, implement a driver file to test your code. (2 points)
 
-* Q1 - [src/q1.cpp](src/q1.cpp) - driver and implementation
-  * Results: [q1.out](q1.out)
+- [src/q1.cpp](src/q1.cpp) - driver and implementation
+  - Results: [q1.out](q1.out)
   
+## Q2
+
+Write an array-based implementation of the ADT list that expands the size of the array of list entries as needed so that the list can always accommodate a new entry. (2 points)
 * Q2 - [src/q2.cpp](src/q2.cpp)  - driver and implementation
   * Results: [q2.out](q2.out)
   
 ## Q3
-The
-popular social network Facebook was founded by Mark Zuckerberg and his classmates at Harvard University in 2004. At the time, he was a sophomore studying computer science.
+
+The popular social network Facebook was founded by Mark Zuckerberg and his classmates at Harvard University in 2004. At the time, he was a sophomore studying computer science.
 
 ### Design and implement an application that maintains the data for a simple social network.
 

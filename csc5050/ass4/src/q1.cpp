@@ -15,9 +15,10 @@ using namespace std;
 
 class Towers {
 private:
-  int disks;
+
 public:
   Towers(int disks);
+  int disks;
   vector<int> a = vector<int>();
   vector<int> b = vector<int>();
   vector<int> c = vector<int>();
@@ -150,19 +151,19 @@ void q1(){
   Towers for2 = Towers{2};
   for2.print();
   cout << "Solving for 2" << endl;
-  solveTowers(2, 'a','b','c', &for2);
+  solveTowers(for2.disks, 'a','b','c', &for2);
   for2.print();
 
   Towers for3 = Towers{3};
   for3.print();
   cout << "Solving for 3" << endl;
-  solveTowers(3, 'a','b','c', &for3);
+  solveTowers(for3.disks, 'a','b','c', &for3);
   for3.print();
 
   Towers for10 = Towers{10};
   for10.print();
   cout << "Solving for 10" << endl;
-  solveTowers(10, 'a','b','c', &for10);
+  solveTowers(for10.disks, 'a','b','c', &for10);
   for10.print();
 }
 
