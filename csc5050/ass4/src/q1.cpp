@@ -131,7 +131,7 @@ void Towers::move(unsigned char from, unsigned char to)
   t->push_back(value);
   //this->print();
 }
-void Towers::print() // TODO this is ugly! there must be a recursive way 
+void Towers::print()
 {
   //for(int i = 0;  i < disks ; i++){ // from the top
   for(int i = disks - 1;  i >=0; i--){ // from the bottom
