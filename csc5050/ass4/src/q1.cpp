@@ -8,11 +8,75 @@
 #include <iostream>
 #include <cassert>
 #include <vector>
+#include <stack>
+#include <math.h>
 
 using namespace std;
+//show the movement of the disks
+void printMove(char fromPeg, char toPeg, int disk) {
+  cout << " Move the disk " << disk << " from " << fromPeg << " to " <<  toPeg << endl;
+}
+
+void moveDisksBetweenTwoPoles(stack<int>* src,
+                              stack<int>* dest,
+                              char s,
+                              char d){
+  int srcTopDisk = (src->size()>0)?src->top():0;
+  if(srcTopDisk>0)
+    src->pop();
+  int destTopDisk = (dest->size()>0)?dest->top():0;
+  if (destTopDisk > 0) // check if the 
+    dest->pop();
+  // When src is empty
+  if (srcTopDisk == 0) {
+    src->push(destTopDisk);
+    printMove(d, s, destTopDisk);
+  }
+  // When dest pole is empty
+  else if (destTopDisk == 0){
+    dest->push(srcTopDisk);
+    printMove(s, d, srcTopDisk);
+  }
+  // When top disk of src > top disk of dest
+  else if (srcTopDisk > destTopDisk) {
+    src->push(srcTopDisk);
+    src->push(destTopDisk);
+    printMove(d, s, destTopDisk);
+  }
+  // When top disk of src < top disk of dest
+  else
+    {
+      dest->push(destTopDisk);
+      dest->push(srcTopDisk);
+      printMove(s, d, srcTopDisk);
+    }
+}
+
+//
+void solveIterative(int disks,
+                    stack<int>* src, stack<int>* dest, stack<int>* spare){
+
+  int i, total_moves = pow(2, disks) - 1;
+  char s = 'a', d = 'b', sp = 'c';
+  cout << " total moves: " << total_moves << endl;
+  //If number of disks is even, then interchange
+  //destination pole and spare pole
+  if (disks % 2 == 0) {
+    char temp = d;
+    d = sp;
+    sp = temp;
+  }
+  for (i = 1; i <= total_moves; i++) {
+    if (i % 3 == 1)
+      moveDisksBetweenTwoPoles(src, dest, s, d);
+    else if (i % 3 == 2)
+      moveDisksBetweenTwoPoles(src, spare, s, sp);
+    else if (i % 3 == 0)
+      moveDisksBetweenTwoPoles(spare, dest, sp, d);
+  }
+}
 
 /** state */
-
 class Towers {
 private:
 
@@ -41,7 +105,7 @@ void Towers::move(unsigned char from, unsigned char to)
   switch(from) {
   case 'a' :
     f = &a;
-    break;       // and exits the switch
+    break;
   case 'b' :
     f = &b;
     break;
@@ -53,7 +117,7 @@ void Towers::move(unsigned char from, unsigned char to)
   switch(to) {
   case 'a' :
     t = &a;
-    break;       // and exits the switch
+    break;
   case 'b' :
     t = &b;
     break;
@@ -123,8 +187,6 @@ void Towers::print() // TODO this is ugly! there must be a recursive way
     }
     else
       cout << "--";
-   
-
   }
   cout << endl;
 
@@ -146,7 +208,7 @@ void solveTowers(unsigned char disksLeft,
   }
 }
 
-void q1(){
+void q1_recursive(){
 
   Towers for2 = Towers{2};
   for2.print();
@@ -167,7 +229,73 @@ void q1(){
   for10.print();
 }
 
+stack<int>* populate(int disks){
+  stack<int>* a =  new stack<int>;
+  cout << "pushing "<< disks << " disks ... " << endl;
+  for(int i = disks; i > 0; i--){
+    cout << "pushing i = " << i << endl;
+    a->push(i);
+  }
+  return a;
+}
+
+void q1_iter2(){
+  stack<int>* a = populate(2);
+  stack<int>* b = new stack<int>;
+  stack<int>* c = new stack<int>;
+  cout << "Solving for 2" << endl;
+  solveIterative(2, a, b, c);
+  cout << "Done!!!" << endl;
+  cout << "a size " << a->size() << endl;
+  cout << "2 is even the destination is c" << endl;
+  cout << "b size " << b->size() << endl;
+  cout << "c size " << c->size() << endl;
+  cout << "printing c " << endl;
+  for(int i = c->size(); i>0 ; i-- ){
+    cout << c->top() << endl;
+    c->pop();
+  }
+}
+void q1_iter10(){
+  stack<int>* a = populate(10);
+  stack<int>* b = new stack<int>;
+  stack<int>* c = new stack<int>;
+  cout << "Solving for 10" << endl;
+  solveIterative(10, a, b, c);
+  cout << "Done!!!" << endl;
+  cout << "a size " << a->size() << endl;
+  cout << "10 is even the destination is c" << endl;
+  cout << "b size " << b->size() << endl;
+  cout << "c size " << c->size() << endl;
+  cout << "printing c " << endl;
+  for(int i = c->size(); i>0 ; i-- ){
+    cout << c->top() << endl;
+    c->pop();
+  }
+}
+
+void q1_iter3(){
+  stack<int>* a = populate(3);
+  stack<int>* b = new stack<int>;
+  stack<int>* c = new stack<int>;
+  cout << "Solving for 3" << endl;
+  solveIterative(3, a, b, c);
+  cout << "Done!!!" << endl;
+  cout << "a size " << a->size() << endl;
+  cout << "b size " << b->size() << endl;
+  cout << "c size " << c->size() << endl;
+  cout << "printing b " << endl;
+  for(int i = b->size(); i>0 ; i-- ){
+    cout << b->top() << endl;
+    b->pop();
+  }
+}
+
+
 int main(){
-  q1();
+  q1_recursive();
+  q1_iter2();
+  q1_iter3();
+  q1_iter10();
 }
 

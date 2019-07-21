@@ -133,7 +133,8 @@ template<class ItemType>
 void ArrayList<ItemType>::setEntry(int position, const ItemType& newEntry)
 {
   // Enforce precondition
-  bool ableToSet = (position >= 1) && (position <= itemCount);
+  ensureCapacity(position);
+  bool ableToSet = (position >= 1);
   if (ableToSet)
     items[position - 1] = newEntry;
   else
