@@ -53,7 +53,7 @@ void moveDisksBetweenTwoPoles(stack<int>* src,
 }
 
 //
-void solveIterative(int disks,
+void solveTowers(int disks,
                     stack<int>* src, stack<int>* dest, stack<int>* spare){
 
   int i, total_moves = pow(2, disks) - 1;
@@ -192,7 +192,7 @@ void Towers::print() // TODO this is ugly! there must be a recursive way
 
 };
 
-void solveTowers(unsigned char disksLeft,
+void solve(unsigned char disksLeft,
                  unsigned char src,
                  unsigned char dest,
                  unsigned char spare,
@@ -202,9 +202,9 @@ void solveTowers(unsigned char disksLeft,
     state->move(src, dest);
     // state->print();
   } else {
-    solveTowers(disksLeft - 1,src, spare, dest, state);
-    solveTowers(1,src, dest, spare, state);
-    solveTowers(disksLeft -1,spare, dest, src, state);
+    solve(disksLeft - 1,src, spare, dest, state);
+    solve(1,src, dest, spare, state);
+    solve(disksLeft -1,spare, dest, src, state);
   }
 }
 
@@ -213,19 +213,19 @@ void q1_recursive(){
   Towers for2 = Towers{2};
   for2.print();
   cout << "Solving for 2" << endl;
-  solveTowers(for2.disks, 'a','b','c', &for2);
+  solve(for2.disks, 'a','b','c', &for2);
   for2.print();
 
   Towers for3 = Towers{3};
   for3.print();
   cout << "Solving for 3" << endl;
-  solveTowers(for3.disks, 'a','b','c', &for3);
+  solve(for3.disks, 'a','b','c', &for3);
   for3.print();
 
   Towers for10 = Towers{10};
   for10.print();
   cout << "Solving for 10" << endl;
-  solveTowers(for10.disks, 'a','b','c', &for10);
+  solve(for10.disks, 'a','b','c', &for10);
   for10.print();
 }
 
@@ -244,7 +244,7 @@ void q1_iter2(){
   stack<int>* b = new stack<int>;
   stack<int>* c = new stack<int>;
   cout << "Solving for 2" << endl;
-  solveIterative(2, a, b, c);
+  solveTowers(2, a, b, c);
   cout << "Done!!!" << endl;
   cout << "a size " << a->size() << endl;
   cout << "2 is even the destination is c" << endl;
@@ -261,7 +261,7 @@ void q1_iter10(){
   stack<int>* b = new stack<int>;
   stack<int>* c = new stack<int>;
   cout << "Solving for 10" << endl;
-  solveIterative(10, a, b, c);
+  solveTowers(10, a, b, c);
   cout << "Done!!!" << endl;
   cout << "a size " << a->size() << endl;
   cout << "10 is even the destination is c" << endl;
@@ -279,7 +279,7 @@ void q1_iter3(){
   stack<int>* b = new stack<int>;
   stack<int>* c = new stack<int>;
   cout << "Solving for 3" << endl;
-  solveIterative(3, a, b, c);
+  solveTowers(3, a, b, c);
   cout << "Done!!!" << endl;
   cout << "a size " << a->size() << endl;
   cout << "b size " << b->size() << endl;

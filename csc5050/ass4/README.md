@@ -14,10 +14,13 @@ Install `cmake` and `make` , pull this repo change to this directory, run:
 
 ## Q1
 
-Using stacks, write a non-recursive function solveTowers( ) to solve the towers of Hanoi problem. Furthermore, implement a driver file to test your code. (2 points)
+Using stacks, write a [non-recursive function solveTowers( )](src/q1.cpp#L56) to solve the towers of Hanoi problem. Furthermore, implement a driver file to test your code. (2 points)
 
-- [src/q1.cpp](src/q1.cpp) - driver and implementation
-  - Results: [q1.out](q1.out)
+* [src/q1.cpp](src/q1.cpp) - driver and implementation
+* Results: [q1.out](q1.out)
+
+I have also impweHighlights:
+
   
 ## Q2
 
