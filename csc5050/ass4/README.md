@@ -21,6 +21,9 @@ Using stacks, write a non-recursive function solveTowers( ) to solve the towers 
   
 ## Q2
 
+* Q2 - [src/q2.cpp](src/q2.cpp) driver
+* Results: [q2.out](q2.out)
+
 Write an array-based implementation of the ADT list that expands the size of the array of list entries as needed so that the list can always accommodate a new entry. (2 points)
 
 * The [include/ArrayList.h](include/ArrayList.h) defines  behaviour
@@ -30,9 +33,6 @@ The expand is implementated here: [include/ArrayList.cpp](include/ArrayList.cpp#
 * insert [include/ArrayList.cpp](include/ArrayList.cpp#L81) 
 * setEntry [include/ArrayList.cpp](include/ArrayList.cpp#L136) 
 
-* Q2 - [src/q2.cpp](src/q2.cpp)  - driver and implementation
-  * Results: [q2.out](q2.out)
-  
 ## Q3
 
 The popular social network Facebook was founded by Mark Zuckerberg and his classmates at Harvard University in 2004. At the time, he was a sophomore studying computer science.
