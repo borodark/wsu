@@ -64,6 +64,7 @@ void Towers::move(unsigned char from, unsigned char to)
   f->pop_back();
   cout << "moving " << value << " from " << from <<" to " << to << endl;
   t->push_back(value);
+  //this->print();
 }
 void Towers::print() // TODO this is ugly! there must be a recursive way 
 {
@@ -106,6 +107,26 @@ void Towers::print() // TODO this is ugly! there must be a recursive way
     cout << endl;
   }
   cout << endl;
+  const int a_pos = disks/2;
+  const int b_pos = a_pos + disks;
+  const int c_pos = b_pos + disks ;
+  for(int j = 0 ; j < disks * 3 ; j++){
+    if(j == a_pos){
+      cout << "A-";
+    }
+    else if(j == b_pos){
+      cout << "B-";
+    }
+    else if(j == c_pos){
+      cout << "C-";
+    }
+    else
+      cout << "--";
+   
+
+  }
+  cout << endl;
+
 };
 
 void solveTowers(unsigned char disksLeft,
@@ -114,9 +135,9 @@ void solveTowers(unsigned char disksLeft,
                  unsigned char spare,
                  Towers* state){
   if (disksLeft == 1) {
-    cout << "Moving a disk from " << src << " to "
-         << dest << "." << endl;
+    // cout << "Moving a disk from " << src << " to " << dest << "." << endl;
     state->move(src, dest);
+    // state->print();
   } else {
     solveTowers(disksLeft - 1,src, spare, dest, state);
     solveTowers(1,src, dest, spare, state);
