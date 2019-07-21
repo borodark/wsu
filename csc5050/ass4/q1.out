@@ -1,7 +1,6 @@
 pushing 2 disks ... 
 pushing i = 2
 pushing i = 1
-for2 has 1 at the top
 = =             
 =               
 
@@ -12,6 +11,36 @@ Moving a disk from a to b.
 moving 2 from a to b
 Moving a disk from c to b.
 moving 1 from c to b
+    = =         
+    =           
+
+pushing 3 disks ... 
+pushing i = 3
+pushing i = 2
+pushing i = 1
+= = =                 
+= =                   
+=                     
+
+Solving for 3
+Moving a disk from a to b.
+moving 1 from a to b
+Moving a disk from a to c.
+moving 2 from a to c
+Moving a disk from b to c.
+moving 1 from b to c
+Moving a disk from a to b.
+moving 3 from a to b
+Moving a disk from c to a.
+moving 1 from c to a
+Moving a disk from c to b.
+moving 2 from c to b
+Moving a disk from a to b.
+moving 1 from a to b
+      = = =           
+      = =             
+      =               
+
 pushing 10 disks ... 
 pushing i = 10
 pushing i = 9

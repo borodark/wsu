@@ -126,13 +126,18 @@ void solveTowers(unsigned char disksLeft,
 void q1(){
 
   Towers for2 = Towers{2};
-  cout << "for2 has "<< for2.a.at(1) << " at the top"<< endl;
   for2.print();
   cout << "Solving for 2" << endl;
   solveTowers(2, 'a','b','c', &for2);
+  for2.print();
+
+  Towers for3 = Towers{3};
+  for3.print();
+  cout << "Solving for 3" << endl;
+  solveTowers(3, 'a','b','c', &for3);
+  for3.print();
 
   Towers for10 = Towers{10};
-  // cout << "for10 has "<< for10.a.at(0) << " at the top"<< endl;
   for10.print();
   cout << "Solving for 10" << endl;
   solveTowers(10, 'a','b','c', &for10);
