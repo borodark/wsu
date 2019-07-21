@@ -67,7 +67,8 @@ void Towers::move(unsigned char from, unsigned char to)
 }
 void Towers::print() // TODO this is ugly! there must be a recursive way 
 {
-  for(int i = 0;  i < disks ; i++){ // from the top
+  //for(int i = 0;  i < disks ; i++){ // from the top
+  for(int i = disks - 1;  i >=0; i--){ // from the bottom
     int a_cur = (a.empty()?0:(i>a.size()?0:a.at(i)));
     int b_cur = (b.empty()?0:(i>b.size()?0:b.at(i)));
     int c_cur = (c.empty()?0:(i>c.size()?0:c.at(i)));

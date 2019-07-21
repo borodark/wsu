@@ -1,8 +1,8 @@
 pushing 2 disks ... 
 pushing i = 2
 pushing i = 1
-= =             
 =               
+= =             
 
 Solving for 2
 Moving a disk from a to c.
@@ -11,16 +11,16 @@ Moving a disk from a to b.
 moving 2 from a to b
 Moving a disk from c to b.
 moving 1 from c to b
-    = =         
     =           
+    = =         
 
 pushing 3 disks ... 
 pushing i = 3
 pushing i = 2
 pushing i = 1
-= = =                 
-= =                   
 =                     
+= =                   
+= = =                 
 
 Solving for 3
 Moving a disk from a to b.
@@ -37,9 +37,9 @@ Moving a disk from c to b.
 moving 2 from c to b
 Moving a disk from a to b.
 moving 1 from a to b
-      = = =           
-      = =             
       =               
+      = =             
+      = = =           
 
 pushing 10 disks ... 
 pushing i = 10
@@ -52,16 +52,16 @@ pushing i = 4
 pushing i = 3
 pushing i = 2
 pushing i = 1
-= = = = = = = = = =                                             
-= = = = = = = = =                                               
-= = = = = = = =                                                 
-= = = = = = =                                                   
-= = = = = =                                                     
-= = = = =                                                       
-= = = =                                                         
-= = =                                                           
-= =                                                             
 =                                                               
+= =                                                             
+= = =                                                           
+= = = =                                                         
+= = = = =                                                       
+= = = = = =                                                     
+= = = = = = =                                                   
+= = = = = = = =                                                 
+= = = = = = = = =                                               
+= = = = = = = = = =                                             
 
 Solving for 10
 Moving a disk from a to c.
@@ -2110,14 +2110,14 @@ Moving a disk from a to b.
 moving 2 from a to b
 Moving a disk from c to b.
 moving 1 from c to b
-                    = = = = = = = = = =                         
-                    = = = = = = = = =                           
-                    = = = = = = = =                             
-                    = = = = = = =                               
-                    = = = = = =                                 
-                    = = = = =                                   
-                    = = = =                                     
-                    = = =                                       
-                    = =                                         
                     =                                           
+                    = =                                         
+                    = = =                                       
+                    = = = =                                     
+                    = = = = =                                   
+                    = = = = = =                                 
+                    = = = = = = =                               
+                    = = = = = = = =                             
+                    = = = = = = = = =                           
+                    = = = = = = = = = =                         
 
