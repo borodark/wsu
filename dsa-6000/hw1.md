@@ -282,3 +282,11 @@ v.
 ```
 
 ![hist](hist.svg)
+
+
+```
+> summary(college$perc.alumni)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00   13.00   21.00   22.74   31.00   64.00 
+ 
+```
