@@ -129,11 +129,11 @@ The Euclidean distance between points p and q is the lenght of the line segment 
 
 #### b) What is our prediction with K=1? Why?
 
-The closest to 1 is the value for observation 5 hence it is Green.
+The closest to 1 is the value for observation 5 hence it is *Green*.
 
 #### c) What is our prediction with K=3? Why?
 
-The closest to 3 are observations 1, 3 and 4: 2/3 for Red and 1/3 for Green, hence: _Red_
+The closest to 3 are observations 1, 3 and 4: 2/3 for Red and 1/3 for Green, hence: *Red*
 
 #### d) If the Bayes decision boundary in this problem is highly non-linear, then would we expect the best value for K to be large or small? Why?
 
