@@ -116,6 +116,7 @@ Suppose we wish to use this data set to make a prediction for Y when X1=X2=X3=0 
 
 The Euclidean distance between points p and q is the lenght of the line segment connecting them.
 
+```
 |            -- | --                    |       -- |
 | observation # | formula               | distance |
 |             1 | sqrt(3^2)             |        3 |
@@ -124,17 +125,18 @@ The Euclidean distance between points p and q is the lenght of the line segment 
 |             4 | sqrt(1^2 + 2^2)       |     2.24 |
 |             5 | sqrt(1^2 + 1^2)       |     1.41 |
 |             6 | sqrt(1^2 + 1^2 + 1^2) |     1.73 |
+```
 
 #### b) What is our prediction with K=1? Why?
 
-It is the class from the nearest neighbor - the observation 5 - Green.
+The closest to 1 is the value for observation 5 hence it is Green.
 
 #### c) What is our prediction with K=3? Why?
 
-It is the average from the three nearest neighbors - observations 5, 6 and 2 -, so it is Red.
+The closest to 3 are observations 1, 3 and 4: 2/3 for Red and 1/3 for Green, hence: _Red_
 
 #### d) If the Bayes decision boundary in this problem is highly non-linear, then would we expect the best value for K to be large or small? Why?
 
-Small, because the level of flexibility is inversely proportional to the number of K for KNN approach, and to fit non-linear characteristcs is needed a high flexible approach.
+Bigger K causes more linear, less curvy boundaries. The better value for K is small. The level of flexibility is inversely depends on the number of K.
 
 ### 8. 
