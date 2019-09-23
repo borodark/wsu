@@ -267,3 +267,18 @@ iv. Create a new qualitative variable, called Elite, by binning the Top10perc va
  
  ```
 
+![Elite](elite.svg)
+
+
+v. 
+
+```
+> par(mfrow = c(2,2))
+> hist(college$Books, col = 2, xlab = "Books", ylab = "Count")
+> hist(college$PhD, col = 3, xlab = "PhD", ylab = "Count")
+> hist(college$Grad.Rate, col = 4, xlab = "Grad Rate", ylab = "Count")
+> hist(college$perc.alumni, col = 6, xlab = "% alumni", ylab = "Count")
+> 
+```
+
+![hist](hist.svg)
