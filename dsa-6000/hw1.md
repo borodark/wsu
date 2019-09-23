@@ -63,6 +63,28 @@ Worse! The flexible model will follow the noise/errors more precisely giving hig
 - _bias_ decreases as the levels of flexibility creates more complex function that more precisely approximate the system but stopped being impacted at some point
 - _variance_ increases slowly with higher levels of flexibility, then increases rapidly causing _test errors_ to rise
 
+
+### 4. You will now think of some real-life applications for statistical learning.
+
+#### a) Describe three real-life applications in which classification might be useful. Describe the response, as well as the predictors. Is the goal of each application inference or prediction? Explain your answer.
+
+- recommend the mortgage products according to the potential customer atributes: age, work status, income, assets, loan amount, etc: inference.
+- estimate the default for the debt products based on age, income, occupation, industry of employment, family status, life events: prediction.
+- make decision to stop the production process and tune the mill based of the variation of sizes of the produced part: inference - classify the situation as the need for the adjustments.
+
+#### b) Describe three real-life applications in which regression might be useful. Describe the response, as well as the predictors. Is the goal of each application inference or prediction ? Explain your answer.
+
+- provide decompression time given certain gas mixure needed for SCUBA diver to avoid bends as function of time spent at certain deps, using particular breathing mixture with several fixed percentages of _Oxigen_ vs other gasses: _N_ and _He_. It's inferense: the model is set in dive computer
+- Perdict sesonal flow of the water streams based on the data collected each day, over years, on levels of rain, temperature, depth of snow, air and water temperatures.
+- feed optimal charding current for the batteries based of model, describing optimal charging rate for batery chemistry type, the adsorbed capacity, actual voltage, time. It is inference: different battery chemistry uses different models of charging.
+
+#### c) Describe three real-life applications in which cluster analysis might be useful.
+
+- find what factors contibutes to certain disease: age, gender, food, sleap time, execise time, recreational drugs: alcohol, coffe, etc. Perdiction: find what illness are common for the group with similar habits.
+- recommend the music based on the lisened and liked songs, discover the concentration of songs around collaborationg artists for the songs one likes.
+- find the list of topics for the news letter to maximise the click rates based on similarity of interests of the targets.
+
+
 ### 5. What are the advantages and disadvantages of a very flexible (versus a less flexible) approach for regression or classification? Under what circumstances might a more flexible approach be preferred to a less flexible approach? When might a less flexible approach be preferred?
 
 Advantages: Produces less bias representing complex and non-linear systems.
@@ -84,3 +106,35 @@ Advantages:
 Disadvantages:
 - Parametric approach is prone to overfiting when too flexible model is selected during training, that leads to large test errors
 - The errors will be higher for less flexible models with fewer parameters.
+
+
+### 7. The table below provides a training data set containing six observations, three predictors, and one qualitative response variable.
+
+Suppose we wish to use this data set to make a prediction for Y when X1=X2=X3=0 using K-nearest neighbors.
+
+#### a) Compute the Euclidean distance between each observation and the test point, X1=X2=X3=0
+
+The Euclidean distance between points p and q is the lenght of the line segment connecting them.
+
+|            -- | --                    |       -- |
+| observation # | formula               | distance |
+|             1 | sqrt(3^2)             |        3 |
+|             2 | sqrt(2^2)             |        2 |
+|             3 | sqrt(1^2 + 3^2)       |     3.16 |
+|             4 | sqrt(1^2 + 2^2)       |     2.24 |
+|             5 | sqrt(1^2 + 1^2)       |     1.41 |
+|             6 | sqrt(1^2 + 1^2 + 1^2) |     1.73 |
+
+#### b) What is our prediction with K=1? Why?
+
+It is the class from the nearest neighbor - the observation 5 - Green.
+
+#### c) What is our prediction with K=3? Why?
+
+It is the average from the three nearest neighbors - observations 5, 6 and 2 -, so it is Red.
+
+#### d) If the Bayes decision boundary in this problem is highly non-linear, then would we expect the best value for K to be large or small? Why?
+
+Small, because the level of flexibility is inversely proportional to the number of K for KNN approach, and to fit non-linear characteristcs is needed a high flexible approach.
+
+### 8. 
