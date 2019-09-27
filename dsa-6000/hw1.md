@@ -2,6 +2,9 @@
 
 @author: Igor Ostaptchenko igor_ost@wayne.edu AKA borodark@gmail.com
 
+R sources 
+https://github.com/borodark/wsu/blob/master/dsa-6000/hw1.md
+
 ## 2.4 Excercises
 
 ### 1. For each of parts (a) through (d), indicate whether we would generally expect the performance of a flexible statistical learning method to be better or worse than an inflexible method. Justify your answer.
