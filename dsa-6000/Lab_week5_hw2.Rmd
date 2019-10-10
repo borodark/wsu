@@ -58,7 +58,7 @@ pairs(~ age + medv, Boston)
 
 ```
 
-There is _nonlinear_ function can be fit between `lstat` and `medv` but `age` is less predictive. 
+There is a _nonlinear_ function exists that fits relationships between `lstat` and `medv` but `age` has less obvious dependency `medv`. 
 
 * __Q6__: What is the estimated standard deviation of the irreducible error in the model $\text{medv} = \beta_0 + \beta_1 \cdot \text{lstat} + \beta_2 \cdot \text{age} + \epsilon$. 
 
@@ -66,7 +66,17 @@ There is _nonlinear_ function can be fit between `lstat` and `medv` but `age` is
 #Residual standard error: 6.173 on 503 degrees of freedom
 summary(lm.fit)$sigma
 ```
-* __Q7__: How do you interpret the coefficient estimate on _age_, i.e., the value `r format(coef(lm.fit)['age'], digits=3)`, in the model context?
+* __Q7__: How do you interpret the coefficient estimate on _age_, i.e., the value 
+```{r} 
+format(coef(lm.fit)['age'], digits=3)
+```
+, in the model context?
+It means that 
+$\ \beta_2 = 0.0345$
+
+in the full model equasion will be:
+
+$\text{medv} = 33.22276 + -1.03207 \cdot \text{lstat} + 0.0345 \cdot \text{age} + \epsilon$
 
 ## Build a Full Model and Compute VIFs
 
@@ -76,19 +86,37 @@ Let's first check if all columns of the data set are numeric hence can be used a
 sapply(Boston, mode)
 ```
 
-Are all columns of the numeric type? `r all(sapply(Boston, mode) == "numeric")`. Let's try using all columns (except for _medv_, of course) as predictors and fit a full model. 
+Are all columns of the numeric type? 
+```{r}
+all(sapply(Boston, mode) == "numeric")
+```
+. Let's try using all columns (except for _medv_, of course) as predictors and fit a full model. 
 
 ```{r}
 lm.fit.full <- lm(medv ~ ., data = Boston)
 ```
 
-Now display the model summary using `summary(lm.fit.full)` and answewr these questions.
+Now display the model summary using 
+```{r} 
+summary(lm.fit.full)
+``` 
+and answewr these questions.
 
 * __Q8__: How many predictors are used in this model fit?
+_13_ predictors.
 
 * __Q9__: Which predictors have a significant effect on the response variable at a confidence level of 0.95?
 
+_All_ except:
+
+- `indus        2.056e-02  6.150e-02   0.334 0.738288`
+- `age          6.922e-04  1.321e-02   0.052 0.958229`
+
+
 * __Q10__: Does _age_ present a significant effect on _medv_ in this model?  
+
+Clearly _not_!
+
 
 Let's calculate the Variance Inflation Factor (VIF) of each predictor in the above full model. VIF of a predictor $X_j$ measures how well $X_j$ can be represented as a linear combination of other predictors used in the model. A high VIF indicates that the predictor has a high multicollinearity with other predictors, thus should probably be excluded from the set of predictors to improve the model fit. 
 VIF of a predictor $X_j$ is calculated by the formula $\text{VIF}_j = \frac{1}{1-R_j^2}$, where $R_j^2$ is the R-Square value of the model fit by using $X_j$ as the response variable and all other predictors used in the original model as predictors. For instance, to calculate the VIF of _age_ in the context of `lm.fit.full` model:
@@ -116,13 +144,39 @@ Now, let's exclude _age_ from the full model and fit again.
 lm.fit.all_but_age <- lm(medv ~ . - age, data = Boston)
 ```
 
-Display the `summary(lm.fit.all_but_age)` and answer these questions.
+Display the 
+
+```{r}
+summary(lm.fit.all_but_age)
+```
+
+and answer these questions.
 
 * __Q11__: Compare the Multiple R-squared and Adjusted R-sqaured values between this model and the full model. Comment on the differences. Which model do you think is better?
 
+`Multiple R-squared:  0.7406,	Adjusted R-squared:  0.7343` - All but `age`
+`Multiple R-squared:  0.7406,	Adjusted R-squared:  0.7338` - Including `age`
+
+_Higher Adjusted R-squared_ of the _All but_ `age` model suggests its supperiority.
+
+
+
 * __Q12__: Compute the AIC and BIC of the model `lm.fit.full` and `lm.fit.all_but_age`, respectively. Use the function `AIC(lm.fit.full)` and `BIC(lm.fit.full)`. Compare the two models in terms of AIC and BIC. Does the conclusion consistent with what you get in Q11?
+```{r}
+AIC(lm.fit.full)
+BIC(lm.fit.full)
+
+```
+```{r}
+AIC(lm.fit.all_but_age)
+BIC(lm.fit.all_but_age)
+
+```
+
+_Lower_ `AIC` and `BIC` of `lm.fit.all_but_age` supports the current idea of this model bein better.
 
 * __Q13__: Pick a termination criteria (i.e., Adj. R-squared, AIC or BIC) and carry out the Backward Selection procedure to find the best fit. 
+
 
 
 ## ISLR Exercises (Section 3.7)
