@@ -203,7 +203,7 @@ step.model11$bestTune
 ## ISLR Exercises (Section 3.7)
 
 ### Problem 1:
-The table 3.4 shows valuse of _p-value_ for varaibles. The Hypothesis is that sales has _zero_ dependency movey spent on ads on _TV_, _radio_, and _newspaper_. The *lower* then $10^{-3}$  _p-value_ says otherwise: spending budget on ads in _TV_ and _radio_ impacts sales, but not so much the on ads in _newspepers_.
+The table 3.4 shows valuse of _p-value_ for varaibles. The Hypothesis is that sales has _zero_ dependency movey spent on ads on _TV_, _radio_, and _newspaper_. The *lower* then $10^{-3}$  _p-value_ says otherwise: spending the budget on ads in _TV_ and _radio_ impacts sales, but not so much for buyng the ads in _newspepers_.
 
 ### Problem 3:
 
@@ -225,10 +225,17 @@ Let's plug the numbers into **_Numbers_**
 
 ![Calculations](hw2-gender.png)
 
-##### i. NO
-##### ii. NO
-##### iii. NO - It depends! From the quick check we can see that when IQ and GPA reach certain points the Male salaries becomes higher 
-##### iv. NO - Same as n _iii._ 
+##### i. 
+NO
+
+##### ii. 
+NO
+
+##### iii. 
+NO - It depends! From the quick check we can see that when IQ and GPA reach certain points the Male salaries becomes higher 
+
+##### iv. 
+NO - Same as n _iii._ 
 
 #### b)
 
@@ -242,7 +249,16 @@ $\text{salary} = \hat{\beta}_0 + \hat{\beta}_1  \text{GPA} + \hat{\beta}_3 \cdot
 
 The increase of _GPA_ by one adds a ~ _1%_ of itself to the acceleration of the grow of the _IQ_.
 
-
-
 ### Problem 4:
 
+#### a) 
+The training _RSS_ for _polynomial_ regression model will be _smaller_ then _RSS_ for _linear_ regression model: greater flexibility allows to find closer fit.
+
+#### b) 
+The testing _RSS_ for _polynomial_ regression model may be _greater_ then testing _RSS_ for _linear_ regression model: greater flexibility may yeild residuals where there must be none cause the true fit is linear.
+
+#### c) 
+The training _RSS_ for _polynomial_ regression model will be _smaller_ then _RSS_ for _linear_ regression model.
+
+#### d) 
+The testing _RSS_ for _polynomial_ regression model will be _smaller_ then testing _RSS_ for _linear_ regression model: greater flexibility will minimize residuals cause the true fit is _non-linear_ in the test data.
