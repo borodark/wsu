@@ -162,29 +162,86 @@ _Higher Adjusted R-squared_ of the _All but_ `age` model suggests its supperiori
 
 
 * __Q12__: Compute the AIC and BIC of the model `lm.fit.full` and `lm.fit.all_but_age`, respectively. Use the function `AIC(lm.fit.full)` and `BIC(lm.fit.full)`. Compare the two models in terms of AIC and BIC. Does the conclusion consistent with what you get in Q11?
-```{r}
-AIC(lm.fit.full)
-BIC(lm.fit.full)
+```{r results='asis'}
+library(knitr)
+rc = data.frame(
+(c('Model', 'AIC', 'BIC')),
+(c('Full', AIC(lm.fit.full), BIC(lm.fit.full))),
+(c('-Age',AIC(lm.fit.all_but_age),BIC(lm.fit.all_but_age)))
+)
+kable(rc)
 
 ```
-```{r}
-AIC(lm.fit.all_but_age)
-BIC(lm.fit.all_but_age)
 
-```
-
-_Lower_ `AIC` and `BIC` of `lm.fit.all_but_age` supports the current idea of this model bein better.
+_Lower_ `AIC` and `BIC` for `lm.fit.all_but_age` supports the current idea of `lm.fit.all_but_age` model being better.
 
 * __Q13__: Pick a termination criteria (i.e., Adj. R-squared, AIC or BIC) and carry out the Backward Selection procedure to find the best fit. 
 
+```{r}
+#library(tidyverse)
+library(caret)
+library(leaps)
+step.model <- stepAIC(lm.fit.all_but_age, direction = "backward")
+summary(step.model)
+```
+Another way with limiting number of predictors:
+```{r}
+# Set up repeated k-fold cross-validation
+train.control <- trainControl(method = "cv", number = 5)
+# Train the model
+step.model11 <- train(medv ~ . - age, data = Boston,
+                    method = "leapBackward", 
+                    tuneGrid = data.frame(nvmax = 1:12),
+                    trControl = train.control
+                    )
+step.model11$results
+summary(step.model11)
+step.model11$bestTune
+```
 
 
 ## ISLR Exercises (Section 3.7)
 
 ### Problem 1:
-
+The table 3.4 shows valuse of _p-value_ for varaibles. The Hypothesis is that sales has _zero_ dependency movey spent on ads on _TV_, _radio_, and _newspaper_. The *lower* then $10^{-3}$  _p-value_ says otherwise: spending budget on ads in _TV_ and _radio_ impacts sales, but not so much the on ads in _newspepers_.
 
 ### Problem 3:
+
+The model equation:
+
+$\text{salary} = \hat{\beta}_0 + \hat{\beta}_1 \cdot \text{GPA} + \hat{\beta}_2 \cdot \text{IQ} + \hat{\beta}_3 \cdot \text{Gender } + \hat{\beta}_4 \cdot (\text{IQ} \cdot \text{GPA}) + \hat{\beta}_5 \cdot (\text{GPA} \cdot \text{Gender})$
+
+Where 
+$\hat{\beta}_0 = 50$
+$\hat{\beta}_1 = 20$
+$\hat{\beta}_2 = 0.07$
+$\hat{\beta}_3 = 35$
+$\hat{\beta}_4 = 0.01$
+$\hat{\beta}_5 = -10$
+
+#### a)
+
+Let's plug the numbers into **_Numbers_**
+
+![Calculations](hw2-gender.png)
+
+##### i. NO
+##### ii. NO
+##### iii. NO - It depends! From the quick check we can see that when IQ and GPA reach certain points the Male salaries becomes higher 
+##### iv. NO - Same as n _iii._ 
+
+#### b)
+
+_137.10_
+
+#### c) 
+False: The Interaction Effect is there. The scale of it is small but not negligebale. 
+Let's transform the model to hightlight the interaction between _IQ_ and _GPA_:
+
+$\text{salary} = \hat{\beta}_0 + \hat{\beta}_1  \text{GPA} + \hat{\beta}_3 \cdot \text{Gender } + (\hat{\beta}_2 + \hat{\beta}_4 \cdot  \text{GPA}) \cdot \text{IQ} \cdot + \hat{\beta}_5 \cdot (\text{GPA} \cdot \text{Gender})$
+
+The increase of _GPA_ by one adds a ~ _1%_ of itself to the acceleration of the grow of the _IQ_.
+
 
 
 ### Problem 4:

@@ -1,11 +1,4 @@
-n <- 100  # Number of cases in the data set
 
-# Data frame with two columns: score is randomly generated, true.class is initialized to 0
-df <- data.frame(score = runif(n), true.class = rep(0,n)) 
-
-# Set the true.class values (0 or 1) according to the score value
-# Note that in reality, true.class is known (not artificially generated)
-df$true.class <- sapply(df$score, function(x) rbinom(1,1,x))
 
 # Sort by score (high to low)
 df <- df[order(-df$score),]
@@ -34,6 +27,7 @@ for(k in 1:n){
 color = c("black","blue","red")
 
 # Plot the ROC curve
+#points(FPR, TPR, main=paste0("ROC curve"," (n = ", n, ")"), pch=16, col=color[(2+c(-1,df$true.class))], cex.lab = 1.5, cex.axis = 1.5, cex.main = 1.5)
 plot(FPR, TPR, main=paste0("ROC curve"," (n = ", n, ")"), pch=16, col=color[(2+c(-1,df$true.class))], cex.lab = 1.5, cex.axis = 1.5, cex.main = 1.5)
 lines(FPR,TPR)
 
