@@ -1,0 +1,90 @@
+---
+title: "Lab Ch4 end-of-class submission"
+author: "Igor Ostaptchenko"
+date: "10/20/2019"
+output: html_document
+---
+
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## 4.6.2
+```{r}
+library(ISLR)
+names(Smarket)
+attach(Smarket)
+
+```
+## 4.7.12
+
+### a)
+```{r}
+Power=function(){
+  print(2^3)
+}
+
+Power()
+```
+
+### b)
+
+```{r}
+Power2=function(x,a){
+  rc <- x^a
+  print(rc)
+}
+
+Power2(3,8)
+```
+
+### c) 
+```{r}
+
+Power2(10,3)
+Power2(8,17)
+Power2(131,3)
+
+```
+
+```{r}
+Power2=function(x,a){
+  rc <- x^a
+  print(rc)
+}
+
+Power2(3,2)
+Power2(2,2)
+```
+
+### d)
+
+```{r}
+Power2=function(x,a){
+  rc <- x^a
+  return(rc)
+}
+
+Power2(3,8)
+```
+### e)
+
+```{r}
+PlotPower=function(x,a){
+  rc <- x^a
+  print(rc)
+}
+
+Power2(3,8)
+```
+
+### f)
+
+```{r}
+PlotPower=function(x,a){
+  rc <- x^a
+  print(rc)
+}
+
+Power2(3,8)
+```
