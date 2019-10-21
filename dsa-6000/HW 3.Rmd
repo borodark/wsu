@@ -225,44 +225,35 @@ Power2(131,3)
 
 ```
 
-```{r}
-Power2=function(x,a){
-  rc <- x^a
-  print(rc)
-}
-
-Power2(3,2)
-Power2(2,2)
-```
-
 ### d)
 
 ```{r}
-Power2=function(x,a){
+Power3=function(x,a){
   rc <- x^a
   return(rc)
 }
 
-Power2(3,8)
+Power3(3,8)
+Power3(2,8)
+
 ```
 ### e)
 
 ```{r}
-PlotPower=function(x,a){
-  rc <- x^a
-  print(rc)
-}
-
-Power2(3,8)
+library(purrr)
+x <- seq(1,10)
+y <- map (x,function(x) Power3(x,2))
+plot(x,y)
+plot(x,y, log = 'xy')
 ```
 
 ### f)
 
 ```{r}
-PlotPower=function(x,a){
-  rc <- x^a
-  print(rc)
+PlotPower=function(x, into_power){
+  y <- map (x,function(x) Power3(x,into_power))
+  plot(x,y)
 }
 
-Power2(3,8)
+PlotPower(1:10,3)
 ```
