@@ -1,7 +1,7 @@
 ---
-title: "Lab Ch4 end-of-class submission"
+title: "HW3"
 author: "Igor Ostaptchenko"
-date: "10/20/2019"
+date: "10/21/2019"
 output: html_document
 ---
 
@@ -9,13 +9,191 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-## 4.6.2
+
+## 4.7.6
+
+### a)
+
 ```{r}
-library(ISLR)
-names(Smarket)
-attach(Smarket)
+(pofA <- exp(-6 + 0.05*40 +1*3.5)/( 1 + exp(-6 + 0.05*40 +1*3.5)))
+ 
+```
+### b)
+~ 50 hrs
+
+```{r}
+(pofA <- exp(-6 + 0.05*50+1*3.5)/( 1 + exp(-6 + 0.05*50+1*3.5)))
 
 ```
+
+## 4.7.7
+
+## 4.7.10
+
+### a)
+```{r}
+library (ISLR)
+names(Weekly)
+summary (Weekly)
+cor(Weekly [,1:8])
+pairs(Weekly [,1:8])
+attach (Weekly)
+plot(Volume)
+
+```
+Volume corelates to the week number. Other relations are not so clear.
+
+### b)
+```{r}
+glm.fits <- glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume , data=Weekly ,family=binomial)
+summary(glm.fits)
+coef(glm.fits)
+```
+The Lag2 appears to be the predictor that contribute the most.
+
+### c)
+```{r}
+glm.pred <- predict(glm.fits,type ="response")
+contrasts(Direction)
+glm.prob <- rep ("Down" ,1089)
+glm.prob[glm.pred >.5] <- "Up"
+## 
+table(glm.prob,Direction )
+```
+
+#### Interpretation
+```
+| Direction |                |                 |      |
+| glm.prob  | Down           | Up              |      |
+| Down      | True Down=  54 | False Down=  48 |  102 |
+| Up        | False Up=  430 | True Up=    557 |  987 |
+| totals    | 484            | 605             | 1089 |
+```
+#### Logistical regression results interpretation
+* Accuracy: Overall, how often is the classifier correct? (True Down +True Up)/total = (54+557)/1089 = 0.56 The ~56% of time the classifier able to accuratly predict.
+
+* Misclassification Rate: Overall, how often is it wrong? (Fase Down + False Up)/total = (430+48)/1089 = 0.44 *Error Rate is ~44%. It is also (1 - Accuracy)*
+
+* True Positive Rate: When it's actually Up, how often does it predict Up? True Down/actual Down = 557/987 = 0.56 It is 56%. This value is also known as "Sensitivity" or "Recall"
+
+* False Positive Rate: When it's actually Down, how often does it predict Up? FP/actual = 48/102 = 0.47 It is 47%
+
+* True Negative Rate (also known as "Specificity"): When it's actually Down, how often does it predict Down? TN/actual no = 54/102 = 0.53 It is 53%. Also it is (1 - False Positive Rate)
+
+* Precision: When it predicts Up, how often is it correct? TP/predicted Up = 557/605 = ~0.92
+
+* Prevalence: How often does the Up condition actually occur in our sample? actual Up/total Up = 987/1089 = ~0.906
+
+
+### d)
+```{r}
+train <- (Year <2009)
+Weekly.2009 <- Weekly[!train,]
+Direction.2009 <- Direction[!train]
+glm.fits <- glm(Direction~Lag2,data=Weekly,family=binomial,subset=train)
+summary(glm.fits)
+coef(glm.fits)
+```
+Predict on 2009 - 2010 and print confusion matrix
+
+```{r}
+
+glm.probs <- predict(glm.fits,Weekly.2009 , type="response")
+glm.pred <- rep ("Down" ,104)
+glm.pred[glm.probs >.5] <- "Up"
+table(glm.pred ,Direction.2009)
+mean(glm.pred == Direction.2009)
+mean(glm.pred!= Direction.2009)
+```
+
+#### Interpretation
+* Accuracy: Overall, how often is the classifier correct? (True Down +True Up)/total = (9+56)/104 = 0.625 The 62.2% of time the classifier able to accuratly predict.
+
+* Misclassification Rate: Overall, how often is it wrong? (False Down + False Up)/total = (5+34)/104 = 0.375 Error Rate is 37.5%.
+
+* For weeks when the market trend is up-wards, the model is right ~91.80% of the time (56/(56+5))
+
+* For weeks when the market goes down, the model is correct only ~20.93% of the time (9/(9+34))
+
+
+### e)
+```{r}
+library (MASS)
+lda.fit <- lda(Direction~Lag2 ,data=Weekly ,subset =train)
+lda.fit
+plot(lda.fit)
+##
+```
+
+Predict on 2009 - 2010 and print confusion matrix
+
+```{r}
+pred.lda <- predict(lda.fit, Weekly.2009)
+table(pred.lda$class, Direction.2009)
+```
+
+#### Interpretation
+
+The results are THE SAME as Logistic Regression model which is not surpising
+
+### f)
+
+```{r}
+qda.fit <- qda(Direction~Lag2 ,data=Weekly ,subset =train)
+qda.fit
+```
+
+Predict on 2009 - 2010 and print confusion matrix
+
+```{r}
+qda.pred <- predict (qda.fit ,Weekly.2009)
+table(qda.pred$class ,Direction.2009)
+```
+
+#### Interpretation
+* Accuracy: Overall, how often is the classifier correct? (True Down +True Up)/total = 61/104 = ~0.5865 The 58.65% of time the classifier able to accuratly predict.
+
+* Misclassification Rate: Overall, how often is it wrong? (Fase Down + False Up)/total = (43+0)/104 = %41.346 Error Rate is %41.346
+
+* For weeks when the market trend is up-wards, the model is right 100% of the time (61/(61+0))
+
+* For weeks when the market goes down, the model is never correct: 0/(0+43)
+
+### g)
+```{r}
+library (class)
+train.X <-  as.matrix(Lag2[train])
+test.X <-  as.matrix(Lag2[!train])
+train.Direction <- Direction[train]
+set.seed(1)
+knn.pred <- knn (train.X,test.X,train.Direction ,k=1)
+table(knn.pred, Direction.2009)
+
+```
+
+#### Interpretation
+* Accuracy: (True Down +True Up)/total = (21+31)/104 = 0.5 The 50% of time the classifier able to accuratly predict.
+
+* Misclassification Rate: Overall, how often is it wrong? (Fase Down + False Up)/total = (30+22)/104 = %50 Error Rate is %50
+
+* For weeks when the market trend is up-wards, the model is right ~%50.81967 of the time: (31/(61))
+
+* For weeks when the market goes down, the model is ~%48.8372 correct: 21/(21+22)
+
+### h)
+The Logistical Regression and LDA are the best with the same Accuracy and Errors, followed by QDA and KNN with K=1
+
+```
+|----------------|----------|----------|
+| Method         | Accuracy | Error    |
+|----------------|----------|----------|
+| LDA/Logistical | %62.2    | %37.5    |
+| QDA            | %58.65~  | %41.346~ |
+| KNN            | %50      | %50      |
+|----------------|----------|----------|
+```
+
+
 ## 4.7.12
 
 ### a)
