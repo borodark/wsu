@@ -28,6 +28,28 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 4.7.7
 
+## 4.7.9
+
+### a)
+The probability is:
+
+$\text{p[X]} = \frac{e^{\beta_0 + \beta_1 \cdot \text{X}}}{1 + e^{\beta_0 + \beta_1 \cdot \text{X}}}$
+ 
+where $e^{\beta_0 + \beta_1 \cdot \text{X}} = 0.37$
+hence:
+ 
+```{r}
+print("The probability is: ")
+print(0.37/(1+0.37))
+```
+
+### b) 
+```{r}
+print("The odds are:")
+print( 0.16/(1-0.16))
+```
+
+
 ## 4.7.10
 
 ### a)
@@ -192,7 +214,6 @@ The Logistical Regression and LDA are the best with the same Accuracy and Errors
 | KNN            | %50      | %50      |
 |----------------|----------|----------|
 ```
-
 
 ## 4.7.12
 
