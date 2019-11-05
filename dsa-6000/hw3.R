@@ -51,7 +51,27 @@ summary(a)
 b <- c(7.5,6.3, 6.1, 7.3)
 summary(b)
 sd(b)
+(all <- c(a,b))
+b-x
+a-x
+sd(c(a,b))
+  x <- 8.4
+(ldA <- x * 10.167/(sd(c(a,b))^2) - 10.167^2/(2*sd(c(a,b))^2) + log(.6))
+(ldB <- x * 6.80/(sd(c(a,b))^2) - 6.80^2/(2*sd(c(a,b))^2) + log(.4))
 
-x <- 8.4
-(ldA <- x * 10.167/(sd(a)^2) - 10.167^2/(2*sd(a)^2) + log(.6))
-(ldB <- x * 6.80/(sd(a)^2) - 6.80^2/(2*sd(a)^2) + log(.6))
+  
+  library(ISLR)
+  names(Default)
+summary(Default)
+size(Default) 
+333/9667
+sum(complete.cases(Default))
+sum(Default$balance == 0)
+attach(Default)
+fit <- glm(formula = default ~ balance + income + student, family = binomial, data = Default)
+summary(fit)
+r <-  (-1.154047e+01 +   800  * 5.647103e-03 + 18000       * 2.080898e-05)
+r
+(pofR <- exp(-1.154047e+01 + 5.647103e-03*800 +2.080898e-05*18000)/( 1 + exp(-1.154047e+01 + 5.647103e-03*800 +2.080898e-05*18000)))
+
+(pofJ <- exp(-1.154047e+01 + 5.647103e-03*850 +2.080898e-05*19000)/( 1 + exp(-1.154047e+01 + 5.647103e-03*850 +2.080898e-05*19000)))

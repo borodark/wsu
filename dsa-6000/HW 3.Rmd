@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 # Normal Gaussian
 ProbabilityDensityFunction <- function(x, μ, σ){
-  (sqrt(2*pi)*σ)^-1*exp(-(2*σ^2)^-1*(x-μ))
+  ((sqrt(2*pi)*σ^2)^-1)*exp(-(x-μ)^2/(2*σ^2))
 }
 
 σ <- sqrt(36) # 
@@ -49,7 +49,10 @@ ProbabilityDensityFunction <- function(x, μ, σ){
 
 # probabilities for issue - 1 no-issue - 0
 x <- 4
-probablilityOfIssue <- (π_1*ProbabilityDensityFunction(4,μ_1,σ))/(π_1*ProbabilityDensityFunction(4,μ_1,σ) + π_0*ProbabilityDensityFunction(4,μ_0,σ))
+
+probablilityOfIssue <- (π_1*ProbabilityDensityFunction(4,μ_1,σ))/
+  (π_1*ProbabilityDensityFunction(4,μ_1,σ) + π_0*ProbabilityDensityFunction(4,μ_0,σ))
+
 probablilityOfNonIssue <- (π_0*ProbabilityDensityFunction(4,μ_0,σ))/(π_1*ProbabilityDensityFunction(4,μ_1,σ) + π_0*ProbabilityDensityFunction(4,μ_0,σ))
 
 print("For X == 4 ")
@@ -57,6 +60,8 @@ print("Probablility Of Issue: ")
 print(probablilityOfIssue)
 print("Probablility Of Non Issue: ")
 print(probablilityOfNonIssue)
+
+print(probablilityOfNonIssue + probablilityOfIssue )
 
 ```
 
