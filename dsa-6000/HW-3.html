@@ -203,10 +203,12 @@ summary {
 <h2>4.7.7</h2>
 <pre class="r"><code># Normal Gaussian
 ProbabilityDensityFunction &lt;- function(x, μ, σ){
-  (sqrt(2*pi)*σ)^-1*exp(-(2*σ^2)^-1*(x-μ))
+  ((sqrt(2*pi)*σ^2)^-1)*exp(-(x-μ)^2/(2*σ^2))
 }
 
 σ &lt;- sqrt(36) # 
+
+
 
 # issued a dividend
 π_1 &lt;- .8
@@ -219,7 +221,10 @@ ProbabilityDensityFunction &lt;- function(x, μ, σ){
 
 # probabilities for issue - 1 no-issue - 0
 x &lt;- 4
-probablilityOfIssue &lt;- (π_1*ProbabilityDensityFunction(4,μ_1,σ))/(π_1*ProbabilityDensityFunction(4,μ_1,σ) + π_0*ProbabilityDensityFunction(4,μ_0,σ))
+
+probablilityOfIssue &lt;- (π_1*ProbabilityDensityFunction(4,μ_1,σ))/
+  (π_1*ProbabilityDensityFunction(4,μ_1,σ) + π_0*ProbabilityDensityFunction(4,μ_0,σ))
+
 probablilityOfNonIssue &lt;- (π_0*ProbabilityDensityFunction(4,μ_0,σ))/(π_1*ProbabilityDensityFunction(4,μ_1,σ) + π_0*ProbabilityDensityFunction(4,μ_0,σ))
 
 print(&quot;For X == 4 &quot;)</code></pre>
@@ -227,11 +232,13 @@ print(&quot;For X == 4 &quot;)</code></pre>
 <pre class="r"><code>print(&quot;Probablility Of Issue: &quot;)</code></pre>
 <pre><code>## [1] &quot;Probablility Of Issue: &quot;</code></pre>
 <pre class="r"><code>print(probablilityOfIssue)</code></pre>
-<pre><code>## [1] 0.8213005</code></pre>
+<pre><code>## [1] 0.7518525</code></pre>
 <pre class="r"><code>print(&quot;Probablility Of Non Issue: &quot;)</code></pre>
 <pre><code>## [1] &quot;Probablility Of Non Issue: &quot;</code></pre>
 <pre class="r"><code>print(probablilityOfNonIssue)</code></pre>
-<pre><code>## [1] 0.1786995</code></pre>
+<pre><code>## [1] 0.2481475</code></pre>
+<pre class="r"><code>print(probablilityOfNonIssue + probablilityOfIssue )</code></pre>
+<pre><code>## [1] 1</code></pre>
 </div>
 <div id="section-2" class="section level2">
 <h2>4.7.9</h2>
