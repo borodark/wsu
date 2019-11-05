@@ -36,6 +36,8 @@ ProbabilityDensityFunction <- function(x, μ, σ){
 
 σ <- sqrt(36) # 
 
+
+
 # issued a dividend
 π_1 <- .8
 μ_1 <- 10
