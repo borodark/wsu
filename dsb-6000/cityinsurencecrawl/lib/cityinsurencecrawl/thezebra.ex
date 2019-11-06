@@ -14,6 +14,14 @@ defmodule TheZebra do
     ]
   end
 
+  def parse_rates({"li", [], [text]}) do
+    text
+  end
+
+  def parse_rates({"li", [_], [_]}) do
+    :ok
+  end
+
   @impl Crawly.Spider
   def parse_item(response) do
     # Extracting pagination urls
@@ -23,11 +31,16 @@ defmodule TheZebra do
       cities_urls
       |> Enum.map(&build_absolute_url/1)
       |> Enum.map(&Crawly.Utils.request_from_url/1)
-    # body > div.container > div.row.blog-content-wrap.justify-content-center > div.col-md-10.col-lg-7.col-xxl-6.blog-content-block
+    city =
+      response.body
+      |> Floki.find("div.blog-content-block ul li")
+      |> Enum.map(&TheZebra.parse_rates/1)
+      |> Enum.filter(fn x -> x != :ok end)
+
     %Crawly.ParsedItem{
       :items => [
         %{
-          city: "",
+          city: city,
           rate: ""
         }
       ],
