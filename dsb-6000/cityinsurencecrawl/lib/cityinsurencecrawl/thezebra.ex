@@ -15,7 +15,14 @@ defmodule TheZebra do
   end
 
   def parse_rates({"li", [], [text]}) do
-    text
+    [rate_column,rate_value] =
+      text
+      |> String.split(": $")
+    {rate_int,_} =
+      rate_value
+      |> String.replace(",","")
+      |> Integer.parse
+    %{rate_column => rate_int} 
   end
 
   def parse_rates({"li", [_], [_]}) do
@@ -25,23 +32,43 @@ defmodule TheZebra do
   @impl Crawly.Spider
   def parse_item(response) do
     # Extracting pagination urls
-    cities_urls = response.body |> Floki.find("td a") |> Floki.attribute("href")
+    city_url_tuples =
+      response.body
+      |> Floki.find("td a")
+      |> Enum.map(fn {"a", [{_,ref}],[city]} -> {city, ref} end)
+
+    cities =
+      city_url_tuples
+      |> Enum.map(fn {city, _} -> city end )
+
+    urls =
+      city_url_tuples
+      |> Enum.map(fn {_, url} -> url end )
     # Converting URLs into Crawly requests
+
     requests =
-      cities_urls
+      urls
       |> Enum.map(&build_absolute_url/1)
       |> Enum.map(&Crawly.Utils.request_from_url/1)
+
     city =
       response.body
+      |> Floki.find("h1.blog-headline")
+      |> Floki.text
+    # TODO parse city if subsrings found in cities
+    rates_map = Map.new
+    rates = # [of maps]
+      response.body
       |> Floki.find("div.blog-content-block ul li")
-      |> Enum.map(&TheZebra.parse_rates/1)
+      |> Enum.map(fn x -> parse_rates(x) end)
       |> Enum.filter(fn x -> x != :ok end)
-
+      |> Enum.reduce(rates_map,fn x, acc -> Map.merge(acc,x) end)
+    # 
     %Crawly.ParsedItem{
       :items => [
         %{
           city: city,
-          rate: ""
+          rates: rates
         }
       ],
       :requests => requests
