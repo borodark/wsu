@@ -121,11 +121,29 @@ defmodule TheZebra do
 
     rates =
       if rates_raw == [] do
+        rates_II =
         response.body
         ## Type II https://www.thezebra.com/anchorage-ak-car-insurance/
         |> Floki.find(".col-lg-9 tr td") # .col-lg-9 tr td
         |> Enum.map(fn x -> parse_rates(x) end)
         |> Enum.filter(fn x -> filter_type_II(x) end)
+        # TODO
+
+        six = rates_II |> Enum.take(6)
+        Logger.debug("Six: #{inspect six}")
+        rates_rc  =
+        if six != [] do
+          [%{"key" => k1},
+           %{"key" => k2},
+           %{"key" => k3},
+           %{"value" => v1},
+           %{"value" => v2},
+           %{"value" => v3}] = six
+          %{k1 => v1, k2 => v2, k3 => v3}
+        else
+          %{}
+        end
+        rates_rc
       else
         ## we R on the first page with list of urls for the cityes
         if city == :ok do
