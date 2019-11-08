@@ -110,6 +110,7 @@ defmodule TheZebra do
       |> Enum.map(fn x -> parse_rates(x) end)
       |> Enum.filter(fn x -> x != :ok end)
       |> Enum.reduce(rates_map, fn x, acc -> Map.merge(acc, x) end)
+
     #
     ## Type II https://www.thezebra.com/lafayette-la-car-insurance/
     rates_II =
@@ -121,9 +122,9 @@ defmodule TheZebra do
     %Crawly.ParsedItem{
       :items => [
         %{
-          city: city,
-          rates: rates_II ++ rates_I
+          city: city
         }
+        |> Map.merge(rates_I)
       ],
       :requests => requests
     }
