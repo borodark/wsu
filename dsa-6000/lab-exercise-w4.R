@@ -1,10 +1,10 @@
 library(MASS) 
-lm.fit <- lm(medv ~ lstat + age, data = Boston)
+lm.fit <- glm(medv ~ lstat + age, data = Boston)
 summary(Boston)
 #Q1
 sum((Boston$medv - median(Boston$medv))^2)
 #Fit medv (median house value) as a linear function of lstat (percentage of lower status of the population) and age (proportion of units built prior to 1940).
-lm.fit <- lm(medv ~ lstat + age, data = Boston)
+lm.fit <- glm(medv ~ lstat + age, data = Boston)
 summary(lm.fit)
 #From the model summary, answer these questions:
 # Q2: What is the Residual Sum of Squares (RSS) of this fit?
