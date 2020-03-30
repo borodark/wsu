@@ -8,7 +8,7 @@
   
   b) The better choice is the `Fund B` - the expected value ot this branch 12.4K vs 11.1K for the `Fund A` branch.
   
-  c) For the branches to be equal in case of _fund A in a good economy_ the amount of `2.3K` has to come from `Fund A -> Good Economy` branch. This branch has `20%` probability, hence the return has to be `2.3K` more then `4K` or `6.3K`. The absolute value must be `6.3K * 5` or `31.5`.
+  c) For the branches to be equal in case of _fund A in a good economy_ the amount of `2.3K` has to come from `Fund A -> Good Economy` branch. The value must be `2.3K` more then `4K` or `6.3K`. Given the branch has `20%` probability ahe absolute value must be `6.3K * 5` or `31.5K` so the return must be at least `21.5K` vs `10K` as originally stated.
 
 
 ## Q2
