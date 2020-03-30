@@ -36,12 +36,14 @@ The
 
 The goal is to minmize the EMV of `Support cost per episode`
 
-  a) ![Q3-a](HW7-Q3-a.png)
+  a) ![Q3-a](HW7-Q2-a.png)
   
   b) The assigment of `Group 1` specialist in the case where probability of him solving the problem is `75%` have EMV of `$35` vs `$40` if the `Group 1` takes it first. The `Group 1` has to handle this request.
 
-  c) ![Q3-c](HW7-Q3-c.png)
+  c) ![Q3-c](HW7-Q2-c.png)
   
   d) The assigment of `Group 2` specialist in the case where probability of the `Group 1` specialist solving the problem is `55%` gives EMV of `$40` vs `$43` if done the other way.  The `Group 2` has to handle this request.
 
-
+  e) If Probability of solving assigment by `Group 1` specialist is bellow `62.5%` the problem has to be assigned to `Group 2`
+  
+  ![Q3-c](HW7-Q2-e.png)
