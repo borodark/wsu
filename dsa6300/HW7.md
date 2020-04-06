@@ -12,7 +12,7 @@
 
 ### Sensitivity
 
-The
+The analysis is : until the value of the portfolio is `31.5K`, it is when the  return must be at least `21.5K` the `Fund B` is still the best option.
 
 ![Sensitivity](HW7-Q1-Fund-A-Return.png)
 
@@ -24,6 +24,7 @@ The
 
 ![Q1-Spider](HW7-Q1-spider.png)
 
+
 ![Q1-sp-data](HW7-Q1-spider-data.png)
 
 ### Tornado
@@ -31,31 +32,86 @@ The
 ![Q1-tornado](HW7-Q1-tornado.png)
 
 
-
 ## Q2
 
 The goal is to minmize the EMV of `Support cost per episode`
 
-  a) ![Q3-a](HW7-Q2-a.png)
+  a) ![Q2-a](HW7-Q2-a.png)
   
   b) The assigment of `Group 1` specialist in the case where probability of him solving the problem is `75%` have EMV of `$35` vs `$40` if the `Group 1` takes it first. The `Group 1` has to handle this request.
 
-  c) ![Q3-c](HW7-Q2-c.png)
+  c) ![Q2-c](HW7-Q2-c.png)
   
   d) The assigment of `Group 2` specialist in the case where probability of the `Group 1` specialist solving the problem is `55%` gives EMV of `$40` vs `$43` if done the other way.  The `Group 2` has to handle this request.
 
   e) If Probability of solving assigment by `Group 1` specialist is bellow `62.5%` the problem has to be assigned to `Group 2`
   
-  ![Q3-c](HW7-Q2-e.png)
+  ![Q2-c](HW7-Q2-e.png)
 
-TODO 
+### 11.6
+
+#### a)
+  
+![Q2](11.6.3.png)
+  
+![Q2](11.6.1.png)
+  
+![Q2](11.6.2.png)
+  
+#### b) 
+
+- The _highes impact_ is from `L#2 Cost`
+- No impact from _Both_ `Risks` 
+
+#### c)
+
+- The highes _Rate of Change_ is the `L#2 Cost`
 
 ## Q3 
 
-###
+### a)
+The Probability of part to be scrapped is the _same no matter what order the operations are performed_.
+  * What is the probability of the part being ruined?
+  
+    * Probability of Success (1 – 0.1)(1 – 0.2) = %72 
+    * Probability of Failure %100 - %72 = %28
 
-![Q3 Tree](HW7-Q3-tree.png)
+### b) ![Q3 Tree](10.13.b.png)
 
-###
 
-![Q3 Sens](HW7-Q3-sens.png)
+### c)  Conclusion: `Lathe #2` has to start first.
+
+
+### d) The Total value encreases linearly with coefficient ~1 when cost of `L#2` operation drops
+
+![Q3 Tree](10.13.d.png)
+
+
+### 10.14.a) There is `3! = 3*2*1` or `six` possible permutations for the three machines.
+
+![Q3 Tree](10.14.a.png)
+
+### 10.14.b)
+  
+    * Probability of Success (1 – 0.1) * (1 – 0.2) * (1 - 0.25) = %54
+    * Probability of Failure %100 - %54 = %46
+
+### 10.14.c)
+
+![Tree](10.14.L1.png)
+![Tree](10.14.L2.png)
+![Tree](10.14.L3.png)
+
+
+### 10.14.d)
+
+The winning branch is `L#2 -> L#3 -> L#1`. The Value obtained is `62`. The second coice in the `L#3 -> L#1 -> L#2` =:= `59.5`. It is possible to schedule the processing this way too if needed for the situation. 
+
+### 10.14.e)
+
+For the pair-wise comaparison one would build a table with 6 rows and calculate the value and select the maximum - the same calculations done during the Tree RollUp. 
+Unfortunately this takes `n!` times - `24` for `4` machines!
+
+### 10.14.f) There is `4! = 4*3*2*1` or 24 permutations for the four machines.
+
+

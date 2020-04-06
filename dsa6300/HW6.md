@@ -35,9 +35,18 @@ The goal is to minmize the EMV of `Support cost per episode`
 
 ## Q4 
 
-  a) The Probability of part to be scrapped is the same no matter what order the operations are performed. It is `20% * 10% = 2%`
+
+  a) The Probability of part to be scrapped is the same no matter what order the operations are performed. What is the probability that a part is ruined?
+  
+    * Probability of Success (1 – 0.1)(1 – 0.2) = %72 
+    * Probability of Failure %100 - %72 = %28
   
   b) The EMV has the value of `-10` when `Lathe #2` starts and `-15` otherwise: `Lathe #2` has to start first.
   ![Q4](HW6-Q4.png)
-  
+
+  My hand drawings had incorrect calculations: I have assumed the loss of `$500` in cost of material per scrapped part is incurred and Value is -10
+  Here is the proper tree:
+  ![Q4](10.13.b.png)
+
+
   c) The `Lathe #2` has to start first.
