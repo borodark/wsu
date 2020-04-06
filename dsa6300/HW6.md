@@ -37,7 +37,7 @@ The goal is to minmize the EMV of `Support cost per episode`
 
   a) The Probability of part to be scrapped is the same no matter what order the operations are performed. It is `20% * 10% = 2%`
   
-  b) The EMV has the same value of `-10` for both branches.
-  ![Q4](HW6-Q4.jpeg)
+  b) The EMV has the value of `-10` when `Lathe #2` starts and `-15` otherwise: `Lathe #2` has to start first.
+  ![Q4](HW6-Q4.png)
   
-  c) It does not matter what order the operations are performed.
+  c) The `Lathe #2` has to start first.

@@ -47,3 +47,15 @@ The goal is to minmize the EMV of `Support cost per episode`
   e) If Probability of solving assigment by `Group 1` specialist is bellow `62.5%` the problem has to be assigned to `Group 2`
   
   ![Q3-c](HW7-Q2-e.png)
+
+TODO 
+
+## Q3 
+
+###
+
+![Q3 Tree](HW7-Q3-tree.png)
+
+###
+
+![Q3 Sens](HW7-Q3-sens.png)
