@@ -1,24 +1,27 @@
-# Home Work #7 Schematic Tree and Decision Tree Analysis by Hand
+# Home Work #7 Chapter 10 - Computer Analysis of Decision Trees and Sensitivity Analysis – Small Problems Using Precision Tree Software
 
 ## Q1
 
-### Tree
+### The Tree
 
 ![Tree Q1](HW7-Q1.png)
 
-### Optimal Path
+### The Optimal Path
 
 ![Optimal](HW7-Q1-1.png)
 
 ### Sensitivity
 
-The analysis is : until the value of the portfolio is `31.5K`, it is when the  return must be at least `21.5K` the `Fund B` is still the best option.
+The analysis is: until the value of the portfolio is `31.5K`, it is when the  return must be at least `21.5K` the `Fund B` is still the best option.
 
 ![Sensitivity](HW7-Q1-Fund-A-Return.png)
 
 ### Cumulative Probability
 
 ![Q1 Cumulative Probability](HW7-Q1-cumul-prob.png)
+
+* There is a `%50` risk of end up with `5000K` using `Fund A` strategy
+* There is a `%50` risk of end up with `10000K` using `Fund B` strategy
 
 ### Spider
 
@@ -35,8 +38,7 @@ The analysis is : until the value of the portfolio is `31.5K`, it is when the  r
 ### Conclusions
 
 * For the `Fund A` investment to become more valuable in the `Good Economy` scenario the  return must be at least `21.5K`
-* There is a `%50` risk of end up with `5000K` using `Fund A` strategy
-* There is a `%50` risk of end up with `10000K` using `Fund B` strategy
+* There is an equal risk of ending up with `5000K` less trusting the `Fund A` as wel as keeping the initial `10000K` with investing in the `Fund B`
 
 
 ## Q2
