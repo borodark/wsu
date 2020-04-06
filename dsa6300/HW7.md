@@ -48,9 +48,7 @@ The goal is to minmize the EMV of `Support cost per episode`
   
   ![Q2-c](HW7-Q2-e.png)
 
-### 11.6
-
-#### a)
+### 11.6.a)
   
 ![Q2](11.6.3.png)
   
@@ -58,14 +56,28 @@ The goal is to minmize the EMV of `Support cost per episode`
   
 ![Q2](11.6.2.png)
   
-#### b) 
+### 11.6.b) 
 
 - The _highes impact_ is from `L#2 Cost`
 - No impact from _Both_ `Risks` 
 
-#### c)
+### 11.6.c)
 
 - The highes _Rate of Change_ is the `L#2 Cost`
+
+### 11.6.d and 11.6.e)
+
+The *Expected Value of Perfect Information* is calculated by taking the pessimistic value and subtracting the optimistic value.
+
+For given range of changes:
+
+![EVPI](11.6.d.png)
+
+The *EVPI*s for both are as follows:
+
+![EVPI](11.6.e.png)
+
+
 
 ## Q3 
 
@@ -105,13 +117,15 @@ The Probability of part to be scrapped is the _same no matter what order the ope
 
 ### 10.14.d)
 
-The winning branch is `L#2 -> L#3 -> L#1`. The Value obtained is `62`. The second coice in the `L#3 -> L#1 -> L#2` =:= `59.5`. It is possible to schedule the processing this way too if needed for the situation. 
+The winning branch is `L#2 -> L#3 -> L#1`. The Value obtained is `62`. The second choice in the `L#3 -> L#1 -> L#2` =:= `59.5`. It is possible to schedule the processing this way too if needed for the situation. 
 
 ### 10.14.e)
 
-For the pair-wise comaparison one would build a table with 6 rows and calculate the value and select the maximum - the same calculations done during the Tree RollUp. 
-Unfortunately this takes `n!` times - `24` for `4` machines!
+For the pair-wise comparison one would build a table with 6 rows and calculate the value and select the maximum - the same calculations done during the Tree RollUp. 
+Unfortunately the complexity grows very fast: it the function of `n!`!
 
-### 10.14.f) There is `4! = 4*3*2*1` or 24 permutations for the four machines.
+### 10.14.f) 
+
+There is `4! = 4*3*2*1` or 24 permutations for the four machines.
 
 

@@ -42,10 +42,11 @@ The goal is to minmize the EMV of `Support cost per episode`
     * Probability of Failure %100 - %72 = %28
   
   b) The EMV has the value of `-10` when `Lathe #2` starts and `-15` otherwise: `Lathe #2` has to start first.
+  
   ![Q4](HW6-Q4.png)
 
-  My hand drawings had incorrect calculations: I have assumed the loss of `$500` in cost of material per scrapped part is incurred and Value is -10
-  Here is the proper tree:
+  My hand drawings had incorrect calculations: I have assumed the loss of `$500` in cost of material per scrapped part is incurred and Value is `-10` - I got some suspitions but maybe this is _subsidised_ business. Here is the proper tree:
+  
   ![Q4](10.13.b.png)
 
 
