@@ -22,8 +22,8 @@ The analysis is: until the value of the portfolio is `31.5K`, it is when the  re
 
 ![Q1 Cumulative Probability](HW7-Q1-cumul-prob.png)
 
-* There is a `%50` risk of end up with `5000K` using `Fund A` strategy
-* There is a `%50` risk of end up with `10000K` using `Fund B` strategy
+* There is a `%50` risk to end up loosing `5000K` using `Fund A` strategy
+* There is a `%50` risk to end up with initial `10000K` using `Fund B` strategy
 
 ### Spider
 
