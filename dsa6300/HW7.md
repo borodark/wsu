@@ -1,4 +1,6 @@
-# Home Work #7 Chapter 10 - Computer Analysis of Decision Trees and Sensitivity Analysis – Small Problems Using Precision Tree Software
+# Home Work #7 
+
+*Chapter 10* _Computer Analysis of Decision Trees and Sensitivity Analysis – Small Problems Using Precision Tree Software_
 
 ## Q1
 
