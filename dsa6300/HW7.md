@@ -32,6 +32,13 @@ The analysis is : until the value of the portfolio is `31.5K`, it is when the  r
 ![Q1-tornado](HW7-Q1-tornado.png)
 
 
+### Conclusions
+
+* For the `Fund A` investment to become more valuable in the `Good Economy` scenario the  return must be at least `21.5K`
+* There is a `%50` risk of end up with `5000K` using `Fund A` strategy
+* There is a `%50` risk of end up with `10000K` using `Fund B` strategy
+
+
 ## Q2
 
 The goal is to minmize the EMV of `Support cost per episode`
@@ -76,7 +83,6 @@ For given range of changes:
 The *EVPI*s for both are as follows:
 
 ![EVPI](11.6.e.png)
-
 
 
 ## Q3 
@@ -128,4 +134,10 @@ Unfortunately the complexity grows very fast: it the function of `n!`!
 
 There is `4! = 4*3*2*1` or 24 permutations for the four machines.
 
+### Conclusions
 
+* There impact of the processing cost for step performed by `Lathe#2` is the most significant for two-machines configuratiuon.
+* Only two decisions needed for three-machines configuration.
+* In some industries, like `Aviation/Space`, the loss of the part being scraped may significantly impact the Value: the complicated machining with high tolerances may bring the part costs to 100K range - this is most defenetely need to be taken into account in `real life` problems.
+* The probability of `scrap` grows wth adding more steps to the processing.
+* The fast increasing the number of possible permutations per added process impose some limit on the `tree` based models.
